@@ -1,0 +1,19 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Dependencies
+node_modules/
+
+# Production builds
+dist/
+build/
+out/
+
+# Environment variables
+.env
+.env*.local
+
+# IDE / Editor
+.vscode/
+.idea/
