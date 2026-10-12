@@ -1,0 +1,133 @@
+import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import CookieConsent from "@/components/layout/CookieConsent";
+import JsonLd from "@/components/seo/JsonLd";
+import { SITE_CONFIG, getOrganizationJsonLd } from "@/lib/seo-config";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+  display: "swap"
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+  display: "swap"
+});
+
+export const viewport: Viewport = {
+  themeColor: "#090d16",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5
+};
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_CONFIG.url),
+  title: {
+    default: "Online Digital Solution | Web, Mobile, Shopify & BigCommerce Agency",
+    template: `%s | ${SITE_CONFIG.name}`
+  },
+  description: SITE_CONFIG.description,
+  keywords: SITE_CONFIG.keywords,
+  authors: [{ name: SITE_CONFIG.author, url: SITE_CONFIG.url }],
+  creator: SITE_CONFIG.name,
+  publisher: SITE_CONFIG.name,
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false
+  },
+  alternates: {
+    canonical: "/"
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: SITE_CONFIG.url,
+    title: "Online Digital Solution | Web, Mobile, Shopify & BigCommerce Agency",
+    description: SITE_CONFIG.description,
+    siteName: SITE_CONFIG.name,
+    images: [
+      {
+        url: "/images/hero_digital_tech.jpg",
+        width: 1200,
+        height: 630,
+        alt: `${SITE_CONFIG.name} — Modern Digital Engineering Agency`
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Online Digital Solution | Web, Mobile, Shopify & BigCommerce Agency",
+    description: SITE_CONFIG.description,
+    images: ["/images/hero_digital_tech.jpg"],
+    creator: "@onlinedigitalsol"
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1
+    }
+  }
+};
+
+export default function RootLayout({
+  children
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  const orgSchema = getOrganizationJsonLd();
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": SITE_CONFIG.name,
+    "url": SITE_CONFIG.url,
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": `${SITE_CONFIG.url}/blog?q={search_term_string}`,
+      "query-input": "required name=search_term_string"
+    }
+  };
+
+  return (
+    <html
+      lang="en"
+      suppressHydrationWarning
+      data-scroll-behavior="smooth"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
+    >
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
+      <body
+        suppressHydrationWarning
+        className="min-h-full flex flex-col bg-[#090d16] text-slate-100 selection:bg-cyan-500 selection:text-slate-950"
+      >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-cyan-400 focus:text-slate-950 focus:font-bold focus:rounded-xl focus:shadow-2xl focus:outline-none"
+        >
+          Skip to content
+        </a>
+        <JsonLd id="schema-org" data={orgSchema} />
+        <JsonLd id="schema-website" data={websiteSchema} />
+        <Navbar />
+        <main id="main-content" className="flex-1 pt-20">
+          {children}
+        </main>
+        <Footer />
+        <CookieConsent />
+      </body>
+    </html>
+  );
+}
