@@ -14,6 +14,7 @@ import {
 import ContactForm from "@/components/forms/ContactForm";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import JsonLd from "@/components/seo/JsonLd";
+import AchievementsAndCaseStudies from "@/components/sections/AchievementsAndCaseStudies";
 import { SITE_CONFIG, getBreadcrumbJsonLd } from "@/lib/seo-config";
 
 export const metadata: Metadata = {
@@ -132,6 +133,15 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
+
+        {/* Proven Achievements & Case Studies Section */}
+        <AchievementsAndCaseStudies
+          badge="Verified Delivery Track Record"
+          title="Our Achievements & Real-World Case Studies"
+          subtitle="Explore measurable speed, uptime, and ROI outcomes achieved across recent production deployments."
+          pageContext="contact"
+          maxCaseStudies={3}
+        />
 
         {/* EXTENSIVE PRICING & INVESTMENT INFORMATION SECTION */}
         <section className="my-16 pt-12 border-t border-[#E2E8F0]">

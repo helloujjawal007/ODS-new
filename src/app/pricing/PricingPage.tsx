@@ -6,6 +6,7 @@ import ServicePricingExplorer from "@/components/pricing/ServicePricingExplorer"
 import ContactForm from "@/components/forms/ContactForm";
 import FaqAccordion from "@/components/sections/FaqAccordion";
 import CtaSection from "@/components/sections/CtaSection";
+import AchievementsAndCaseStudies from "@/components/sections/AchievementsAndCaseStudies";
 import JsonLd from "@/components/seo/JsonLd";
 import { getBreadcrumbJsonLd, getFaqJsonLd } from "@/lib/seo-config";
 
@@ -190,6 +191,15 @@ export default function PricingPage() {
             ))}
           </div>
         </div>
+
+        {/* Proven Achievements & Real-World Case Studies */}
+        <AchievementsAndCaseStudies
+          badge="Delivery Proof & Return on Investment"
+          title="Engineering Achievements & Client Case Studies"
+          subtitle="Review measurable business impact, sub-second speed benchmarks, and production ROI from our fixed-sprint and retainer engagements."
+          pageContext="pricing"
+          maxCaseStudies={3}
+        />
 
         {/* 3. Interactive Estimator Tool (Custom Multi-Service Scope) */}
         <div id="custom-estimator" className="my-20 scroll-mt-24">
