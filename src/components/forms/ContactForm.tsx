@@ -9,7 +9,10 @@ import {
   Send,
   MessageSquare,
   ShieldCheck,
-  Clock
+  Clock,
+  Mail,
+  Loader2,
+  AlertCircle
 } from "lucide-react";
 import CloudLogo from "@/components/brand/CloudLogo";
 
@@ -121,6 +124,7 @@ function InnerContactForm({
   const [honeypot, setHoneypot] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Live Price Calculations
   const selectedServiceObj = useMemo(() => {
@@ -169,14 +173,43 @@ function InnerContactForm({
     setStep((prev) => Math.max(prev - 1, 1));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (honeypot) return;
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setSubmitError(null);
+
+    const addonNames = formData.addons
+      .map((id) => ADDON_OPTIONS.find((a) => a.id === id)?.name)
+      .filter(Boolean) as string[];
+
+    try {
+      const res = await fetch("/api/contact/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          tierLabel: selectedTierObj.label,
+          addonNames,
+          minEstimate,
+          maxEstimate,
+          estimatedWeeks,
+          honeypot
+        })
+      });
+
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Unable to send inquiry to team.onlinedigitalsolution@gmail.com.");
+      }
+
       setIsSubmitted(true);
-    }, 1000);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Unable to transmit brief. You can still email us directly.";
+      setSubmitError(msg);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Pre-formatted WhatsApp text
@@ -189,6 +222,34 @@ function InnerContactForm({
 • Name: ${formData.name || "Client"} (${formData.company || "Company"})`;
     return `https://wa.me/919142590800?text=${encodeURIComponent(text)}`;
   }, [formData, selectedTierObj, minEstimate, maxEstimate]);
+
+  // Pre-formatted direct mailto fallback
+  const emailBriefHref = useMemo(() => {
+    const subject = `[Project Brief] ${formData.service} — ${formData.name || "Client"}`;
+    const body = `Hello Cloud Consultancy Engineering Team,
+
+Here is my project inquiry submitted on the website:
+• Primary Service: ${formData.service}
+• Complexity Tier: ${selectedTierObj.label}
+• Estimated Budget: $${minEstimate.toLocaleString()} – $${maxEstimate.toLocaleString()}
+• Timeline: ${formData.timeline} (${estimatedWeeks}–${estimatedWeeks + 2} Weeks)
+• Engagement Model: ${formData.engagementModel}
+• Client: ${formData.name || "N/A"} (${formData.email || "N/A"})
+• Phone / WhatsApp: ${formData.phone || "N/A"}
+• Company / Organization: ${formData.company || "N/A"}
+
+Project Details:
+${formData.details || "N/A"}
+
+Technical Specifications:
+${formData.customServiceNotes || "N/A"}
+
+Budget & Launch Deadlines:
+${formData.customBudgetNotes || "N/A"}
+
+Please confirm receipt and send back next steps.`;
+    return `mailto:team.onlinedigitalsolution@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }, [formData, selectedTierObj, minEstimate, maxEstimate, estimatedWeeks]);
 
   if (isSubmitted) {
     return (
@@ -204,7 +265,7 @@ function InnerContactForm({
           Inquiry & Scope Successfully Received
         </h3>
         <p className="text-[#475569] text-xs sm:text-sm mt-2 max-w-lg mx-auto leading-relaxed">
-          Thank you, <strong className="text-[#0F172A]">{formData.name}</strong>. A senior software engineer will review your project requirements and estimated specifications and respond within one business day.
+          Thank you, <strong className="text-[#0F172A]">{formData.name}</strong>. Your project brief has been delivered to <span className="font-mono text-[#2563EB] font-semibold">team.onlinedigitalsolution@gmail.com</span>. A senior software engineer will review your specifications and reply within one business day.
         </p>
 
         {/* Project Scope & Pricing Summary Card */}
@@ -245,6 +306,10 @@ function InnerContactForm({
             <span>Engagement Model:</span>
             <span className="text-[#0F172A] font-medium">{formData.engagementModel}</span>
           </div>
+          <div className="flex justify-between">
+            <span>Notification Inbox:</span>
+            <span className="text-[#2563EB] font-mono text-[11px]">team.onlinedigitalsolution@gmail.com</span>
+          </div>
           <div className="pt-2 border-t border-[#E2E8F0] flex items-center justify-between text-[11px] text-[#64748B]">
             <span>100% Client Code Ownership</span>
             <span>30-Day Post-Launch Warranty</span>
@@ -260,6 +325,13 @@ function InnerContactForm({
           >
             <MessageSquare className="w-3.5 h-3.5" />
             <span>Connect on WhatsApp (+91 91425 90800)</span>
+          </a>
+          <a
+            href={emailBriefHref}
+            className="px-5 py-3 rounded-[6px] bg-[#0F172A] hover:bg-[#1E293B] text-white font-medium text-xs flex items-center justify-center space-x-2 transition-colors shadow-sm"
+          >
+            <Mail className="w-3.5 h-3.5 text-[#60A5FA]" />
+            <span>Send Copy via Your Mail App</span>
           </a>
           <button
             onClick={() => {
@@ -716,6 +788,23 @@ function InnerContactForm({
           />
         </div>
 
+        {/* Error Notification */}
+        {submitError && (
+          <div className="mt-4 p-3.5 bg-[#FEF2F2] border border-[#FECACA] rounded-[6px] text-xs text-[#991B1B] flex items-start space-x-2">
+            <AlertCircle className="w-4 h-4 text-[#DC2626] shrink-0 mt-0.5" />
+            <div className="flex-1">
+              <p className="font-medium">{submitError}</p>
+              <p className="mt-1 text-[11px] text-[#B91C1C]">
+                You can also email your brief directly to{" "}
+                <a href={emailBriefHref} className="underline font-semibold hover:text-[#7F1D1D]">
+                  team.onlinedigitalsolution@gmail.com
+                </a>{" "}
+                or reach us on WhatsApp.
+              </p>
+            </div>
+          </div>
+        )}
+
         {/* Navigation Buttons */}
         <div className="pt-6 mt-6 border-t border-[#E2E8F0] flex items-center justify-between">
           {step > 1 ? (
@@ -749,8 +838,17 @@ function InnerContactForm({
               disabled={isSubmitting}
               className="px-7 py-3 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] disabled:opacity-50 text-white text-xs font-semibold flex items-center space-x-2 transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5"
             >
-              <Send className="w-3.5 h-3.5" />
-              <span>{isSubmitting ? "Submitting Brief..." : "Submit Project Brief & Request Proposal"}</span>
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                  <span>Transmitting to team.onlinedigitalsolution@gmail.com...</span>
+                </>
+              ) : (
+                <>
+                  <Send className="w-3.5 h-3.5" />
+                  <span>Submit Project Brief & Request Proposal</span>
+                </>
+              )}
             </button>
           )}
         </div>

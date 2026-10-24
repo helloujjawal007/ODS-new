@@ -8,7 +8,9 @@ import {
   Phone, 
   MapPin, 
   Check, 
-  Send 
+  Send,
+  Loader2,
+  AlertCircle
 } from "lucide-react";
 import { SERVICES } from "@/lib/services-data";
 import { SITE_CONFIG } from "@/lib/seo-config";
@@ -17,12 +19,37 @@ import CloudLogo from "@/components/brand/CloudLogo";
 export default function Footer() {
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (newsletterEmail) {
+    if (!newsletterEmail) return;
+    setIsSubmitting(true);
+    setErrorMsg(null);
+
+    try {
+      const res = await fetch("/api/newsletter/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: newsletterEmail,
+          source: "Website Footer (Engineering Notes)"
+        })
+      });
+
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Subscription request failed.");
+      }
+
       setSubscribed(true);
       setNewsletterEmail("");
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Unable to subscribe";
+      setErrorMsg(msg);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -46,34 +73,58 @@ export default function Footer() {
 
             <div className="lg:col-span-5">
               {subscribed ? (
-                <div className="flex items-center space-x-2.5 bg-[#1E293B] border border-[#334155] rounded-[6px] p-4 text-[#94A3B8] text-xs">
-                  <Check className="w-4 h-4 text-[#2563EB] shrink-0" />
-                  <span>Thank you. You will receive our next engineering note.</span>
+                <div className="flex flex-col space-y-1.5 bg-[#1E293B] border border-[#334155] rounded-[6px] p-4 text-xs">
+                  <div className="flex items-center space-x-2 text-[#60A5FA] font-medium">
+                    <Check className="w-4 h-4 text-[#2563EB] shrink-0" />
+                    <span>Subscription Confirmed</span>
+                  </div>
+                  <p className="text-[#94A3B8] text-[11px] leading-relaxed pl-6">
+                    Registered to <strong className="text-white">team.onlinedigitalsolution@gmail.com</strong>. You will receive our next engineering note directly in your inbox.
+                  </p>
                 </div>
               ) : (
-                <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-2">
-                  <div className="relative flex-1">
-                    <label htmlFor="footer-newsletter-email" className="sr-only">
-                      Email address
-                    </label>
-                    <input
-                      id="footer-newsletter-email"
-                      type="email"
-                      required
-                      value={newsletterEmail}
-                      onChange={(e) => setNewsletterEmail(e.target.value)}
-                      placeholder="Your email address"
-                      className="w-full bg-[#1E293B] border border-[#334155] rounded-[6px] px-3.5 py-2.5 text-xs text-white placeholder-[#94A3B8]/70 focus:outline-none focus:border-[#2563EB]"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="px-4 py-2.5 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium text-xs transition-all flex items-center justify-center space-x-1.5 shrink-0 shadow-sm"
-                  >
-                    <span>Subscribe</span>
-                    <Send className="w-3 h-3" />
-                  </button>
-                </form>
+                <div>
+                  <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-2">
+                    <div className="relative flex-1">
+                      <label htmlFor="footer-newsletter-email" className="sr-only">
+                        Email address
+                      </label>
+                      <input
+                        id="footer-newsletter-email"
+                        type="email"
+                        required
+                        disabled={isSubmitting}
+                        value={newsletterEmail}
+                        onChange={(e) => setNewsletterEmail(e.target.value)}
+                        placeholder="Your email address"
+                        className="w-full bg-[#1E293B] border border-[#334155] rounded-[6px] px-3.5 py-2.5 text-xs text-white placeholder-[#94A3B8]/70 focus:outline-none focus:border-[#2563EB] disabled:opacity-50"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="px-4 py-2.5 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] disabled:opacity-50 text-white font-medium text-xs transition-all flex items-center justify-center space-x-1.5 shrink-0 shadow-sm"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="w-3 h-3 animate-spin" />
+                          <span>Subscribing...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>Subscribe</span>
+                          <Send className="w-3 h-3" />
+                        </>
+                      )}
+                    </button>
+                  </form>
+                  {errorMsg && (
+                    <div className="mt-2 text-[11px] text-[#F87171] flex items-center space-x-1">
+                      <AlertCircle className="w-3 h-3 shrink-0" />
+                      <span>{errorMsg} &mdash; or email directly to team.onlinedigitalsolution@gmail.com</span>
+                    </div>
+                  )}
+                </div>
               )}
             </div>
           </div>
