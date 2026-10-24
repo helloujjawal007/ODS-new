@@ -33,7 +33,11 @@ export default function BlogFilterList({ posts }: BlogFilterListProps) {
     return matchesCategory && matchesSearch;
   });
 
+  const isDefaultView = selectedCategory === "All" && !searchTerm;
   const featuredPost = posts.find((p) => p.featured) || posts[0];
+  const gridPosts = isDefaultView
+    ? filteredPosts.filter((p) => p.slug !== featuredPost.slug)
+    : filteredPosts;
 
   return (
     <div className="font-sans">
@@ -125,7 +129,7 @@ export default function BlogFilterList({ posts }: BlogFilterListProps) {
 
       {/* Articles Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-        {filteredPosts.map((post) => (
+        {gridPosts.map((post) => (
           <div
             key={post.slug}
             className="bg-white border border-[#E2E8F0] rounded-[8px] overflow-hidden flex flex-col justify-between shadow-sm hover:border-[#2563EB] hover:shadow-md transition-all"

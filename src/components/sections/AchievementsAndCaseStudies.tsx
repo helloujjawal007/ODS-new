@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { 
   Trophy, 
@@ -130,21 +129,18 @@ export default function AchievementsAndCaseStudies({
             key={study.id}
             className="bg-white border border-[#E2E8F0] rounded-[10px] overflow-hidden flex flex-col justify-between shadow-sm hover:border-[#2563EB] hover:shadow-md transition-all group"
           >
-            {/* Card Header Image */}
-            <div>
-              <div className="relative aspect-[16/10] bg-[#F1F5F9] overflow-hidden">
-                <Image
-                  src={study.image}
-                  alt={study.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px"
-                  className="object-cover group-hover:scale-102 transition-transform duration-300"
-                />
-                {/* Category Pill */}
-                <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-xs border border-[#E2E8F0] px-2.5 py-0.5 rounded-[4px] text-[10px] font-mono uppercase font-semibold text-[#0F172A] shadow-2xs">
+            {/* Card Header Telemetry Banner */}
+            <div className="bg-gradient-to-r from-[#F8FAFC] to-[#EFF6FF] border-b border-[#E2E8F0] p-4 flex items-center justify-between">
+              <div className="flex items-center space-x-2">
+                <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
+                <span className="text-[11px] font-mono uppercase font-semibold text-[#0F172A]">
                   {study.industry}
-                </div>
+                </span>
               </div>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-[4px] bg-white border border-[#BFDBFE] text-[#2563EB] font-medium">
+                {study.client}
+              </span>
+            </div>
 
               {/* Card Body */}
               <div className="p-5 sm:p-6">
@@ -189,7 +185,6 @@ export default function AchievementsAndCaseStudies({
                   ))}
                 </div>
               </div>
-            </div>
 
             {/* Card Action Links */}
             <div className="px-5 sm:px-6 pb-5 pt-0 border-t border-[#F1F5F9] mt-2 flex items-center justify-between">
