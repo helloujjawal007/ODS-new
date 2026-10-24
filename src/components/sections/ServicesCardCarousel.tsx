@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { 
   ArrowRight, 
-  ArrowLeft,
   ChevronLeft, 
   ChevronRight, 
   Check, 
@@ -69,25 +68,11 @@ export default function ServicesCardCarousel({ services }: ServicesCardCarouselP
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
             <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold block mb-2">
-              Capabilities & Disciplines
+              Capabilities &amp; Disciplines
             </span>
-            <div className="flex flex-wrap items-center gap-3">
-              <h2 className="text-3xl sm:text-4xl font-serif font-normal text-[#0F172A] tracking-tight">
-                Services & Technical Solutions
-              </h2>
-              {/* Prominent Left-Right Scroll Indicator */}
-              <div
-                onClick={() => scroll("right")}
-                role="button"
-                tabIndex={0}
-                className="cursor-pointer inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-[#EFF6FF] border border-[#BFDBFE] text-[#1D4ED8] text-xs font-mono font-medium shadow-2xs hover:bg-[#DBEAFE] hover:border-[#93C5FD] transition-all"
-                title="Click or swipe to scroll services"
-              >
-                <ArrowLeft className="w-3.5 h-3.5 animate-pulse text-[#2563EB]" />
-                <span className="font-semibold">Scroll Left & Right ↔</span>
-                <ArrowRight className="w-3.5 h-3.5 animate-pulse text-[#2563EB]" />
-              </div>
-            </div>
+            <h2 className="text-3xl sm:text-4xl font-serif font-normal text-[#0F172A] tracking-tight">
+              Services &amp; Technical Solutions
+            </h2>
             <p className="text-[#475569] text-sm mt-2 max-w-xl leading-relaxed">
               Every project is architected and shipped by senior software engineers. Fixed scopes, measurable milestones, and transparent pricing.
             </p>
@@ -102,7 +87,7 @@ export default function ServicesCardCarousel({ services }: ServicesCardCarouselP
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 
-            {/* Scroll navigation arrows */}
+            {/* The single, official carousel scroll navigation controls */}
             <div className="flex items-center space-x-1.5">
               <button
                 type="button"
@@ -142,18 +127,8 @@ export default function ServicesCardCarousel({ services }: ServicesCardCarouselP
           ))}
         </div>
 
-        {/* Horizontal Scrollable Carousel with Floating Side Arrows */}
-        <div className="relative group/carousel">
-          {/* Floating Left Arrow */}
-          <button
-            type="button"
-            onClick={() => scroll("left")}
-            className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/95 backdrop-blur-xs border border-[#CBD5E1] hover:border-[#2563EB] shadow-md items-center justify-center text-[#0F172A] hover:text-[#2563EB] transition-all hover:scale-110 focus:outline-none"
-            aria-label="Scroll services left"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-
+        {/* Horizontal Scrollable Carousel */}
+        <div className="relative">
           <div
             ref={scrollContainerRef}
             className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 pt-1 px-1 -mx-4 sm:mx-0 px-4 sm:px-0"
@@ -226,7 +201,7 @@ export default function ServicesCardCarousel({ services }: ServicesCardCarouselP
                     className="w-full py-2.5 px-4 rounded-[6px] bg-[#F8FAFC] hover:bg-[#EFF6FF] border border-[#CBD5E1] hover:border-[#BFDBFE] text-[#0F172A] hover:text-[#2563EB] text-xs font-semibold flex items-center justify-between transition-all group-hover:bg-[#EFF6FF] group-hover:border-[#BFDBFE] group-hover:text-[#2563EB]"
                     aria-label={`View pricing and architecture for ${s.title}`}
                   >
-                    <span>View Pricing & Scope</span>
+                    <span>View Pricing &amp; Scope</span>
                     <ArrowRight className="w-3.5 h-3.5 ml-1 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
@@ -234,45 +209,15 @@ export default function ServicesCardCarousel({ services }: ServicesCardCarouselP
             );
           })}
         </div>
-
-        {/* Floating Right Arrow */}
-        <button
-          type="button"
-          onClick={() => scroll("right")}
-          className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/95 backdrop-blur-xs border border-[#CBD5E1] hover:border-[#2563EB] shadow-md items-center justify-center text-[#0F172A] hover:text-[#2563EB] transition-all hover:scale-110 focus:outline-none"
-          aria-label="Scroll services right"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </button>
       </div>
 
-      {/* Bottom Scroll Helper Bar */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mt-4 pt-3 border-t border-[#F1F5F9] text-xs text-[#64748B]">
+      {/* Bottom Summary Bar */}
+      <div className="flex items-center justify-between mt-4 pt-3 border-t border-[#F1F5F9] text-xs text-[#64748B]">
         <div className="flex items-center space-x-2">
-          <span className="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
           <span className="font-mono text-[11px]">
-            Showing {filteredServices.length} {filteredServices.length === 1 ? "discipline" : "disciplines"} · Scroll or drag horizontally to view all capabilities
+            Showing {filteredServices.length} {filteredServices.length === 1 ? "discipline" : "disciplines"}
           </span>
-        </div>
-        <div className="flex items-center space-x-2">
-          <button
-            type="button"
-            onClick={() => scroll("left")}
-            className="px-2.5 py-1 rounded-[4px] border border-[#CBD5E1] hover:bg-[#F8FAFC] hover:border-[#2563EB] text-[#0F172A] text-xs flex items-center space-x-1 transition-colors"
-            aria-label="Scroll carousel left"
-          >
-            <ChevronLeft className="w-3.5 h-3.5" />
-            <span className="font-mono text-[11px]">Previous</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => scroll("right")}
-            className="px-2.5 py-1 rounded-[4px] border border-[#CBD5E1] hover:bg-[#F8FAFC] hover:border-[#2563EB] text-[#0F172A] text-xs flex items-center space-x-1 transition-colors"
-            aria-label="Scroll carousel right"
-          >
-            <span className="font-mono text-[11px]">Next</span>
-            <ChevronRight className="w-3.5 h-3.5" />
-          </button>
         </div>
       </div>
     </div>
