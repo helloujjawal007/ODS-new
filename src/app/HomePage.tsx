@@ -6,7 +6,6 @@ import { SERVICES } from "@/lib/services-data";
 import { PORTFOLIO_PROJECTS } from "@/lib/portfolio-data";
 import HeroBanner from "@/components/sections/HeroBanner";
 import ServicesCardCarousel from "@/components/sections/ServicesCardCarousel";
-import AuditToolModal from "@/components/seo/AuditToolModal";
 import CtaSection from "@/components/sections/CtaSection";
 import { SITE_CONFIG } from "@/lib/seo-config";
 
@@ -174,14 +173,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. LIVE CORE WEB VITALS CHECKER (Real Google PageSpeed API) */}
-      <section className="py-20 border-b border-[#E2E8F0] bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AuditToolModal />
-        </div>
-      </section>
-
-      {/* 6. CLOSING CTA BANNER */}
+      {/* 5. CLOSING CTA BANNER */}
       <CtaSection
         title="Have a project in mind? Send us the details and we’ll reply within a day."
         description="We engineer scalable cloud architecture, custom web platforms, and Salesforce CRM systems for growing companies and global enterprises."

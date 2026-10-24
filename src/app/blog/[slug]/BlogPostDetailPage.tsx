@@ -93,12 +93,12 @@ export default async function BlogPostPage({ params }: PageProps) {
       "name": SITE_CONFIG.name,
       "logo": {
         "@type": "ImageObject",
-        "url": `${SITE_CONFIG.url}/images/hero_digital_tech.jpg`
+        "url": `${SITE_CONFIG.url}/images/hero_web_engineering.jpg`
       }
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `${SITE_CONFIG.url}/blog/${post.slug}`
+      "@id": `${SITE_CONFIG.url}/blog/${post.slug}/`
     }
   };
 

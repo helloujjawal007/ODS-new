@@ -38,7 +38,7 @@ export function getOrganizationJsonLd() {
     "name": SITE_CONFIG.name,
     "legalName": SITE_CONFIG.legalName,
     "url": SITE_CONFIG.url,
-    "logo": `${SITE_CONFIG.url}/images/hero_digital_tech.jpg`,
+    "logo": `${SITE_CONFIG.url}/brand/cloud-consultancy-icon.png`,
     "description": SITE_CONFIG.description,
     "email": SITE_CONFIG.contact.email,
     "telephone": SITE_CONFIG.contact.phone,
