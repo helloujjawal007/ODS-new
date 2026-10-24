@@ -69,7 +69,7 @@ export const PORTFOLIO_PROJECTS: CaseStudy[] = [
       { value: "4.8★", label: "Average App Store Rating" }
     ],
     tags: ["Swift 6", "SwiftUI", "HealthKit", "WebRTC"],
-    image: "/images/service_mobile_app.jpg",
+    image: "/images/service_ios_app.jpg",
     featured: true
   },
   {
@@ -88,7 +88,7 @@ export const PORTFOLIO_PROJECTS: CaseStudy[] = [
       { value: "60 FPS", label: "Smooth Map Navigation" }
     ],
     tags: ["Flutter", "Dart", "Bluetooth BLE", "Mapbox"],
-    image: "/images/portfolio_projects.jpg",
+    image: "/images/service_cross_platform.jpg",
     featured: false
   },
   {
@@ -107,7 +107,7 @@ export const PORTFOLIO_PROJECTS: CaseStudy[] = [
       { value: "0 Errors", label: "Governor Limit Breaches" }
     ],
     tags: ["Salesforce LWC", "Apex Async", "Salesforce Flow", "REST APIs"],
-    image: "/images/service_crm_salesforce.jpg",
+    image: "/images/service_salesforce_support.jpg",
     featured: true
   },
   {
@@ -126,7 +126,7 @@ export const PORTFOLIO_PROJECTS: CaseStudy[] = [
       { value: "100%", label: "WCAG Contrast Compliance" }
     ],
     tags: ["Figma", "Design Systems", "UI/UX", "Tailwind CSS"],
-    image: "/images/about_team_studio.jpg",
+    image: "/images/service_ui_ux.jpg",
     featured: false
   },
   {

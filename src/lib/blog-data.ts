@@ -157,7 +157,7 @@ Set up Google Search Console Core Web Vitals monitoring and resolve any URL flag
     publishedAt: "September 29, 2026",
     readingTime: "6 min read",
     featured: false,
-    coverImage: "/images/service_mobile_app.jpg",
+    coverImage: "/images/service_cross_platform.jpg",
     pillar: "cross-platform-app-development",
     toc: [
       { id: "architectural-differences", title: "Architectural Differences: Canvas vs Native Views" },
@@ -205,7 +205,7 @@ If your team is starting fresh and prioritizes custom bespoke animations, brande
     publishedAt: "September 22, 2026",
     readingTime: "8 min read",
     featured: false,
-    coverImage: "/images/service_crm_salesforce.jpg",
+    coverImage: "/images/service_salesforce_support.jpg",
     pillar: "salesforce-development-support",
     toc: [
       { id: "the-governor-limit-trap", title: "The Governor Limit Trap in High-Traffic Portals" },
@@ -331,7 +331,7 @@ Before passing Shopify App Review, your extension must verify:
     publishedAt: "October 11, 2026",
     readingTime: "9 min read",
     featured: false,
-    coverImage: "/images/portfolio_projects.jpg",
+    coverImage: "/images/service_shopify_bigcommerce.jpg",
     pillar: "shopify-bigcommerce-development",
     toc: [
       { id: "why-multi-storefront-matters", title: "Why Multi-Storefront (MSF) Is Replacing Separate Stores" },
@@ -492,7 +492,7 @@ To achieve immediate store review approval:
     publishedAt: "October 12, 2026",
     readingTime: "8 min read",
     featured: false,
-    coverImage: "/images/hero_digital_tech.jpg",
+    coverImage: "/images/hero_web_engineering.jpg",
     pillar: "website-development",
     toc: [
       { id: "the-tradeoff-static-vs-dynamic", title: "The Historic Tradeoff: Fast Static vs Fresh Dynamic" },

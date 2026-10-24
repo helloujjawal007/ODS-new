@@ -253,7 +253,7 @@ export const SERVICES: ServiceItem[] = [
     tagline: "High-performance native Android applications built with Kotlin and Jetpack Compose, delivering fluid 120Hz UI and Google Play excellence.",
     metaTitle: "Native Android App Development Company | Kotlin & Jetpack Compose",
     metaDescription: "Build top-rated native Android apps. We design and engineer secure, offline-first, Material You Android experiences optimized for every screen size.",
-    heroImage: "/images/service_mobile_app.jpg",
+    heroImage: "/images/service_android_app.jpg",
     themeColor: "emerald",
     accentHex: "#10b981",
     metrics: [
@@ -352,7 +352,7 @@ export const SERVICES: ServiceItem[] = [
     tagline: "Elegant, fluid, and secure iOS applications crafted with Swift and SwiftUI in uncompromising harmony with Apple Human Interface Guidelines.",
     metaTitle: "Custom iOS App Development Company | Swift & SwiftUI Agency",
     metaDescription: "Create award-winning iOS and iPadOS applications. We engineer elegant Swift and SwiftUI mobile experiences tailored for the Apple ecosystem.",
-    heroImage: "/images/service_mobile_app.jpg",
+    heroImage: "/images/service_ios_app.jpg",
     themeColor: "purple",
     accentHex: "#8b5cf6",
     metrics: [
@@ -451,7 +451,7 @@ export const SERVICES: ServiceItem[] = [
     tagline: "Single codebase, dual native performance. Ship simultaneously to iOS and Android at 40% reduced cost and 2x faster go-to-market speed.",
     metaTitle: "Cross-Platform Mobile App Development | Flutter & React Native",
     metaDescription: "Accelerate your launch with Flutter and React Native cross-platform apps. Single codebase, native 60+ FPS performance on iOS and Android.",
-    heroImage: "/images/service_mobile_app.jpg",
+    heroImage: "/images/service_cross_platform.jpg",
     themeColor: "cyan",
     accentHex: "#06b6d4",
     metrics: [
@@ -649,7 +649,7 @@ export const SERVICES: ServiceItem[] = [
     tagline: "Certified Salesforce architects providing custom Lightning Web Components (LWC), Apex triggers, Flow automation, and 24/7 dedicated org support.",
     metaTitle: "Salesforce Development & Support Services | Certified Architects",
     metaDescription: "Maximize your Salesforce investment. Custom Apex, LWC development, Salesforce Flow automation, third-party integrations, and managed admin support.",
-    heroImage: "/images/service_crm_salesforce.jpg",
+    heroImage: "/images/service_salesforce_support.jpg",
     themeColor: "blue",
     accentHex: "#3b82f6",
     metrics: [
@@ -748,7 +748,7 @@ export const SERVICES: ServiceItem[] = [
     tagline: "High-conversion, accessible digital interfaces and scalable Figma design systems crafted with psychological precision.",
     metaTitle: "UI/UX Design, Interactive Wireframing & Design Systems Agency",
     metaDescription: "Elevate your digital product with world-class UI/UX design. Interactive prototypes, design tokens, and user research that drives retention.",
-    heroImage: "/images/portfolio_projects.jpg",
+    heroImage: "/images/service_ui_ux.jpg",
     themeColor: "amber",
     accentHex: "#f59e0b",
     metrics: [

@@ -83,9 +83,15 @@ export default function ServicesCardCarousel({ services }: ServicesCardCarouselP
                 Services & Technical Solutions
               </h2>
               {/* Prominent Left-Right Scroll Indicator */}
-              <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-[#EFF6FF] border border-[#BFDBFE] text-[#1D4ED8] text-xs font-mono font-medium shadow-2xs">
+              <div
+                onClick={() => scroll("right")}
+                role="button"
+                tabIndex={0}
+                className="cursor-pointer inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-[#EFF6FF] border border-[#BFDBFE] text-[#1D4ED8] text-xs font-mono font-medium shadow-2xs hover:bg-[#DBEAFE] hover:border-[#93C5FD] transition-all"
+                title="Click or swipe to scroll services"
+              >
                 <ArrowLeft className="w-3.5 h-3.5 animate-pulse text-[#2563EB]" />
-                <span>Scroll Left & Right</span>
+                <span className="font-semibold">Scroll Left & Right ↔</span>
                 <ArrowRight className="w-3.5 h-3.5 animate-pulse text-[#2563EB]" />
               </div>
             </div>
@@ -250,6 +256,36 @@ export default function ServicesCardCarousel({ services }: ServicesCardCarouselP
         >
           <ChevronRight className="w-5 h-5" />
         </button>
+      </div>
+
+      {/* Bottom Scroll Helper Bar */}
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mt-4 pt-3 border-t border-[#F1F5F9] text-xs text-[#64748B]">
+        <div className="flex items-center space-x-2">
+          <span className="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse" />
+          <span className="font-mono text-[11px]">
+            Showing {filteredServices.length} {filteredServices.length === 1 ? "discipline" : "disciplines"} · Scroll or drag horizontally to view all capabilities
+          </span>
+        </div>
+        <div className="flex items-center space-x-2">
+          <button
+            type="button"
+            onClick={() => scroll("left")}
+            className="px-2.5 py-1 rounded-[4px] border border-[#CBD5E1] hover:bg-[#F8FAFC] hover:border-[#2563EB] text-[#0F172A] text-xs flex items-center space-x-1 transition-colors"
+            aria-label="Scroll carousel left"
+          >
+            <ChevronLeft className="w-3.5 h-3.5" />
+            <span className="font-mono text-[11px]">Previous</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => scroll("right")}
+            className="px-2.5 py-1 rounded-[4px] border border-[#CBD5E1] hover:bg-[#F8FAFC] hover:border-[#2563EB] text-[#0F172A] text-xs flex items-center space-x-1 transition-colors"
+            aria-label="Scroll carousel right"
+          >
+            <span className="font-mono text-[11px]">Next</span>
+            <ChevronRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
       </div>
     </div>
   </section>
