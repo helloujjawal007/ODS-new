@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
   trailingSlash: true,
   devIndicators: false,
   experimental: {
@@ -19,6 +20,10 @@ const nextConfig: NextConfig = {
       {
         source: "/(.*)",
         headers: [
+          {
+            key: "Content-Security-Policy",
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://www.googleapis.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';",
+          },
           {
             key: "X-Frame-Options",
             value: "DENY",
@@ -67,6 +72,16 @@ const nextConfig: NextConfig = {
       {
         source: "/services/crm-management-integration",
         destination: "/salesforce/",
+        permanent: true,
+      },
+      {
+        source: "/work",
+        destination: "/portfolio/",
+        permanent: true,
+      },
+      {
+        source: "/work/:slug",
+        destination: "/portfolio/:slug/",
         permanent: true,
       },
     ];

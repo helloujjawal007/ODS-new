@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: post.title,
       description: post.excerpt,
       publishedTime: post.publishedAt,
-      authors: [post.author.name],
+      authors: [SITE_CONFIG.name],
       images: [
         {
           url: post.coverImage,
@@ -84,13 +84,14 @@ export default async function BlogPostPage({ params }: PageProps) {
     "datePublished": post.publishedAt,
     "dateModified": post.publishedAt,
     "author": {
-      "@type": "Person",
-      "name": post.author.name,
-      "jobTitle": post.author.role
+      "@type": "Organization",
+      "name": SITE_CONFIG.name,
+      "url": SITE_CONFIG.url
     },
     "publisher": {
       "@type": "Organization",
       "name": SITE_CONFIG.name,
+      "url": SITE_CONFIG.url,
       "logo": {
         "@type": "ImageObject",
         "url": `${SITE_CONFIG.url}/brand/cloud-consultancy-icon.png`
@@ -141,18 +142,14 @@ export default async function BlogPostPage({ params }: PageProps) {
             {post.excerpt}
           </p>
 
-          {/* Author Card */}
+          {/* Editorial Meta Bar */}
           <div className="flex items-center justify-between border-t border-b border-[#E2E8F0] py-3 text-xs">
-            <div className="flex items-center space-x-3">
-              <div className="w-9 h-9 rounded-full border border-[#BFDBFE] bg-[#EFF6FF] text-[#1D4ED8] flex items-center justify-center font-mono font-semibold text-xs shrink-0">
-                {post.author.name.split(" ").map((n) => n[0]).join("")}
-              </div>
-              <div>
-                <div className="font-semibold text-[#0F172A]">
-                  {post.author.name}
-                </div>
-                <div className="text-[11px] text-[#64748B]">{post.author.role}</div>
-              </div>
+            <div className="flex items-center space-x-2 text-[#475569]">
+              <span className="font-semibold text-[#0F172A]">Cloud Consultancy Engineering</span>
+              <span>·</span>
+              <span className="font-mono text-[#64748B]">{post.publishedAt}</span>
+              <span>·</span>
+              <span className="font-mono text-[#64748B]">{post.readingTime}</span>
             </div>
 
             <div className="text-[11px] text-[#64748B] font-mono">
@@ -241,6 +238,39 @@ export default async function BlogPostPage({ params }: PageProps) {
           {/* Article Content */}
           <article className="lg:col-span-8 order-1 lg:order-2 space-y-5 text-[#334155] leading-relaxed text-sm sm:text-base font-sans">
             {post.content.split("\n\n").map((paragraph, index) => {
+              const trimmed = paragraph.trim();
+
+              if (trimmed.startsWith("![")) {
+                const match = trimmed.match(/!\[([^\]]*)\]\(([^)"\s]+)(?:\s+"([^"]*)")?\)/);
+                if (match) {
+                  const [, alt, src, caption] = match;
+                  return (
+                    <figure
+                      key={index}
+                      className="my-8 rounded-[8px] overflow-hidden border border-[#E2E8F0] shadow-sm bg-[#F8FAFC]"
+                    >
+                      <div className="relative aspect-[16/10] w-full">
+                        <Image
+                          src={src.trim()}
+                          alt={alt || post.title}
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 800px"
+                          className="object-cover"
+                        />
+                      </div>
+                      {caption && (
+                        <figcaption className="px-4 py-2.5 text-xs text-[#475569] bg-white border-t border-[#E2E8F0] flex items-center justify-between">
+                          <span className="font-medium">{caption}</span>
+                          <span className="font-mono text-[10px] text-[#94A3B8] uppercase tracking-wider">
+                            Cloud Consultancy Engineering Note
+                          </span>
+                        </figcaption>
+                      )}
+                    </figure>
+                  );
+                }
+              }
+
               if (paragraph.startsWith("## ")) {
                 const headingText = paragraph.replace("## ", "").trim();
                 const matchingToc = post.toc.find(

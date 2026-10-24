@@ -1,0 +1,7 @@
+Contact: mailto:security@cloudconsultancy.in
+Contact: mailto:admin@cloudconsultancy.in
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://cloudconsultancy.in/.well-known/security.txt
+Policy: https://cloudconsultancy.in/privacy/
+Hiring: https://cloudconsultancy.in/contact/

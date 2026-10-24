@@ -85,11 +85,11 @@ function InnerContactForm({
     const lower = paramService.toLowerCase();
     const found = SERVICE_OPTIONS.find(
       (s) =>
-        s.name.toLowerCase().includes(lower) ||
+        s.name.toLowerCase() === lower ||
         s.id.toLowerCase() === lower ||
-        lower.includes(s.id)
+        s.name.toLowerCase().includes(lower)
     );
-    return found ? found.name : SERVICE_OPTIONS[0].name;
+    return found ? found.name : paramService;
   }, [paramService]);
 
   const [step, setStep] = useState(1);
@@ -126,7 +126,14 @@ function InnerContactForm({
 
   // Live Price Calculations
   const selectedServiceObj = useMemo(() => {
-    return SERVICE_OPTIONS.find((s) => s.name === formData.service) || SERVICE_OPTIONS[0];
+    return (
+      SERVICE_OPTIONS.find((s) => s.name === formData.service) || {
+        id: "custom",
+        name: formData.service,
+        basePrice: 2500,
+        weeks: 3
+      }
+    );
   }, [formData.service]);
 
   const selectedTierObj = useMemo(() => {
@@ -303,6 +310,27 @@ Please confirm receipt and send back next steps.`;
               <p className="text-xs text-[#64748B] mb-3">
                 Choose the discipline that best reflects your project’s primary focus.
               </p>
+              {paramService ? (
+                <div
+                  id="prefilled-service-container"
+                  className="p-3.5 bg-[#EFF6FF] border border-[#BFDBFE] rounded-[6px] mb-4 flex items-center justify-between text-xs"
+                >
+                  <div>
+                    <span className="text-[#64748B] block font-mono text-[10px] uppercase tracking-wider font-semibold">
+                      Prefilled Service Inquiry
+                    </span>
+                    <span
+                      id="prefilled-service-text"
+                      className="font-semibold text-[#1E3A8A] text-sm"
+                    >
+                      {formData.service}
+                    </span>
+                  </div>
+                  <span className="bg-[#DBEAFE] text-[#1D4ED8] text-[10px] font-mono px-2 py-0.5 rounded font-medium">
+                    Preselected
+                  </span>
+                </div>
+              ) : null}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {SERVICE_OPTIONS.map((item) => {
                   const isSelected = formData.service === item.name;

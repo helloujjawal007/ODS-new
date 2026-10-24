@@ -255,6 +255,65 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* Engineering Leadership & Partners */}
+        <section className="my-16 border-b border-[#E2E8F0] pb-16">
+          <div className="max-w-2xl mb-10">
+            <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold block mb-1">
+              Engineering Leadership
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-serif font-normal text-[#0F172A]">
+              Led by Proven Hands-On Architects
+            </h2>
+            <p className="text-xs sm:text-sm text-[#475569] mt-2 leading-relaxed">
+              Every client engagement is directly architected, reviewed, and overseen by proven senior engineering partners with zero junior silos.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
+            <div className="bg-white border border-[#E2E8F0] rounded-[8px] p-6 shadow-xs flex flex-col sm:flex-row gap-5 items-center sm:items-start text-center sm:text-left">
+              <div className="relative w-24 h-24 shrink-0 rounded-full overflow-hidden border-2 border-[#BFDBFE] bg-[#F1F5F9] shadow-xs">
+                <Image
+                  src="/images/founder_portrait.jpg"
+                  alt="Vikash Kumar - Founder and Principal Architect"
+                  fill
+                  sizes="96px"
+                  className="object-cover"
+                />
+              </div>
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[#2563EB] font-semibold block">
+                  Founder &amp; Principal Architect
+                </span>
+                <h3 className="font-serif text-lg font-medium text-[#0F172A] mt-0.5">Vikash Kumar</h3>
+                <p className="text-xs text-[#475569] mt-2 leading-relaxed">
+                  12+ years specializing in scalable cloud platforms, Next.js App Router architectures, and enterprise Salesforce CRM integrations.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white border border-[#E2E8F0] rounded-[8px] p-6 shadow-xs flex flex-col sm:flex-row gap-5 items-center sm:items-start text-center sm:text-left">
+              <div className="relative w-24 h-24 shrink-0 rounded-full overflow-hidden border-2 border-[#BFDBFE] bg-[#F1F5F9] shadow-xs">
+                <Image
+                  src="/images/cto_portrait.jpg"
+                  alt="Priya Sharma - VP of Cloud Engineering"
+                  fill
+                  sizes="96px"
+                  className="object-cover"
+                />
+              </div>
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[#2563EB] font-semibold block">
+                  VP of Cloud Engineering
+                </span>
+                <h3 className="font-serif text-lg font-medium text-[#0F172A] mt-0.5">Priya Sharma</h3>
+                <p className="text-xs text-[#475569] mt-2 leading-relaxed">
+                  Former principal architect overseeing zero-downtime microservices migrations, Google Core Web Vitals SLAs, and multi-region edge caching.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Milestones */}
         <section className="my-16">
           <div className="max-w-2xl mb-10">

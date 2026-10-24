@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { escapeHtml } from "./security";
 
 export const DEFAULT_RECIPIENTS = [
   "sales@cloudconsultancy.in",
@@ -94,6 +95,22 @@ export async function sendContactInquiryEmail(payload: ContactInquiryPayload) {
       ? `${minFormatted} – ${maxFormatted}`
       : "Custom scoping required";
 
+  const safeName = escapeHtml(payload.name);
+  const safeEmail = escapeHtml(payload.email);
+  const safePhone = escapeHtml(payload.phone || "Not specified");
+  const safeCompany = escapeHtml(payload.company || "Individual / Not specified");
+  const safeService = escapeHtml(payload.service);
+  const safeTier = escapeHtml(payload.tierLabel || payload.tier);
+  const safeTimeline = escapeHtml(payload.timeline);
+  const safeModel = escapeHtml(payload.engagementModel || "Fixed Project Sprint");
+  const safePlatform = escapeHtml(payload.platform || "Not specified");
+  const safeUrl = escapeHtml(payload.url || "");
+  const safeDetails = escapeHtml(payload.details || "");
+  const safeCustomService = escapeHtml(payload.customServiceNotes || "");
+  const safeCustomBudget = escapeHtml(payload.customBudgetNotes || "");
+  const safeCustomCompliance = escapeHtml(payload.customComplianceNotes || "");
+  const safeCustomComm = escapeHtml(payload.customCommunicationNotes || "");
+
   const subject = `[New Client Inquiry] ${payload.service} — ${payload.name} (${payload.company || "Individual"})`;
 
   const html = `
@@ -140,19 +157,19 @@ export async function sendContactInquiryEmail(payload: ContactInquiryPayload) {
       <table class="grid">
         <tr>
           <td class="label">Full Name</td>
-          <td class="value"><strong>${payload.name}</strong></td>
+          <td class="value"><strong>${safeName}</strong></td>
         </tr>
         <tr>
           <td class="label">Email Address</td>
-          <td class="value"><a href="mailto:${payload.email}">${payload.email}</a></td>
+          <td class="value"><a href="mailto:${safeEmail}">${safeEmail}</a></td>
         </tr>
         <tr>
           <td class="label">Phone / WhatsApp</td>
-          <td class="value">${payload.phone || "Not specified"}</td>
+          <td class="value">${safePhone}</td>
         </tr>
         <tr>
           <td class="label">Company / Org</td>
-          <td class="value">${payload.company || "Individual / Not specified"}</td>
+          <td class="value">${safeCompany}</td>
         </tr>
       </table>
 
@@ -160,57 +177,57 @@ export async function sendContactInquiryEmail(payload: ContactInquiryPayload) {
       <table class="grid">
         <tr>
           <td class="label">Primary Service</td>
-          <td class="value"><span class="badge">${payload.service}</span></td>
+          <td class="value"><span class="badge">${safeService}</span></td>
         </tr>
         <tr>
           <td class="label">Complexity Tier</td>
-          <td class="value">${payload.tierLabel || payload.tier}</td>
+          <td class="value">${safeTier}</td>
         </tr>
         <tr>
           <td class="label">Target Timeline</td>
-          <td class="value">${payload.timeline}</td>
+          <td class="value">${safeTimeline}</td>
         </tr>
         <tr>
           <td class="label">Engagement Model</td>
-          <td class="value">${payload.engagementModel || "Fixed Project Sprint"}</td>
+          <td class="value">${safeModel}</td>
         </tr>
         <tr>
           <td class="label">Target Platform</td>
-          <td class="value">${payload.platform || "Not specified"}</td>
+          <td class="value">${safePlatform}</td>
         </tr>
-        ${payload.url ? `<tr><td class="label">Current URL</td><td class="value"><a href="${payload.url}" target="_blank">${payload.url}</a></td></tr>` : ""}
-        ${payload.addonNames && payload.addonNames.length > 0 ? `<tr><td class="label">Selected Add-ons</td><td class="value">${payload.addonNames.join(", ")}</td></tr>` : ""}
+        ${safeUrl ? `<tr><td class="label">Current URL</td><td class="value"><a href="${safeUrl}" target="_blank">${safeUrl}</a></td></tr>` : ""}
+        ${payload.addonNames && payload.addonNames.length > 0 ? `<tr><td class="label">Selected Add-ons</td><td class="value">${payload.addonNames.map(a => escapeHtml(a)).join(", ")}</td></tr>` : ""}
       </table>
 
-      ${payload.details ? `
+      ${safeDetails ? `
       <div class="section-title">Project Summary / Overview</div>
-      <div class="notes-box">${payload.details}</div>
+      <div class="notes-box">${safeDetails}</div>
       ` : ""}
 
-      ${payload.customServiceNotes ? `
+      ${safeCustomService ? `
       <div class="section-title">Custom Technical Specs / Stacks</div>
-      <div class="notes-box">${payload.customServiceNotes}</div>
+      <div class="notes-box">${safeCustomService}</div>
       ` : ""}
 
-      ${payload.customBudgetNotes ? `
+      ${safeCustomBudget ? `
       <div class="section-title">Budget / Launch Deadlines</div>
-      <div class="notes-box">${payload.customBudgetNotes}</div>
+      <div class="notes-box">${safeCustomBudget}</div>
       ` : ""}
 
-      ${payload.customComplianceNotes ? `
+      ${safeCustomCompliance ? `
       <div class="section-title">Compliance / Security / Migration Notes</div>
-      <div class="notes-box">${payload.customComplianceNotes}</div>
+      <div class="notes-box">${safeCustomCompliance}</div>
       ` : ""}
 
-      ${payload.customCommunicationNotes ? `
+      ${safeCustomComm ? `
       <div class="section-title">Communication & NDA Preferences</div>
-      <div class="notes-box">${payload.customCommunicationNotes}</div>
+      <div class="notes-box">${safeCustomComm}</div>
       ` : ""}
     </div>
 
     <div class="footer">
       This inquiry was received by the Cloud Consultancy website estimator.<br/>
-      Reply directly to this email to reply to <strong>${payload.name} (${payload.email})</strong>.
+      Reply directly to this email to reply to <strong>${safeName} (${safeEmail})</strong>.
     </div>
   </div>
 </body>

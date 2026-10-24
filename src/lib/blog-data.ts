@@ -1,9 +1,15 @@
+export interface BlogInlineImage {
+  src: string;
+  alt: string;
+  caption: string;
+}
+
 export interface BlogPost {
   slug: string;
   title: string;
   excerpt: string;
   category: "Web Development" | "Technical SEO" | "Mobile Engineering" | "Enterprise CRM" | "Performance" | "E-Commerce" | "Plugins & Extensions";
-  author: {
+  author?: {
     name: string;
     role: string;
     avatar?: string;
@@ -12,6 +18,7 @@ export interface BlogPost {
   readingTime: string;
   featured: boolean;
   coverImage: string;
+  inlineImages?: BlogInlineImage[];
   pillar: string;
   toc: { id: string; title: string }[];
   content: string;
@@ -23,10 +30,6 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Next.js vs. WordPress for Modern Business Websites: The 2026 Technical & ROI Analysis",
     excerpt: "Why high-growth brands are migrating from monolithic WordPress themes to headless Next.js App Router architectures to slash bounce rates and supercharge organic SEO.",
     category: "Web Development",
-    author: {
-      name: "Marcus Vance",
-      role: "VP of Engineering & Solutions Architect",
-    },
     publishedAt: "October 8, 2026",
     readingTime: "7 min read",
     featured: true,
@@ -57,6 +60,8 @@ In our internal benchmarks across 50 production corporate sites migrated from ma
 - **Interaction to Next Paint (INP):** Improved from 320ms down to 42ms.
 - **Overall Lighthouse Score:** Increased from 48/100 to 98/100.
 
+![Next.js vs WordPress Real-World Performance Benchmarks](/images/blog_inline_nextjs_benchmarks.jpg "Vercel edge telemetry comparing Lighthouse Core Web Vitals against legacy monolithic stacks.")
+
 ## Direct Impact on Organic SEO & Core Web Vitals
 
 Google's search indexing algorithms no longer just parse keyword density—they actively measure real-user page speed (CrUX telemetry) as a core ranking signal. 
@@ -70,6 +75,8 @@ Furthermore, dynamic metadata generation via the Next.js Metadata API guarantees
 The average WordPress deployment relies on 25 to 40 plugins for caching, SEO, forms, security, and backups. Every plugin represents a potential backdoor. Over 85% of CMS vulnerabilities in 2025 originated from unmaintained third-party WordPress plugins.
 
 With a headless Next.js architecture, there is no public MySQL database to inject and no PHP runtime to exploit. Content editors still enjoy a clean, user-friendly CMS interface (like Sanity or Contentful), while developers maintain clean, version-controlled React codebases without plugin conflicts.
+
+![Headless CMS Architecture and Editorial Workflow](/images/blog_inline_nextjs_headless_cms.jpg "Engineering team pairing on headless GraphQL API data contracts and on-demand ISR revalidation.")
 
 ## The Verdict: When to Choose Next.js vs WordPress
 
@@ -87,10 +94,6 @@ Choose **WordPress** only if:
     title: "The Comprehensive 2026 Technical SEO Checklist for High-Growth Startups",
     excerpt: "Stop wasting crawl budget. A step-by-step master audit covering rendering budgets, sitemap hierarchies, canonical graph resolution, and schema.org rich snippets.",
     category: "Technical SEO",
-    author: {
-      name: "Evelyn Reed",
-      role: "Head of Organic Growth & SEO Architect",
-    },
     publishedAt: "October 5, 2026",
     readingTime: "9 min read",
     featured: true,
@@ -112,6 +115,8 @@ Every domain has an assigned Googlebot crawl budget. When search engine spiders 
 - Implement a streamlined \`robots.txt\` disallowing non-essential admin, draft, and query paths.
 - Ensure your \`sitemap.xml\` only includes canonical 200-OK status URLs. Never include noindex or 301-redirected URLs.
 - Partition large websites into dedicated sitemaps (e.g., \`sitemap-services.xml\`, \`sitemap-blog.xml\`) referenced in a sitemap index.
+
+![Crawl Budget Telemetry and Server Response Times](/images/blog_inline_seo_crawl_budget.jpg "SEO architect inspecting Googlebot crawling frequency and TTFB across priority landing pages.")
 
 ## 2. Server-Side Rendering vs Client Hydration
 
@@ -135,6 +140,8 @@ Every service page should output valid JSON-LD schemas for:
 - \`FAQPage\` (enabling expandable accordion answers directly inside Google SERPs)
 - \`BreadcrumbList\` (giving Google the exact hierarchical site trail)
 
+![Schema.org Structured Data & Rich Snippet Verification](/images/blog_inline_seo_schema_rich_snippets.jpg "Growth team verifying JSON-LD schema nodes in Google Rich Results Testing tool.")
+
 ## 5. Real-Time Core Web Vitals Telemetry
 
 Do not rely solely on simulated lab audits like Lighthouse. Google's Search algorithm ranks your pages according to real-world user measurements collected in the Chrome User Experience Report (CrUX).
@@ -147,10 +154,6 @@ Set up Google Search Console Core Web Vitals monitoring and resolve any URL flag
     title: "Flutter vs. React Native in 2026: An Enterprise Engineering Architect's Guide",
     excerpt: "Should your enterprise build with Flutter or React Native? We compare native compile speeds, ecosystem maturity, developer hiring availability, and long-term TCO.",
     category: "Mobile Engineering",
-    author: {
-      name: "Marcus Vance",
-      role: "VP of Engineering & Solutions Architect",
-    },
     publishedAt: "September 29, 2026",
     readingTime: "6 min read",
     featured: false,
@@ -177,11 +180,15 @@ With Flutter's modern Impeller engine on iOS and Android, compilation stutter (s
 
 React Native's concurrent rendering in React 19 handles complex list scrolling and background bridge calls with near-zero latency, making both frameworks fully viable for top-tier enterprise production deployments.
 
+![Hardware-Accelerated Mobile Graphics & Canvas Rendering](/images/blog_inline_mobile_native_bridges.jpg "Senior mobile architects comparing Flutter Impeller shader compilation against React Native Fabric bridge telemetry.")
+
 ## Ecosystem Maturity & Talent Availability
 
 If your engineering organization already maintains a large web application in TypeScript and React, **React Native (with Expo)** offers immense synergy. Engineers can share types, business logic, and API clients directly between web and mobile.
 
 If your team is starting fresh and prioritizes custom bespoke animations, branded visual design, and a unified development experience, **Flutter** provides an unmatched developer velocity.
+
+![Real-Device Mobile QA & Cross-Platform Testing](/images/blog_inline_mobile_device_testing.jpg "QA engineers running end-to-end device testing across modern iOS and Android test suites.")
 
 ## The Enterprise Decision Matrix
 
@@ -194,10 +201,6 @@ If your team is starting fresh and prioritizes custom bespoke animations, brande
     title: "Salesforce & CRM Integration Best Practices: Eliminating Data Leaks and Governor Limits",
     excerpt: "How to architect resilient bi-directional sync pipelines between your customer-facing web apps and Salesforce without hitting API rate caps or dropping leads.",
     category: "Enterprise CRM",
-    author: {
-      name: "Evelyn Reed",
-      role: "Head of Organic Growth & SEO Architect",
-    },
     publishedAt: "September 22, 2026",
     readingTime: "8 min read",
     featured: false,
@@ -226,11 +229,15 @@ To insulate enterprise systems, we design a **decoupled queue intermediary** bet
 4. A dedicated background worker consumes queue batches, bulkifying records into the Salesforce Composite API (bundling up to 25 sub-requests per single API credit).
 5. Exponential backoff retries guarantee that even during scheduled Salesforce maintenance windows, zero leads are ever dropped.
 
+![MuleSoft & Composite API Integration Pipeline](/images/blog_inline_salesforce_mulesoft_sync.jpg "Enterprise CRM solutions architects reviewing high-volume bi-directional synchronization queues.")
+
 ## Contact Deduplication & Lead Routing Logic
 
 Before creating a new Lead or Contact record, the middleware performs an indexed SOQL query matching email and phone coordinates. 
 
 If a matching record exists, the middleware appends a custom Task or Campaign Member record instead of creating messy duplicates, preserving clean data integrity for your SDR and Account Executive teams.
+
+![Apex Triggers & Governor Limit Optimization](/images/blog_inline_salesforce_governor_limits.jpg "Lead Salesforce engineer debugging Apex trigger bulkification to prevent multitenant CPU limits.")
 
 ## Telemetry & Automated Disaster Recovery
 
@@ -242,10 +249,6 @@ Every integration must include proactive telemetry. When webhook payloads fail d
     title: "Building Custom Shopify Theme App Extensions in 2026: Zero-Bloat Architecture & Liquid Integration",
     excerpt: "How to architect modular Shopify Theme App Extensions (TAE) and Web Components that inject rich merchant functionality without degrading Core Web Vitals or polluting store theme files.",
     category: "E-Commerce",
-    author: {
-      name: "Marcus Vance",
-      role: "VP of Engineering & Solutions Architect",
-    },
     publishedAt: "October 10, 2026",
     readingTime: "8 min read",
     featured: false,
@@ -299,11 +302,15 @@ class CloudProductUpsell extends HTMLElement {
 customElements.define('cloud-product-upsell', CloudProductUpsell);
 \`\`\`
 
+![Modular Liquid Web Components & Theme Customizer Integration](/images/blog_inline_shopify_liquid_rendering.jpg "Shopify developers verifying isolated Theme App Extension blocks within the merchant theme customizer.")
+
 ## Asset Bundling & App Embed Optimization
 
 By serving lightweight ES modules and leveraging the browser's native Custom Elements API, our extensions execute in under **12 milliseconds** with zero external runtime dependencies like bloated jQuery or React bundles.
 
 Furthermore, dynamic data queries utilize the official \`Storefront API\` with customer session tokens, ensuring real-time inventory and pricing calculations without triggering heavy server recalculations.
+
+![Storefront API & Real-Time Checkout Telemetry](/images/blog_inline_shopify_checkout_telemetry.jpg "E-commerce engineering team auditing Core Web Vitals metrics during checkout funnel surges.")
 
 ## Shopify App Store Submission & QA
 
@@ -318,10 +325,6 @@ Before passing Shopify App Review, your extension must verify:
     title: "BigCommerce Multi-Storefront (MSF) Architecture: Unifying Global DTC & B2B Wholesale Channels",
     excerpt: "A deep dive into structuring multi-region catalogs, localized checkout routing, and headless Next.js channels under a single BigCommerce control panel.",
     category: "E-Commerce",
-    author: {
-      name: "Evelyn Reed",
-      role: "Founder & Chief Executive Officer",
-    },
     publishedAt: "October 11, 2026",
     readingTime: "9 min read",
     featured: false,
@@ -348,6 +351,8 @@ With BigCommerce MSF, products belong to a single master catalog but are routed 
 - **Channel 1 (Consumer DTC):** Retails full consumer product catalog in USD with standard credit card and Apple Pay checkouts.
 - **Channel 2 (International Flagship):** Automatically translates product descriptions, localized currency pricing, and regional tax calculation.
 - **Channel 3 (B2B Wholesale Portal):** Gated wholesale access showing tiered bulk pricing, custom Net-30 payment terms, and automated purchase order generation.
+
+![Multi-Region B2B & DTC Catalog Channel Synchronization](/images/blog_inline_b2b_catalog_sync.jpg "Enterprise commerce consultants reviewing unified multi-storefront channel permissions and pricing tiers.")
 
 ## Connecting Next.js 16 to BigCommerce GraphQL Storefront API
 
@@ -383,6 +388,8 @@ BigCommerce's native **Price Lists** allow developers to dynamically override de
 
 Wholesale buyers automatically see wholesale contract rates, volume discount tiers (e.g., 50+ units = 25% discount), and custom SKU exclusions without requiring custom checkout hacks.
 
+![Headless Next.js Edge Routing for Global Storefronts](/images/blog_inline_headless_edge_routing.jpg "Solutions architect testing sub-second regional edge routing on headless BigCommerce storefronts.")
+
 ## Operational ROI & Maintenance Elimination
 
 Migrating to a unified BigCommerce Multi-Storefront architecture typically yields:
@@ -396,10 +403,6 @@ Migrating to a unified BigCommerce Multi-Storefront architecture typically yield
     title: "Chrome Extension Manifest V3 Migration: Service Workers, Storage & Security Best Practices",
     excerpt: "Complete engineering roadmap for migrating legacy Manifest V2 browser extensions to V3: event-driven background service workers, declarativeNetRequest rules, and secure token vaulting.",
     category: "Plugins & Extensions",
-    author: {
-      name: "Marcus Vance",
-      role: "VP of Engineering & Solutions Architect",
-    },
     publishedAt: "October 11, 2026",
     readingTime: "10 min read",
     featured: false,
@@ -440,6 +443,8 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 });
 \`\`\`
 
+![Manifest V3 Ephemeral Service Worker Lifecycle](/images/blog_inline_extension_service_worker.jpg "Security engineers reviewing event-driven background service workers and token encryption vaults.")
+
 ## Network Interception via declarativeNetRequest Rules
 
 Manifest V3 replaces the synchronous \`chrome.webRequest\` API with \`declarativeNetRequest\`. Instead of intercepting every HTTP request through JavaScript, developers declare static rulesets in JSON that the browser engine evaluates natively:
@@ -464,6 +469,8 @@ Never store plain-text API secrets or private tokens in \`window.localStorage\`.
 2. Leverage \`chrome.identity.launchWebAuthFlow\` for OAuth2 authentication flows without exposing redirect endpoints.
 3. Proxy all sensitive database requests through your central backend API.
 
+![Chrome Web Store DevTools Audit & Sandbox Testing](/images/blog_inline_extension_devtools_audit.jpg "Lead developer testing declarativeNetRequest performance rules in browser DevTools.")
+
 ## Navigating Chrome Web Store Privacy Reviews
 
 To achieve immediate store review approval:
@@ -477,10 +484,6 @@ To achieve immediate store review approval:
     title: "Next.js 16 Partial Prerendering (PPR) vs. Traditional SSR: Real-World Core Web Vitals Benchmarks",
     excerpt: "Telemetry benchmarks analyzing how Next.js 16 Partial Prerendering combines static edge delivery with dynamic streaming components to achieve sub-40ms TTFB and perfect INP scores.",
     category: "Web Development",
-    author: {
-      name: "Evelyn Reed",
-      role: "Founder & Chief Executive Officer",
-    },
     publishedAt: "October 12, 2026",
     readingTime: "8 min read",
     featured: false,
@@ -507,6 +510,8 @@ For years, web architects faced an unavoidable dilemma:
 When a visitor requests a PPR page:
 1. **Immediate Static Shell:** The edge server instantly returns a pre-rendered static HTML shell containing the navigation, hero layout, and structural skeleton in under **35 milliseconds**.
 2. **Dynamic Streaming Holes:** Wrapped inside React 19 \`<Suspense>\` boundaries, dynamic components (like real-time user pricing, cart counts, or notifications) stream in over the same HTTP connection as soon as their backend promises resolve.
+
+![Partial Prerendering Edge Shell & Streaming Hydration](/images/blog_inline_ppr_edge_hydration.jpg "Fullstack architects profiling static shell delivery and React 19 Suspense streaming holes.")
 
 ## Real-World Telemetry: TTFB, LCP & INP Benchmarks
 
@@ -545,6 +550,8 @@ export default function DashboardPage() {
 }
 \`\`\`
 
+![Sub-40ms TTFB Core Web Vitals Benchmark Telemetry](/images/blog_inline_ppr_streaming_benchmark.jpg "Cloud team reviewing 99th percentile INP and LCP telemetry across production edge nodes.")
+
 ## Production Readiness & Edge Cache Verification
 
 When architecting for PPR:
@@ -558,10 +565,6 @@ When architecting for PPR:
     title: "Automating Inbound Lead Qualification: Building Resilient Webhook Bridges to HubSpot & Salesforce",
     excerpt: "How to architect zero-loss webhook queues using Next.js edge handlers, Redis retry buffers, and HMAC signatures to instantly enrich and route high-value leads into enterprise CRMs.",
     category: "Enterprise CRM",
-    author: {
-      name: "Marcus Vance",
-      role: "VP of Engineering & Solutions Architect",
-    },
     publishedAt: "October 12, 2026",
     readingTime: "9 min read",
     featured: false,
@@ -612,6 +615,8 @@ export async function POST(req: Request) {
 }
 \`\`\`
 
+![Edge Webhook Ingestion & Redis Retry Buffers](/images/blog_inline_crm_webhook_payloads.jpg "Systems integration engineer monitoring asynchronous lead payload buffers during traffic spikes.")
+
 ## HMAC Signature Verification & Payload Encryption
 
 All inter-service webhooks must be protected against tampering. We attach an HMAC SHA-256 header using a shared environment secret:
@@ -624,6 +629,8 @@ export function verifyWebhookSignature(payload: string, signature: string, secre
   return crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(expected));
 }
 \`\`\`
+
+![Automated Lead Scoring Rules & SDR Alert Routing](/images/blog_inline_crm_lead_scoring_logic.jpg "CRM consultants configuring priority routing rules and instant Slack lead notifications.")
 
 ## Automated Lead Scoring, Deduplication & Routing
 
