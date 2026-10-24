@@ -9,10 +9,22 @@ export interface SalesforceCapability {
 }
 
 export interface SalesforceCloudSpecialty {
+  id: string;
   name: string;
   badge: string;
+  headline: string;
   description: string;
   keyUseCases: string[];
+  coreTech: string[];
+  metric: { value: string; label: string };
+}
+
+export interface SalesforceIntegrationFeature {
+  system: string;
+  category: string;
+  protocol: string;
+  description: string;
+  features: string[];
 }
 
 export interface SalesforcePricingTier {
@@ -27,191 +39,268 @@ export interface SalesforcePricingTier {
 }
 
 export const SALESFORCE_METRICS = [
-  { value: "100%", label: "Certified Salesforce Developers" },
+  { value: "100%", label: "Certified Salesforce Architects" },
   { value: "0", label: "Governor Limit Breaches" },
   { value: "65%", label: "Faster Quote-to-Close Velocity" },
-  { value: "< 15m", label: "P1 Emergency SLA Response" },
+  { value: "< 15m", label: "P1 Emergency Incident SLA" },
   { value: "99.9%", label: "Apex Unit Test Coverage" },
   { value: "100%", label: "Client Code & IP Ownership" }
 ];
 
-export const SALESFORCE_CLOUDS: SalesforceCloudSpecialty[] = [
+export const SALESFORCE_HERO_PILLARS = [
   {
-    name: "Sales Cloud & Revenue Ops",
-    badge: "Pipeline Velocity",
-    description: "Streamline high-velocity sales workflows, automated lead routing, and opportunity forecasting without technical bottlenecks.",
-    keyUseCases: [
-      "Custom CPQ quoting rules and approval flows",
-      "Automated lead enrichment and territory assignment",
-      "Real-time pipeline analytics & KPI dashboards",
-      "Contract generation & electronic signature sync"
-    ]
+    title: "Sales Cloud & Revenue Ops",
+    desc: "CPQ pricing rules, automated lead-to-cash routing, and predictive pipeline forecasting."
   },
   {
-    name: "Service Cloud & Field Service",
-    badge: "Case Deflection & SLA",
-    description: "Equip your customer support teams with omnichannel routing, automated case deflection, and milestone-backed SLAs.",
-    keyUseCases: [
-      "Omnichannel queue and priority case routing",
-      "Einstein AI bot routing and automated responses",
-      "Knowledge base integration & self-service search",
-      "SLA milestone timers and automatic escalations"
-    ]
+    title: "Service Cloud & Support",
+    desc: "Omni-channel case routing, CTI voice integration, SLA milestones, and Agentforce deflection."
   },
   {
-    name: "Experience Cloud (Portals)",
-    badge: "External Engagement",
-    description: "Secure, high-performance customer and partner portals with custom branded Lightning Web Components and single sign-on.",
-    keyUseCases: [
-      "Custom branded partner & dealer community portals",
-      "Customer account management & self-checkout",
-      "Headless authentication and profile sync",
-      "Role-based document sharing and approval workflows"
-    ]
+    title: "Apex, Triggers & Flows",
+    desc: "Bulkified trigger handler frameworks, reactive LWC, and zero-recursion record flows."
   },
   {
-    name: "Data Cloud & Multi-System Sync",
-    badge: "Customer 360",
-    description: "Unify fragmented customer touchpoints from websites, mobile apps, ERPs, and billing engines into a single source of truth.",
-    keyUseCases: [
-      "Bi-directional sync with Next.js, Shopify, and Stripe",
-      "Redis-buffered webhook message queues",
-      "Real-time customer 360 profile consolidation",
-      "Automated marketing segment triggers"
-    ]
+    title: "MuleSoft & Enterprise Sync",
+    desc: "API-led connectivity, SAP/NetSuite ERP sync, and real-time Kafka event streaming."
   }
 ];
 
-export const SALESFORCE_CAPABILITIES: SalesforceCapability[] = [
+export const SALESFORCE_CLOUDS: SalesforceCloudSpecialty[] = [
   {
-    id: "lwc",
-    title: "Custom Lightning Web Components (LWC)",
-    tagline: "Ultra-fast, reactive UI components engineered with modern web standards.",
-    description: "We replace clunky legacy Visualforce pages and slow Aura components with lightweight, reactive Lightning Web Components (LWC). Built on shadow DOM and Lightning Data Service (LDS) for sub-second UI responsiveness.",
-    deliverables: [
-      "Dynamic multi-step guided sales wizards and custom modal dialogs",
-      "Interactive data tables with inline editing and bulk actions",
-      "Real-time reactive charts and telemetry widgets",
-      "Custom record page overrides optimized for sales productivity"
+    id: "sales-cloud",
+    name: "Salesforce Sales Cloud",
+    badge: "Pipeline & Revenue Ops",
+    headline: "Accelerate Lead-to-Cash with Zero Operational Friction",
+    description: "We configure, customize, and optimize Sales Cloud so your account executives close deals faster. We eliminate spreadsheet chaos by deploying automated lead scoring, dynamic CPQ quoting rules, territory management, and revenue forecasting that leadership trusts.",
+    keyUseCases: [
+      "Custom CPQ pricing rules, product bundling, and automated discount approvals",
+      "Algorithmic lead assignment based on rep capacity, geography, and deal tier",
+      "Opportunity pipeline automation with automated stage-gating and milestone tasks",
+      "Dynamic contract and quote PDF generation with DocuSign/Adobe Sign e-signature sync",
+      "Executive pipeline analytics, ARR/MRR cohort reporting, and commission forecasting"
     ],
-    techStack: ["Lightning Web Components", "ES6+ JavaScript", "SLDS", "LDS Caching"],
-    iconName: "Code2"
+    coreTech: ["Sales Cloud", "Salesforce CPQ", "Territory Management", "Revenue Cloud"],
+    metric: { value: "3.2x", label: "Faster Pipeline Turnaround" }
   },
   {
-    id: "apex",
-    title: "Bulkified Enterprise Apex Engineering",
-    tagline: "Resilient backend business logic that never hits governor limits.",
-    description: "Our certified Technical Architects design clean, decoupled Apex architectures using modern trigger frameworks. Every query is indexed and bulkified to handle massive data volumes effortlessly.",
-    deliverables: [
-      "Single-trigger-per-object architectural framework",
-      "Asynchronous Batch Apex, Queueable jobs, and Schedulables",
-      "REST & SOAP custom Apex web services with API key authentication",
-      "Comprehensive unit test suites with >= 90% real-world assertion coverage"
+    id: "service-cloud",
+    name: "Salesforce Service Cloud",
+    badge: "Omni-Channel Support & SLA",
+    headline: "Omni-Channel Customer Care with Automated Case Deflection",
+    description: "Transform your support operations into an effortless customer satisfaction engine. We implement Omni-Channel routing across email, webchat, SMS, and WhatsApp, integrate telephony via Service Cloud Voice (CTI), and deploy self-service knowledge bases backed by automated milestone SLA timers.",
+    keyUseCases: [
+      "Intelligent Omni-Channel routing prioritizing VIP cases and specialized skills",
+      "Service Cloud Voice & Computer Telephony Integration (CTI) with screen pops",
+      "Automated SLA milestone timers with proactive escalation alerts before breach",
+      "Customer self-service Knowledge Base with automated article suggestion algorithms",
+      "Agentforce & Einstein generative AI copilot for instant agent case summaries"
     ],
-    techStack: ["Apex", "SOQL / SOSL", "Queueable Apex", "Apex Enterprise Patterns"],
-    iconName: "Database"
+    coreTech: ["Service Cloud", "Omni-Channel", "Service Cloud Voice (CTI)", "Field Service"],
+    metric: { value: "48%", label: "Faster Case Resolution (MTTR)" }
   },
   {
-    id: "flow-automation",
-    title: "Salesforce Flow Optimization & Debt Elimination",
-    tagline: "Modern low-code automation without recursive performance penalties.",
-    description: "We audit, consolidate, and migrate legacy Process Builders and Workflow Rules into streamlined Record-Triggered Flows. We eliminate trigger recursion, flow conflicts, and save orders of magnitude in CPU execution time.",
-    deliverables: [
-      "Legacy Process Builder and Workflow Rule modernization",
-      "High-speed Record-Triggered Flows with explicit entry criteria",
-      "Interactive Screen Flows with custom LWC screen components",
-      "Flow error-handling and automated alert notifications"
+    id: "platform-engineering",
+    name: "Apex, Triggers, Flows & LWC",
+    badge: "Core Platform Engineering",
+    headline: "Enterprise-Grade Code Craftsmanship That Scales Safely",
+    description: "Salesforce is only as resilient as its underlying code architecture. Our certified technical architects design decoupled Apex trigger frameworks following enterprise patterns, build sub-second reactive Lightning Web Components (LWC), and orchestrate high-speed Flows with zero recursion or governor limit exceptions.",
+    keyUseCases: [
+      "One-Trigger-Per-Object architecture with strict recursion control and handler decoupling",
+      "Asynchronous Batch Apex, Queueable jobs, and scheduled data sync workers",
+      "Custom reactive Lightning Web Components (LWC) with Lightning Data Service (LDS) caching",
+      "Record-Triggered Flow optimization and legacy Process Builder / Workflow Rule cleanup",
+      "Automated unit test suites with >= 90% real-world assertion coverage"
     ],
-    techStack: ["Record-Triggered Flow", "Screen Flow", "Sub-flows", "Flow Orchestrator"],
-    iconName: "Workflow"
+    coreTech: ["Apex", "Lightning Web Components", "Record-Triggered Flows", "SOQL / SOSL"],
+    metric: { value: "0", label: "Governor Limit Breaches" }
   },
   {
-    id: "integrations",
-    title: "Multi-Cloud & Third-Party API Integrations",
-    tagline: "Zero-data-loss bi-directional pipelines between your app and Salesforce.",
-    description: "Connect your Next.js website, Shopify Plus store, custom mobile app, or internal database with Salesforce. We architect buffered queues that protect against API rate limits and handle network drops automatically.",
-    deliverables: [
-      "Secure OAuth 2.0 connected app configuration",
-      "Redis and BullMQ message queue buffers with exponential retries",
-      "Bi-directional sync with Stripe, QuickBooks, HubSpot, and ERPs",
-      "Automated lead deduplication and conflict-resolution rules"
+    id: "mulesoft-integrations",
+    name: "MuleSoft & Enterprise Integrations",
+    badge: "API-Led Connectivity",
+    headline: "Zero-Data-Loss Bi-Directional Integration Mesh",
+    description: "Break down data silos between Salesforce and your enterprise tech stack. We architect robust API-led connectivity using MuleSoft Anypoint Platform, composite REST/GraphQL endpoints, and event-driven architectures (Platform Events & Change Data Capture) for real-time ERP, billing, and database synchronization.",
+    keyUseCases: [
+      "MuleSoft Anypoint Platform System, Process, and Experience API layer design",
+      "Bi-directional ERP synchronization with SAP S/4HANA, NetSuite, and Oracle",
+      "Real-time event streaming via Salesforce Platform Events and Apache Kafka",
+      "Automated e-commerce sync with Shopify Plus, BigCommerce, and custom Next.js storefronts",
+      "Payment & billing pipeline integration with Stripe, QuickBooks, and Zuora with retry queues"
     ],
-    techStack: ["Salesforce REST API", "Composite API", "Bulk API 2.0", "Webhooks / Redis"],
-    iconName: "Share2"
+    coreTech: ["MuleSoft Anypoint", "Platform Events", "Salesforce REST / Bulk API 2.0", "Kafka / Webhooks"],
+    metric: { value: "< 340ms", label: "P99 Integration Latency" }
   },
   {
-    id: "health-audit",
-    title: "Comprehensive Org Health & Security Audits",
-    tagline: "Uncover hidden performance bottlenecks, security risks, and technical debt.",
-    description: "Our senior architects perform a forensic review of your Salesforce org. We analyze code quality, object schema architecture, user access controls, and storage consumption to optimize operational health.",
-    deliverables: [
-      "Governor limit vulnerability report and SOQL loop identification",
-      "Permission Set and Profile access security review (OWASP compliant)",
-      "Unused custom fields and legacy metadata pruning plan",
-      "Actionable roadmap for performance gains and licensing savings"
+    id: "experience-cloud",
+    name: "Experience Cloud & Portals",
+    badge: "B2B & Customer Portals",
+    headline: "Secure, Branded Digital Experiences for Customers & Partners",
+    description: "Extend your Salesforce CRM directly to external partners, dealers, and customers. We build high-speed Experience Cloud portals and authenticated communities on Lightning Web Runtime (LWR), giving external stakeholders self-service account access, order placement, and support tickets with strict role-based access control.",
+    keyUseCases: [
+      "B2B partner and distributor portals with custom pricing tiers and order submission",
+      "Customer account self-service portals for invoice review, subscriptions, and profile management",
+      "Single Sign-On (SSO) integration via Okta, Azure AD, Auth0, or SAML 2.0 / OpenID Connect",
+      "Custom branded LWR (Lightning Web Runtime) implementations for sub-second page loads",
+      "Granular permission set architectures ensuring external users only access designated data"
     ],
-    techStack: ["Apex PMD", "Salesforce Optimizer", "Security Health Check", "Code Analyzer"],
-    iconName: "ShieldCheck"
+    coreTech: ["Experience Cloud", "Lightning Web Runtime (LWR)", "SSO / SAML 2.0", "Community Builder"],
+    metric: { value: "98/100", label: "LWR Performance Score" }
   },
   {
-    id: "managed-support",
-    title: "Managed Support & Fractional Architect Retainers",
-    tagline: "Dedicated senior Salesforce engineering bandwidth without full-time overhead.",
-    description: "Avoid the $180k+ annual expense of an in-house Salesforce architect. Our boutique managed retainers give your team on-demand access to certified senior developers, proactive health checks, and 24/7 SLA emergency coverage.",
-    deliverables: [
-      "Sub-15 minute P1 emergency incident response SLA",
-      "3x annual Salesforce seasonal release compatibility audits",
-      "User onboarding, security policy updates, and report building",
-      "Dedicated Slack/Teams communication with lead engineer"
+    id: "data-cloud-ai",
+    name: "Data Cloud & Agentforce AI",
+    badge: "Unified 360 & AI Agents",
+    headline: "Real-Time Customer 360 & Autonomous AI Workflows",
+    description: "Harness the full power of modern Salesforce Data Cloud and Agentforce. We ingest, harmonize, and unify customer data across mobile apps, websites, POS terminals, and data lakes (Snowflake, BigQuery) to power real-time personalization, predictive scoring, and autonomous generative AI agent execution.",
+    keyUseCases: [
+      "Real-time customer identity resolution and profile unification across touchpoints",
+      "Zero-copy lakehouse federation connecting Snowflake, Google BigQuery, and Databricks",
+      "Autonomous Agentforce AI agent setup for lead qualification and customer support triage",
+      "Real-time segment streaming triggering automated marketing journeys and sales alerts",
+      "Einstein Copilot prompt engineering and grounded CRM data grounding"
     ],
-    techStack: ["Git / SFDX", "CI/CD Deployment", "Sandbox Refresh", "Dedicated SLA"],
-    iconName: "Clock"
+    coreTech: ["Salesforce Data Cloud", "Agentforce", "Einstein 1 Platform", "Zero-Copy Lakehouse"],
+    metric: { value: "100%", label: "Real-Time 360 View" }
+  }
+];
+
+export const SALESFORCE_INTEGRATION_SYSTEMS: SalesforceIntegrationFeature[] = [
+  {
+    system: "MuleSoft Anypoint Platform",
+    category: "Enterprise iPaaS",
+    protocol: "REST / RAML / OAS",
+    description: "Architect API-led connectivity with System, Process, and Experience APIs. Reusable connectors that scale without tight coupling.",
+    features: ["API Manager & Policy Enforcement", "Runtime Fabric Deployment", "Automated Error Handling", "Payload Transformation (DataWeave)"]
+  },
+  {
+    system: "SAP & NetSuite ERP",
+    category: "Financials & Inventory",
+    protocol: "OData / SOAP / Webhooks",
+    description: "Sync inventory availability, customer financial credit limits, sales orders, and invoices bi-directionally with zero double-entry.",
+    features: ["Order-to-Cash Automation", "Credit Limit Validation", "Real-Time Inventory Allocation", "Tax & Invoice Reconciliation"]
+  },
+  {
+    system: "Shopify Plus & BigCommerce",
+    category: "E-Commerce",
+    protocol: "GraphQL / Webhooks",
+    description: "Synchronize online B2C and B2B customers, orders, abandoned carts, and support inquiries directly into Salesforce contacts and cases.",
+    features: ["Bi-Directional Customer Sync", "High-Surge Order Ingestion", "Tiered B2B Pricing Sync", "Return & RMA Management"]
+  },
+  {
+    system: "Stripe & Billing Engines",
+    category: "Payments & Subscriptions",
+    protocol: "REST API / Webhooks",
+    description: "Automate invoice payment collection, subscription recurring billing, and failed payment dunning directly linked to Salesforce Accounts.",
+    features: ["PCI-Compliant Tokenization", "Stripe Checkout & Billing Sync", "Automated Dunning Workflows", "Revenue Recognition Tracking"]
+  },
+  {
+    system: "Apache Kafka & EventBridge",
+    category: "Event Streaming",
+    protocol: "Pub/Sub API / CDC",
+    description: "High-throughput asynchronous message streaming. Stream Salesforce Change Data Capture (CDC) events to data warehouses in milliseconds.",
+    features: ["Zero Governor Impact Streaming", "Change Data Capture (CDC)", "Platform Event Ingestion", "Guaranteed At-Least-Once Delivery"]
+  },
+  {
+    system: "Next.js Web Platforms",
+    category: "Headless Frontend",
+    protocol: "Composite REST / OAuth",
+    description: "Connect high-speed marketing websites and customer portals with Salesforce lead routing, gated assets, and customer profile portals.",
+    features: ["Redis Webhook Buffering", "Lead Deduplication Logic", "Instant UTM Attribution", "HMAC Signature Verification"]
+  }
+];
+
+export const SALESFORCE_PLATFORM_DETAILS = [
+  {
+    title: "Apex Architecture & Trigger Frameworks",
+    badge: "Zero Governor Exceptions",
+    description: "Enterprise pattern implementation that separates trigger orchestration from domain logic, service layers, and selector classes.",
+    points: [
+      "Single-Trigger-Per-Object dispatcher preventing nested trigger recursion",
+      "Selector Layer isolating SOQL queries for query plan optimization and caching",
+      "Domain Layer enforcing validation rules and default values consistently",
+      "Service Layer encapsulating reusable business logic and cross-object transactions"
+    ]
+  },
+  {
+    title: "Next-Gen Flow Orchestration",
+    badge: "Modern Low-Code Automation",
+    description: "Eliminate sluggish legacy Process Builders and Workflow Rules with streamlined, maintainable Flow architectures.",
+    points: [
+      "Before-Save record triggered flows for ultra-fast field updates without DML overhead",
+      "After-Save record triggered flows with explicit entry criteria for related record actions",
+      "Subflow modularization preventing monolithic, unmaintainable automation diagrams",
+      "Fault path error handling with automated Slack notifications and error record logging"
+    ]
+  },
+  {
+    title: "Reactive Lightning Web Components (LWC)",
+    badge: "Sub-Second UI Performance",
+    description: "Custom UI engineered to modern web standards, replacing slow Visualforce and bulky Aura components.",
+    points: [
+      "Lightweight Shadow DOM architecture ensuring lightning-fast client render cycles",
+      "Lightning Data Service (LDS) wire adapters for automatic client-side data caching",
+      "Custom multi-step guided wizards and interactive CPQ configurators",
+      "Seamless responsive layouts across Salesforce Desktop, Tablet, and Mobile apps"
+    ]
+  },
+  {
+    title: "DevOps & Source-Driven Development",
+    badge: "SFDX & Version Controlled",
+    description: "Professional release management ensuring zero regressions and continuous delivery into production.",
+    points: [
+      "100% source-driven workflow using SFDX CLI and Git version control",
+      "Automated CI/CD validation pipelines running full Apex test suites on every pull request",
+      "Isolated scratch orgs and developer sandboxes preventing concurrent code collisions",
+      "Automated rollback strategies and metadata package backups"
+    ]
   }
 ];
 
 export const SALESFORCE_PRICING_TIERS: SalesforcePricingTier[] = [
   {
-    name: "Ad-Hoc Support",
+    name: "Ad-Hoc Advisory & Support",
     badge: "Flexible Hourly",
     rate: "$95 - $125",
     period: "per hour",
-    idealFor: "Quick bug fixes, urgent LWC updates, and targeted technical troubleshooting.",
+    idealFor: "Targeted bug fixes, urgent Flow updates, governor limit triage, and code reviews.",
     deliverables: [
-      "No long-term commitment",
-      "Direct communication with certified engineer",
-      "Time tracked in transparent 15-minute increments",
-      "Sandbox deployment & automated regression testing"
+      "No long-term commitment required",
+      "Direct pairing with certified Technical Architect",
+      "Time logged in transparent 15-minute increments",
+      "Sandbox deployment & automated test validation",
+      "Standard 24h turnaround for non-critical tasks"
     ],
     sla: "Standard 24h response"
   },
   {
-    name: "Dedicated Sprint",
+    name: "Dedicated Engineering Sprint",
     badge: "High Velocity",
-    rate: "$4,000 - $6,500",
+    rate: "$4,500 - $7,500",
     period: "per 2-week sprint",
-    idealFor: "Building custom LWC features, complex API integrations, or Flow modernization.",
+    idealFor: "Building custom LWC modules, MuleSoft/ERP integrations, CPQ workflows, or legacy debt migration.",
     deliverables: [
-      "Full 2-week focused sprint allocation",
-      "Sprint planning, daily async standups, and demo",
-      "100% source code ownership in your GitHub",
-      "Comprehensive test coverage & documentation",
-      "Standard 30-day post-sprint warranty"
+      "Dedicated senior architect & developer sprint allocation",
+      "Sprint planning, daily async standups, and demo review",
+      "100% source code ownership delivered to your Git repository",
+      "Comprehensive unit test coverage (>= 90%) and technical docs",
+      "30-day post-sprint deployment warranty and hypercare"
     ],
-    sla: "Daily communication & priority queue",
+    sla: "Priority daily sprint communication",
     highlighted: true
   },
   {
-    name: "Managed Retainer",
+    name: "Managed Org Retainer",
     badge: "Continuous Excellence",
-    rate: "From $2,500",
+    rate: "From $2,800",
     period: "per month",
-    idealFor: "Ongoing admin, security reviews, feature releases, and emergency production SLAs.",
+    idealFor: "Ongoing org administration, seasonal release testing, security audits, and guaranteed emergency SLAs.",
     deliverables: [
-      "Guaranteed monthly engineering hours pool",
-      "Sub-15 minute critical P1 incident response SLA",
-      "3x annual seasonal release regression testing",
-      "Proactive health monitoring & security tuning",
-      "Unused hours roll over for 30 days"
+      "Guaranteed monthly pool of senior engineering hours",
+      "Sub-15 minute P1 emergency incident response SLA",
+      "3x annual seasonal release regression testing & validation",
+      "Proactive security health audits and user access management",
+      "Unused hours roll over for up to 30 days"
     ],
     sla: "15-minute P1 emergency SLA"
   }
@@ -219,27 +308,31 @@ export const SALESFORCE_PRICING_TIERS: SalesforcePricingTier[] = [
 
 export const SALESFORCE_FAQS = [
   {
-    question: "Do we retain 100% ownership of custom Apex and LWC code?",
-    answer: "Yes, absolutely. We do not use proprietary locked packages. Every custom Lightning Web Component, Apex class, trigger framework, and Flow is deployed directly into your repository and production org with 100% intellectual property ownership from day one."
+    question: "Do you support all Salesforce Clouds including Sales Cloud, Service Cloud, and MuleSoft?",
+    answer: "Yes. Our practice covers the full Salesforce ecosystem: Sales Cloud (pipeline, forecasting, CPQ), Service Cloud (Omni-Channel, CTI, SLA milestones), Experience Cloud (partner/customer portals), MuleSoft Anypoint Platform (enterprise API integration), and Data Cloud / Agentforce. All implementations are designed and reviewed by certified Salesforce Technical Architects."
   },
   {
-    question: "How do you handle deployments and sandbox testing?",
-    answer: "We follow strict modern Salesforce DevOps best practices using SFDX and Git version control. Code is developed in isolated developer sandboxes, tested against full copy sandboxes with automated Apex unit test suites, and deployed to production via zero-downtime release pipelines."
+    question: "Do we retain 100% ownership of custom Apex, Flow, and LWC code?",
+    answer: "Yes, absolutely. We do not use proprietary locked packages. Every custom Lightning Web Component, Apex trigger framework, Flow, and integration connector is committed directly to your version control repository (GitHub, GitLab, Bitbucket) and deployed into your org with 100% client intellectual property ownership from day one."
   },
   {
-    question: "Can you fix our existing SOQL and CPU governor limit crashes?",
-    answer: "Yes. Governor limit crashes are typically caused by unbulkified trigger logic, SOQL queries inside FOR loops, or cascading recursive Flows. Our architectural health audit identifies the exact execution culprits and refactors them into efficient bulkified services that run safely well beneath Salesforce threshold limits."
+    question: "When should we choose MuleSoft vs custom REST/GraphQL integrations?",
+    answer: "For complex enterprise architectures connecting multiple backend systems (such as SAP, NetSuite, Oracle, and data lakes) with high transaction volumes and reusable API governance, MuleSoft Anypoint Platform is the gold standard. For straightforward point-to-point connections with modern web apps (like Next.js or Shopify), we often engineer lightweight, secure REST/Composite API endpoints with Redis queue buffering to save licensing overhead."
   },
   {
-    question: "Can Salesforce integrate with our custom Next.js frontend or Shopify store?",
-    answer: "Yes, seamlessly. We specialize in connecting modern web applications and e-commerce platforms with Salesforce. We build resilient webhook ingestion endpoints and Redis-buffered queues that ensure two-way data consistency with zero dropped leads or rate-limit throttling."
+    question: "How do you eliminate SOQL 101 and CPU governor limit crashes in Apex?",
+    answer: "Governor limit crashes stem from unbulkified triggers, SOQL queries inside FOR loops, or cascading recursive Flows. We implement an enterprise One-Trigger-Per-Object dispatcher framework, separate queries into indexed selector classes, offload heavy calculations to asynchronous Queueable or Batch Apex, and enforce strict collection bulkification across all DML operations."
   },
   {
-    question: "What is your turnaround time for urgent Salesforce issues?",
-    answer: "For clients on our managed support retainers, critical org-blocking issues carry a guaranteed sub-15 minute response SLA. For ad-hoc clients, we typically respond within 2 to 4 business hours."
+    question: "Can you help migrate our legacy Process Builders and Workflow Rules to Flows?",
+    answer: "Yes. Salesforce has retired Workflow Rules and Process Builders. We perform a comprehensive dependency audit of your active automation, consolidate redundant rules into high-performance Record-Triggered Flows (optimizing between fast Before-Save and After-Save criteria), and resolve recursion conflicts to dramatically speed up record save times."
   },
   {
-    question: "Are your developers certified Salesforce Technical Architects?",
-    answer: "Yes. Our Salesforce practice is staffed exclusively by certified professionals including Salesforce Certified Platform Developers, Technical Architects, and Administrators with years of real-world production experience."
+    question: "How do you handle deployments, CI/CD, and sandbox testing?",
+    answer: "We follow strict modern Salesforce DevOps practices using the SFDX CLI and Git. Code is developed in isolated developer sandboxes or scratch orgs, tested against full-copy sandboxes with automated Apex unit test suites (>= 90% coverage), and deployed via automated CI/CD pipelines (GitHub Actions / Azure DevOps) with zero production downtime."
+  },
+  {
+    question: "What is your emergency SLA for production org outages?",
+    answer: "Clients on our Managed Org Retainer receive guaranteed sub-15 minute response times for critical P1 production incidents, with 24/7 on-call coverage from senior architects. For ad-hoc clients, our team typically responds within 2 to 4 business hours."
   }
 ];

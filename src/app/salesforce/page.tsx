@@ -3,14 +3,14 @@ import SalesforcePage from "./SalesforcePage";
 import { SITE_CONFIG } from "@/lib/seo-config";
 
 export const metadata: Metadata = {
-  title: "Salesforce Consulting, Custom LWC & CRM Architecture",
-  description: "Certified Salesforce technical architects delivering custom Lightning Web Components (LWC), bulkified Apex engineering, Data Cloud sync, and managed support.",
+  title: "Salesforce Consulting, Multi-Cloud Architecture & MuleSoft Integration",
+  description: "Certified Salesforce Technical Architects delivering Sales Cloud, Service Cloud, custom Apex trigger frameworks, high-speed Flows, LWC, and MuleSoft enterprise integrations.",
   alternates: {
     canonical: "/salesforce/"
   },
   openGraph: {
-    title: "Salesforce Architecture & Custom LWC Engineering | Cloud Consultancy",
-    description: "Certified Salesforce architects delivering custom Lightning Web Components, bulkified Apex backend services, and multi-system integrations.",
+    title: "Salesforce Multi-Cloud Consulting & MuleSoft Architecture | Cloud Consultancy",
+    description: "Certified Salesforce architects delivering Sales Cloud, Service Cloud, custom Apex, high-speed Flows, LWC, and MuleSoft enterprise integrations.",
     url: `${SITE_CONFIG.url}/salesforce/`,
     type: "website"
   }
