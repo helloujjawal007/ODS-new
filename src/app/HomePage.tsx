@@ -6,6 +6,7 @@ import { SERVICES } from "@/lib/services-data";
 import { PORTFOLIO_PROJECTS } from "@/lib/portfolio-data";
 import HeroBanner from "@/components/sections/HeroBanner";
 import ServicesCardCarousel from "@/components/sections/ServicesCardCarousel";
+import AboutMaintenanceSummary from "@/components/sections/AboutMaintenanceSummary";
 import CtaSection from "@/components/sections/CtaSection";
 import { SITE_CONFIG } from "@/lib/seo-config";
 import CloudLogo from "@/components/brand/CloudLogo";
@@ -94,7 +95,10 @@ export default function HomePage() {
       {/* 3. SERVICES & DISCIPLINES (Interactive Scrollable Cards with Images, No Pricing - Links to Pricing) */}
       <ServicesCardCarousel services={SERVICES} />
 
-      {/* 4. SELECTED RECENT WORK (Honest case studies with real outcomes) */}
+      {/* 4. ABOUT & SITE MAINTENANCE SUMMARY (Senior craft, site maintenance, 100% ownership) */}
+      <AboutMaintenanceSummary />
+
+      {/* 5. SELECTED RECENT WORK (Honest case studies with real outcomes) */}
       <section className="py-20 border-b border-[#E2E8F0] bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">

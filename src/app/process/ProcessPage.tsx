@@ -76,15 +76,16 @@ export default function ProcessPage() {
     },
     {
       number: "05",
-      title: "Zero-Downtime Launch & Support",
+      title: "Zero-Downtime Launch & Continuous Maintenance",
       duration: "Ongoing",
       icon: Rocket,
-      desc: "Production cutover, automated DNS validation, search console verification, and complimentary 30-day post-launch warranty support.",
+      desc: "Production cutover, automated DNS validation, Google Search Console indexing, 30-day zero-defect warranty, and transition to ongoing maintenance retainers.",
       deliverables: [
-        "DNS migration and SSL certificate provisioning",
-        "Google Search Console sitemap submission",
-        "Full source code and credential transfer",
-        "30 days complimentary warranty bug support"
+        "Zero-downtime DNS migration and SSL certificate provisioning",
+        "Google Search Console sitemap indexing & verification",
+        "Full source code, Figma files, and cloud credential handover",
+        "30 days complimentary zero-defect warranty",
+        "Ongoing monthly site maintenance, 24/7 uptime monitoring & SLAs"
       ]
     }
   ];

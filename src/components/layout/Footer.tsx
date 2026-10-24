@@ -150,6 +150,14 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/contact/?service=Website%20Maintenance%20%26%20Support"
+                  className="text-[#60A5FA] hover:text-white transition-colors flex items-center space-x-1 font-medium"
+                >
+                  <span>Site Maintenance & SLAs</span>
+                </Link>
+              </li>
             </ul>
           </div>
 

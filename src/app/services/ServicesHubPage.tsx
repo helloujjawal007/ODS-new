@@ -7,6 +7,7 @@ import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import CtaSection from "@/components/sections/CtaSection";
 import JsonLd from "@/components/seo/JsonLd";
 import { getBreadcrumbJsonLd } from "@/lib/seo-config";
+import CloudLogo from "@/components/brand/CloudLogo";
 
 export const metadata: Metadata = {
   title: "Services & Capabilities",
@@ -61,6 +62,10 @@ export default function ServicesHubPage() {
                 <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-xs border border-[#E2E8F0] px-2.5 py-0.5 rounded-[4px] text-[10px] font-mono uppercase font-medium text-[#0F172A] shadow-2xs">
                   {service.category}
                 </div>
+                <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-xs border border-[#E2E8F0] px-2 py-0.5 rounded-[4px] flex items-center space-x-1.5 shadow-2xs">
+                  <CloudLogo className="w-3 h-auto" size={12} />
+                  <span className="text-[9px] font-semibold text-[#0F172A]">Cloud Consultancy</span>
+                </div>
               </div>
 
               <div className="p-6 flex-1 flex flex-col justify-between">
@@ -102,6 +107,31 @@ export default function ServicesHubPage() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Continuous Website & App Maintenance Banner */}
+        <div className="bg-[#F8FAFC] border border-[#CBD5E1] rounded-[8px] p-6 sm:p-8 mb-16 shadow-2xs">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="space-y-2 max-w-2xl">
+              <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-[#ECFDF5] border border-[#A7F3D0] text-[#065F46] text-[11px] font-mono font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
+                <span>Ongoing Maintenance & SLA Support</span>
+              </div>
+              <h2 className="text-xl sm:text-2xl font-serif font-normal text-[#0F172A]">
+                Already Have an Existing Website, Store or App That Needs Maintenance?
+              </h2>
+              <p className="text-xs text-[#475569] leading-relaxed">
+                We inherit, audit, stabilize, and maintain legacy codebases, custom Next.js apps, Shopify storefronts, and Salesforce instances. Enjoy 24/7 uptime monitoring, security patching, and sub-15 minute emergency response SLAs.
+              </p>
+            </div>
+            <Link
+              href="/contact/?service=Website%20Maintenance%20%26%20Support"
+              className="px-5 py-2.5 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium text-xs flex items-center space-x-1.5 shrink-0 shadow-2xs"
+            >
+              <span>Inquire About Maintenance</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
         </div>
 
         {/* Closing CTA */}

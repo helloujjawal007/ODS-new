@@ -7,7 +7,7 @@ import ContactForm from "@/components/forms/ContactForm";
 import FaqAccordion from "@/components/sections/FaqAccordion";
 import CtaSection from "@/components/sections/CtaSection";
 import JsonLd from "@/components/seo/JsonLd";
-import { getBreadcrumbJsonLd } from "@/lib/seo-config";
+import { getBreadcrumbJsonLd, getFaqJsonLd } from "@/lib/seo-config";
 
 export const metadata: Metadata = {
   title: "Pricing & Project Cost Estimator",
@@ -98,10 +98,12 @@ export default function PricingPage() {
   const breadcrumbSchema = getBreadcrumbJsonLd([
     { name: "Pricing", url: "/pricing/" }
   ]);
+  const faqSchema = getFaqJsonLd(pricingFaqs);
 
   return (
     <div className="py-8 bg-white text-[#0F172A] font-sans selection:bg-[#2563EB] selection:text-white">
       <JsonLd id="schema-breadcrumb-pricing" data={breadcrumbSchema} />
+      <JsonLd id="schema-faq-pricing" data={faqSchema} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Breadcrumbs items={breadcrumbs} />

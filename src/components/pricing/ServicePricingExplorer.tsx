@@ -199,7 +199,11 @@ function ServicePricingExplorerInner() {
                   ))}
                   <li className="flex items-start space-x-2">
                     <Check className="w-3.5 h-3.5 text-[#2563EB] shrink-0 mt-0.5" />
-                    <span>Complimentary 30-day post-launch warranty & bug fixes</span>
+                    <span>Complimentary {activeService.maintenanceScope.warrantyDays} & bug fixes</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <Check className="w-3.5 h-3.5 text-[#2563EB] shrink-0 mt-0.5" />
+                    <span>Ongoing maintenance retainers available ({activeService.maintenanceScope.slaResponseTime})</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <Check className="w-3.5 h-3.5 text-[#2563EB] shrink-0 mt-0.5" />

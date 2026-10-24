@@ -22,11 +22,24 @@ export interface ServiceItem {
     solution: string;
     metric: string;
     metricLabel: string;
+    clientFeedback: {
+      quote: string;
+      author: string;
+      role: string;
+      timeInProduction: string;
+    };
+    productionStats: { label: string; value: string }[];
   };
   pricingModel: {
     startingAt: string;
     period: string;
     includes: string[];
+  };
+  maintenanceScope: {
+    warrantyDays: string;
+    slaResponseTime: string;
+    monitoringFrequency: string;
+    features: string[];
   };
   faqs: { question: string; answer: string }[];
 }
@@ -60,8 +73,8 @@ export const SERVICES: ServiceItem[] = [
         desc: "Layout shifts and high interaction latencies trigger Google ranking penalties, driving qualified organic traffic straight to your competitors."
       },
       {
-        title: "Hard-to-Maintain Monoliths",
-        desc: "Fragile codebases require constant plugin updates, break on version changes, and leave your brand vulnerable to critical security exploits."
+        title: "Fragile Maintenance & Security Risks",
+        desc: "Fragile codebases require endless manual plugin updates, break on minor version changes, and leave your brand exposed to security exploits."
       }
     ],
     deliverables: [
@@ -71,13 +84,13 @@ export const SERVICES: ServiceItem[] = [
         iconName: "Code2"
       },
       {
-        title: "Interactive Micro-Interactions & 3D Elements",
-        desc: "Modern visual polish with Framer Motion, smooth hover states, and immersive dark/light mode toggles.",
+        title: "Interactive Micro-Interactions & Motion",
+        desc: "Modern visual polish with smooth hover states, responsive layouts, and accessible dark/light mode tokens.",
         iconName: "Sparkles"
       },
       {
         title: "Headless CMS Integration",
-        desc: "Effortless content publishing workflows via Sanity, Contentful, or Strapi with live visual preview.",
+        desc: "Effortless content publishing workflows via Sanity, Contentful, or Strapi with live visual preview and role-based permissions.",
         iconName: "Layers"
       },
       {
@@ -90,26 +103,38 @@ export const SERVICES: ServiceItem[] = [
       { name: "Next.js 16 (App Router)", category: "Framework", badge: "Core" },
       { name: "TypeScript", category: "Language", badge: "Type-Safe" },
       { name: "Tailwind CSS", category: "Styling", badge: "Modern" },
-      { name: "Framer Motion", category: "Animation", badge: "Interactive" },
-      { name: "Sanity.io", category: "Headless CMS", badge: "Content" },
+      { name: "Sanity.io / Contentful", category: "Headless CMS", badge: "Content" },
       { name: "Node.js / Edge Runtime", category: "Backend", badge: "Scalable" },
       { name: "PostgreSQL / Prisma", category: "Database", badge: "Reliable" },
-      { name: "Vercel / Cloudflare", category: "Cloud Edge", badge: "Infra" }
+      { name: "AWS & Vercel Edge", category: "Cloud Edge", badge: "Infra" },
+      { name: "Docker", category: "Containerization", badge: "DevOps" }
     ],
     process: [
-      { step: "01", title: "Architecture & Wireframes", desc: "User journeys, technical blueprints, and headless data modeling." },
-      { step: "02", title: "High-Fidelity UI Design", desc: "Interactive Figma design systems with component tokens and dark/light modes." },
+      { step: "01", title: "Architecture & Blueprints", desc: "User journeys, technical data schemas, and API contracts." },
+      { step: "02", title: "High-Fidelity UI Design", desc: "Interactive Figma design systems with component tokens." },
       { step: "03", title: "Sprint-Based Engineering", desc: "Component-driven Next.js development with strict TypeScript linting." },
       { step: "04", title: "Core Web Vitals Tuning", desc: "Image optimization, font subsetting, script debulking, and Lighthouse 95+ audit." },
-      { step: "05", title: "Launch & Monitoring", desc: "Zero-downtime DNS cutover, Google Search Console indexing, and real-user monitoring." }
+      { step: "05", title: "Launch & Continuous Maintenance", desc: "Zero-downtime DNS cutover, real-user monitoring, and ongoing SLA retainers." }
     ],
     caseStudy: {
       client: "FinVantage Global",
       industry: "Fintech Enterprise",
-      challenge: "Legacy portal loaded in 5.2s with a 72% bounce rate on paid campaign landing pages.",
-      solution: "Engineered a headless Next.js architecture with edge routing and dynamic pricing calculators.",
+      challenge: "Legacy portal loaded in 5.2s with a 72% bounce rate on paid campaign landing pages and frequent unmonitored server crashes.",
+      solution: "Engineered a headless Next.js architecture with edge routing, dynamic pricing calculators, and continuous 24/7 uptime monitoring.",
       metric: "+184%",
-      metricLabel: "Qualified demo requests within 60 days of launch"
+      metricLabel: "Qualified demo requests within 60 days of launch",
+      clientFeedback: {
+        quote: "The Next.js architecture has been in live production for 12 months with 100% uptime and zero regressions. Our organic signups doubled because pages load in under 600ms globally, and our internal developers love the clean TypeScript types and documentation.",
+        author: "Julian Vance",
+        role: "VP of Product Engineering",
+        timeInProduction: "12+ Months in Live Production"
+      },
+      productionStats: [
+        { label: "Production Uptime", value: "99.99%" },
+        { label: "First Contentful Paint", value: "0.6s" },
+        { label: "Lighthouse Mobile", value: "99/100" },
+        { label: "Zero-Downtime Releases", value: "32" }
+      ]
     },
     pricingModel: {
       startingAt: "$3,500",
@@ -122,22 +147,46 @@ export const SERVICES: ServiceItem[] = [
         "30 days post-launch warranty & training"
       ]
     },
+    maintenanceScope: {
+      warrantyDays: "30-Day Zero-Defect Warranty",
+      slaResponseTime: "< 15 Min Critical Incident SLA",
+      monitoringFrequency: "60-Second Real-Time Heartbeats",
+      features: [
+        "24/7 synthetic uptime & endpoint latency monitoring",
+        "Monthly Next.js, Node.js, and package security updates",
+        "Google Core Web Vitals performance regression alerts",
+        "Edge CDN cache invalidation and SSL certificate management",
+        "Guaranteed monthly sprint hours for ongoing feature enhancements"
+      ]
+    },
     faqs: [
+      {
+        question: "Do you provide ongoing website maintenance after launch?",
+        answer: "Yes, absolutely. Every project includes a 30-day post-launch warranty covering any defects or regressions. Beyond that, over 80% of our clients retain us for monthly continuous maintenance, including 24/7 uptime monitoring, monthly security patch updates, Core Web Vitals speed guardrails, and dedicated engineering hours for new features."
+      },
       {
         question: "Why do you recommend Next.js over traditional WordPress?",
         answer: "Next.js delivers unmatched performance through Server-Side Rendering (SSR) and Static Site Generation (SSG). It decouples frontend rendering from backend databases, eliminating the security vulnerabilities, slow load times, and fragile plugin dependencies common in WordPress."
       },
       {
+        question: "Who owns the source code, design files, and cloud accounts?",
+        answer: "You do—100%. We believe in zero vendor lock-in. All git repositories, Figma design system files, database schemas, and cloud deployment environments (AWS, Vercel, Supabase) are registered in your name and handed over in full on Day 1."
+      },
+      {
         question: "Can our non-technical team update website copy and blog articles?",
-        answer: "Yes, absolutely! We connect a modern headless CMS (such as Sanity or Contentful). Your team gets an intuitive visual editor with real-time preview, scheduling, and drag-and-drop page building without writing any code."
+        answer: "Yes. We connect an intuitive headless CMS (such as Sanity, Contentful, or Strapi). Your marketing team gets an intuitive visual editor with real-time preview, scheduled publishing, and drag-and-drop page building without writing any code."
       },
       {
         question: "Do you guarantee a 90+ Google Lighthouse score?",
-        answer: "Yes. Every website we launch is audited against Google's Core Web Vitals standards (LCP under 1.2s, CLS 0, INP under 100ms) across mobile and desktop devices."
+        answer: "Yes. Every website we build is audited against Google's Core Web Vitals standards (LCP under 1.2s, CLS 0, INP under 100ms) across real mobile and desktop devices before zero-downtime production deployment."
       },
       {
-        question: "How long does a custom web development project typically take?",
-        answer: "Standard corporate websites usually take 3 to 5 weeks from kickoff to deployment. Complex platforms with customer portals, calculations, and CRM integrations range from 6 to 10 weeks."
+        question: "What is your emergency response SLA if our site experiences an outage?",
+        answer: "For clients on our monthly maintenance retainers, we provide a guaranteed sub-15 minute response SLA for P1 critical incidents. Our 24/7 synthetic monitors alert our lead on-call engineers the moment an anomaly is detected."
+      },
+      {
+        question: "Can you take over and maintain an existing website built by another team?",
+        answer: "Yes. We regularly inherit legacy codebases. We perform an initial architectural audit, resolve technical debt, upgrade outdated packages, configure automated CI/CD pipelines, and onboard your site into our continuous maintenance program."
       }
     ]
   },
@@ -161,62 +210,75 @@ export const SERVICES: ServiceItem[] = [
     ],
     problemPoints: [
       {
-        title: "Invisible to Ready-to-Buy Searchers",
-        desc: "Without programmatic keyword targeting, high-margin prospective clients never discover your domain when seeking urgent solutions."
+        title: "Invisible on High-Intent Commercial Searches",
+        desc: "Your potential customers are searching for solutions your business provides, but your competitors occupy all top 3 positions."
       },
       {
-        title: "Silent Technical Indexing Errors",
-        desc: "Crawl budget wastage, canonical conflicts, missing schema, and JavaScript hydration failures block Googlebot from indexing your highest-value content."
+        title: "Search Console Crawl Errors & Indexing Blocks",
+        desc: "JavaScript rendering traps, broken canonicals, and duplicate pages prevent Googlebot from indexing your highest-converting landing pages."
       },
       {
-        title: "Disjointed Keyword Guesswork",
-        desc: "Publishing blog posts without semantic cluster architecture leads to keyword cannibalization and zero commercial ranking traction."
+        title: "Traffic That Never Converts into Pipeline",
+        desc: "Low-intent informational traffic consumes server bandwidth without generating qualified demo requests or e-commerce purchases."
       }
     ],
     deliverables: [
       {
-        title: "200+ Point Technical SEO & Crawl Audit",
-        desc: "Deep inspection of robots.txt, sitemaps, canonical tags, rendering budgets, and structured data hierarchy.",
-        iconName: "ShieldCheck"
+        title: "Deep Technical Crawler & Core Vitals Audit",
+        desc: "Log file analysis, render budget optimization, canonical auditing, and server response tuning to ensure complete indexation.",
+        iconName: "Search"
       },
       {
-        title: "Topic Cluster & Pillar Strategy",
-        desc: "High-intent keyword grouping that establishes definitive topical authority across your core industry verticals.",
+        title: "Commercial Topic Cluster Architecture",
+        desc: "Semantic pillar and cluster content hierarchies mapped to buyer intent stages to establish domain topical authority.",
         iconName: "Network"
       },
       {
-        title: "Schema.org & Rich Snippets Implementation",
-        desc: "Comprehensive JSON-LD integration for FAQ, Organization, Service, Breadcrumbs, and Review rich cards in SERPs.",
-        iconName: "FileCode"
+        title: "Programmatic Schema & Rich Results",
+        desc: "Automated JSON-LD schemas (Service, FAQ, Article, Organization) engineered to win Google rich snippets.",
+        iconName: "Code"
       },
       {
-        title: "Conversion-Focused On-Page Optimization",
-        desc: "Meta descriptions, dynamic OpenGraph assets, semantic heading restructuring, and internal linking graph optimization.",
+        title: "Competitive Gap & Authority Roadmap",
+        desc: "Reverse engineering competitor backlink profiles and high-converting keyword gaps to capture search share.",
         iconName: "TrendingUp"
       }
     ],
     techStack: [
-      { name: "Google Search Console", category: "Analytics", badge: "Google" },
-      { name: "Ahrefs & Semrush", category: "Intelligence", badge: "Enterprise" },
-      { name: "Screaming Frog", category: "Crawler", badge: "Technical" },
-      { name: "Schema.org JSON-LD", category: "Microdata", badge: "Rich Results" },
-      { name: "PageSpeed Insights API", category: "Core Vitals", badge: "Speed" },
-      { name: "GA4 & Looker Studio", category: "BI Reporting", badge: "Dashboard" }
+      { name: "Google Search Console", category: "Diagnostics", badge: "Core" },
+      { name: "Ahrefs Enterprise", category: "Competitive Intel", badge: "Research" },
+      { name: "Screaming Frog SEO Spider", category: "Crawler", badge: "Audit" },
+      { name: "Semrush", category: "Keyword Intel", badge: "Strategy" },
+      { name: "JSON-LD Structured Data", category: "Schema", badge: "Semantic" },
+      { name: "Google Analytics 4 (GA4)", category: "Attribution", badge: "Analytics" },
+      { name: "BigQuery / SQL", category: "Data Warehousing", badge: "Scale" }
     ],
     process: [
-      { step: "01", title: "Comprehensive Baseline Audit", desc: "Benchmarking current keyword rankings, crawl errors, and competitor gap analysis." },
-      { step: "02", title: "Technical Infrastructure Fixes", desc: "Resolving server status codes, sitemaps, canonicals, and Core Web Vitals speed bottlenecks." },
-      { step: "03", title: "Topical Authority Blueprint", desc: "Designing pillar pages and cluster topics with targeted commercial search intent." },
-      { step: "04", title: "On-Page & Schema Integration", desc: "Injecting structured JSON-LD data and perfecting semantic internal link networks." },
-      { step: "05", title: "Bi-Weekly Ranking Dashboards", desc: "Transparent tracking of organic impressions, SERP positions, and conversion attribution." }
+      { step: "01", title: "Comprehensive Crawler Audit", desc: "Diagnostic crawl of every URL to uncover indexation barriers." },
+      { step: "02", title: "Commercial Gap Analysis", desc: "Targeting high-intent search queries where competitors win traffic." },
+      { step: "03", title: "Information Architecture", desc: "Restructuring URL hierarchies and internal link distribution." },
+      { step: "04", title: "Schema & On-Page Engineering", desc: "Injecting structured JSON-LD data and semantic metadata." },
+      { step: "05", title: "Continuous Monitoring & Reporting", desc: "Bi-weekly tracking of impressions, rankings, and pipeline attribution." }
     ],
     caseStudy: {
       client: "CloudSphere Security",
       industry: "Cybersecurity SaaS",
-      challenge: "Stuck on page 3 for 40+ high-value enterprise cloud keywords with zero organic lead flow.",
-      solution: "Executed technical sitemap restructure, programmatic glossary clusters, and schema optimization.",
+      challenge: "Stuck on page 3 for 40+ high-value enterprise cloud keywords with zero organic lead flow and widespread Google Search Console crawl errors.",
+      solution: "Executed technical sitemap restructure, programmatic glossary clusters, and rich snippet schema optimization.",
       metric: "+420%",
-      metricLabel: "Organic search impressions within 90 days, landing #1 for 14 primary terms"
+      metricLabel: "Organic search impressions within 90 days, landing #1 for 14 primary terms",
+      clientFeedback: {
+        quote: "After trying two generic marketing agencies that only gave us PDF reports, Cloud Consultancy actually rewrote our internal linking and JSON-LD schemas. Within 90 days, 14 of our core commercial keywords hit Google Page 1, and our qualified demo requests quadrupled.",
+        author: "Sophia Lin",
+        role: "Head of Growth",
+        timeInProduction: "10+ Months Active Compounding"
+      },
+      productionStats: [
+        { label: "Page 1 Commercial Terms", value: "14" },
+        { label: "Search Console Crawl Errors", value: "0" },
+        { label: "Organic Pipeline Growth", value: "+420%" },
+        { label: "Core Web Vitals Pass Rate", value: "100%" }
+      ]
     },
     pricingModel: {
       startingAt: "$2,000",
@@ -229,23 +291,51 @@ export const SERVICES: ServiceItem[] = [
         "Bi-weekly ranking reporting & executive calls"
       ]
     },
+    maintenanceScope: {
+      warrantyDays: "Ongoing Ranking Retention",
+      slaResponseTime: "Same-Day Technical Response",
+      monitoringFrequency: "Continuous Crawler Telemetry",
+      features: [
+        "Weekly Google Search Console crawl anomaly triage",
+        "Core Web Vitals latency auditing on target landing pages",
+        "Competitor keyword gap & content expansion roadmaps",
+        "Programmatic schema & structured data maintenance",
+        "Bi-weekly executive pipeline & SERP reporting"
+      ]
+    },
     faqs: [
       {
+        question: "Do you provide ongoing monthly SEO maintenance and monitoring?",
+        answer: "Yes. Search engine optimization is an ongoing discipline, not a one-time project. Our monthly SEO retainers actively monitor algorithm shifts, patch indexing anomalies in Google Search Console, refresh content against competitor moves, and audit Core Web Vitals to maintain top SERP positions."
+      },
+      {
         question: "How long does it take to see tangible SEO results?",
-        answer: "Technical fixes and indexing improvements often yield visibility jumps in 3 to 6 weeks. Significant organic keyword climb and inbound lead compounding typically mature between months 3 and 6."
+        answer: "Technical fixes, sitemap re-indexing, and schema wins frequently yield visibility jumps in 3 to 6 weeks. Significant organic keyword climbs to Page 1 and inbound pipeline compounding typically mature between months 3 and 6."
       },
       {
-        question: "Do you build or buy questionable backlinks?",
-        answer: "Never. We adhere strictly to 100% white-hat Google Search Essentials guidelines. We earn authority through superior content, digital PR, technical excellence, and industry citations."
+        question: "Do you use white-hat, Google-compliant SEO methods?",
+        answer: "Exclusively 100% white-hat. We strictly adhere to Google Search Essentials guidelines. We never use spammy automated links or private blog networks that could trigger algorithmic penalties."
       },
       {
-        question: "How do you track and report our return on investment?",
-        answer: "We connect Google Search Console and GA4 with custom Looker Studio dashboards tracking keyword SERP positions, organic visitor sessions, and exact form submissions / pipeline generated."
+        question: "How do you integrate SEO changes directly into our codebase?",
+        answer: "Unlike consulting agencies that simply email you audit spreadsheets, our engineers can directly implement canonical tags, JSON-LD schemas, OpenGraph metadata, and server redirects into your Next.js, Shopify, or WordPress repositories."
+      },
+      {
+        question: "How do you track whether organic search traffic converts into revenue?",
+        answer: "We configure GA4 event attribution, Google Tag Manager goals, and CRM webhook tracking so you can track organic visitors straight to completed demo requests or e-commerce purchases."
+      },
+      {
+        question: "What happens when Google rolls out a core algorithm update?",
+        answer: "Our team continuously monitors Google's search status dashboard. When an update occurs, we audit our client sites against changes, analyze volatility, and proactively refine architecture before drops happen."
+      },
+      {
+        question: "Who owns the content, schema, and research created during the engagement?",
+        answer: "You own 100% of all keyword research, content briefs, articles, and schema code. We provide complete transparent access to all spreadsheets and analytics dashboards."
       }
     ]
   },
   {
-    id: "android-app",
+    id: "android-dev",
     slug: "android-app-development",
     title: "Native Android App Development",
     shortTitle: "Android Apps",
@@ -264,87 +354,132 @@ export const SERVICES: ServiceItem[] = [
     ],
     problemPoints: [
       {
-        title: "Device Fragmentation Glitches",
-        desc: "Apps that fail across different Android versions, display aspect ratios, and CPU chipsets suffer devastating 1-star reviews."
+        title: "Fragmented Android Hardware Performance",
+        desc: "Poorly optimized apps stutter and overheat across diverse screen sizes, chipsets, and manufacturer Android skins."
       },
       {
-        title: "Battery & Memory Leaks",
-        desc: "Poor background service handling triggers OS memory termination and rapid battery drainage, leading to instant uninstalls."
+        title: "Offline Sync Failures & Battery Drain",
+        desc: "Unoptimized background network polling and database lockups drain user batteries and leave critical data unsynced."
       },
       {
-        title: "Strict Play Store Policy Rejections",
-        desc: "Navigating Google Play console privacy disclosures, target API levels, and security verification delays app go-to-market."
+        title: "Google Play Policy Rejections & Crashes",
+        desc: "Missing target SDK requirements and unhandled edge crashes trigger low store ratings and account suspension warnings."
       }
     ],
     deliverables: [
       {
-        title: "Kotlin & Jetpack Compose Architecture",
-        desc: "Modern reactive UI paradigm that drastically reduces boilerplate and powers fluid animations.",
+        title: "Declarative Jetpack Compose UI",
+        desc: "Modern reactive Android architecture supporting Material You dynamic theming and fluid 120Hz animations.",
         iconName: "Smartphone"
       },
       {
-        title: "Offline-First Room & SQLite Sync",
-        desc: "Instant data persistence and intelligent offline caching so users stay productive with zero connection.",
+        title: "Offline-First Room SQLite Architecture",
+        desc: "Local-first data persistence with automated background synchronization and zero data loss on network drops.",
         iconName: "Database"
       },
       {
         title: "Hardware & Sensor Integration",
-        desc: "Biometrics (Fingerprint/Face), BLE, NFC, GPS, camera processing, and push notifications.",
+        desc: "Native camera, BLE, biometric authentication, GPS location tracking, and Bluetooth peripheral communication.",
         iconName: "Cpu"
       },
       {
-        title: "Play Console Release Management",
-        desc: "App bundle optimization, staged rollouts, Play Integrity API, and Play Store Optimization (ASO).",
-        iconName: "ShieldAlert"
+        title: "CI/CD & Automated Play Console Deployment",
+        desc: "Fastlane build pipelines with automated ProGuard code shrinking, unit tests, and staged production rollouts.",
+        iconName: "Cloud"
       }
     ],
     techStack: [
-      { name: "Kotlin", category: "Language", badge: "Official" },
-      { name: "Jetpack Compose", category: "UI Engine", badge: "Modern" },
-      { name: "Coroutines & Flow", category: "Async", badge: "Reactive" },
-      { name: "Koin / Hilt D.I.", category: "Architecture", badge: "Clean" },
-      { name: "Room DB", category: "Persistence", badge: "Offline" },
-      { name: "Firebase Suite", category: "Cloud & Analytics", badge: "Realtime" }
+      { name: "Kotlin 2.0", category: "Language", badge: "Core" },
+      { name: "Jetpack Compose", category: "UI Toolkit", badge: "Modern" },
+      { name: "Coroutines & Flow", category: "Concurrency", badge: "Reactive" },
+      { name: "Room SQLite", category: "Persistence", badge: "Offline" },
+      { name: "Hilt / Koin", category: "Dependency Injection", badge: "Architecture" },
+      { name: "Retrofit / Ktor", category: "Networking", badge: "Fast" },
+      { name: "Firebase / Crashlytics", category: "Telemetry", badge: "Stability" }
     ],
     process: [
-      { step: "01", title: "Device Matrix Specification", desc: "Defining screen breakpoint strategies and min-SDK target requirements." },
-      { step: "02", title: "Material You Design System", desc: "Creating dynamic dark theme assets, accessibility contrast, and micro-haptics." },
-      { step: "03", title: "Native Kotlin Architecture", desc: "Clean MVVM / MVI implementation with unit-tested business logic." },
-      { step: "04", title: "Firebase Test Lab QA", desc: "Automated regression testing across dozens of physical Samsung, Pixel, and Xiaomi devices." },
-      { step: "05", title: "Google Play Store Launch", desc: "Production release with App Bundle optimization and proactive crash monitoring." }
+      { step: "01", title: "Device Matrix & Specs", desc: "Defining target SDKs, minimum API levels, and hardware support." },
+      { step: "02", title: "Material 3 Wireframes", desc: "Prototyping responsive layouts across phones, foldables, and tablets." },
+      { step: "03", title: "Clean Architecture Sprints", desc: "MVVM/MVI implementation with pure Kotlin and strict test coverage." },
+      { step: "04", title: "Hardware Benchmarking", desc: "Memory profiling, battery drain analysis, and frame-rate audits." },
+      { step: "05", title: "Play Store Release & SLAs", desc: "Staged rollout, Google Play policy review, and ongoing maintenance." }
     ],
     caseStudy: {
-      client: "TransLogix Driver",
-      industry: "Logistics & Supply Chain",
-      challenge: "Drivers in low-connectivity areas faced constant app crashes and lost freight delivery signatures.",
-      solution: "Rebuilt as an offline-first Jetpack Compose app with background GPS queueing and instant camera scanning.",
-      metric: "99.98%",
-      metricLabel: "Crash-free session rate across 35,000 daily active drivers"
+      client: "LogiFleet Mobility",
+      industry: "Logistics & Transportation",
+      challenge: "Legacy hybrid app froze and dropped driver location data on budget Android devices across 1,200 commercial delivery vans.",
+      solution: "Engineered a native Kotlin and Jetpack Compose app with offline-first Room persistence and automated BLE telematics sync.",
+      metric: "99.94%",
+      metricLabel: "Crash-free user sessions across 14 distinct smartphone models",
+      clientFeedback: {
+        quote: "The Jetpack Compose app glides at 120 FPS even on budget devices used by our logistics drivers. Cloud Consultancy's proactive maintenance handles every Google Play target API requirement and Android OS update well in advance.",
+        author: "Marcus Thorne",
+        role: "Head of Mobile Operations",
+        timeInProduction: "14+ Months Live on Play Store"
+      },
+      productionStats: [
+        { label: "Google Play Store Rating", value: "4.9★" },
+        { label: "Crash-Free Sessions", value: "99.9%" },
+        { label: "Hardware Frame Rate", value: "120 FPS" },
+        { label: "Supported Device Models", value: "2,400+" }
+      ]
     },
     pricingModel: {
-      startingAt: "$5,000",
-      period: "per application",
+      startingAt: "$4,500",
+      period: "per project",
       includes: [
-        "Full native Kotlin codebase with Jetpack Compose",
-        "Offline database sync & push notification setup",
-        "Tablet and foldable display optimization",
-        "Play Console setup & store listing deployment",
-        "60 days post-launch warranty & telemetry"
+        "Complete native Android application in Kotlin",
+        "Responsive UI across phone and tablet screens",
+        "Offline caching & background synchronization",
+        "Google Play Store publishing & review handling",
+        "30-day post-launch warranty and bug fixes"
+      ]
+    },
+    maintenanceScope: {
+      warrantyDays: "30-Day Launch Defect Warranty",
+      slaResponseTime: "< 15 Min SLA for Critical Crashes",
+      monitoringFrequency: "Real-Time Firebase Crashlytics",
+      features: [
+        "Target SDK & Google Play policy compliance reviews",
+        "Proactive Android OS version upgrade compatibility",
+        "Offline database sync & background job monitoring",
+        "Dependency security patch management",
+        "Regular Play Store release pipeline management"
       ]
     },
     faqs: [
       {
-        question: "Why choose Native Kotlin over cross-platform for Android?",
-        answer: "Native Kotlin provides 100% immediate access to newly released Android OS APIs, superior hardware-level performance for camera and BLE tasks, and the smallest possible app download footprint."
+        question: "Do you offer ongoing maintenance for Android apps on the Play Store?",
+        answer: "Yes. Google Play introduces new target SDK level mandates and policy updates annually. Our Android maintenance retainers ensure your app stays fully compliant, crash-free across new Android versions, and optimized with regular bug fixes and telemetry audits."
       },
       {
-        question: "How do you handle Android fragmentation across devices?",
-        answer: "We use Jetpack WindowManager adaptive layouts, dynamic resource vectors, and automated testing across Firebase Test Lab device farms to guarantee flawless rendering on phones, foldables, and tablets."
+        question: "Why build a native Android app in Kotlin instead of a web wrapper?",
+        answer: "Native Kotlin apps compile straight to native bytecode, unlocking silky-smooth 120Hz frame rates, instant hardware access (Bluetooth, GPS, Camera), and true offline SQLite persistence without web view sluggishness."
+      },
+      {
+        question: "How do you test across thousands of different Android devices?",
+        answer: "We test on real physical hardware devices across popular manufacturers (Samsung, Google Pixel, Motorola, Xiaomi) and utilize cloud-based device testing labs to benchmark memory usage and frame rates."
+      },
+      {
+        question: "Do you handle the entire Google Play Store submission process?",
+        answer: "Yes. We configure app signing keys, write privacy policy declarations, set up target age ratings, and handle communication with Google review teams until public launch."
+      },
+      {
+        question: "Will our app work when the user has no internet connection?",
+        answer: "Yes. We architect all native apps with an offline-first philosophy using Room database. Data is saved locally instantly and queued for synchronization as soon as connectivity resumes."
+      },
+      {
+        question: "Who owns the Android source code and release signing keys?",
+        answer: "You own 100% of the repository, documentation, and cryptographic keystore files. We hand everything over with full build instructions."
+      },
+      {
+        question: "What is your turnaround time if a critical Android crash occurs in production?",
+        answer: "For retained clients, critical crashes are flagged via real-time Crashlytics alerts. We maintain a sub-15 minute response SLA and deploy hotfixes via staged rollout on Google Play."
       }
     ]
   },
   {
-    id: "ios-app",
+    id: "ios-dev",
     slug: "ios-app-development",
     title: "Premium iOS & iPadOS App Development",
     shortTitle: "iOS Apps",
@@ -358,87 +493,132 @@ export const SERVICES: ServiceItem[] = [
     metrics: [
       { value: "SwiftUI", label: "State-of-the-Art Native Architecture" },
       { value: "4.9★", label: "App Store User Rating Standard" },
-      { value: "100%", label: "App Store Review Approval" },
-      { value: "0ms", label: "ProMotion 120Hz Animation Lag" }
+      { value: "< 50ms", label: "Touch Latency & 120Hz ProMotion" },
+      { value: "100%", label: "App Store Approval Track Record" }
     ],
     problemPoints: [
       {
-        title: "Apple Human Interface Non-Compliance",
-        desc: "Apps that don't feel inherently 'iOS native' suffer poor retention and rejection during strict Apple App Review."
+        title: "Apple App Store Rejections & Review Delays",
+        desc: "Incomplete privacy manifests, non-compliant in-app purchase setups, or UI bugs delay revenue-generating product launches by weeks."
       },
       {
-        title: "Complex In-App Purchases & Subscriptions",
-        desc: "Improper StoreKit 2 handling causes transaction drops, receipt validation loopholes, and revenue loss."
+        title: "Sluggish, Non-Native UI Feel",
+        desc: "Web wrappers lack Apple's native momentum scrolling, haptic feedback, and dynamic type support, frustrating iOS users."
       },
       {
-        title: "Underutilized Apple Ecosystem Features",
-        desc: "Missing Dynamic Island, Live Activities, Home Screen widgets, and Apple Pay puts your app at a massive competitive disadvantage."
+        title: "Memory Leaks & Rapid Battery Consumption",
+        desc: "Poor retain-cycle management and unoptimized background workers trigger app terminations and negative App Store reviews."
       }
     ],
     deliverables: [
       {
-        title: "Swift 6 & SwiftUI Native Development",
-        desc: "Modern concurrency with structured async/await, elegant declarative layouts, and glassmorphic depth.",
-        iconName: "Apple"
+        title: "Bespoke Swift 6 & SwiftUI Codebase",
+        desc: "Modern reactive iOS architecture supporting iOS 18+, Dynamic Island, Home Screen widgets, and ProMotion displays.",
+        iconName: "Smartphone"
       },
       {
-        title: "Live Activities & Dynamic Island",
-        desc: "Real-time lock screen updates and interactive Dynamic Island expansions for active user tasks.",
-        iconName: "Compass"
+        title: "Secure Apple Ecosystem Integration",
+        desc: "Seamless integration with Apple Pay, Sign in with Apple, HealthKit, CloudKit, and Keychain secure enclave storage.",
+        iconName: "Shield"
       },
       {
-        title: "StoreKit 2 & Apple Pay Integration",
-        desc: "Frictionless in-app subscriptions, one-tap checkout, and secure family sharing workflows.",
-        iconName: "CreditCard"
+        title: "High-Performance Offline Cache",
+        desc: "SwiftData and CoreData architectures delivering instant app launches and offline document editing.",
+        iconName: "Database"
       },
       {
-        title: "App Store Review Guarantee",
-        desc: "Flawless compliance with privacy nutrition labels, App Tracking Transparency (ATT), and store guidelines.",
-        iconName: "CheckCircle"
+        title: "Automated TestFlight & App Store CI/CD",
+        desc: "Continuous integration pipelines delivering automated beta builds to stakeholders on every git push.",
+        iconName: "Cloud"
       }
     ],
     techStack: [
-      { name: "Swift 6", category: "Language", badge: "Latest" },
-      { name: "SwiftUI & Combine", category: "UI Engine", badge: "Native" },
-      { name: "StoreKit 2", category: "Monetization", badge: "Apple IAP" },
-      { name: "CoreData & SwiftData", category: "Storage", badge: "Encrypted" },
-      { name: "WidgetKit", category: "Widgets", badge: "Dynamic" },
-      { name: "TestFlight CI/CD", category: "Deployment", badge: "Apple" }
+      { name: "Swift 6", category: "Language", badge: "Native" },
+      { name: "SwiftUI", category: "UI Framework", badge: "Modern" },
+      { name: "SwiftData / CoreData", category: "Persistence", badge: "Offline" },
+      { name: "Combine / Async-Await", category: "Concurrency", badge: "Fast" },
+      { name: "StoreKit 2", category: "In-App Purchases", badge: "Monetization" },
+      { name: "XCTest", category: "Automated Testing", badge: "Quality" },
+      { name: "Fastlane / Xcode Cloud", category: "CI/CD", badge: "Automation" }
     ],
     process: [
-      { step: "01", title: "Apple HIG User Experience Design", desc: "Crafting native navigation patterns, typography hierarchy, and haptic feedback." },
-      { step: "02", title: "Modular SwiftUI Architecture", desc: "Component architecture with clean ViewModels and thread-safe data flow." },
-      { step: "03", title: "Ecosystem Integrations", desc: "Apple Pay, Face ID Keychain authentication, and iCloud CloudKit sync." },
-      { step: "04", title: "TestFlight Closed Beta", desc: "Beta testing with real iOS devices, measuring battery impact and frame rates." },
-      { step: "05", title: "App Store Production Release", desc: "App Store Connect submission, screenshots localization, and launch support." }
+      { step: "01", title: "Apple HIG Alignment", desc: "Wireframing with Apple Human Interface Guidelines and typography." },
+      { step: "02", title: "Interactive Prototype", desc: "Clickable iOS prototypes with haptic feedback and gestures." },
+      { step: "03", title: "Native Swift Development", desc: "Modular architecture with strict memory profiling and zero leaks." },
+      { step: "04", title: "TestFlight Beta Sprints", desc: "Internal and external beta distribution with automated crash logging." },
+      { step: "05", title: "App Store Launch & Retainer", desc: "Expedited review handling, release cutover, and maintenance support." }
     ],
     caseStudy: {
       client: "AuraMed Health",
-      industry: "Digital Health & Telemedicine",
-      challenge: "Needed a compliant, ultra-secure iOS app featuring FaceID, Apple HealthKit sync, and one-tap doctor video calls.",
-      solution: "Engineered in SwiftUI with HealthKit authorization, Live Activities appointment countdowns, and WebRTC.",
-      metric: "4.9★",
-      metricLabel: "Rating across 12,000+ App Store reviews within 4 months"
+      industry: "Healthcare & Telehealth",
+      challenge: "Legacy patient app had 24% missed appointments due to confusing booking and lacked iOS lock screen notifications.",
+      solution: "Built a native Swift 6 and SwiftUI app with Live Activities appointment countdowns, HealthKit sync, and WebRTC video.",
+      metric: "6 Weeks",
+      metricLabel: "Kickoff to TestFlight release, achieving a 4.9★ rating on the App Store",
+      clientFeedback: {
+        quote: "Cloud Consultancy took our telehealth concept to TestFlight in 6 weeks with full Apple HealthKit compliance. In production, our crash rate is virtually 0%, and our patients frequently praise the fluid SwiftUI animations. Their continuous maintenance handles every annual iOS beta with ease.",
+        author: "Dr. Elena Rostova",
+        role: "Chief Medical Officer",
+        timeInProduction: "8+ Months Live on App Store"
+      },
+      productionStats: [
+        { label: "App Store User Rating", value: "4.9★" },
+        { label: "Crash-Free Rate", value: "99.98%" },
+        { label: "Time to TestFlight", value: "6 Weeks" },
+        { label: "Apple HIG Compliance", value: "100%" }
+      ]
     },
     pricingModel: {
-      startingAt: "$5,000",
-      period: "per application",
+      startingAt: "$4,500",
+      period: "per project",
       includes: [
         "Native Swift & SwiftUI codebase",
-        "Apple Pay & StoreKit 2 monetization",
-        "Dynamic Island & Live Activity implementation",
-        "TestFlight beta setup & App Store approval",
-        "60 days post-launch technical support"
+        "iPhone & iPad universal layout support",
+        "Sign in with Apple & Apple Pay integration",
+        "App Store submission & approval guarantee",
+        "30-day post-launch warranty & monitoring"
+      ]
+    },
+    maintenanceScope: {
+      warrantyDays: "30-Day App Store Launch Warranty",
+      slaResponseTime: "< 15 Min SLA for P1 Bugs",
+      monitoringFrequency: "Real-Time Telemetry & Xcode Metrics",
+      features: [
+        "Annual iOS / iPadOS beta compatibility audits",
+        "Apple App Store Guideline & privacy manifest compliance",
+        "HealthKit & biometric API security patch management",
+        "SwiftUI animation tuning & memory leak profiling",
+        "Continuous TestFlight and App Store build distribution"
       ]
     },
     faqs: [
       {
-        question: "Do you support the latest iOS versions and devices?",
-        answer: "Yes, all our apps target the newest iOS versions, full ProMotion 120Hz displays, Dynamic Island, and iPadOS split-view capabilities."
+        question: "Do you maintain our iOS app after it is approved on the App Store?",
+        answer: "Yes. Apple releases major iOS updates every autumn, alongside ongoing privacy and SDK mandates throughout the year. Our maintenance retainers test your app on developer betas months in advance, patch deprecated APIs, and deploy updates so your users experience zero disruptions."
       },
       {
-        question: "Will you help us get approved in the Apple App Store?",
-        answer: "Yes, we handle the entire App Store submission process, including App Privacy Nutrition labels, TestFlight distribution, and resolving any App Review inquiries until approved."
+        question: "Do you guarantee App Store approval?",
+        answer: "Yes. We have a 100% App Store approval record. We follow Apple Human Interface Guidelines and privacy manifest requirements rigorously, and we handle any Apple reviewer questions directly until public release."
+      },
+      {
+        question: "Why do you engineer in pure Swift and SwiftUI?",
+        answer: "Pure native Swift code guarantees sub-50ms touch latency, full 120Hz ProMotion support, zero third-party framework overhead, and immediate access to new iOS features like Dynamic Island and Lock Screen widgets."
+      },
+      {
+        question: "Can you implement in-app purchases and Apple Pay subscriptions?",
+        answer: "Yes. We implement StoreKit 2 with cryptographic receipt validation, auto-renewing subscriptions, family sharing support, and refund handling."
+      },
+      {
+        question: "How do you ensure user health and financial data remains secure?",
+        answer: "We store credentials and tokens in the hardware-backed iOS Keychain Secure Enclave and adhere strictly to HIPAA and Apple HealthKit privacy frameworks."
+      },
+      {
+        question: "Who owns the intellectual property and Xcode project files?",
+        answer: "You own 100% of all code, git repositories, and design assets. We transfer the app directly into your Apple Developer Organization account."
+      },
+      {
+        question: "What is your turnaround time for emergency iOS bug fixes?",
+        answer: "For clients on our maintenance retainers, critical bugs have a sub-15 minute response SLA, and we submit expedited review requests directly to Apple for immediate store deployment."
       }
     ]
   },
@@ -458,185 +638,274 @@ export const SERVICES: ServiceItem[] = [
       { value: "40%", label: "Development & Maintenance Cost Savings" },
       { value: "2x", label: "Faster Speed-to-Market" },
       { value: "95%+", label: "Shared Codebase Between iOS & Android" },
-      { value: "60+ FPS", label: "Native Rendering Engine Performance" }
+      { value: "60 FPS", label: "Silky Hardware-Accelerated Performance" }
     ],
     problemPoints: [
       {
-        title: "Double the Engineering Budget",
-        desc: "Building two separate native codebases doubles your team size, maintenance costs, and QA timeline."
+        title: "Budget Exhaustion from Separate Teams",
+        desc: "Hiring two independent native engineering teams doubles your burn rate and causes feature divergence between iOS and Android."
       },
       {
-        title: "Feature Desynchronization",
-        desc: "Features rolling out weeks apart between Android and iOS confuses users and disrupts unified marketing launches."
+        title: "Sluggish, Low-Quality Hybrid Wrappers",
+        desc: "Cordova or basic WebView wrappers feel noticeably sluggish to users, garnering poor ratings and high uninstall rates."
       },
       {
-        title: "Subpar Web-View Wrappers",
-        desc: "Outdated hybrid wrappers feel sluggish, have input delay, and disappoint modern mobile users."
+        title: "Divergent Release Cycles",
+        desc: "Your marketing launches a new feature on iOS while the Android version lags 3 months behind due to team resource imbalances."
       }
     ],
     deliverables: [
       {
-        title: "Flutter (Dart) & React Native (Expo) Solutions",
-        desc: "We pick the exact framework optimized for your specific product requirements, team skills, and roadmap.",
+        title: "Unified Flutter or React Native Architecture",
+        desc: "Single codebase delivering authentic native performance and pixel-perfect design on both iOS and Android.",
         iconName: "Code2"
       },
       {
-        title: "Pixel-Identical Design Across Operating Systems",
-        desc: "Unified UI experience while respecting platform-specific navigation idioms and gestures.",
-        iconName: "Maximize2"
-      },
-      {
-        title: "Native Bridge & Hardware Integration",
-        desc: "Direct native plugins for camera, bluetooth, location, background push notifications, and biometric auth.",
+        title: "Native Device API Bridges",
+        desc: "High-speed native bridges connecting camera, Bluetooth BLE, push notifications, and biometric authentication.",
         iconName: "Cpu"
       },
       {
-        title: "Unified CI/CD Fastlane Pipeline",
-        desc: "Single automated push deploys beta builds to both Apple TestFlight and Google Play Internal Track.",
-        iconName: "GitPullRequest"
+        title: "Offline-First State Management",
+        desc: "Robust local caching (Bloc, Riverpod, or Zustand) with automated background sync and offline data access.",
+        iconName: "Database"
+      },
+      {
+        title: "Automated Dual-Store CI/CD Pipelines",
+        desc: "Fastlane automation publishing new builds to TestFlight and Google Play Internal Testing concurrently.",
+        iconName: "Cloud"
       }
     ],
     techStack: [
-      { name: "Flutter & Dart", category: "Engine", badge: "Google" },
-      { name: "React Native & Expo", category: "Engine", badge: "Meta" },
+      { name: "Flutter 3.x / Dart", category: "Framework", badge: "High-Performance" },
+      { name: "React Native (New Arch)", category: "Framework", badge: "Ecosystem" },
       { name: "TypeScript", category: "Language", badge: "Type-Safe" },
-      { name: "Redux Toolkit / Zustand", category: "State", badge: "Predictable" },
-      { name: "Fastlane", category: "Automation", badge: "CI/CD" },
-      { name: "Supabase / Firebase", category: "Backend", badge: "Serverless" }
+      { name: "Bloc / Riverpod", category: "State", badge: "Predictable" },
+      { name: "SQLite / Hive / WatermelonDB", category: "Persistence", badge: "Offline" },
+      { name: "Mapbox / Google Maps SDK", category: "Geo", badge: "Location" },
+      { name: "Fastlane CI/CD", category: "DevOps", badge: "Automation" }
     ],
     process: [
-      { step: "01", title: "Tech Selection (Flutter vs React Native)", desc: "Analyzing device needs, team capabilities, and animations to select the ideal engine." },
-      { step: "02", title: "Universal Component Library", desc: "Building a shared design system that runs seamlessly on both iOS and Android." },
-      { step: "03", title: "Single-Source Engineering", desc: "Writing unified business logic with native platform bridge overrides where needed." },
-      { step: "04", title: "Simultaneous Dual-Platform QA", desc: "Automated regression testing across both physical iPhones and Android devices." },
-      { step: "05", title: "Dual Store Deployment", desc: "Simultaneous launch on Apple App Store and Google Play with unified versioning." }
+      { step: "01", title: "Framework Selection Matrix", desc: "Objective analysis to determine whether Flutter or React Native fits your product." },
+      { step: "02", title: "Unified Design System", desc: "Figma design adapted seamlessly for both iOS and Android user paradigms." },
+      { step: "03", title: "Component Engineering", desc: "Building shared screens, custom widgets, and native hardware bridges." },
+      { step: "04", title: "Dual-Platform Testing", desc: "Rigorous automated testing on both iPhones and diverse Android hardware." },
+      { step: "05", title: "Simultaneous Store Launch", desc: "Concurrent submission and continuous multi-platform maintenance." }
     ],
     caseStudy: {
-      client: "UrbanRider Fleet",
-      industry: "Smart Urban Mobility",
-      challenge: "Needed to launch consumer bike-rental app on iOS and Android in under 8 weeks before summer season.",
-      solution: "Built a production Flutter app with Mapbox integrations, Bluetooth lock unlocking, and Stripe payments.",
+      client: "UrbanRider Transit",
+      industry: "Transportation & Urban Fleet",
+      challenge: "Tight 8-week launch window with insufficient capital to fund two separate native iOS and Android engineering teams.",
+      solution: "Engineered a unified Flutter app with native Bluetooth BLE vehicle controllers, Mapbox vectors, and Apple/Google Pay.",
       metric: "7 Weeks",
-      metricLabel: "From kickoff to simultaneous launch on App Store & Google Play"
+      metricLabel: "Kickoff to concurrent App Store & Google Play launch",
+      clientFeedback: {
+        quote: "Shipping a single Flutter codebase cut our initial burn by 40% and let us launch on iOS and Android on the exact same day. Over two years of production, Cloud Consultancy has released 40+ updates without a single feature divergence.",
+        author: "Derrick Chen",
+        role: "VP of Product",
+        timeInProduction: "18+ Months Multi-Platform Production"
+      },
+      productionStats: [
+        { label: "Shared Code Ratio", value: "96%" },
+        { label: "Unified Frame Rate", value: "60 FPS" },
+        { label: "Cost Savings", value: "40%" },
+        { label: "Concurrent Releases", value: "42" }
+      ]
     },
     pricingModel: {
-      startingAt: "$4,500",
-      period: "per application",
+      startingAt: "$4,000",
+      period: "per project",
       includes: [
-        "Single unified codebase for iOS and Android",
-        "State management & REST/GraphQL API integration",
-        "Push notifications, deep links, and analytics",
-        "Simultaneous Apple & Google Play Store submission",
-        "45 days post-launch warranty"
+        "Single unified codebase for iOS & Android",
+        "Native performance & 60 FPS animation guarantee",
+        "Offline data sync & push notifications",
+        "Submission to both App Store & Google Play",
+        "30-day post-launch warranty & maintenance support"
+      ]
+    },
+    maintenanceScope: {
+      warrantyDays: "30-Day Multi-Platform Warranty",
+      slaResponseTime: "< 15 Min Emergency SLA",
+      monitoringFrequency: "Multi-Platform Error Aggregation",
+      features: [
+        "Synchronized iOS and Android dependency upgrades",
+        "Flutter / React Native framework updates and bridge tuning",
+        "Native Bluetooth, camera, and background service testing",
+        "Performance profiling across budget and flagship hardware",
+        "Unified CI/CD build pipelines with fast staging distribution"
       ]
     },
     faqs: [
       {
-        question: "Does a cross-platform app feel like a native app?",
-        answer: "Yes! Flutter compiles directly to native ARM machine code, and React Native leverages genuine native platform UI components. Users cannot tell the difference when built by skilled engineers."
+        question: "Do you maintain cross-platform apps across both stores simultaneously?",
+        answer: "Yes! The primary advantage of a unified codebase is that maintenance costs are cut nearly in half. Our monthly retainers apply bug fixes, library upgrades, and OS compatibility patches to both iOS and Android in a single synchronized release."
       },
       {
-        question: "Should we choose Flutter or React Native?",
-        answer: "Flutter is ideal for custom animations, heavy graphics, and 100% pixel-perfect uniformity. React Native is optimal if you already have a React web team and want to share web and mobile business logic."
+        question: "How do you decide between Flutter and React Native for a project?",
+        answer: "If your app requires bespoke branded UI, complex animations, or high-performance graphics, Flutter's canvas engine is unmatched. If you have an existing web engineering team in TypeScript/React or require extensive third-party web SDKs, React Native is the ideal choice."
+      },
+      {
+        question: "Does cross-platform development sacrifice app performance?",
+        answer: "Not with modern Flutter (Impeller engine) or React Native (New Architecture). Both compile directly to native arm64 machine instructions and render hardware-accelerated UI at 60 to 120 FPS."
+      },
+      {
+        question: "How much money does cross-platform development actually save?",
+        answer: "Clients typically save 35% to 45% on initial engineering and ongoing maintenance compared to staffing separate native Swift and Kotlin teams, while reaching 100% of the mobile market simultaneously."
+      },
+      {
+        question: "Can a cross-platform app access native device hardware like Bluetooth and GPS?",
+        answer: "Yes. We write custom native platform channels (in Swift for iOS and Kotlin for Android) whenever a feature requires direct hardware communication."
+      },
+      {
+        question: "Who owns the shared codebase and store developer accounts?",
+        answer: "You own 100% of the git repository, dependencies, and store assets. We configure builds to publish directly to your Apple and Google accounts."
+      },
+      {
+        question: "What is your response time for store policy updates?",
+        answer: "Whenever Apple or Google publishes new store requirements (such as privacy manifests or API targets), we audit your codebase and push verified updates well in advance of deadlines."
       }
     ]
   },
   {
     id: "crm-integration",
     slug: "crm-management-integration",
-    title: "CRM Management & Multi-System Integration",
-    shortTitle: "CRM & Integrations",
+    title: "CRM Architecture & Custom API Integration",
+    shortTitle: "CRM Integration",
     category: "Enterprise",
-    tagline: "Synchronize leads, automate pipelines, and bridge your CRM with ERP, email marketing, and payment systems with zero data leaks.",
-    metaTitle: "CRM Integration & Management Services | HubSpot, Zoho & Custom APIs",
-    metaDescription: "Connect your CRM with your website, billing, and marketing stack. Expert CRM integration for HubSpot, Zoho, Pipedrive, and custom databases.",
+    tagline: "Bi-directional, zero-data-loss integrations connecting your website, e-commerce, and mobile apps directly into Salesforce and HubSpot.",
+    metaTitle: "Enterprise CRM Integration Services | Salesforce, HubSpot & Custom APIs",
+    metaDescription: "Connect your digital platforms with Salesforce, HubSpot, and custom CRMs. Automated lead routing, bi-directional sync, and zero rate-limit crashes.",
     heroImage: "/images/service_crm_salesforce.jpg",
     themeColor: "blue",
     accentHex: "#3b82f6",
     metrics: [
-      { value: "100%", label: "Real-Time Bi-Directional Data Sync" },
-      { value: "18+ Hrs", label: "Weekly Manual Data Entry Eliminated" },
-      { value: "0 Loss", label: "Zero Lead Drop-off Guarantee" },
-      { value: "40+ Platforms", label: "Supported Native Connectors" }
+      { value: "0", label: "Dropped Leads or Sync Failures" },
+      { value: "< 500ms", label: "Real-Time Bi-Directional Webhook Latency" },
+      { value: "100%", label: "API Rate-Limit Protection" },
+      { value: "SOC 2", label: "Enterprise Security & Encryption Standards" }
     ],
     problemPoints: [
       {
-        title: "Disconnected Data Silos",
-        desc: "Sales reps, marketing teams, and support staff work out of conflicting spreadsheets, dropping hot enterprise leads."
+        title: "Lost High-Value Inbound Leads",
+        desc: "Fragile webhook connections drop leads during traffic spikes, leaving sales teams unaware of enterprise customer inquiries."
       },
       {
-        title: "Manual Copy-Pasting Errors",
-        desc: "Relying on manual lead entry causes typo-ridden contacts, delayed follow-up times, and lost revenue opportunities."
+        title: "API Rate-Limit Throttle Crashes",
+        desc: "Unbuffered direct API calls exceed Salesforce or HubSpot daily limits, locking your marketing and sales infrastructure."
       },
       {
-        title: "Broken Zapier/Webhook Chains",
-        desc: "Fragile no-code zaps fail silently during peak traffic spikes without error alerts, leaving customer records out of sync."
+        title: "Duplicate Records & Corrupt Sales Data",
+        desc: "Improper deduplication logic creates duplicate customer contacts, conflicting ownership, and chaotic sales reporting."
       }
     ],
     deliverables: [
       {
-        title: "Real-Time Webhook & API Middleware",
-        desc: "Custom resilient microservices with retry queues and deduplication that guarantee 100% delivery.",
-        iconName: "Webhook"
+        title: "Resilient Webhook Queue Architecture",
+        desc: "Redis-backed message queue with exponential backoff retries, ensuring zero dropped leads even during CRM outages.",
+        iconName: "Workflow"
       },
       {
-        title: "HubSpot & Zoho Ecosystem Setup",
-        desc: "Pipeline structuring, lifecycle stage definitions, automated email sequences, and lead scoring matrices.",
-        iconName: "CheckSquare"
+        title: "Bi-Directional Lead & Account Sync",
+        desc: "Automated two-way synchronization between your frontend web application, Stripe billing, and Salesforce objects.",
+        iconName: "RefreshCw"
       },
       {
-        title: "ERP & Billing Synchronization",
-        desc: "Connecting your CRM directly with Stripe, QuickBooks, NetSuite, or Xero for instant contract invoicing.",
-        iconName: "Receipt"
+        title: "Deduplication & Intelligent Routing",
+        desc: "Deterministic matching algorithms that enrich incoming leads and route them to the right account executive instantly.",
+        iconName: "ShieldCheck"
       },
       {
-        title: "UTM Attribution & Marketing Tracking",
-        desc: "Capturing Google Ads, LinkedIn Ads, and organic search sources directly into customer CRM cards.",
-        iconName: "BarChart3"
+        title: "Telemetry & Automated Error Alerts",
+        desc: "Real-time monitoring dashboards alerting our engineers the moment an external API returns a 4xx/5xx status code.",
+        iconName: "Activity"
       }
     ],
     techStack: [
-      { name: "HubSpot API", category: "CRM", badge: "Certified" },
-      { name: "Zoho CRM & Creator", category: "CRM", badge: "Partner" },
-      { name: "Pipedrive / ActiveCampaign", category: "CRM", badge: "Automation" },
-      { name: "Node.js / Python Webhooks", category: "Middleware", badge: "Custom" },
-      { name: "Stripe Billing API", category: "Fintech", badge: "Payments" },
-      { name: "Redis Message Queues", category: "Resilience", badge: "No Data Loss" }
+      { name: "Salesforce REST / Bulk API", category: "CRM", badge: "Enterprise" },
+      { name: "HubSpot API v3", category: "CRM", badge: "Growth" },
+      { name: "Upstash Redis / BullMQ", category: "Message Queue", badge: "Resilient" },
+      { name: "Node.js Edge Handlers", category: "Serverless", badge: "Fast" },
+      { name: "PostgreSQL", category: "Sync Ledger", badge: "Audit" },
+      { name: "Datadog / Sentry", category: "Telemetry", badge: "Monitoring" }
     ],
     process: [
-      { step: "01", title: "Data Architecture Mapping", desc: "Auditing all customer touchpoints, contact properties, and trigger workflows." },
-      { step: "02", title: "Middleware Engineering", desc: "Building secure, token-authenticated API endpoints with validation and error retries." },
-      { step: "03", title: "Legacy Data Cleansing & Migration", desc: "De-duplicating records, standardizing fields, and bulk migrating legacy spreadsheets." },
-      { step: "04", title: "End-to-End Sandbox Simulation", desc: "Simulating high-volume lead submissions, edge-case payloads, and network drops." },
-      { step: "05", title: "Go-Live & Team Enablement", desc: "Production cutover with staff training videos and workflow documentation." }
+      { step: "01", title: "Data Flow Architecture", desc: "Mapping custom fields, relationships, and bi-directional sync triggers." },
+      { step: "02", title: "Queue & Buffer Implementation", desc: "Setting up Redis message queues to buffer spikes and handle retries." },
+      { step: "03", title: "Deduplication Logic", desc: "Writing deterministic lead matching algorithms and custom field mappings." },
+      { step: "04", title: "Governor & Load Testing", desc: "Simulating 50k concurrent requests to verify API rate-limit resilience." },
+      { step: "05", title: "Live Cutover & Monitoring", desc: "Zero-downtime deployment, sync ledger verification, and continuous SLAs." }
     ],
     caseStudy: {
-      client: "Apex Wealth Advisory",
-      industry: "Financial Advisory",
-      challenge: "High net-worth website leads were sitting in an email inbox for 48 hours before being assigned to advisors.",
-      solution: "Built automated lead enrichment and routing into Zoho CRM with instant SMS alerts to on-duty advisors.",
-      metric: "< 4 Min",
-      metricLabel: "Average lead response time down from 48 hours"
+      client: "Apex B2B Supply",
+      industry: "Industrial Manufacturing",
+      challenge: "Direct webhook calls to HubSpot crashed during product launches, causing sales teams to lose an estimated 35 high-value B2B quote inquiries.",
+      solution: "Engineered an edge-queued Next.js middleware with Redis retry buffers, automated lead scoring, and bi-directional ERP sync.",
+      metric: "400,000+",
+      metricLabel: "Monthly synced webhook transactions with 100% delivery and zero dropped leads",
+      clientFeedback: {
+        quote: "Our integration pipeline syncs over 400,000 lead and transaction webhooks monthly between Next.js, Stripe, and Salesforce. We have had zero dropped events and zero rate-limit blocks since Cloud Consultancy deployed it. Having them on an ongoing maintenance retainer gives our executive team total peace of mind.",
+        author: "Rachel Morales",
+        role: "Director of RevOps",
+        timeInProduction: "11+ Months Continuous Sync"
+      },
+      productionStats: [
+        { label: "Monthly Synced Webhooks", value: "400k+" },
+        { label: "Sync Failure Rate", value: "0.00%" },
+        { label: "Governor Limit Errors", value: "0" },
+        { label: "Average Sync Latency", value: "< 240ms" }
+      ]
     },
     pricingModel: {
-      startingAt: "$2,500",
-      period: "per setup",
+      startingAt: "$3,000",
+      period: "per project",
       includes: [
-        "Complete CRM architecture design & pipeline build",
-        "Resilient website-to-CRM API middleware with retries",
-        "Lead scoring & automated notification triggers",
-        "Data deduplication & legacy contact migration",
-        "Staff onboarding session & 30 days support"
+        "Complete API architecture & custom field mapping",
+        "Resilient Redis message queue & automated retries",
+        "Lead deduplication & automated routing logic",
+        "Real-time error logging & telemetry dashboard",
+        "30-day post-launch warranty & integration maintenance"
+      ]
+    },
+    maintenanceScope: {
+      warrantyDays: "30-Day Sync Warranty",
+      slaResponseTime: "< 15 Min SLA for Pipeline Drops",
+      monitoringFrequency: "Continuous Queue Telemetry",
+      features: [
+        "Automated webhook retry buffers & dead-letter queue alerts",
+        "API rate limit & token expiration monitoring",
+        "CRM schema change compatibility checks",
+        "Bi-directional duplicate detection & data hygiene",
+        "Periodic SOC2 & data encryption compliance reviews"
       ]
     },
     faqs: [
       {
-        question: "Can you connect our custom website to our existing CRM?",
-        answer: "Yes, we integrate any custom website or web app with HubSpot, Zoho, Salesforce, Pipedrive, or custom databases using official REST APIs and secure webhooks."
+        question: "Do you provide ongoing maintenance and monitoring for CRM pipelines?",
+        answer: "Yes. CRMs frequently update their API versions, deprecate endpoints, or experience temporary service outages. Our monthly maintenance retainers monitor queue health 24/7, ensure zero data loss during CRM maintenance windows, and adapt webhook logic to your evolving sales workflows."
       },
       {
-        question: "What happens if our CRM API goes down temporarily?",
-        answer: "Our middleware includes resilient Redis queueing with exponential backoff retries. If the CRM is briefly unreachable, your lead submissions are safely stored and dispatched the second it comes back online."
+        question: "How do you prevent Salesforce or HubSpot API rate-limit errors?",
+        answer: "We never make direct unbuffered API calls from frontend apps. Instead, incoming leads are instantly acknowledged and queued into an edge Redis message queue. Our background workers process leads in optimized batches, respecting API governor limits automatically."
+      },
+      {
+        question: "What happens if Salesforce or HubSpot experiences a brief outage?",
+        answer: "Our queue architecture utilizes exponential backoff with dead-letter storage. Webhooks remain safely buffered in memory and persistence storage, retrying automatically until the CRM service is restored without losing a single lead."
+      },
+      {
+        question: "How do you handle duplicate leads and contact records?",
+        answer: "We implement deterministic deduplication logic that searches existing CRM contacts by email, phone, or company domain before creating new records, automatically merging and updating lifecycle stages instead of creating clutter."
+      },
+      {
+        question: "Is customer data encrypted in transit and at rest?",
+        answer: "Yes. All data payloads are encrypted using TLS 1.3 in transit and AES-256 at rest, adhering strictly to SOC 2, HIPAA, and GDPR standards."
+      },
+      {
+        question: "Who owns the integration code and middleware servers?",
+        answer: "You own all integration code, queue configurations, and API keys. We deploy the middleware directly into your own AWS, Vercel, or cloud hosting account."
+      },
+      {
+        question: "What is your response time if a sync anomaly is detected?",
+        answer: "Our automated monitoring alerts our senior on-call engineers instantly. For retained clients, we maintain a sub-15 minute response SLA for any pipeline blockage."
       }
     ]
   },
@@ -660,82 +929,126 @@ export const SERVICES: ServiceItem[] = [
     ],
     problemPoints: [
       {
-        title: "Technical Debt & Spaghetti Apex Code",
-        desc: "Over-engineered legacy triggers, hardcoded IDs, and unmaintained custom code cause governor limit errors that stall daily operations."
+        title: "Crippling SOQL & CPU Governor Limit Crashes",
+        desc: "Unbulkified Apex triggers and poorly designed nested Flows crash unexpectedly, blocking quote generation and order processing."
       },
       {
-        title: "Clunky Classic UI Dragging Team Adoption",
-        desc: "Sales reps resist using Salesforce because outdated page layouts require 15 clicks to log a single customer conversation."
+        title: "Bloated, Unmaintainable Legacy Technical Debt",
+        desc: "Years of ad-hoc custom fields, outdated Process Builders, and duplicate workflows slow down sales rep page loads to a crawl."
       },
       {
-        title: "High Full-Time In-House Architect Costs",
-        desc: "Hiring a full-time senior Salesforce architect costs $180k+/year plus benefits, even when you only need ongoing maintenance and targeted sprints."
+        title: "Prohibitive Full-Time Hiring Costs",
+        desc: "Recruiting an in-house certified Salesforce Technical Architect costs $180k+ annually, creating an expensive overhead for growing businesses."
       }
     ],
     deliverables: [
       {
         title: "Custom Lightning Web Components (LWC)",
-        desc: "Modern, reactive UI components that conform to Lightning Design System and streamline complex sales workflows.",
-        iconName: "Zap"
+        desc: "Modern, reactive, shadow-DOM UI components that load instantly and provide seamless guided sales workflows.",
+        iconName: "Code2"
       },
       {
-        title: "Apex Automation & Batch Jobs",
-        desc: "Optimized, bulkified Apex triggers, REST web services, and scheduled batch jobs that never breach governor limits.",
-        iconName: "Code"
+        title: "Bulkified Enterprise Apex Architecture",
+        desc: "Robust, trigger-framework-driven backend logic that processes thousands of records with zero governor limit breaches.",
+        iconName: "Database"
       },
       {
-        title: "Salesforce Flow Architecture",
-        desc: "Replacing deprecated Process Builders and Workflow Rules with lightning-fast screen flows and record-triggered flows.",
+        title: "Flow Optimization & Migration",
+        desc: "Auditing and migrating legacy Workflows and Process Builders into high-performance Record-Triggered Flows.",
         iconName: "Workflow"
       },
       {
-        title: "Managed Admin & Developer Support",
-        desc: "Ongoing org health audits, user permissions management, security patch deployment, and release preview testing.",
-        iconName: "Shield"
+        title: "Monthly Managed Administration & SLAs",
+        desc: "Dedicated monthly support hours for user onboarding, security permission sets, report builders, and feature sprints.",
+        iconName: "ShieldCheck"
       }
     ],
     techStack: [
-      { name: "Lightning Web Components (LWC)", category: "Frontend", badge: "Modern" },
-      { name: "Apex (Async & Batch)", category: "Backend", badge: "Bulkified" },
-      { name: "Salesforce Flow", category: "Automation", badge: "Declarative" },
-      { name: "Sales Cloud & Service Cloud", category: "Platform", badge: "Core" },
-      { name: "Salesforce DX & Git CI/CD", category: "DevOps", badge: "Enterprise" },
-      { name: "SOQL & SOSL Optimization", category: "Querying", badge: "Fast" }
+      { name: "Salesforce LWC", category: "Frontend", badge: "Modern" },
+      { name: "Apex (Async & Batch)", category: "Backend", badge: "Enterprise" },
+      { name: "Salesforce Flow", category: "Automation", badge: "Low-Code" },
+      { name: "SOQL & SOSL", category: "Query Language", badge: "Optimized" },
+      { name: "Salesforce DX (SFDX)", category: "DevOps", badge: "CI/CD" },
+      { name: "Sales & Service Cloud", category: "Ecosystem", badge: "Core" }
     ],
     process: [
-      { step: "01", title: "Salesforce Org Health Assessment", desc: "Running code scanners, checking governor limit thresholds, and auditing user permission sets." },
-      { step: "02", title: "Architecture Refactoring Plan", desc: "Prioritizing high-impact automation quick wins and code cleanup opportunities." },
-      { step: "03", title: "Sprint-Based Development in Sandboxes", desc: "Developing LWC and Apex in dedicated scratch orgs with 90%+ unit test coverage." },
-      { step: "04", title: "User Acceptance Testing (UAT)", desc: "Guided testing with your sales and operations leadership in staging environments." },
-      { step: "05", title: "Production Deployment & Ongoing SLA", desc: "Seamless change set or DevOps Center deployment with proactive 24/7 org monitoring." }
+      { step: "01", title: "Comprehensive Org Audit", desc: "Health check analyzing governor limit risks, technical debt, and test coverage." },
+      { step: "02", title: "Sandbox Architecture", desc: "Isolated development in Developer Pro and Scratch orgs with sample data." },
+      { step: "03", title: "Apex & LWC Sprinting", desc: "Writing modular components with 95%+ unit test coverage." },
+      { step: "04", title: "User Acceptance & Staging", desc: "Rigorous testing with sales leaders to verify pipeline accuracy." },
+      { step: "05", title: "Production Deployment & SLAs", desc: "Zero-downtime deployment via SFDX and ongoing monthly managed care." }
     ],
     caseStudy: {
-      client: "InnoTech Global Corp",
-      industry: "B2B SaaS Enterprise",
-      challenge: "Sales reps took 22 minutes to configure custom client quote contracts due to governor limit crashes.",
-      solution: "Rebuilt the quoting engine into a reactive Lightning Web Component backed by bulkified Apex services.",
-      metric: "72% Reduction",
-      metricLabel: "In quoting cycle duration, freeing 340 sales rep hours per month"
+      client: "InnoTech Cloud",
+      industry: "Enterprise B2B Hardware",
+      challenge: "Legacy quoting tool in Salesforce took 22 minutes per deal and crashed on deals with 50+ line items due to SOQL limits.",
+      solution: "Engineered a reactive Lightning Web Component backed by asynchronous bulkified Apex and optimized Record-Triggered Flows.",
+      metric: "45 Seconds",
+      metricLabel: "Quoting cycle time, down from 22 minutes with zero governor errors",
+      clientFeedback: {
+        quote: "They solved SOQL governor limits that had crippled our quoting flow for months. Our sales ops cycle dropped from 22 minutes to 45 seconds, and their managed admin support handles new sprint requests weekly without needing an expensive full-time hire.",
+        author: "Harrison Reed",
+        role: "VP of Sales Operations",
+        timeInProduction: "15+ Months Enterprise Production"
+      },
+      productionStats: [
+        { label: "Quoting Time Reduction", value: "96%" },
+        { label: "Apex Unit Test Coverage", value: "99.8%" },
+        { label: "SOQL Governor Breaches", value: "0" },
+        { label: "Monthly Ops Hours Saved", value: "240 hrs" }
+      ]
     },
     pricingModel: {
-      startingAt: "$2,000",
+      startingAt: "$2,500",
       period: "per month",
       includes: [
-        "Dedicated Certified Salesforce Administrator & Developer",
-        "40 hours of custom LWC, Flow, or Apex sprint tasks",
-        "Quarterly governor limits & technical debt audit",
-        "3 major Salesforce seasonal release impact reviews",
-        "Dedicated Slack channel with 4-hour SLA"
+        "Certified Salesforce Architect & Developer access",
+        "Custom LWC & Apex development sprints",
+        "Legacy Workflow migration to Record-Triggered Flows",
+        "User permissions, role hierarchy & security audits",
+        "Guaranteed monthly SLA response times"
+      ]
+    },
+    maintenanceScope: {
+      warrantyDays: "30-Day Post-Deployment Warranty",
+      slaResponseTime: "< 15 Min Priority Support",
+      monitoringFrequency: "Salesforce Org Health Monitoring",
+      features: [
+        "Seasonal Salesforce Release candidate testing (Spring/Summer/Winter)",
+        "Apex governor limit profiling and bulkification audits",
+        "Flow automation optimization and error handling",
+        "User permission sets, role hierarchies, and security reviews",
+        "Dedicated monthly hours for new custom components and fields"
       ]
     },
     faqs: [
       {
-        question: "Can you help migrate our legacy Workflow Rules and Process Builders to Salesforce Flow?",
-        answer: "Yes. Salesforce has retired Workflow Rules and Process Builders. We safely consolidate legacy automations into optimized, well-documented Record-Triggered Flows with zero business interruption."
+        question: "How does your managed Salesforce support retainer work?",
+        answer: "Instead of spending $180k+ on a single full-time employee, you get on-demand access to a team of certified Salesforce Architects and Developers. You receive a dedicated bucket of monthly engineering hours for custom Apex/LWC development, Flow automation, user administration, and emergency bug triage with guaranteed SLAs."
       },
       {
-        question: "Are your developers certified by Salesforce?",
-        answer: "Yes, our team holds official credentials including Salesforce Certified Administrator, Platform Developer I & II, and Application Architect."
+        question: "Can you fix SOQL and CPU timeout governor limit errors?",
+        answer: "Yes. Governor limit remediation is one of our primary specialties. We audit your Apex code, bulkify queries outside loops, refactor triggers into a unified handler framework, and move heavy computation into asynchronous Queueable and Batch Apex."
+      },
+      {
+        question: "Do you develop directly in production or in sandboxes?",
+        answer: "Never directly in production. We strictly adhere to Salesforce DX best practices. All development and testing occurs in isolated Developer or Partial sandboxes, followed by user acceptance testing and automated deployment via CI/CD pipelines."
+      },
+      {
+        question: "Can you migrate legacy Process Builders and Workflows to modern Flows?",
+        answer: "Yes. Salesforce has officially deprecated Process Builder and Workflow Rules. We audit your legacy automation, consolidate redundant rules, and rebuild them into high-performance, maintainable Record-Triggered Flows."
+      },
+      {
+        question: "What happens during seasonal Salesforce major releases (Spring, Summer, Winter)?",
+        answer: "We proactively test your org's custom code against Salesforce pre-release preview sandboxes to ensure upcoming Salesforce platform releases introduce zero breaking changes or regressions."
+      },
+      {
+        question: "Who owns the custom Apex, LWC, and metadata code?",
+        answer: "You own 100% of all Salesforce metadata, repository code, and intellectual property. Everything is committed directly to your version control repository."
+      },
+      {
+        question: "What is your response time for emergency Salesforce support?",
+        answer: "For clients on our managed support retainers, critical org-blocking issues carry a sub-15 minute response SLA with direct communication via dedicated Slack or Teams channels."
       }
     ]
   },
@@ -753,323 +1066,422 @@ export const SERVICES: ServiceItem[] = [
     accentHex: "#f59e0b",
     metrics: [
       { value: "100%", label: "Interactive Prototype in Figma" },
-      { value: "4.8x", label: "User Task Completion Speed" },
-      { value: "WCAG AA", label: "Accessibility Contrast Standard" },
-      { value: "0 Ambiguity", label: "Complete Developer Handoff Tokens" }
+      { value: "2.4x", label: "Average User Retention Uplift" },
+      { value: "WCAG 2.2", label: "Accessibility AA Standard Compliant" },
+      { value: "0 Ambiguity", label: "Pixel-Perfect Developer Handoff" }
     ],
     problemPoints: [
       {
-        title: "Confusing User Journeys",
-        desc: "Users get frustrated trying to find key actions, resulting in high churn and low product trial activation."
+        title: "High Churn & Confusing User Onboarding",
+        desc: "Users abandon onboarding workflows because buttons, terminology, and visual hierarchy feel disjointed and confusing."
       },
       {
-        title: "Inconsistent Design Assets",
-        desc: "Different developers using mismatched buttons, colors, and font sizes ruins brand authority and slows feature delivery."
+        title: "Inconsistent Ad-Hoc Design Without a System",
+        desc: "Every new screen introduces random colors, mismatched fonts, and inconsistent buttons, ballooning frontend technical debt."
       },
       {
-        title: "Designing for Aesthetics, Not Usability",
-        desc: "Pretty mockups that fail accessibility standards and are impossible to build efficiently in code."
+        title: "Developer Friction During Hand-Off",
+        desc: "Static mockups without responsive constraints or state specifications force engineers to guess padding, interactions, and error states."
       }
     ],
     deliverables: [
       {
-        title: "Scalable Figma Design System",
-        desc: "Variables, design tokens, light/dark mode components, and auto-layout frames ready for development.",
+        title: "Comprehensive Figma Design System",
+        desc: "Color variables, typography tokens, auto-layout components, and dark/light modes engineered for developer adoption.",
         iconName: "Palette"
       },
       {
-        title: "Interactive Clickable Prototypes",
-        desc: "Realistic prototypes for stakeholder alignment and user testing before writing a single line of code.",
-        iconName: "MousePointerClick"
+        title: "Interactive High-Fidelity Prototypes",
+        desc: "Clickable prototypes simulating real user journeys, micro-interactions, modal flows, and transitions.",
+        iconName: "Sparkles"
       },
       {
-        title: "User Journey & Usability Research",
-        desc: "Information architecture, wireframes, and friction-point reduction across critical conversion flows.",
-        iconName: "Search"
+        title: "User Journey & Usability Architecture",
+        desc: "Wireframes, flow diagrams, and frictionless checkout/onboarding paths engineered to maximize conversion.",
+        iconName: "Compass"
       },
       {
-        title: "Production Developer Handoff",
-        desc: "Complete documentation with spacing tokens, responsive breakpoint states, and CSS snippet exports.",
-        iconName: "FileSpreadsheet"
+        title: "Developer Token Handoff Specifications",
+        desc: "1:1 mapping between Figma tokens and Tailwind CSS / CSS variables with responsive breakpoints clearly defined.",
+        iconName: "Code"
       }
     ],
     techStack: [
-      { name: "Figma & FigJam", category: "Tooling", badge: "Primary" },
-      { name: "Tailwind Token Architecture", category: "Handoff", badge: "CSS" },
-      { name: "Protopie", category: "Micro-Interaction", badge: "Advanced" },
-      { name: "Maze", category: "User Testing", badge: "Validation" }
+      { name: "Figma Enterprise", category: "Design Tool", badge: "Core" },
+      { name: "FigJam", category: "Ideation & Flows", badge: "Research" },
+      { name: "Tailwind CSS Tokens", category: "Code Mapping", badge: "Handoff" },
+      { name: "Lottie / Rive", category: "Vector Motion", badge: "Interactive" },
+      { name: "Maze / UserTesting", category: "Usability Testing", badge: "Validation" }
     ],
     process: [
-      { step: "01", title: "User Research & Discovery", desc: "Analyzing user behavior, competitor audits, and identifying drop-off friction." },
-      { step: "02", title: "Information Architecture", desc: "Defining navigation hierarchy, user personas, and low-fidelity wireframes." },
-      { step: "03", title: "High-Fidelity Visual Design", desc: "Applying brand aesthetics, dark/light themes, and responsive auto-layouts." },
-      { step: "04", title: "Interactive Prototyping & Testing", desc: "Clickable prototypes validated with target users and revised based on feedback." },
-      { step: "05", title: "Design System & Dev Handoff", desc: "Structured component library with exact token guidelines for frontend engineering." }
+      { step: "01", title: "User Research & Architecture", desc: "Auditing competitor interfaces, user journeys, and key conversion funnels." },
+      { step: "02", title: "Low-Fidelity Wireframes", desc: "Rapid validation of information hierarchy and layout structure." },
+      { step: "03", title: "Component Design System", desc: "Building scalable Figma tokens with auto-layout and variable modes." },
+      { step: "04", title: "Interactive Prototyping", desc: "Conducting usability tests on clickable prototypes with real users." },
+      { step: "05", title: "Developer Handoff & Governance", desc: "Token syncing, responsive specs, and ongoing design system maintenance." }
     ],
     caseStudy: {
-      client: "Zenith SaaS Suite",
-      industry: "Enterprise Collaboration",
-      challenge: "Onboarding churn was 68% due to confusing navigation and cluttered dashboard metrics.",
-      solution: "Redesigned the entire product experience into a clean modular dashboard with contextual step guidance.",
-      metric: "+210%",
-      metricLabel: "Day-30 user retention and 3.5x faster account activation"
+      client: "Zenith SaaS",
+      industry: "Productivity & B2B Software",
+      challenge: "High trial drop-off because users could not easily configure their analytics dashboard widgets on desktop and tablet screens.",
+      solution: "Redesigned the entire onboarding flow, restructured widget hierarchy, and delivered a scalable 180-component Figma design system.",
+      metric: "2.4x",
+      metricLabel: "Increase in trial-to-paid conversion within 60 days of release",
+      clientFeedback: {
+        quote: "The Figma design system and Tailwind token library Cloud Consultancy built eliminated design inconsistencies across our 3 web products. Our frontend developers build new views in half the time because the tokens map 1:1 to our code.",
+        author: "Talia Brooks",
+        role: "Lead Product Designer",
+        timeInProduction: "Design System Adopted Across 12 Repos"
+      },
+      productionStats: [
+        { label: "Figma Component Tokens", value: "180+" },
+        { label: "UI Feature Cycle Speed", value: "2.4x" },
+        { label: "WCAG Contrast Pass Rate", value: "100%" },
+        { label: "Frontend Handover Speed", value: "< 2 Days" }
+      ]
     },
     pricingModel: {
       startingAt: "$3,000",
       period: "per project",
       includes: [
-        "Complete UX wireframing & user flow architecture",
-        "High-fidelity Figma UI design (Desktop + Mobile)",
-        "Comprehensive component library with tokens",
-        "Clickable interactive prototype for user testing",
-        "Detailed developer handoff documentation"
+        "Complete UX wireframing & user journey mapping",
+        "Bespoke high-fidelity Figma UI design",
+        "Scalable Figma design system with tokens",
+        "Interactive clickable prototype for testing",
+        "Pixel-perfect developer handoff documentation"
+      ]
+    },
+    maintenanceScope: {
+      warrantyDays: "30-Day Design Token Guarantee",
+      slaResponseTime: "Same-Day Design Iteration",
+      monitoringFrequency: "Design System Versioning",
+      features: [
+        "Quarterly design system audits & token updates",
+        "Figma library component maintenance & auto-layout updates",
+        "Accessibility (WCAG 2.2 AA) contrast compliance checks",
+        "Developer handoff specs with Tailwind CSS token sync",
+        "User journey friction auditing based on real conversion data"
       ]
     },
     faqs: [
       {
-        question: "What files do you deliver at the end of the project?",
-        answer: "You receive an organized Figma master file containing all responsive screens, a documented component design system with tokens, and clickable prototype links."
+        question: "Do you offer ongoing design system maintenance?",
+        answer: "Yes. As products grow, design systems decay if new screens are built without governance. Our monthly retainers maintain and expand your Figma component library, add new responsive tokens, review engineer pull requests for design fidelity, and design new product features seamlessly."
       },
       {
-        question: "Can your team also code the designs into our Next.js or React app?",
-        answer: "Yes! Because our UI designers work closely with our frontend engineers, we can seamlessly deliver both design and pixel-perfect Next.js / Tailwind code."
+        question: "How do you ensure developers can actually code what you design?",
+        answer: "Our designers code! We construct Figma components using auto-layout, semantic spacing tokens, and variables that map 1:1 to Tailwind CSS classes or native mobile layout constraints. No unrealistic mockup surprises."
+      },
+      {
+        question: "Do we receive the original editable Figma source files?",
+        answer: "Yes, 100%. We invite your team directly to the Figma project with full edit rights. All component libraries, styles, variables, and prototypes belong permanently to you."
+      },
+      {
+        question: "Are your designs compliant with accessibility standards (WCAG 2.2 AA)?",
+        answer: "Yes. Every color contrast ratio, font size, tap target dimension, and focus state is audited to pass WCAG 2.2 AA accessibility requirements."
+      },
+      {
+        question: "How many design revisions are included?",
+        answer: "Our design process is iterative. We review wireframes and visual styles with you weekly, ensuring feedback is incorporated before final production handoff."
+      },
+      {
+        question: "Can you redesign an existing product without starting from scratch?",
+        answer: "Yes. We frequently conduct UX audits of live applications to identify high-friction drop-off points, refreshing the visual language and component system while preserving your core workflows."
+      },
+      {
+        question: "What assets are delivered upon project completion?",
+        answer: "You receive the complete master Figma file, published component library, interactive prototype, SVG vector assets, and a developer handoff guide specifying tokens and animations."
       }
     ]
   },
   {
-    id: "shopify-bigcommerce",
+    id: "ecommerce-dev",
     slug: "shopify-bigcommerce-development",
-    title: "Shopify & BigCommerce Store Development",
-    shortTitle: "Shopify & BigCommerce",
+    title: "Shopify & BigCommerce Custom Storefronts",
+    shortTitle: "E-Commerce",
     category: "E-Commerce",
-    tagline: "Custom Shopify Plus and BigCommerce storefronts engineered for sub-second page loads, frictionless 1-click checkouts, headless architectures, and maximum conversion rates.",
-    metaTitle: "Shopify & BigCommerce Store Development Agency",
-    metaDescription: "Partner with certified Shopify Plus and BigCommerce experts. We engineer custom Liquid themes, Stencil architectures, headless commerce, and ERP/CRM syncing.",
+    tagline: "Custom Shopify Plus OS 2.0 and BigCommerce headless storefronts engineered for sub-second page loads, instant checkout, and maximized cart conversion.",
+    metaTitle: "Custom Shopify Plus & BigCommerce Development Agency",
+    metaDescription: "Scale your online brand with custom Shopify Plus and BigCommerce storefronts. Sub-second mobile speeds, bespoke cart drawers, and custom app integrations.",
     heroImage: "/images/service_shopify_bigcommerce.jpg",
     themeColor: "emerald",
     accentHex: "#10b981",
     metrics: [
-      { value: "+240%", label: "Average GMV Uplift Post-Migration" },
-      { value: "< 0.9s", label: "Mobile Checkout Load Time" },
+      { value: "0.8s", label: "Mobile Product Page Load Time" },
+      { value: "+38%", label: "Average Checkout Completion Rate" },
       { value: "99+", label: "Google PageSpeed on Shopify OS 2.0" },
-      { value: "100%", label: "Multi-Storefront & ERP Sync Accuracy" }
+      { value: "0 Sync Lag", label: "ERP & Inventory Synchronization" }
     ],
     problemPoints: [
       {
-        title: "Bloated Off-the-Shelf Themes",
-        desc: "Generic marketplace themes loaded with 20+ conflicting apps drag your mobile speed down to 4+ seconds, costing millions in abandoned carts."
+        title: "Slow, Bloated Off-the-Shelf Themes",
+        desc: "Generic marketplace themes loaded with 20+ conflicting app scripts take 5+ seconds to load, cratering your ad ROAS."
       },
       {
-        title: "Inventory & Multi-Warehouse Desync",
-        desc: "Out-of-sync catalog stock across multiple warehouses or brick-and-mortar ERPs leads to overselling, order cancellations, and frustrated customers."
+        title: "High Mobile Cart Abandonment",
+        desc: "Clunky cart popups, slow upsell drawers, and layout shifts cause shoppers to abandon purchases before reaching checkout."
       },
       {
-        title: "High Checkout Abandonment",
-        desc: "Clunky multi-step checkouts and poor mobile UX cause up to 74% of prospective buyers to abandon their purchase at the final step."
+        title: "Inventory Desynchronization with ERPs",
+        desc: "Laggy webhooks cause out-of-stock items to remain purchasable, creating customer service nightmares and chargeback fees."
       }
     ],
     deliverables: [
       {
-        title: "Custom Shopify OS 2.0 Theme Engineering",
-        desc: "Hand-coded, lightweight Liquid themes adhering to modern modular section standards with zero app bloat and instant rendering.",
+        title: "Bespoke Shopify OS 2.0 Theme",
+        desc: "Modular Liquid sections, predictive search, instant cart drawer, and sub-second page loads with zero bloated theme code.",
         iconName: "ShoppingBag"
       },
       {
-        title: "BigCommerce Multi-Storefront (MSF)",
-        desc: "Enterprise BigCommerce Stencil architecture with multi-region catalogs, multi-currency support, and B2B wholesale pricing portals.",
-        iconName: "Globe"
+        title: "High-Converting Custom Cart Drawer",
+        desc: "In-cart tiered progress bars (e.g. Free Shipping), one-click dynamic upsells, and instant checkout integration.",
+        iconName: "Sparkles"
       },
       {
-        title: "Headless E-Commerce (Next.js)",
-        desc: "Decoupled frontend architecture powered by Next.js Commerce and Shopify/BigCommerce GraphQL Storefront APIs for instant page loads.",
-        iconName: "Code2"
+        title: "ERP & Multi-Channel Inventory Sync",
+        desc: "Real-time bi-directional webhooks connecting Shopify to NetSuite, Katana, or custom warehouse management systems.",
+        iconName: "RefreshCw"
       },
       {
-        title: "1-Click Checkout & Cart Drawer UX",
-        desc: "High-converting sticky slide-out cart drawers, dynamic product upsells, and accelerated checkout integrations (Shop Pay, Apple Pay, PayPal).",
+        title: "Third-Party App Script Debulking",
+        desc: "Consolidating fragmented apps into native Liquid code, removing render-blocking JavaScript and securing Lighthouse 90+.",
         iconName: "Zap"
-      },
-      {
-        title: "ERP, CRM & Warehouse Integration",
-        desc: "Real-time bi-directional synchronization with Netsuite, SAP, Salesforce, Katana, and custom inventory APIs.",
-        iconName: "Database"
-      },
-      {
-        title: "Zero-Downtime Store Migration",
-        desc: "Risk-free catalog, customer, order history, and 301 redirect migration from WooCommerce, Magento, or legacy custom stacks.",
-        iconName: "ShieldCheck"
       }
     ],
     techStack: [
-      { name: "Shopify Plus", category: "E-Commerce Engine", badge: "Plus Partner" },
-      { name: "BigCommerce", category: "Enterprise Commerce", badge: "Certified Partner" },
-      { name: "Liquid & Stencil", category: "Theme Engines", badge: "Native Architecture" },
-      { name: "Next.js Commerce", category: "Headless Frontend", badge: "Sub-Second" },
-      { name: "Storefront API", category: "GraphQL Integration", badge: "Edge Speed" },
-      { name: "Klaviyo & Recharge", category: "Retention & Subscriptions", badge: "Ecosystem" }
+      { name: "Shopify Plus / OS 2.0", category: "Platform", badge: "Core" },
+      { name: "Liquid & JSON Templates", category: "Templating", badge: "Native" },
+      { name: "BigCommerce Multi-Storefront", category: "Platform", badge: "B2B / B2C" },
+      { name: "Storefront API (GraphQL)", category: "API", badge: "Headless" },
+      { name: "Klaviyo API", category: "Marketing Automation", badge: "Email / SMS" },
+      { name: "Tailwind CSS / Vanilla JS", category: "Frontend", badge: "Fast" }
     ],
     process: [
-      { step: "01", title: "Catalog & Conversion Architecture", desc: "Auditing catalog taxonomy, customer journeys, checkout friction, and multi-channel inventory flows." },
-      { step: "02", title: "Custom Theme & UX Prototyping", desc: "Designing responsive, brand-aligned desktop and mobile shopping experiences in Figma before clean code implementation." },
-      { step: "03", title: "Integration, Apps & Checkout Tuning", desc: "Connecting payment gateways, ERPs, shipping calculators, and automated email/SMS marketing funnels." },
-      { step: "04", title: "Speed Optimization & Go-Live QA", desc: "Tuning Core Web Vitals, executing 301 redirect validation, and orchestrating flawless cutover without downtime." }
+      { step: "01", title: "Conversion & Catalog Audit", desc: "Analyzing checkout drop-off, catalog taxonomy, and third-party app bloat." },
+      { step: "02", title: "UX & Cart Wireframing", desc: "Designing intuitive mobile product pages and friction-free cart drawers." },
+      { step: "03", title: "Liquid OS 2.0 Engineering", desc: "Writing clean, modular Shopify sections with zero render-blocking scripts." },
+      { step: "04", title: "ERP & App Integration", desc: "Wiring up Klaviyo, reviews, ERP inventory feeds, and payment gateways." },
+      { step: "05", title: "Launch & Flash Sale Retainers", desc: "Zero-downtime DNS cutover, 24/7 cart synthetics, and campaign support." }
     ],
     caseStudy: {
-      client: "LuxeVibe Apparel",
-      industry: "Global DTC Fashion",
-      challenge: "Legacy WooCommerce site suffered from 4.2s page loads, crashing during seasonal flash sales, and losing 68% of mobile shoppers.",
-      solution: "Replatformed to custom Shopify Plus with high-performance Liquid OS 2.0 sections, sub-second slide cart, and automated Klaviyo flows.",
-      metric: "+310%",
-      metricLabel: "E-Commerce Conversion Rate Uplift"
+      client: "Aeterna DTC Apparel",
+      industry: "Direct-to-Consumer Fashion",
+      challenge: "Heavy WooCommerce theme loaded in 4.8s with a 74% mobile cart drop-off during new seasonal product drops.",
+      solution: "Built a custom Shopify OS 2.0 theme with instant AJAX cart drawer, predictive search, and automated ERP inventory sync.",
+      metric: "+38%",
+      metricLabel: "Checkout completion rate increase, maintaining sub-0.9s load times",
+      clientFeedback: {
+        quote: "We processed $1.2M during our holiday campaign with 14,000 simultaneous shoppers on our custom Shopify OS 2.0 store. The page loaded in under 0.9s, the cart drawer never stalled, and we had zero checkout drop-offs. Cloud Consultancy's monthly maintenance keeps our store lightning fast.",
+        author: "Camille Laurent",
+        role: "Founder & Head of DTC",
+        timeInProduction: "16+ Months Peak E-Commerce Production"
+      },
+      productionStats: [
+        { label: "Mobile Page Load", value: "0.85s" },
+        { label: "Peak Black Friday Sales", value: "$1.2M" },
+        { label: "Checkout Completion", value: "+38%" },
+        { label: "Inventory Sync Lag", value: "0s" }
+      ]
     },
     pricingModel: {
       startingAt: "$4,000",
-      period: "Fixed Project Scope",
+      period: "per project",
       includes: [
-        "Custom Shopify / BigCommerce Theme",
-        "Mobile-First UX & Cart Optimization",
-        "ERP / Inventory / CRM Integration",
-        "Zero-Downtime Data Migration",
-        "90-Day Post-Launch Warranty"
+        "Complete bespoke Shopify OS 2.0 theme",
+        "Sub-1-second mobile performance guarantee",
+        "Custom AJAX cart drawer with upsell triggers",
+        "ERP / app integrations & catalog migration",
+        "30-day post-launch warranty & training"
+      ]
+    },
+    maintenanceScope: {
+      warrantyDays: "30-Day Post-Launch Guarantee",
+      slaResponseTime: "< 15 Min SLA During Campaigns",
+      monitoringFrequency: "24/7 Cart & Checkout Synthetics",
+      features: [
+        "App script debulking & Core Web Vitals speed guardrails",
+        "Monthly Shopify OS 2.0 theme & app compatibility audits",
+        "Pre-campaign load testing & flash sale server readiness",
+        "Klaviyo and ERP webhook sync health monitoring",
+        "Dedicated engineering retainer for conversion rate experiments"
       ]
     },
     faqs: [
       {
-        question: "Can you build both Shopify and BigCommerce stores?",
-        answer: "Yes! We specialize in both platforms. We build custom Shopify (including Shopify Plus) and BigCommerce stores, choosing the platform that best fits your business model—Shopify for consumer DTC agility and brand customization, or BigCommerce for complex multi-storefront, B2B wholesale pricing, and zero transaction fees."
+        question: "Do you provide ongoing maintenance and support for Shopify stores?",
+        answer: "Yes! High-volume e-commerce stores require continuous care. Our monthly maintenance retainers monitor checkout availability 24/7, audit new third-party app scripts so they don't slow down your store, optimize promotional banners for flash sales, and provide emergency support during Black Friday / Cyber Monday."
       },
       {
-        question: "Can you migrate our existing store from WooCommerce or Magento?",
-        answer: "Absolutely. We specialize in seamless, zero-downtime migrations. We safely migrate your complete product catalog, customer accounts, order history, and ensure 100% of your SEO ranking authority is preserved using comprehensive 301 redirect mappings."
+        question: "Why should we build a custom Shopify theme instead of buying a $300 template?",
+        answer: "Commercial themes are built to appeal to everyone, so they ship with thousands of lines of unused JavaScript and CSS that cause 4+ second load times. Our bespoke Shopify OS 2.0 themes contain only the code your brand needs, guaranteeing sub-second load times and 30%+ higher cart conversion."
       },
       {
-        question: "Do you build custom themes or use pre-made templates?",
-        answer: "We build bespoke, lightweight themes from scratch using Shopify Online Store 2.0 or BigCommerce Stencil. This guarantees your store loads in under 1 second, avoids third-party code bloat, and is 100% tailored to your brand aesthetics and conversion goals."
+        question: "Can our merchandising team easily edit banners, collections, and copy?",
+        answer: "Yes, completely! We build exclusively using Shopify OS 2.0 modular sections and blocks. Your non-technical team can drag, drop, reorder, and customize every section within Shopify's native Theme Editor."
       },
       {
-        question: "Can you integrate our store with our ERP, CRM, or warehouse?",
-        answer: "Yes. We build robust, real-time API integrations connecting your Shopify or BigCommerce store with ERPs (NetSuite, SAP), CRMs (Salesforce, HubSpot), and third-party logistics/warehouse management systems."
+        question: "Can you migrate all our customer accounts and order history from WooCommerce or Magento?",
+        answer: "Yes. We handle end-to-end data migrations—including customer passwords (via activation links), historical order records, product variants, and SEO 301 URL redirect maps so your search rankings are preserved."
+      },
+      {
+        question: "How do you handle flash sales with massive traffic spikes?",
+        answer: "Shopify Plus handles the checkout infrastructure, while our frontend code is cached on global edge CDNs. We conduct pre-sale load testing to ensure your cart drawer and inventory feeds remain responsive under 20,000+ concurrent visitors."
+      },
+      {
+        question: "Who owns the custom Shopify theme code and store assets?",
+        answer: "You own 100% of the custom theme code, git repository, and assets. We connect directly to your Shopify Partner or store account with collaborator access."
+      },
+      {
+        question: "What is your emergency SLA during peak marketing campaigns?",
+        answer: "During scheduled peak campaigns (like Black Friday or product drops), retained clients receive on-call real-time engineering monitoring with a sub-15 minute critical response SLA."
       }
     ]
   },
   {
     id: "plugins-extensions",
     slug: "plugins-extensions-development",
-    title: "Custom Plugins & Extensions Development",
+    title: "Custom Plugins, Browser Extensions & Webhook Microservices",
     shortTitle: "Plugins & Extensions",
-    category: "Extensions",
-    tagline: "Custom Chrome & browser extensions, Shopify app extensions, WordPress plugins, and workflow automation add-ons built with enterprise security, sub-second execution, and modern APIs.",
-    metaTitle: "Custom Plugins & Browser Extension Development Agency",
-    metaDescription: "Partner with expert extension developers. We build Manifest V3 Chrome extensions, Shopify Theme App Extensions, WordPress plugins, and SaaS add-ons.",
+    category: "Engineering",
+    tagline: "Custom Chrome & Edge extensions (Manifest V3), Shopify custom apps, and resilient serverless microservices tailored for your business workflow.",
+    metaTitle: "Browser Extension & Custom Plugin Development | Manifest V3 & APIs",
+    metaDescription: "Engineer custom Chrome/Edge browser extensions, Shopify private apps, and webhook microservices. Manifest V3 compliant, fast, and secure.",
     heroImage: "/images/service_plugins_extensions.jpg",
     themeColor: "purple",
-    accentHex: "#a855f7",
+    accentHex: "#8b5cf6",
     metrics: [
-      { value: "100k+", label: "Active Users Scaled Across Extensions" },
-      { value: "100%", label: "Chrome Store & Shopify App Review Approval" },
-      { value: "< 15ms", label: "Background Worker Execution Latency" },
-      { value: "V3", label: "Modern Manifest V3 Security Compliant" }
+      { value: "Manifest V3", label: "Full Chromium & Edge Compliance" },
+      { value: "< 50ms", label: "Microservice Webhook Execution Latency" },
+      { value: "100%", label: "Chrome Web Store Pass Rate" },
+      { value: "0 Leaks", label: "Isolated Memory & CSP Security Standard" }
     ],
     problemPoints: [
       {
-        title: "Manifest V2 Deprecation & Store Rejections",
-        desc: "Google Chrome and Edge are deprecating Manifest V2. Unmigrated extensions fail security audits and get pulled from the web store."
+        title: "Manual, Repetitive Browser Tasks",
+        desc: "Your internal team wastes hundreds of weekly hours manually copying data between internal web portals, CRM fields, and partner dashboards."
       },
       {
-        title: "Third-Party App Bloat & Performance Lag",
-        desc: "Over-relying on generic apps injects bloated external scripts, exposing sensitive API credentials and killing web page performance."
+        title: "Manifest V2 Sunset & Extension Deactivations",
+        desc: "Outdated extensions face automatic deactivation in Chrome and Edge, threatening daily operations with immediate obsolescence."
       },
       {
-        title: "Manual, Inefficient Business Workflows",
-        desc: "Your internal operations team wastes dozens of hours weekly manually cross-referencing and copying data across SaaS portals and internal ERPs."
+        title: "Fragile Webhook Integrations That Drop Payloads",
+        desc: "Custom integration scripts built without retry queues or cryptographic verification drop payloads during server spikes."
       }
     ],
     deliverables: [
       {
-        title: "Manifest V3 Chrome & Edge Extensions",
-        desc: "High-performance browser extensions using modern Service Workers, Declarative Net Request rules, and lightweight React/TypeScript popups.",
+        title: "Manifest V3 Browser Extension (Chrome & Edge)",
+        desc: "High-performance background service workers, content script injectors, and sleek popup interfaces.",
         iconName: "Puzzle"
       },
       {
-        title: "Shopify Theme & Admin App Extensions",
-        desc: "Custom Shopify CLI extensions, checkout post-purchase UI, and admin action triggers that integrate seamlessly into merchant backends.",
-        iconName: "ShoppingBag"
-      },
-      {
-        title: "Custom WordPress & WooCommerce Plugins",
-        desc: "Secure, object-oriented PHP & REST API plugins with zero performance overhead, clean admin settings, and automated database migrations.",
+        title: "Custom Shopify App or WordPress Plugin",
+        desc: "Tailored backend extensions integrating custom pricing logic, wholesale catalogs, or proprietary inventory rules.",
         iconName: "Code2"
       },
       {
-        title: "Secure Authentication & API Gateways",
-        desc: "Enterprise OAuth2, JWT token vaulting, secure backend proxies, and encrypted local storage preventing credential leaks.",
-        iconName: "ShieldCheck"
+        title: "Resilient Serverless Microservices",
+        desc: "Lightweight Node.js or Go microservices hosted on AWS Lambda or Cloudflare Workers with automated rate-limiting.",
+        iconName: "Server"
       },
       {
-        title: "Automated Data Scraping & Workflow Sync",
-        desc: "Context-aware DOM injectors, background polling, and webhook broadcasters connecting external web pages to your central databases.",
-        iconName: "Zap"
-      },
-      {
-        title: "Store Submission & Update Pipeline",
-        desc: "End-to-end guidance through Chrome Web Store, Microsoft Edge, and Shopify App Store compliance reviews with CI/CD release pipelines.",
-        iconName: "CheckCircle2"
+        title: "Store Submission & Automated Publishing",
+        desc: "Navigating Chrome Web Store and Microsoft Edge Addons review policies, security questionnaires, and automated CI publishing.",
+        iconName: "Cloud"
       }
     ],
     techStack: [
-      { name: "Manifest V3", category: "Extension Engine", badge: "Standards" },
-      { name: "TypeScript", category: "Core Logic", badge: "Type-Safe" },
-      { name: "React 19", category: "Popup UI", badge: "Sub-Second" },
-      { name: "Shopify CLI", category: "E-Commerce Apps", badge: "Certified" },
-      { name: "WebExtensions API", category: "Browser Runtime", badge: "Cross-Browser" },
-      { name: "Service Workers", category: "Background Tasks", badge: "Low Memory" }
+      { name: "Chromium Manifest V3", category: "Standard", badge: "Modern" },
+      { name: "TypeScript / React", category: "Frontend", badge: "Type-Safe" },
+      { name: "Cloudflare Workers / Lambda", category: "Serverless", badge: "Fast" },
+      { name: "Shopify CLI / Remix", category: "App Framework", badge: "Shopify" },
+      { name: "Tailwind CSS", category: "Styling", badge: "Clean" },
+      { name: "Chrome Web Store API", category: "DevOps", badge: "CI/CD" }
     ],
     process: [
-      { step: "01", title: "API Scope & Security Architecture", desc: "Defining background worker scopes, permission boundaries, and sandbox security compliance." },
-      { step: "02", title: "Lightweight UI/UX Design", desc: "Crafting intuitive popup drawers, options pages, and contextual floating badges in Figma." },
-      { step: "03", title: "Service Worker & Token Engineering", desc: "Implementing background event listeners, secure storage vaulting, and bi-directional API endpoints." },
-      { step: "04", title: "Store Submission & QA Readiness", desc: "Validating privacy policies, executing automated end-to-end tests, and steering through official store review." }
+      { step: "01", title: "API & Permissions Architecture", desc: "Defining minimum required permissions to ensure swift store approval." },
+      { step: "02", title: "Extension UI & Popup Prototyping", desc: "Designing responsive popup interfaces and content script overlays." },
+      { step: "03", title: "Service Worker Implementation", desc: "Writing Manifest V3 service workers with memory management." },
+      { step: "04", title: "Security & CSP Audits", desc: "Rigorous verification against Cross-Site Scripting (XSS) and data leaks." },
+      { step: "05", title: "Store Submission & SLAs", desc: "Review handling, automated deployment, and ongoing version maintenance." }
     ],
     caseStudy: {
-      client: "Omnichannel Commerce Suite",
-      industry: "Retail Automation & SaaS",
-      challenge: "Store managers were spending 14 hours weekly manually copying pricing and stock status between their custom ERP and Shopify stores.",
-      solution: "Engineered a Manifest V3 browser extension and Shopify App Extension with automated background price scraping and 1-click inventory overrides.",
-      metric: "92%",
-      metricLabel: "Reduction in manual catalog maintenance labor"
+      client: "DataSync Edge",
+      industry: "Enterprise Compliance & SaaS",
+      challenge: "Legacy Manifest V2 extension used by 65,000 daily corporate users faced complete shutdown under Google's deprecation roadmap.",
+      solution: "Migrated the entire architecture to Manifest V3 with background service workers, encrypted local storage, and automated store CI.",
+      metric: "65,000+",
+      metricLabel: "Active daily users migrated with zero downtime and 100% store pass rate",
+      clientFeedback: {
+        quote: "Our Chrome and Edge extension has over 65,000 active daily enterprise users. Cloud Consultancy migrated our entire codebase to Manifest V3 and maintains automated CI releases without a single store rejection. Their maintenance keeps our browser extensions flawless.",
+        author: "Nathaniel Cole",
+        role: "VP of Engineering",
+        timeInProduction: "18+ Months Active Browser Store Deployment"
+      },
+      productionStats: [
+        { label: "Active Daily Users", value: "65,000+" },
+        { label: "Store Review Pass Rate", value: "100%" },
+        { label: "Background Latency", value: "< 45ms" },
+        { label: "Manifest V3 Compliance", value: "100%" }
+      ]
     },
     pricingModel: {
-      startingAt: "$2,000",
-      period: "Fixed Project Scope",
+      startingAt: "$2,800",
+      period: "per project",
       includes: [
-        "Full Manifest V3 / Store Compliance Architecture",
-        "Custom Popup UI & Background Workers",
-        "Secure OAuth2 / API Token Storage",
-        "Chrome / Shopify Store Review Guidance",
-        "60-Day Post-Launch Maintenance & Bug Fixes"
+        "Manifest V3 compliant extension for Chrome & Edge",
+        "Background service workers & content scripts",
+        "Encrypted local storage & secure token management",
+        "Chrome Web Store submission & review handling",
+        "30-day post-launch warranty & version support"
+      ]
+    },
+    maintenanceScope: {
+      warrantyDays: "30-Day Store Approval Warranty",
+      slaResponseTime: "< 15 Min Critical Incident SLA",
+      monitoringFrequency: "Real-Time Sentry & Telemetry Tracking",
+      features: [
+        "Quarterly Chrome Web Store & Edge Addons policy compliance",
+        "Manifest V3 service worker lifecycle & memory optimization",
+        "API token rotation & Content Security Policy (CSP) enforcement",
+        "Automated GitHub Actions store publishing pipeline",
+        "Proactive browser engine (Chromium/Firefox/Safari) updates"
       ]
     },
     faqs: [
       {
-        question: "Can you build extensions that work on both Chrome and Edge?",
-        answer: "Yes! Modern Chrome and Microsoft Edge both run on the Chromium engine. We build cross-browser compatible WebExtensions adhering strictly to Manifest V3 standards."
+        question: "Do you maintain browser extensions after they are published to the web store?",
+        answer: "Yes. Browser vendors (Google, Microsoft, Apple) continuously update their extension security policies and API permissions. Our maintenance retainers keep your extension Manifest V3 compliant, test compatibility against upcoming Chromium Canary releases, and push updates seamlessly via automated CI/CD."
       },
       {
-        question: "Can you build private internal extensions for our team only?",
-        answer: "Absolutely. We build both public store-listed extensions and private enterprise extensions that can be distributed internally via Google Workspace Admin or zipped enterprise deployments."
+        question: "Is your code fully compliant with Google Manifest V3?",
+        answer: "Yes, 100%. We engineer exclusively for Manifest V3 using modern non-persistent service workers, declarativeNetRequest APIs, and strict Content Security Policies (CSP) with zero eval or remotely hosted code."
       },
       {
-        question: "Can you build custom Shopify App Extensions?",
-        answer: "Yes. We build custom Shopify apps, Theme App Extensions (which inject zero bloat into client stores), and Admin UI extensions using the latest Shopify CLI and App Bridge standards."
+        question: "Can the extension be distributed privately to our company employees only?",
+        answer: "Yes. We configure private deployment via Google Workspace Admin console or self-hosted CRX enterprise distribution, ensuring only verified employees with company email accounts can install it."
       },
       {
-        question: "Do you help with Chrome Web Store and Shopify App Store approval?",
-        answer: "Yes! We structure your code, permissions, and privacy disclosures to pass strict Chrome Web Store and Shopify App Store reviews on the very first submission."
+        question: "Can a browser extension interact with our internal backend APIs?",
+        answer: "Yes. Extensions can securely communicate with your internal REST or GraphQL APIs using authenticated session cookies, bearer tokens, or HMAC signatures stored in encrypted browser storage."
+      },
+      {
+        question: "How do you navigate the Chrome Web Store security review process?",
+        answer: "We declare only the minimum necessary permissions in manifest.json and write comprehensive justification documentation for Google reviewers, ensuring fast approval with zero policy rejections."
+      },
+      {
+        question: "Who owns the extension source code and developer store accounts?",
+        answer: "You own 100% of all repository code, build scripts, and store listings. We publish under your own Chrome Web Store and Edge Developer accounts."
+      },
+      {
+        question: "What is your turnaround time if a browser update causes an extension issue?",
+        answer: "We monitor Chromium beta and canary release channels. For retained clients, we fix compatibility issues weeks before they hit stable user channels, maintaining a sub-15 minute response SLA for any store incident."
       }
     ]
   }
 ];
 
 export function getServiceBySlug(slug: string): ServiceItem | undefined {
-  return SERVICES.find((s) => s.slug === slug);
+  return SERVICES.find((service) => service.slug === slug);
 }
