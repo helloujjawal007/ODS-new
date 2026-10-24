@@ -331,7 +331,7 @@ Before passing Shopify App Review, your extension must verify:
     publishedAt: "October 11, 2026",
     readingTime: "9 min read",
     featured: false,
-    coverImage: "/images/ods_portfolio_showcase.jpg",
+    coverImage: "/images/portfolio_projects.jpg",
     pillar: "shopify-bigcommerce-development",
     toc: [
       { id: "why-multi-storefront-matters", title: "Why Multi-Storefront (MSF) Is Replacing Separate Stores" },

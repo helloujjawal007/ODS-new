@@ -1,11 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { 
-  ArrowRight, 
-  Layers, 
-  CheckCircle2 
-} from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { SERVICES } from "@/lib/services-data";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import CtaSection from "@/components/sections/CtaSection";
@@ -13,98 +9,94 @@ import JsonLd from "@/components/seo/JsonLd";
 import { getBreadcrumbJsonLd } from "@/lib/seo-config";
 
 export const metadata: Metadata = {
-  title: "Services & Capabilities Hub",
-  description: "Explore our full suite of digital engineering capabilities: custom Next.js web applications, Shopify & BigCommerce stores, technical SEO audits, native Android/iOS mobile apps, and enterprise CRM solutions.",
+  title: "Services & Capabilities",
+  description: "Web development, Shopify & BigCommerce stores, technical SEO, mobile apps, and Salesforce integration. Clear scopes and fixed milestones.",
   alternates: {
     canonical: "/services"
   }
 };
 
 export default function ServicesHubPage() {
-  const breadcrumbItems = [{ label: "Services Hub" }];
+  const breadcrumbItems = [{ label: "Services" }];
   const breadcrumbSchema = getBreadcrumbJsonLd([
     { name: "Services", url: "/services" }
   ]);
 
   return (
-    <div className="py-8">
+    <div className="py-8 bg-white text-[#0F172A] font-sans selection:bg-[#2563EB] selection:text-white">
       <JsonLd id="schema-breadcrumb-services" data={breadcrumbSchema} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Breadcrumbs items={breadcrumbItems} />
 
         {/* Hero Section */}
-        <div className="text-center max-w-3xl mx-auto my-12">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-800/40 text-cyan-300 text-xs font-semibold uppercase tracking-wider mb-4">
-            <Layers className="w-3.5 h-3.5" />
-            <span>Enterprise Digital Capabilities</span>
-          </div>
-          <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight">
-            Everything Your Business Needs to <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400">
-              Scale Digitally.
-            </span>
+        <div className="max-w-3xl my-10">
+          <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold block mb-2">
+            Services & Capabilities
+          </span>
+          <h1 className="text-3xl sm:text-5xl font-serif font-normal text-[#0F172A] tracking-tight leading-[1.15]">
+            Engineering capabilities for growing businesses.
           </h1>
-          <p className="text-slate-300 text-base sm:text-lg mt-4 leading-relaxed">
-            From ground-up web platforms with guaranteed sub-second load times to aggressive organic search rankings and mission-critical CRM automation pipelines.
+          <p className="text-[#475569] text-sm sm:text-base mt-3 leading-relaxed max-w-xl">
+            From modern Next.js websites and custom Shopify stores to mobile apps and enterprise Salesforce integrations. Handled directly by senior engineers.
           </p>
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-14">
           {SERVICES.map((service) => (
             <div
               key={service.slug}
-              className="bg-slate-900/60 border border-white/10 rounded-3xl overflow-hidden hover:border-cyan-500/40 hover:bg-slate-900/90 transition-all flex flex-col justify-between group shadow-xl"
+              className="bg-white border border-[#E2E8F0] rounded-[8px] overflow-hidden flex flex-col justify-between shadow-sm hover:border-[#2563EB] hover:shadow-md transition-all"
             >
-              {/* Service Visual Preview */}
-              <div className="relative aspect-[16/9] overflow-hidden">
+              {/* Visual Preview */}
+              <div className="relative aspect-[16/9] bg-[#F1F5F9]">
                 <Image
                   src={service.heroImage}
                   alt={service.title}
                   fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px"
+                  className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent" />
-                <div className="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 text-[11px] font-semibold text-cyan-300">
+                <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-xs border border-[#E2E8F0] px-2.5 py-0.5 rounded-[4px] text-[10px] font-mono uppercase font-medium text-[#0F172A] shadow-2xs">
                   {service.category}
                 </div>
               </div>
 
-              <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
+              <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
-                  <h2 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors mb-2">
+                  <h2 className="font-serif text-xl font-medium text-[#0F172A] mb-2 leading-snug">
                     {service.title}
                   </h2>
-                  <p className="text-slate-400 text-xs sm:text-sm line-clamp-2 leading-relaxed mb-6">
+                  <p className="text-xs text-[#475569] line-clamp-2 leading-relaxed mb-4">
                     {service.tagline}
                   </p>
 
                   {/* Highlights list */}
-                  <div className="space-y-2 mb-6 text-xs text-slate-300">
+                  <div className="space-y-1.5 mb-6 text-xs text-[#475569]">
                     {service.deliverables.slice(0, 2).map((del, idx) => (
                       <div key={idx} className="flex items-start space-x-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 shrink-0 mt-0.5" />
+                        <Check className="w-3.5 h-3.5 text-[#2563EB] shrink-0 mt-0.5" />
                         <span className="line-clamp-1">{del.title}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                <div className="pt-4 border-t border-[#E2E8F0] flex items-center justify-between">
                   <div>
-                    <span className="text-[10px] text-slate-500 uppercase font-mono block">Pricing</span>
-                    <span className="text-xs font-bold text-slate-200">
+                    <span className="text-[10px] text-[#64748B] font-mono uppercase block">Pricing</span>
+                    <span className="text-xs font-mono font-semibold text-[#0F172A]">
                       From {service.pricingModel.startingAt}
                     </span>
                   </div>
                   <Link
                     href={`/services/${service.slug}`}
-                    className="px-4 py-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500 text-cyan-300 hover:text-slate-950 text-xs font-bold transition-all flex items-center space-x-1"
+                    className="text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] inline-flex items-center space-x-1"
+                    aria-label={`${service.shortTitle} pricing & details`}
                   >
-                    <span>View Service</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <span>{service.shortTitle} details</span>
+                    <ArrowRight className="w-3.5 h-3.5 ml-0.5" />
                   </Link>
                 </div>
               </div>
@@ -112,32 +104,13 @@ export default function ServicesHubPage() {
           ))}
         </div>
 
-        {/* Global Process Teaser */}
-        <div className="my-20 bg-slate-950/80 border border-white/10 rounded-3xl p-8 sm:p-12 text-center">
-          <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
-            Need a Custom Hybrid Engagement?
-          </h3>
-          <p className="text-slate-300 text-sm sm:text-base mt-2 max-w-2xl mx-auto">
-            Most of our clients pair Web Development with Technical SEO, or Cross-Platform Mobile Apps with CRM integration. We craft unified multi-service scopes with dedicated cross-functional squads.
-          </p>
-          <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/pricing"
-              className="px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm"
-            >
-              Configure Scope in Estimator
-            </Link>
-            <Link
-              href="/contact"
-              className="px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold text-sm border border-white/10"
-            >
-              Talk to a Solutions Architect
-            </Link>
-          </div>
-        </div>
-
         {/* Closing CTA */}
-        <CtaSection />
+        <CtaSection
+          title="Have a project in mind? Send us the details and we’ll reply within a day."
+          description="We build websites, Shopify stores and apps for small and mid-size businesses. Based in Kolkata, working with clients worldwide."
+          primaryCtaText="Tell us about your project"
+          primaryCtaHref="/contact"
+        />
       </div>
     </div>
   );

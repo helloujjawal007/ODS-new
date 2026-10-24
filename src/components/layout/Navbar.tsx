@@ -7,7 +7,6 @@ import {
   Menu,
   X,
   ChevronDown,
-  Sparkles,
   Code2,
   TrendingUp,
   Smartphone,
@@ -35,124 +34,110 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 15);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { label: "Portfolio", href: "/portfolio" },
+    { label: "Work", href: "/portfolio" },
     { label: "Process", href: "/process" },
     { label: "Pricing", href: "/pricing" },
     { label: "Blog", href: "/blog" },
-    { label: "About", href: "/about" },
-    { label: "Contact", href: "/contact" }
+    { label: "About", href: "/about" }
   ];
 
   const servicesMenu = [
     {
       title: "Website Development",
-      desc: "Next.js 16, SSR, Headless CMS, Lighthouse 99+",
+      desc: "Fast Next.js websites and headless CMS architectures",
       href: "/services/website-development",
-      icon: Code2,
-      color: "text-cyan-400 bg-cyan-950/50"
+      icon: Code2
     },
     {
-      title: "Shopify & BigCommerce Stores",
-      desc: "Shopify Plus, Liquid OS 2.0, BigCommerce MSF",
+      title: "Shopify & BigCommerce",
+      desc: "Custom storefronts, OS 2.0 themes and multi-storefronts",
       href: "/services/shopify-bigcommerce-development",
-      icon: ShoppingBag,
-      color: "text-emerald-400 bg-emerald-950/50"
+      icon: ShoppingBag
     },
     {
-      title: "Technical SEO & Growth",
-      desc: "Topical clusters, schema.org, Core Web Vitals",
+      title: "Technical SEO & Speed",
+      desc: "Topical clusters, Core Web Vitals, and structured data",
       href: "/services/seo",
-      icon: TrendingUp,
-      color: "text-emerald-400 bg-emerald-950/50"
-    },
-    {
-      title: "Android App Development",
-      desc: "Native Kotlin, Jetpack Compose, Play Store",
-      href: "/services/android-app-development",
-      icon: Smartphone,
-      color: "text-emerald-400 bg-emerald-950/50"
+      icon: TrendingUp
     },
     {
       title: "iOS App Development",
-      desc: "Native Swift 6, SwiftUI, Dynamic Island",
+      desc: "Native Swift 6 & SwiftUI apps",
       href: "/services/ios-app-development",
-      icon: Smartphone,
-      color: "text-purple-400 bg-purple-950/50"
+      icon: Smartphone
+    },
+    {
+      title: "Android App Development",
+      desc: "Native Kotlin & Jetpack Compose apps",
+      href: "/services/android-app-development",
+      icon: Smartphone
     },
     {
       title: "Cross-Platform Apps",
-      desc: "Flutter & React Native single-codebase",
+      desc: "Flutter & React Native single-codebase builds",
       href: "/services/cross-platform-app-development",
-      icon: Sparkles,
-      color: "text-cyan-400 bg-cyan-950/50"
+      icon: Code2
     },
     {
-      title: "CRM Integration",
-      desc: "HubSpot, Zoho, multi-system resilient sync",
+      title: "CRM & Salesforce Sync",
+      desc: "Resilient bi-directional API pipelines",
       href: "/services/crm-integration",
-      icon: Database,
-      color: "text-blue-400 bg-blue-950/50"
+      icon: Database
     },
     {
       title: "Salesforce Support",
-      desc: "Certified LWC, Apex triggers, Flow automation",
+      desc: "Lightning Web Components, Apex, and Flow automation",
       href: "/services/salesforce-support",
-      icon: Workflow,
-      color: "text-blue-400 bg-blue-950/50"
+      icon: Workflow
     },
     {
       title: "UI/UX & Design Systems",
-      desc: "Figma tokens, high-fidelity prototypes, user testing",
+      desc: "Figma component tokens and user testing",
       href: "/services/ui-ux-design",
-      icon: Palette,
-      color: "text-amber-400 bg-amber-950/50"
+      icon: Palette
     },
     {
       title: "Plugins & Extensions",
-      desc: "Chrome extensions, Shopify apps, custom add-ons",
+      desc: "Custom Chrome extensions and Shopify apps",
       href: "/services/plugins-extensions-development",
-      icon: Puzzle,
-      color: "text-purple-400 bg-purple-950/50"
+      icon: Puzzle
     }
   ];
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-        ? "bg-slate-950/85 backdrop-blur-xl border-b border-white/10 shadow-2xl py-3"
-        : "bg-transparent py-5"
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+        scrolled
+          ? "bg-white/95 backdrop-blur-md border-b border-[#E2E8F0] shadow-xs py-3.5"
+          : "bg-white/90 backdrop-blur-sm py-4 border-b border-[#E2E8F0]/60"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-500 flex items-center justify-center p-0.5 shadow-lg shadow-cyan-500/20 group-hover:shadow-cyan-400/40 transition-shadow">
-              <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                <span className="font-extrabold text-sm tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-300">
-                  ODS
-                </span>
-              </div>
+            <div className="w-8 h-8 rounded-[6px] bg-[#2563EB] text-white flex items-center justify-center font-mono text-xs font-bold tracking-wider shadow-xs">
+              CC
             </div>
             <div className="flex flex-col">
-              <span className="font-bold tracking-tight text-base sm:text-lg text-white group-hover:text-cyan-300 transition-colors">
-                Online Digital Solution
+              <span className="font-serif text-lg font-medium text-[#0F172A] leading-tight">
+                Cloud Consultancy
               </span>
-              <span className="hidden sm:block text-[10px] text-cyan-400/90 font-mono tracking-wider">
-                100% Online Global Engineering
+              <span className="hidden sm:block text-[11px] text-[#64748B] font-sans tracking-normal">
+                Kolkata · Worldwide engineering
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-1">
+          <nav className="hidden lg:flex items-center space-x-1 font-sans text-sm">
             {/* Services Dropdown */}
             <div
               className="relative"
@@ -169,31 +154,33 @@ export default function Navbar() {
                 href="/services"
                 aria-expanded={servicesOpen}
                 aria-haspopup="true"
-                className={`flex items-center space-x-1 px-3 py-2 text-sm font-medium rounded-lg transition-colors ${pathname.startsWith("/services")
-                  ? "text-cyan-400 bg-white/5"
-                  : "text-slate-300 hover:text-white hover:bg-white/5"
-                  }`}
+                className={`flex items-center space-x-1 px-3 py-2 rounded-[6px] font-medium transition-colors ${
+                  pathname.startsWith("/services")
+                    ? "text-[#2563EB] font-semibold"
+                    : "text-[#0F172A] hover:text-[#2563EB]"
+                }`}
               >
                 <span>Services</span>
                 <ChevronDown
-                  className={`w-4 h-4 ml-1 transition-transform duration-200 ${servicesOpen ? "rotate-180 text-cyan-400" : ""
-                    }`}
+                  className={`w-3.5 h-3.5 ml-0.5 text-[#64748B] transition-transform duration-200 ${
+                    servicesOpen ? "rotate-180 text-[#2563EB]" : ""
+                  }`}
                 />
               </Link>
 
-              {/* Mega Dropdown */}
+              {/* Services Dropdown Panel */}
               {servicesOpen && (
-                <div className="absolute top-full -left-20 w-[640px] pt-2 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <div className="bg-slate-900/95 backdrop-blur-2xl border border-white/10 rounded-2xl p-5 shadow-2xl grid grid-cols-2 gap-3">
-                    <div className="col-span-2 pb-2 mb-1 border-b border-white/10 flex items-center justify-between">
-                      <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                        Specialized Digital Capabilities
+                <div className="absolute top-full -left-12 w-[620px] pt-2">
+                  <div className="bg-white border border-[#E2E8F0] rounded-[8px] p-5 shadow-xl grid grid-cols-2 gap-2.5">
+                    <div className="col-span-2 pb-2 mb-1 border-b border-[#E2E8F0] flex items-center justify-between">
+                      <span className="text-xs font-mono uppercase tracking-wider text-[#64748B] font-medium">
+                        Services & Disciplines
                       </span>
                       <Link
                         href="/services"
-                        className="text-xs text-cyan-400 hover:underline flex items-center font-medium"
+                        className="text-xs text-[#2563EB] hover:underline flex items-center font-medium"
                       >
-                        All Services Hub <ArrowRight className="w-3 h-3 ml-1" />
+                        All services overview <ArrowRight className="w-3 h-3 ml-1" />
                       </Link>
                     </div>
 
@@ -203,16 +190,16 @@ export default function Navbar() {
                         <Link
                           key={item.href}
                           href={item.href}
-                          className="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-white/5 transition-all group"
+                          className="flex items-start space-x-3 p-2 rounded-[6px] hover:bg-[#F8FAFC] transition-colors group"
                         >
-                          <div className={`p-2 rounded-lg ${item.color} mt-0.5`}>
+                          <div className="p-1.5 rounded-[6px] bg-[#EFF6FF] text-[#2563EB] mt-0.5 border border-[#BFDBFE]/60">
                             <Icon className="w-4 h-4" />
                           </div>
                           <div>
-                            <div className="text-sm font-semibold text-slate-200 group-hover:text-cyan-300 transition-colors">
+                            <div className="text-xs font-semibold text-[#0F172A] group-hover:text-[#2563EB] transition-colors">
                               {item.title}
                             </div>
-                            <div className="text-xs text-slate-400 line-clamp-1 mt-0.5">
+                            <div className="text-[11px] text-[#64748B] line-clamp-1 mt-0.5">
                               {item.desc}
                             </div>
                           </div>
@@ -230,10 +217,11 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${isActive
-                    ? "text-cyan-400 bg-white/5"
-                    : "text-slate-300 hover:text-white hover:bg-white/5"
-                    }`}
+                  className={`px-3 py-2 rounded-[6px] transition-colors ${
+                    isActive
+                      ? "text-[#2563EB] font-semibold"
+                      : "text-[#0F172A] hover:text-[#2563EB]"
+                  }`}
                 >
                   {link.label}
                 </Link>
@@ -241,43 +229,27 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Right Header CTAs */}
+          {/* Right Header CTA - Single Clear Button */}
           <div className="hidden lg:flex items-center space-x-3">
             <Link
-              href="/pricing"
-              className="text-xs text-slate-300 hover:text-cyan-400 font-medium px-3 py-1.5 rounded-full border border-slate-800 hover:border-cyan-500/30 transition-all flex items-center space-x-1.5"
-            >
-              <Sparkles className="w-3 h-3 text-cyan-400" />
-              <span>Project Estimator</span>
-            </Link>
-
-            <Link
               href="/contact"
-              className="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium rounded-xl group bg-gradient-to-br from-cyan-500 to-indigo-600 group-hover:from-cyan-500 group-hover:to-indigo-500 hover:shadow-lg hover:shadow-cyan-500/25 transition-all"
+              className="bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-semibold px-4 py-2.5 rounded-[6px] transition-all inline-flex items-center space-x-1.5 shadow-sm hover:shadow-md"
             >
-              <span className="relative px-4 py-2 transition-all ease-in duration-75 bg-slate-950 rounded-[10px] group-hover:bg-opacity-0 font-semibold text-white flex items-center space-x-1.5">
-                <span>Get a Quote</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </span>
+              <span>Tell us about your project</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex items-center lg:hidden space-x-2">
-            <Link
-              href="/contact"
-              className="px-3 py-1.5 text-xs font-semibold text-slate-950 bg-cyan-400 rounded-lg hover:bg-cyan-300"
-            >
-              Quote
-            </Link>
+          {/* Mobile Menu Toggle */}
+          <div className="flex items-center lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-slate-300 hover:text-white rounded-lg hover:bg-white/5"
+              className="p-2 text-[#0F172A] hover:text-[#2563EB] rounded-[6px] border border-[#CBD5E1]"
               aria-label="Toggle menu"
               aria-expanded={isOpen}
               aria-controls="mobile-navigation-menu"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
@@ -285,10 +257,13 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div id="mobile-navigation-menu" className="lg:hidden bg-slate-950/95 border-b border-white/10 px-4 pt-3 pb-6 max-h-[85vh] overflow-y-auto">
-          <div className="flex flex-col space-y-1">
-            <div className="py-2">
-              <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 px-3 mb-2">
+        <div
+          id="mobile-navigation-menu"
+          className="lg:hidden bg-white border-b border-[#E2E8F0] px-4 pt-3 pb-6 max-h-[85vh] overflow-y-auto shadow-lg"
+        >
+          <div className="flex flex-col space-y-2">
+            <div className="py-2 border-b border-[#E2E8F0]">
+              <div className="text-xs font-mono uppercase tracking-wider text-[#64748B] px-3 mb-2 font-medium">
                 Services
               </div>
               <div className="grid grid-cols-1 gap-1">
@@ -296,42 +271,32 @@ export default function Navbar() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm text-slate-200 hover:bg-white/5 hover:text-cyan-300"
+                    className="flex items-center justify-between px-3 py-2 rounded-[6px] text-xs font-medium text-[#0F172A] hover:bg-[#F8FAFC]"
                   >
-                    <span className="text-cyan-400 font-mono text-xs">/</span>
                     <span>{item.title}</span>
+                    <ArrowRight className="w-3 h-3 text-[#64748B]" />
                   </Link>
                 ))}
               </div>
             </div>
 
-            <div className="border-t border-white/10 pt-3">
-              <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 px-3 mb-2">
-                Company & Resources
-              </div>
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="block px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-white/5 hover:text-cyan-400"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="px-3 py-2 text-sm font-medium text-[#0F172A] hover:text-[#2563EB]"
+              >
+                {link.label}
+              </Link>
+            ))}
 
-            <div className="pt-4 border-t border-white/10 flex flex-col space-y-2">
+            <div className="pt-3">
               <Link
                 href="/contact"
-                className="w-full text-center py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-semibold text-sm shadow-lg shadow-cyan-500/20"
+                className="w-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-semibold py-3 px-4 rounded-[6px] flex items-center justify-center space-x-2 transition-colors shadow-sm"
               >
-                Schedule Free Consultation
-              </Link>
-              <Link
-                href="/pricing"
-                className="w-full text-center py-2 rounded-xl bg-slate-900 text-slate-300 font-medium text-sm border border-white/10"
-              >
-                Instant Project Cost Estimator
+                <span>Tell us about your project</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
           </div>

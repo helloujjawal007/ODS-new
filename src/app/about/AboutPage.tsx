@@ -1,11 +1,11 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import { 
-  Sparkles, 
   ShieldCheck, 
   Target, 
   Zap, 
-  Compass 
+  Compass, 
+  Code2 
 } from "lucide-react";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import CtaSection from "@/components/sections/CtaSection";
@@ -13,123 +13,119 @@ import JsonLd from "@/components/seo/JsonLd";
 import { getBreadcrumbJsonLd } from "@/lib/seo-config";
 
 export const metadata: Metadata = {
-  title: "About Us",
-  description: "Meet Online Digital Solution. Headquartered in Kolkata, India, we engineer high-performance web applications, custom Shopify stores, and growth platforms 100% online for clients worldwide.",
+  title: "About Our Team & Engineering Philosophy",
+  description: "Meet the engineers behind Cloud Consultancy. Based in Kolkata, building cloud architecture, websites, Shopify stores and apps for clients worldwide.",
   alternates: {
     canonical: "/about"
   }
 };
 
 export default function AboutPage() {
-  const leadership = [
-    {
-      name: "Evelyn Reed",
-      role: "Founder & Chief Executive Officer",
-      bio: "Ex-Staff Architect with 14+ years scaling high-traffic cloud platforms and organic search growth flywheels for Fortune 500 brands.",
-      image: "/images/founder_portrait.jpg",
-      credentials: "MS Computer Science · Certified Enterprise Architect"
-    },
-    {
-      name: "Marcus Vance",
-      role: "VP of Engineering & Lead Solutions Architect",
-      bio: "Full-stack pioneer specializing in Next.js App Router performance, distributed microservices, and mobile system design.",
-      image: "/images/cto_portrait.jpg",
-      credentials: "BS Software Engineering · Salesforce Application Architect"
-    }
-  ];
-
   const values = [
     {
-      title: "Radical Transparency",
-      desc: "No vanity metrics or inflated hours. We provide fixed-price roadmaps, direct codebase access, and honest feasibility analysis.",
+      title: "Direct Engineer Access",
+      desc: "No non-technical account managers or communication silos. You collaborate directly with the engineers writing and shipping your code.",
       icon: ShieldCheck
     },
     {
-      title: "Core Web Vitals Obsession",
-      desc: "Speed is a core brand attribute. We never ship code that fails Google's LCP, CLS, or INP thresholds.",
+      title: "Core Web Vitals Discipline",
+      desc: "Speed is an architectural standard, not an afterthought. We test every build against Google's real-world LCP, CLS, and INP thresholds.",
       icon: Zap
     },
     {
-      title: "Zero Vendor Lock-In",
-      desc: "You retain 100% intellectual property ownership of your repositories, Figma designs, and deployment configs from day one.",
+      title: "100% Code Ownership",
+      desc: "You retain full intellectual property ownership of your GitHub repositories, Figma master files, and deployment accounts from day one.",
       icon: Target
     },
     {
-      title: "Engineered for Long-Term Growth",
-      desc: "We don't build disposable templates. Every system is structured to compound organic search visibility and handle high transaction volumes.",
+      title: "Fixed Scope & Milestones",
+      desc: "We define concrete deliverables and milestone payments before starting work so you never experience surprise invoices.",
       icon: Compass
     }
   ];
 
-  const milestones = [
-    { year: "2020", title: "Agency Inception", desc: "Founded with a mission to bridge high-end engineering with technical SEO growth." },
-    { year: "2022", title: "Mobile & CRM Expansion", desc: "Launched dedicated native mobile and Salesforce enterprise integration practices." },
-    { year: "2024", title: "Global Footprint", desc: "Delivered 120+ platforms with an average client organic traffic surge of +380%." },
-    { year: "2026", title: "Next-Gen Edge Standards", desc: "Pioneering Next.js 16 App Router edge-native deployments and AI search integration." }
+  const disciplines = [
+    {
+      role: "Solutions & Web Architecture",
+      focus: "Next.js 16, App Router, React 19, Headless CMS & Cloudflare Edge",
+      desc: "Responsible for core structural performance, server-side caching, and robust API endpoints."
+    },
+    {
+      role: "Shopify & E-Commerce Engineering",
+      focus: "Shopify Plus, Liquid OS 2.0, BigCommerce MSF, Klaviyo & Checkout Extensions",
+      desc: "Building custom themes, seamless cart drawers, and reliable ERP inventory synchronizations."
+    },
+    {
+      role: "Mobile Applications",
+      focus: "Swift 6 / SwiftUI for iOS, Kotlin for Android, and Flutter Cross-Platform",
+      desc: "Engineering responsive mobile interfaces with offline sync and native device hardware integrations."
+    },
+    {
+      role: "Technical SEO & Schema Architecture",
+      focus: "Topic cluster modeling, JSON-LD structured data, Core Web Vitals remediation",
+      desc: "Ensuring every deployed page is crawlable, fast, and primed for organic search rankings."
+    }
   ];
 
-  const breadcrumbs = [{ label: "About Our Team" }];
+  const milestones = [
+    { year: "2021", title: "Kolkata Studio Founded", desc: "Started as a dedicated web and technical SEO engineering team." },
+    { year: "2023", title: "Shopify & Mobile Expansion", desc: "Added custom Shopify OS 2.0 and cross-platform mobile app practices." },
+    { year: "2024", title: "Global Client Base", desc: "Partnered with founders across the US, UK, Europe, and Asia-Pacific." },
+    { year: "2026", title: "Next.js Edge & App Standards", desc: "Pioneering Next.js 16 App Router edge-native deployments and schema automation." }
+  ];
+
+  const breadcrumbs = [{ label: "About" }];
   const breadcrumbSchema = getBreadcrumbJsonLd([
     { name: "About", url: "/about" }
   ]);
 
   return (
-    <div className="py-8">
+    <div className="py-8 bg-white text-[#0F172A] font-sans selection:bg-[#2563EB] selection:text-white">
       <JsonLd id="schema-breadcrumb-about" data={breadcrumbSchema} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Breadcrumbs items={breadcrumbs} />
 
-        {/* Hero Editorial */}
-        <section className="my-12 max-w-4xl">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-800/40 text-cyan-300 text-xs font-semibold uppercase tracking-wider mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-            <span>The Team Behind The Code</span>
-          </div>
+        {/* Hero Section */}
+        <section className="my-10 max-w-4xl">
+          <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold block mb-2">
+            About Cloud Consultancy
+          </span>
 
-          <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight leading-[1.1]">
-            We Believe Engineering Excellence Is The Ultimate{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400">
-              Competitive Moat.
-            </span>
+          <h1 className="text-3xl sm:text-5xl font-serif font-normal text-[#0F172A] tracking-tight leading-[1.15]">
+            Engineering cloud architecture, web systems and apps with care and transparency.
           </h1>
 
-          <p className="text-slate-300 text-base sm:text-xl mt-6 leading-relaxed">
-            Founded in Kolkata by senior software architects, <strong>Online Digital Solution</strong> was created to deliver Tier-1 digital craftsmanship 100% online. We bridge the gap between world-class engineering standards and transparent cost structures, partnering directly with founders and enterprises globally with seamless time-zone collaboration.
+          <p className="text-[#475569] text-base sm:text-lg mt-4 leading-relaxed max-w-2xl">
+            Founded in Kolkata by software engineers, <strong>Cloud Consultancy</strong> was created to give growing businesses direct access to senior technical craft without excessive agency overhead. We work remotely with founders and teams around the globe.
           </p>
         </section>
 
         {/* Studio Image */}
-        <div className="relative aspect-[16/9] sm:aspect-[21/9] rounded-3xl overflow-hidden border border-white/10 shadow-2xl my-12 bg-slate-950">
+        <div className="relative aspect-[16/9] sm:aspect-[21/9] rounded-[8px] overflow-hidden border border-[#E2E8F0] shadow-sm my-10 bg-[#F1F5F9]">
           <Image
             src="/images/about_team_studio.jpg"
-            alt="Online Digital Solution Engineering Hub & Remote Delivery Team"
+            alt="Cloud Consultancy engineering team working in Kolkata"
             fill
             priority
-            sizes="100vw"
+            sizes="(max-width: 1024px) 100vw, 1100px"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-          <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between text-xs text-slate-300 bg-slate-950/80 backdrop-blur-md p-4 rounded-2xl border border-white/10 max-w-md">
-            <div>
-              <span className="font-bold text-white block">Online Digital Solution Hub</span>
-              <span className="text-slate-400">Kolkata, India · 100% Online Global Operations</span>
-            </div>
-            <span className="px-2.5 py-1 rounded-full bg-cyan-950 text-cyan-300 font-mono text-[11px]">
-              Global Remote Operations
-            </span>
+          <div className="absolute bottom-4 left-4 right-4 sm:right-auto bg-white/95 backdrop-blur-xs border border-[#E2E8F0] p-3 rounded-[6px] text-xs text-[#475569] shadow-sm">
+            <span className="font-semibold text-[#0F172A] block">Cloud Consultancy Studio</span>
+            <span>Kolkata, India · Remote collaboration worldwide</span>
           </div>
         </div>
 
-        {/* Core Principles / Values Grid */}
-        <section className="my-24">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-              The Principles That Guide Our Engineering
+        {/* Core Principles */}
+        <section className="my-16 border-b border-[#E2E8F0] pb-16">
+          <div className="max-w-2xl mb-10">
+            <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold block mb-1">
+              How We Work
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-serif font-normal text-[#0F172A]">
+              Principles That Guide Our Development
             </h2>
-            <p className="text-slate-400 text-sm mt-2">
-              How we approach every pull request, sprint backlog, and client deployment.
-            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -138,79 +134,76 @@ export default function AboutPage() {
               return (
                 <div
                   key={idx}
-                  className="bg-slate-900/60 border border-white/10 rounded-2xl p-6 hover:border-cyan-500/30 transition-colors"
+                  className="bg-white border border-[#E2E8F0] rounded-[8px] p-5 shadow-xs"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-cyan-950/80 border border-cyan-800/40 text-cyan-400 flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6" />
+                  <div className="w-8 h-8 rounded-[6px] bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center mb-3 border border-[#BFDBFE]">
+                    <Icon className="w-4 h-4" />
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2">{v.title}</h3>
-                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">{v.desc}</p>
+                  <h3 className="font-serif text-base font-medium text-[#0F172A] mb-1.5">{v.title}</h3>
+                  <p className="text-xs text-[#475569] leading-relaxed">{v.desc}</p>
                 </div>
               );
             })}
           </div>
         </section>
 
-        {/* Leadership Team Profiles */}
-        <section className="my-24 bg-slate-950/80 border border-white/10 rounded-3xl p-8 sm:p-14">
-          <div className="max-w-2xl mb-12">
-            <span className="text-xs uppercase tracking-wider text-cyan-400 font-bold block mb-2">
-              Senior Leadership
+        {/* Team Disciplines */}
+        <section className="my-16 border-b border-[#E2E8F0] pb-16">
+          <div className="max-w-2xl mb-10">
+            <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold block mb-1">
+              Engineering Disciplines
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-              Directly Led By Senior Practitioners
+            <h2 className="text-2xl sm:text-3xl font-serif font-normal text-[#0F172A]">
+              Specialized Roles Across Every Sprint
             </h2>
-            <p className="text-slate-400 text-sm mt-2">
-              You won&apos;t be passed down to inexperienced junior developers. Every engagement is steered by proven technical leadership.
+            <p className="text-xs text-[#475569] mt-2">
+              Every project is led by proven hands-on developers who write clean, tested code.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {leadership.map((person, idx) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {disciplines.map((item, idx) => (
               <div
                 key={idx}
-                className="bg-slate-900/70 border border-white/10 rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center space-y-6 sm:space-y-0 sm:space-x-6 hover:border-cyan-500/30 transition-all"
+                className="bg-white border border-[#E2E8F0] rounded-[8px] p-6 shadow-xs"
               >
-                <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border-2 border-cyan-400/50 shrink-0 shadow-xl">
-                  <Image
-                    src={person.image}
-                    alt={person.name}
-                    fill
-                    className="object-cover"
-                  />
+                <div className="flex items-center space-x-2 text-xs font-mono uppercase text-[#2563EB] font-semibold mb-1.5">
+                  <Code2 className="w-3.5 h-3.5" />
+                  <span>{item.role}</span>
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-white">{person.name}</h3>
-                  <div className="text-xs text-cyan-400 font-mono mb-2">{person.role}</div>
-                  <p className="text-xs text-slate-300 leading-relaxed mb-3">{person.bio}</p>
-                  <span className="text-[11px] text-slate-400 font-mono block">
-                    {person.credentials}
-                  </span>
+                <div className="text-xs font-mono text-[#0F172A] font-semibold mb-2">
+                  {item.focus}
                 </div>
+                <p className="text-xs text-[#475569] leading-relaxed">
+                  {item.desc}
+                </p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Milestones Timeline */}
-        <section className="my-24">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-              Our Journey & Milestones
+        {/* Milestones */}
+        <section className="my-16">
+          <div className="max-w-2xl mb-10">
+            <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold block mb-1">
+              Timeline
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-serif font-normal text-[#0F172A]">
+              Milestones & Growth
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {milestones.map((m, idx) => (
               <div
                 key={idx}
-                className="bg-slate-900/50 border border-white/5 rounded-2xl p-6 relative overflow-hidden"
+                className="bg-white border border-[#E2E8F0] rounded-[6px] p-5 shadow-xs"
               >
-                <div className="text-4xl font-black text-cyan-500/20 font-mono mb-3">
+                <div className="text-2xl font-serif font-medium text-[#2563EB] mb-1">
                   {m.year}
                 </div>
-                <h3 className="text-base font-bold text-white mb-2">{m.title}</h3>
-                <p className="text-xs text-slate-400 leading-relaxed">{m.desc}</p>
+                <h3 className="font-serif text-sm font-medium text-[#0F172A] mb-1">{m.title}</h3>
+                <p className="text-xs text-[#475569] leading-relaxed">{m.desc}</p>
               </div>
             ))}
           </div>
@@ -218,8 +211,10 @@ export default function AboutPage() {
 
         {/* Closing CTA */}
         <CtaSection
-          title="Ready to Partner with Our Leadership?"
-          description="Schedule a technical consultation to discuss your product architecture and organic growth goals."
+          title="Have a project in mind? Send us the details and we’ll reply within a day."
+          description="We build websites, Shopify stores and apps for small and mid-size businesses. Based in Kolkata, working with clients worldwide."
+          primaryCtaText="Tell us about your project"
+          primaryCtaHref="/contact"
         />
       </div>
     </div>

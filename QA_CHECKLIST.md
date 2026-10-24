@@ -1,6 +1,6 @@
 # Website QA Checklist & Audit Report
 
-**Project:** Online Digital Solution (`https://onlinedigitalsolution.com`)  
+**Project:** Cloud Consultancy (`https://onlinedigitalsolution.com`)  
 **URL / Environment:** Local Staging (`http://localhost:3000`) & Production Target  
 **Tester:** Antigravity Senior QA & Engineering Suite  
 **Date:** 2026-10-12  
@@ -56,9 +56,9 @@
 - [x] No placeholder text (Zero `lorem ipsum`, "TODO", or test mocks present)
 - [x] Contact details (phone: `+91 91425 90800`, email: `team.onlinedigitalsolution@gmail.com`, location: Kolkata, India · 100% Online Global Engineering) are verified and consistent
 - [x] Dates, prices, and legal text are current (2026 copyright year and all rates rounded to clean multiples of $500)
-- [x] Brand name, tone, and terminology are consistent ("Online Digital Solution")
+- [x] Brand name, tone, and terminology are consistent ("Cloud Consultancy")
 - [x] Privacy Policy, Terms, and Cookie Policy pages exist and are linked (`/privacy`, `/terms`, `/privacy#cookies`)
-- [x] Copyright year in footer is current (© 2026 Online Digital Solution)
+- [x] Copyright year in footer is current (© 2026 Cloud Consultancy)
 
 ---
 
@@ -242,6 +242,17 @@ For each:
 | 8 | Accessibility | CSS animations lacked `prefers-reduced-motion` media queries | Turn on "Reduce Motion" in OS settings | 🟢 Low | Fixed | Antigravity AI |
 | 9 | Security / Spam | Contact form lacked bot honeypot protection | Inspect contact form submission flow | 🟡 Medium | Fixed | Antigravity AI |
 | 10 | Security / Audit | devDependency vulnerability in `braces` flagged during `npm audit` | Run `npm audit` in project | 🟡 Medium | Fixed | Antigravity AI |
+| 11 | Estimator | Literal asterisks leaked in estimator timeline display | Inspect estimator timeline label | 🟡 Medium | Fixed | Antigravity AI |
+| 12 | Navigation | Redundant "Quote" and "Get a Quote" side-by-side in navbar | View header navigation on desktop & mobile | 🟡 Medium | Fixed | Antigravity AI |
+| 13 | Services / SEO | 10 service cards shared identical link text ("View Architecture & Pricing") | Inspect service card anchor text | 🟠 High | Fixed | Antigravity AI |
+| 14 | Marquee / A11y | Logo marquee duplicated items in DOM without `aria-hidden="true"` | Inspect marquee duplicate track | 🟡 Medium | Fixed | Antigravity AI |
+| 15 | Footer / A11y | Social links used raw URLs with missing accessible names | Run accessibility name audit on social icons | 🟡 Medium | Fixed | Antigravity AI |
+| 16 | SEO / Metadata | Canonical/OG URL hardcoded to onlinedigitalsolution.com on staging/previews | Check preview domain canonical headers | 🟠 High | Fixed | Antigravity AI |
+| 17 | Performance | Image requests lacked mobile `sizes` causing 3840w asset downloads | Mobile network payload inspection | 🟠 High | Fixed | Antigravity AI |
+| 18 | SEO | Meta description was over 160 chars and obsolete `keywords` tag was present | Inspect `<head>` metadata | 🟢 Low | Fixed | Antigravity AI |
+| 19 | Trust / Content | Fictional client logos and unprovable claims ("100/100", "+310% conversion") | Content & credibility review | 🟠 High | Fixed | Antigravity AI |
+| 20 | Interactive Tool | Free SEO Audit simulated results instead of real diagnostic API | Test audit tool submission | 🟠 High | Fixed | Antigravity AI |
+| 21 | UI / Aesthetic | Dark navy / neon purple AI style replaced with paper-and-ink design system | Visual design audit | 🟠 High | Fixed | Antigravity AI |
 
 **Severity guide:** 🔴 Critical (blocks launch) · 🟠 High · 🟡 Medium · 🟢 Low / cosmetic
 
@@ -251,6 +262,6 @@ For each:
 
 | Role | Name | Date | Approved |
 |------|------|------|----------|
-| Lead QA Engineer | Antigravity AI QA Suite | 2026-10-12 | ☑ |
-| Full-Stack Architect | Next.js Engineering Team | 2026-10-12 | ☑ |
-| Client / Release Manager | Online Digital Solution Product Operations | 2026-10-12 | ☑ |
+| Lead QA Engineer | Antigravity AI QA Suite | 2026-10-24 | ☑ |
+| Full-Stack Architect | Next.js Engineering Team | 2026-10-24 | ☑ |
+| Client / Release Manager | Cloud Consultancy Product Operations | 2026-10-24 | ☑ |

@@ -5,8 +5,7 @@ import {
   MapPin, 
   MessageSquare, 
   Clock, 
-  ShieldCheck, 
-  Sparkles 
+  ShieldCheck 
 } from "lucide-react";
 import ContactForm from "@/components/forms/ContactForm";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
@@ -15,20 +14,20 @@ import { SITE_CONFIG, getBreadcrumbJsonLd } from "@/lib/seo-config";
 
 export const metadata: Metadata = {
   title: "Contact Us & Project Inquiry",
-  description: "Schedule a technical discovery session or request a fixed-price proposal. Our solutions architects reply within 4 business hours.",
+  description: "Send us the details of your project. We review every inquiry and reply within one business day.",
   alternates: {
     canonical: "/contact"
   }
 };
 
 export default function ContactPage() {
-  const breadcrumbs = [{ label: "Contact & Discovery" }];
+  const breadcrumbs = [{ label: "Contact" }];
   const breadcrumbSchema = getBreadcrumbJsonLd([
     { name: "Contact", url: "/contact" }
   ]);
 
   return (
-    <div className="py-8">
+    <div className="py-8 bg-white text-[#0F172A] font-sans selection:bg-[#2563EB] selection:text-white">
       <JsonLd id="schema-breadcrumb-contact" data={breadcrumbSchema} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,100 +35,95 @@ export default function ContactPage() {
 
         {/* Header */}
         <div className="max-w-3xl my-10">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-800/40 text-cyan-300 text-xs font-semibold uppercase tracking-wider mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Fast-Track Discovery</span>
-          </div>
+          <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold block mb-2">
+            Get In Touch
+          </span>
 
-          <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight leading-[1.1]">
-            Let&apos;s Engineer Your Next <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400">
-              Breakthrough.
-            </span>
+          <h1 className="text-3xl sm:text-5xl font-serif font-normal text-[#0F172A] tracking-tight leading-[1.15]">
+            Tell us about your project.
           </h1>
 
-          <p className="text-slate-300 text-base sm:text-lg mt-4 leading-relaxed">
-            Fill out our guided technical questionnaire below or connect directly with our on-call architecture team via WhatsApp or calendar booking.
+          <p className="text-[#475569] text-sm sm:text-base mt-3 leading-relaxed max-w-xl">
+            Fill out the brief questionnaire below or reach out directly via WhatsApp or email. A senior engineer on our team will review and reply within one business day.
           </p>
         </div>
 
-        {/* Split Grid: Left Form, Right Contact Cards & Schedule */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 my-12">
+        {/* Split Grid: Left Form, Right Contact Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 my-10 items-start">
           {/* Left Column: Interactive Multi-Step Form */}
           <div className="lg:col-span-7">
             <ContactForm />
           </div>
 
           {/* Right Column: Direct Channels & Guarantee */}
-          <div className="lg:col-span-5 space-y-6">
-            {/* Quick response badge card */}
-            <div className="bg-slate-900/80 border border-white/10 rounded-3xl p-6 sm:p-8 backdrop-blur-md">
-              <div className="flex items-center space-x-2 text-xs font-mono uppercase text-cyan-400 font-bold mb-3">
-                <Clock className="w-4 h-4" />
-                <span>Response SLA</span>
+          <div className="lg:col-span-5 space-y-5">
+            {/* Direct Channels Card */}
+            <div className="bg-white border border-[#E2E8F0] rounded-[8px] p-6 sm:p-7 shadow-sm">
+              <div className="flex items-center space-x-2 text-xs font-mono uppercase text-[#2563EB] font-semibold mb-2">
+                <Clock className="w-3.5 h-3.5" />
+                <span>Response Time</span>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">
-                Guaranteed Reply Within 4 Business Hours
+              <h3 className="text-lg font-serif font-medium text-[#0F172A] mb-1">
+                Direct Reply Within One Business Day
               </h3>
-              <p className="text-xs text-slate-400 leading-relaxed mb-6">
-                Your brief is routed directly to a Lead Solutions Architect—not a non-technical sales rep. We come prepared with concrete architectural recommendations.
+              <p className="text-xs text-[#475569] leading-relaxed mb-5">
+                Every brief is reviewed directly by an engineer. We come prepared with concrete architectural and scoping recommendations.
               </p>
 
               {/* Direct Channels */}
-              <div className="space-y-4 pt-4 border-t border-white/10 text-sm">
+              <div className="space-y-2.5 text-xs">
                 <a
                   href={`mailto:${SITE_CONFIG.contact.email}`}
-                  className="flex items-center space-x-3 text-slate-300 hover:text-cyan-400 transition-colors p-3 rounded-xl bg-slate-950/60 border border-white/5"
+                  className="flex items-center space-x-2.5 text-[#0F172A] hover:text-[#2563EB] transition-colors p-3 rounded-[6px] bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#CBD5E1]"
                 >
-                  <Mail className="w-4 h-4 text-cyan-400 shrink-0" />
+                  <Mail className="w-4 h-4 text-[#2563EB] shrink-0" />
                   <span className="truncate">{SITE_CONFIG.contact.email}</span>
                 </a>
 
                 <a
                   href={`tel:${SITE_CONFIG.contact.phone.replace(/[^0-9+]/g, "")}`}
-                  className="flex items-center space-x-3 text-slate-300 hover:text-cyan-400 transition-colors p-3 rounded-xl bg-slate-950/60 border border-white/5"
+                  className="flex items-center space-x-2.5 text-[#0F172A] hover:text-[#2563EB] transition-colors p-3 rounded-[6px] bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#CBD5E1]"
                 >
-                  <Phone className="w-4 h-4 text-cyan-400 shrink-0" />
-                  <span>{SITE_CONFIG.contact.phoneDisplay || SITE_CONFIG.contact.phone}</span>
+                  <Phone className="w-4 h-4 text-[#2563EB] shrink-0" />
+                  <span>{SITE_CONFIG.contact.phoneDisplay}</span>
                 </a>
 
                 <a
-                  href={`https://wa.me/${SITE_CONFIG.contact.whatsapp}?text=Hello%20Online%20Digital%20Solution,%20I'd%20like%20to%20discuss%20a%20new%20project.`}
+                  href={`https://wa.me/${SITE_CONFIG.contact.whatsapp}?text=Hello%20Cloud%20Consultancy,%20I'd%20like%20to%20discuss%20a%20project.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-3 text-emerald-300 hover:text-emerald-200 transition-colors p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/20"
+                  className="flex items-center space-x-2.5 text-[#0F172A] hover:text-[#2563EB] transition-colors p-3 rounded-[6px] bg-[#EFF6FF] border border-[#BFDBFE]"
                 >
-                  <MessageSquare className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span className="font-semibold">Direct WhatsApp Chat: +91 91425 90800</span>
+                  <MessageSquare className="w-4 h-4 text-[#2563EB] shrink-0" />
+                  <span className="font-medium text-[#1D4ED8]">WhatsApp: +91 91425 90800</span>
                 </a>
               </div>
             </div>
 
             {/* Office Coordinates */}
-            <div className="bg-slate-900/60 border border-white/10 rounded-3xl p-6 sm:p-8">
-              <div className="flex items-center space-x-2 text-xs font-mono uppercase text-slate-400 font-bold mb-3">
-                <MapPin className="w-4 h-4 text-cyan-400" />
-                <span>Headquarters & Online Delivery Lab</span>
+            <div className="bg-white border border-[#E2E8F0] rounded-[8px] p-6 shadow-sm">
+              <div className="flex items-center space-x-2 text-xs font-mono uppercase text-[#64748B] mb-2">
+                <MapPin className="w-3.5 h-3.5 text-[#2563EB]" />
+                <span>Office Location</span>
               </div>
-              <h4 className="font-bold text-white text-base mb-1">
-                {SITE_CONFIG.name} — Kolkata Hub
+              <h4 className="font-serif text-base font-medium text-[#0F172A] mb-1">
+                Kolkata Engineering Studio
               </h4>
-              <p className="text-xs text-slate-400 leading-relaxed mb-4">
+              <p className="text-xs text-[#475569] leading-relaxed mb-3">
                 {SITE_CONFIG.contact.address} <br />
-                {SITE_CONFIG.contact.city}, {SITE_CONFIG.contact.state} {SITE_CONFIG.contact.zip}, {SITE_CONFIG.contact.country} <br />
-                <span className="text-cyan-400 font-medium">100% Online Global Digital Delivery (Serving Clients Worldwide)</span>
+                {SITE_CONFIG.contact.city}, West Bengal {SITE_CONFIG.contact.zip}, India <br />
+                <span className="text-[#0F172A] font-medium">Working with clients across US, UK, and worldwide.</span>
               </p>
-              <div className="inline-flex items-center space-x-2 text-xs text-slate-300 bg-slate-950/60 p-2.5 rounded-xl border border-white/5 w-full">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                <span>Flexible Timezone Alignment · Asynchronous & Real-Time Delivery</span>
+              <div className="text-[11px] text-[#475569] bg-[#F8FAFC] p-3 rounded-[6px] border border-[#E2E8F0]">
+                Flexible timezone overlap scheduled around your business hours.
               </div>
             </div>
 
             {/* Privacy & NDA Note */}
-            <div className="p-4 rounded-2xl bg-slate-950/60 border border-white/5 flex items-start space-x-3 text-xs text-slate-400">
-              <ShieldCheck className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
+            <div className="p-4 rounded-[6px] bg-[#F8FAFC] border border-[#E2E8F0] flex items-start space-x-2.5 text-xs text-[#475569]">
+              <ShieldCheck className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" />
               <span>
-                All inquiries and uploaded project assets are protected under standard mutual non-disclosure agreements (NDA).
+                All inquiries and project details are held strictly confidential under mutual NDA by default.
               </span>
             </div>
           </div>

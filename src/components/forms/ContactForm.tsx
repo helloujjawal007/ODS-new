@@ -7,14 +7,13 @@ import {
   ArrowLeft, 
   Send, 
   MessageSquare, 
-  CheckCircle2, 
   ShieldCheck 
 } from "lucide-react";
 
 export default function ContactForm() {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    service: "Website Development",
+    service: "Website Development (Next.js)",
     budget: "$5,000 - $10,000",
     timeline: "Within 1 Month",
     url: "",
@@ -30,13 +29,15 @@ export default function ContactForm() {
 
   const services = [
     "Website Development (Next.js)",
-    "Technical SEO & Growth",
+    "Shopify & BigCommerce Store",
+    "Technical SEO & Speed Optimization",
     "Android App Development",
     "iOS App Development",
-    "Cross-Platform (Flutter / RN)",
-    "CRM & Multi-System Integration",
+    "Cross-Platform (Flutter / React Native)",
+    "CRM & API Integration",
     "Salesforce Development & Support",
-    "Product UI/UX Design System"
+    "UI/UX Design Systems",
+    "Plugins & Browser Extensions"
   ];
 
   const budgets = [
@@ -51,7 +52,7 @@ export default function ContactForm() {
     "Immediate (1-2 Weeks)",
     "Within 1 Month",
     "1 - 3 Months",
-    "Exploring / Planning"
+    "Planning / Flexible"
   ];
 
   const handleNext = () => {
@@ -65,61 +66,59 @@ export default function ContactForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (honeypot) {
-      // Spam detected via honeypot trap
       return;
     }
     setIsSubmitting(true);
-    // Simulate API lead ingestion to CRM
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 1200);
+    }, 1000);
   };
 
   if (isSubmitted) {
     return (
-      <div className="bg-slate-900/90 border border-emerald-500/30 rounded-3xl p-8 sm:p-12 text-center shadow-2xl backdrop-blur-xl">
-        <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-6">
-          <CheckCircle2 className="w-8 h-8" />
+      <div className="bg-white border border-[#E2E8F0] rounded-[8px] p-8 sm:p-12 text-center shadow-sm font-sans">
+        <div className="w-12 h-12 rounded-full bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center mx-auto mb-4 border border-[#BFDBFE]">
+          <Check className="w-6 h-6 stroke-[2.5]" />
         </div>
-        <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+        <h3 className="text-2xl sm:text-3xl font-serif font-normal text-[#0F172A]">
           Inquiry Successfully Received
         </h3>
-        <p className="text-slate-300 text-sm sm:text-base mt-3 max-w-md mx-auto">
-          Thank you, <strong>{formData.name}</strong>. A dedicated solutions architect has received your brief and will review your specifications within 4 business hours.
+        <p className="text-[#475569] text-xs sm:text-sm mt-2 max-w-md mx-auto leading-relaxed">
+          Thank you, <strong className="text-[#0F172A]">{formData.name}</strong>. A senior engineer on our team will review your project specifications and reply within one business day.
         </p>
 
-        <div className="bg-slate-950/60 border border-white/10 rounded-2xl p-6 mt-8 max-w-md mx-auto text-left text-xs space-y-2 text-slate-400">
+        <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-[6px] p-5 mt-6 max-w-md mx-auto text-left text-xs space-y-2 text-[#475569]">
           <div className="flex justify-between">
             <span>Selected Service:</span>
-            <span className="text-white font-medium">{formData.service}</span>
+            <span className="text-[#0F172A] font-medium">{formData.service}</span>
           </div>
           <div className="flex justify-between">
-            <span>Budget Bracket:</span>
-            <span className="text-white font-medium">{formData.budget}</span>
+            <span>Budget Range:</span>
+            <span className="text-[#0F172A] font-medium">{formData.budget}</span>
           </div>
           <div className="flex justify-between">
             <span>Target Timeline:</span>
-            <span className="text-white font-medium">{formData.timeline}</span>
+            <span className="text-[#0F172A] font-medium">{formData.timeline}</span>
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+        <div className="mt-6 flex flex-col sm:flex-row justify-center gap-3">
           <a
-            href="https://wa.me/919142590800?text=Hello%20Online%20Digital%20Solution,%20I%20just%20submitted%20a%20project%20inquiry"
+            href="https://wa.me/919142590800?text=Hello%20Cloud%20Consultancy,%20I%20just%20submitted%20a%20project%20inquiry"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm flex items-center justify-center space-x-2 transition-colors shadow-lg shadow-emerald-600/25"
+            className="px-5 py-2.5 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium text-xs flex items-center justify-center space-x-2 transition-colors shadow-sm"
           >
-            <MessageSquare className="w-4 h-4" />
-            <span>Chat on WhatsApp (+91 91425 90800)</span>
+            <MessageSquare className="w-3.5 h-3.5" />
+            <span>WhatsApp (+91 91425 90800)</span>
           </a>
           <button
             onClick={() => {
               setIsSubmitted(false);
               setStep(1);
             }}
-            className="px-6 py-3 rounded-xl bg-slate-800 text-slate-300 hover:text-white text-sm font-medium transition-colors"
+            className="px-5 py-2.5 rounded-[6px] bg-white hover:bg-[#F8FAFC] border border-[#CBD5E1] text-[#0F172A] text-xs font-medium transition-colors"
           >
             Submit Another Inquiry
           </button>
@@ -129,12 +128,12 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="bg-slate-900/90 border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-xl relative">
+    <div className="bg-white border border-[#E2E8F0] rounded-[8px] p-6 sm:p-10 shadow-sm relative font-sans">
       {/* Step Indicator */}
       <div className="mb-8">
-        <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
+        <div className="flex items-center justify-between text-xs font-mono uppercase tracking-wider text-[#64748B] mb-2.5">
           <span>Step {step} of 4</span>
-          <span className="text-cyan-400">
+          <span className="text-[#2563EB] font-semibold">
             {step === 1 && "Choose Service"}
             {step === 2 && "Budget & Timeline"}
             {step === 3 && "Project Scope"}
@@ -146,7 +145,7 @@ export default function ContactForm() {
             <div
               key={s}
               className={`h-1.5 rounded-full transition-all duration-300 ${
-                s <= step ? "bg-cyan-400" : "bg-slate-800"
+                s <= step ? "bg-[#2563EB]" : "bg-[#E2E8F0]"
               }`}
             />
           ))}
@@ -157,8 +156,8 @@ export default function ContactForm() {
         {/* Step 1: Service */}
         {step === 1 && (
           <div className="space-y-4">
-            <h4 className="text-lg font-bold text-white">Which service are you looking for?</h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <h4 className="font-serif text-lg font-medium text-[#0F172A]">Which service are you looking for?</h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {services.map((item) => {
                 const isSelected = formData.service === item;
                 return (
@@ -166,15 +165,15 @@ export default function ContactForm() {
                     key={item}
                     type="button"
                     onClick={() => setFormData({ ...formData, service: item })}
-                    className={`p-4 rounded-xl text-left border text-sm font-medium transition-all ${
+                    className={`p-3 rounded-[6px] text-left border text-xs font-medium transition-all ${
                       isSelected
-                        ? "bg-cyan-950/70 border-cyan-400 text-white shadow-lg shadow-cyan-950/50"
-                        : "bg-slate-950/60 border-white/5 text-slate-300 hover:border-white/20 hover:text-white"
+                        ? "bg-[#EFF6FF] border-[#2563EB] text-[#1D4ED8] shadow-xs"
+                        : "bg-white border-[#E2E8F0] text-[#475569] hover:border-[#94A3B8] hover:text-[#0F172A]"
                     }`}
                   >
                     <div className="flex items-center justify-between">
                       <span>{item}</span>
-                      {isSelected && <Check className="w-4 h-4 text-cyan-400" />}
+                      {isSelected && <Check className="w-3.5 h-3.5 text-[#2563EB]" />}
                     </div>
                   </button>
                 );
@@ -187,19 +186,19 @@ export default function ContactForm() {
         {step === 2 && (
           <div className="space-y-6">
             <div>
-              <h4 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-3">
-                Expected Budget Allocation
+              <h4 className="text-xs font-mono uppercase tracking-wider text-[#0F172A] font-semibold mb-2.5">
+                Expected Budget Range
               </h4>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                 {budgets.map((b) => (
                   <button
                     key={b}
                     type="button"
                     onClick={() => setFormData({ ...formData, budget: b })}
-                    className={`p-3 rounded-xl text-center border text-xs sm:text-sm font-medium transition-all ${
+                    className={`p-2.5 rounded-[6px] text-center border text-xs transition-all ${
                       formData.budget === b
-                        ? "bg-indigo-950/70 border-indigo-400 text-white"
-                        : "bg-slate-950/60 border-white/5 text-slate-300 hover:border-white/20"
+                        ? "bg-[#EFF6FF] border-[#2563EB] text-[#1D4ED8] font-semibold shadow-xs"
+                        : "bg-white border-[#E2E8F0] text-[#475569] hover:border-[#94A3B8]"
                     }`}
                   >
                     {b}
@@ -209,19 +208,19 @@ export default function ContactForm() {
             </div>
 
             <div>
-              <h4 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-3">
-                Target Launch Horizon
+              <h4 className="text-xs font-mono uppercase tracking-wider text-[#0F172A] font-semibold mb-2.5">
+                Target Timeline
               </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {timelines.map((t) => (
                   <button
                     key={t}
                     type="button"
                     onClick={() => setFormData({ ...formData, timeline: t })}
-                    className={`p-3 rounded-xl text-left border text-xs sm:text-sm font-medium transition-all ${
+                    className={`p-2.5 rounded-[6px] text-left border text-xs transition-all ${
                       formData.timeline === t
-                        ? "bg-cyan-950/70 border-cyan-400 text-white"
-                        : "bg-slate-950/60 border-white/5 text-slate-300 hover:border-white/20"
+                        ? "bg-[#EFF6FF] border-[#2563EB] text-[#1D4ED8] font-semibold shadow-xs"
+                        : "bg-white border-[#E2E8F0] text-[#475569] hover:border-[#94A3B8]"
                     }`}
                   >
                     {t}
@@ -232,7 +231,7 @@ export default function ContactForm() {
           </div>
         )}
 
-        {/* Invisible honeypot field for spam bot protection */}
+        {/* Invisible honeypot field for spam protection */}
         <div className="sr-only" aria-hidden="true">
           <label htmlFor="contact-hp-field">Leave this empty</label>
           <input
@@ -250,7 +249,7 @@ export default function ContactForm() {
         {step === 3 && (
           <div className="space-y-4">
             <div>
-              <label htmlFor="contact-website-url" className="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2 block">
+              <label htmlFor="contact-website-url" className="text-xs font-mono uppercase tracking-wider text-[#0F172A] font-semibold mb-1.5 block">
                 Current Website or Reference URL (Optional)
               </label>
               <input
@@ -259,12 +258,12 @@ export default function ContactForm() {
                 value={formData.url}
                 onChange={(e) => setFormData({ ...formData, url: e.target.value })}
                 placeholder="https://yourcompany.com"
-                className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
+                className="w-full bg-[#F8FAFC] border border-[#CBD5E1] rounded-[6px] px-3.5 py-2.5 text-xs text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB]"
               />
             </div>
 
             <div>
-              <label htmlFor="contact-project-details" className="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2 block">
+              <label htmlFor="contact-project-details" className="text-xs font-mono uppercase tracking-wider text-[#0F172A] font-semibold mb-1.5 block">
                 Brief Overview of Goals & Requirements
               </label>
               <textarea
@@ -272,8 +271,8 @@ export default function ContactForm() {
                 rows={4}
                 value={formData.details}
                 onChange={(e) => setFormData({ ...formData, details: e.target.value })}
-                placeholder="Describe your current bottleneck, target metrics, or desired deliverables..."
-                className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors resize-none"
+                placeholder="Describe your current tech stack, target goals, or key features needed..."
+                className="w-full bg-[#F8FAFC] border border-[#CBD5E1] rounded-[6px] px-3.5 py-2.5 text-xs text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB] resize-none"
               />
             </div>
           </div>
@@ -282,75 +281,75 @@ export default function ContactForm() {
         {/* Step 4: Contact Details */}
         {step === 4 && (
           <div className="space-y-4">
-            <h4 className="text-base font-bold text-white mb-2">Where should we deliver the technical proposal?</h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <h4 className="font-serif text-lg font-medium text-[#0F172A] mb-2">Where should we send the proposal?</h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label htmlFor="contact-full-name" className="text-xs font-medium text-slate-400 mb-1 block">Full Name *</label>
+                <label htmlFor="contact-full-name" className="text-xs font-mono uppercase text-[#64748B] mb-1 block">Your Name *</label>
                 <input
                   id="contact-full-name"
                   type="text"
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="Sarah Jenkins"
-                  className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
+                  placeholder="Alex Morgan"
+                  className="w-full bg-[#F8FAFC] border border-[#CBD5E1] rounded-[6px] px-3 py-2 text-xs text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB]"
                 />
               </div>
 
               <div>
-                <label htmlFor="contact-work-email" className="text-xs font-medium text-slate-400 mb-1 block">Work Email *</label>
+                <label htmlFor="contact-work-email" className="text-xs font-mono uppercase text-[#64748B] mb-1 block">Work Email *</label>
                 <input
                   id="contact-work-email"
                   type="email"
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="sarah@enterprise.com"
-                  className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
+                  placeholder="alex@company.com"
+                  className="w-full bg-[#F8FAFC] border border-[#CBD5E1] rounded-[6px] px-3 py-2 text-xs text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB]"
                 />
               </div>
 
               <div>
-                <label htmlFor="contact-company-name" className="text-xs font-medium text-slate-400 mb-1 block">Company Name</label>
+                <label htmlFor="contact-company-name" className="text-xs font-mono uppercase text-[#64748B] mb-1 block">Company Name</label>
                 <input
                   id="contact-company-name"
                   type="text"
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                  placeholder="Acme Global Inc."
-                  className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
+                  placeholder="Company Inc."
+                  className="w-full bg-[#F8FAFC] border border-[#CBD5E1] rounded-[6px] px-3 py-2 text-xs text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB]"
                 />
               </div>
 
               <div>
-                <label htmlFor="contact-phone-number" className="text-xs font-medium text-slate-400 mb-1 block">Phone / WhatsApp</label>
+                <label htmlFor="contact-phone-number" className="text-xs font-mono uppercase text-[#64748B] mb-1 block">Phone / WhatsApp</label>
                 <input
                   id="contact-phone-number"
                   type="tel"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   placeholder="+1 (555) 000-0000"
-                  className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
+                  className="w-full bg-[#F8FAFC] border border-[#CBD5E1] rounded-[6px] px-3 py-2 text-xs text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB]"
                 />
               </div>
             </div>
 
-            <div className="pt-2 flex items-center space-x-2 text-xs text-slate-400">
-              <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>We respect your privacy. Under NDA by default. Never shared or sold.</span>
+            <div className="pt-2 flex items-center space-x-2 text-[11px] text-[#64748B]">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#2563EB] shrink-0" />
+              <span>Your details are kept private and confidential under mutual NDA. Never shared or sold.</span>
             </div>
           </div>
         )}
 
         {/* Form Nav Buttons */}
-        <div className="flex items-center justify-between pt-8 mt-6 border-t border-white/10">
+        <div className="flex items-center justify-between pt-6 mt-6 border-t border-[#E2E8F0]">
           {step > 1 ? (
             <button
               type="button"
               onClick={handleBack}
-              className="px-5 py-2.5 rounded-xl border border-white/10 hover:bg-white/5 text-slate-300 text-sm font-medium flex items-center space-x-2 transition-colors"
+              className="px-4 py-2 rounded-[6px] border border-[#CBD5E1] hover:bg-[#F8FAFC] text-[#0F172A] text-xs font-medium flex items-center space-x-1.5 transition-colors"
             >
-              <ArrowLeft className="w-4 h-4" />
+              <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back</span>
             </button>
           ) : (
@@ -361,23 +360,23 @@ export default function ContactForm() {
             <button
               type="button"
               onClick={handleNext}
-              className="px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm flex items-center space-x-2 transition-all shadow-lg shadow-cyan-500/25 ml-auto"
+              className="px-5 py-2.5 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium text-xs flex items-center space-x-1.5 transition-all shadow-sm ml-auto"
             >
               <span>Continue</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-3.5 h-3.5" />
             </button>
           ) : (
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-7 py-3 rounded-xl bg-gradient-to-r from-cyan-400 to-indigo-500 hover:from-cyan-300 hover:to-indigo-400 text-slate-950 font-black text-sm flex items-center space-x-2 transition-all shadow-lg shadow-cyan-400/25 ml-auto disabled:opacity-50"
+              className="px-6 py-2.5 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold text-xs flex items-center space-x-1.5 transition-all shadow-sm ml-auto disabled:opacity-50"
             >
               {isSubmitting ? (
-                <span>Generating Proposal...</span>
+                <span>Submitting Brief...</span>
               ) : (
                 <>
                   <span>Submit Inquiry</span>
-                  <Send className="w-4 h-4" />
+                  <Send className="w-3.5 h-3.5" />
                 </>
               )}
             </button>

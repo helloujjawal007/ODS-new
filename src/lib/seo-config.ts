@@ -1,27 +1,18 @@
+const siteUrl = 
+  process.env.NEXT_PUBLIC_SITE_URL || 
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : null) || 
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) || 
+  "https://onlinedigitalsolution.com";
+
 export const SITE_CONFIG = {
-  name: "Online Digital Solution",
-  legalName: "Online Digital Solution",
-  url: "https://onlinedigitalsolution.com",
-  description: "Global online digital engineering agency delivering high-performance Next.js web applications, custom Shopify & BigCommerce stores, native mobile apps, custom plugins & browser extensions, and technical SEO worldwide.",
-  keywords: [
-    "online digital solution",
-    "shopify store development agency",
-    "bigcommerce development services",
-    "custom chrome extension developers",
-    "shopify app extension developers",
-    "custom wordpress plugin development",
-    "global web development agency",
-    "custom Next.js web developers",
-    "remote mobile app development",
-    "technical SEO agency",
-    "React Native and Flutter developers",
-    "CRM and Salesforce integrations",
-    "high-performance web engineering"
-  ],
-  author: "Online Digital Solution Engineering",
+  name: "Cloud Consultancy",
+  legalName: "Cloud Consultancy",
+  url: siteUrl,
+  description: "We build cloud systems, websites, Shopify stores, and apps for growing businesses. Based in Kolkata, working with clients worldwide.",
+  author: "Cloud Consultancy",
   foundingDate: "2021",
-  targetMarkets: "Worldwide / Global (100% Online Delivery)",
-  deliveryMode: "100% Online Global Digital Delivery",
+  targetMarkets: "Worldwide / Global",
+  deliveryMode: "Remote digital engineering team based in Kolkata",
   contact: {
     email: "team.onlinedigitalsolution@gmail.com",
     phone: "+91 9142590800",

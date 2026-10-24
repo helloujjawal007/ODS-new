@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, HelpCircle } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import JsonLd from "@/components/seo/JsonLd";
 import { getFaqJsonLd } from "@/lib/seo-config";
 
@@ -19,7 +19,7 @@ interface FaqAccordionProps {
 export default function FaqAccordion({
   faqs,
   title = "Frequently Asked Questions",
-  subtitle = "Everything you need to know about our engineering standards, timelines, and deliverables."
+  subtitle = "Common questions regarding project scoping, technical delivery, and communication."
 }: FaqAccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -28,45 +28,44 @@ export default function FaqAccordion({
   };
 
   return (
-    <section className="py-16 relative">
+    <section className="py-16">
       <JsonLd id="schema-faq" data={getFaqJsonLd(faqs)} />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-800/40 text-cyan-300 text-xs font-semibold uppercase tracking-wider mb-3">
-            <HelpCircle className="w-3.5 h-3.5" />
-            <span>Clarity & Transparency</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+        <div className="text-center mb-10">
+          <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold block mb-2">
+            Questions & Details
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-serif font-normal text-[#0F172A] tracking-tight">
             {title}
           </h2>
           {subtitle && (
-            <p className="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl mx-auto">
+            <p className="text-[#475569] text-sm mt-2 max-w-xl mx-auto font-sans leading-relaxed">
               {subtitle}
             </p>
           )}
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-3 font-sans">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <div
                 key={index}
-                className="border border-white/10 rounded-2xl bg-slate-900/60 backdrop-blur-md overflow-hidden transition-colors hover:border-white/20"
+                className="border border-[#E2E8F0] rounded-[8px] bg-white overflow-hidden shadow-xs transition-colors"
               >
                 <button
                   type="button"
                   onClick={() => toggleFaq(index)}
-                  className="w-full text-left px-6 py-5 flex items-center justify-between space-x-4 focus:outline-none"
+                  className="w-full text-left px-5 py-4 flex items-center justify-between space-x-4 focus:outline-none"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-semibold text-slate-100 text-base sm:text-lg">
+                  <span className="font-serif text-base sm:text-lg text-[#0F172A] font-medium">
                     {faq.question}
                   </span>
                   <div
-                    className={`w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center shrink-0 transition-transform duration-200 ${
-                      isOpen ? "rotate-180 bg-cyan-950 text-cyan-400" : "text-slate-400"
+                    className={`w-7 h-7 rounded-[6px] flex items-center justify-center shrink-0 transition-all duration-200 ${
+                      isOpen ? "rotate-180 bg-[#EFF6FF] text-[#2563EB]" : "bg-[#F8FAFC] text-[#64748B]"
                     }`}
                   >
                     <ChevronDown className="w-4 h-4" />
@@ -74,7 +73,7 @@ export default function FaqAccordion({
                 </button>
 
                 {isOpen && (
-                  <div className="px-6 pb-6 pt-1 text-slate-300 text-sm leading-relaxed border-t border-white/5 animate-in fade-in duration-200">
+                  <div className="px-5 pb-5 pt-1 text-[#475569] text-xs sm:text-sm leading-relaxed border-t border-[#E2E8F0]">
                     <p>{faq.answer}</p>
                   </div>
                 )}

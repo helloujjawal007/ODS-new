@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Newsreader, Public_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -7,20 +7,28 @@ import CookieConsent from "@/components/layout/CookieConsent";
 import JsonLd from "@/components/seo/JsonLd";
 import { SITE_CONFIG, getOrganizationJsonLd } from "@/lib/seo-config";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  display: "swap"
+});
+
+const publicSans = Public_Sans({
+  variable: "--font-public-sans",
   subsets: ["latin"],
   display: "swap"
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const ibmPlexMono = IBM_Plex_Mono({
+  weight: ["400", "500", "600"],
+  variable: "--font-ibm-plex-mono",
   subsets: ["latin"],
   display: "swap"
 });
 
 export const viewport: Viewport = {
-  themeColor: "#090d16",
+  themeColor: "#FFFFFF",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5
@@ -29,11 +37,10 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
   title: {
-    default: "Online Digital Solution | Web, Mobile, Shopify & BigCommerce Agency",
+    default: "Cloud Consultancy | Cloud Architecture, Web & App Engineering",
     template: `%s | ${SITE_CONFIG.name}`
   },
   description: SITE_CONFIG.description,
-  keywords: SITE_CONFIG.keywords,
   authors: [{ name: SITE_CONFIG.author, url: SITE_CONFIG.url }],
   creator: SITE_CONFIG.name,
   publisher: SITE_CONFIG.name,
@@ -49,7 +56,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: SITE_CONFIG.url,
-    title: "Online Digital Solution | Web, Mobile, Shopify & BigCommerce Agency",
+    title: "Cloud Consultancy | Cloud Architecture, Web & App Engineering",
     description: SITE_CONFIG.description,
     siteName: SITE_CONFIG.name,
     images: [
@@ -57,13 +64,13 @@ export const metadata: Metadata = {
         url: "/images/hero_digital_tech.jpg",
         width: 1200,
         height: 630,
-        alt: `${SITE_CONFIG.name} — Modern Digital Engineering Agency`
+        alt: `${SITE_CONFIG.name} — Cloud Architecture, Web & App Engineering`
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Online Digital Solution | Web, Mobile, Shopify & BigCommerce Agency",
+    title: "Cloud Consultancy | Cloud Architecture, Web & App Engineering",
     description: SITE_CONFIG.description,
     images: ["/images/hero_digital_tech.jpg"],
     creator: "@onlinedigitalsol"
@@ -104,18 +111,18 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
       data-scroll-behavior="smooth"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
+      className={`${newsreader.variable} ${publicSans.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body
         suppressHydrationWarning
-        className="min-h-full flex flex-col bg-[#090d16] text-slate-100 selection:bg-cyan-500 selection:text-slate-950"
+        className="min-h-full flex flex-col bg-white text-[#0F172A] selection:bg-[#2563EB] selection:text-white"
       >
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-cyan-400 focus:text-slate-950 focus:font-bold focus:rounded-xl focus:shadow-2xl focus:outline-none"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#2563EB] focus:text-white focus:font-semibold focus:rounded focus:outline-none"
         >
           Skip to content
         </a>

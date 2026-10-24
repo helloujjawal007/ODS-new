@@ -5,7 +5,6 @@ import { notFound } from "next/navigation";
 import { 
   Clock, 
   ArrowRight, 
-  CheckCircle2, 
   Bookmark 
 } from "lucide-react";
 import { BLOG_POSTS, getBlogPostBySlug } from "@/lib/blog-data";
@@ -112,7 +111,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const matchedService = SERVICES.find((s) => s.slug === post.pillar);
 
   return (
-    <div className="py-8">
+    <div className="py-8 bg-white text-[#0F172A] font-sans selection:bg-[#2563EB] selection:text-white">
       <JsonLd id={`schema-article-${post.slug}`} data={articleJsonLd} />
       <JsonLd id={`schema-breadcrumb-${post.slug}`} data={breadcrumbJsonLd} />
 
@@ -120,82 +119,82 @@ export default async function BlogPostPage({ params }: PageProps) {
         <Breadcrumbs items={breadcrumbItems} />
 
         {/* Article Header */}
-        <header className="max-w-4xl mx-auto my-10 text-center sm:text-left">
-          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-xs text-slate-400 font-mono mb-4">
-            <span className="px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-800/40 text-cyan-300 font-bold uppercase">
+        <header className="max-w-3xl mx-auto my-8">
+          <div className="flex flex-wrap items-center gap-2 text-xs text-[#64748B] font-mono mb-3">
+            <span className="px-2.5 py-0.5 rounded-[4px] bg-[#EFF6FF] text-[#1D4ED8] border border-[#BFDBFE] font-medium">
               {post.category}
             </span>
+            <span>·</span>
             <span className="flex items-center">
-              <Clock className="w-3.5 h-3.5 mr-1 text-cyan-400" />
+              <Clock className="w-3.5 h-3.5 mr-1 text-[#64748B]" />
               {post.readingTime}
             </span>
             <span>·</span>
             <span>{post.publishedAt}</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight mb-6">
+          <h1 className="text-3xl sm:text-5xl font-serif font-normal text-[#0F172A] tracking-tight leading-[1.18] mb-4">
             {post.title}
           </h1>
 
-          <p className="text-base sm:text-xl text-slate-300 leading-relaxed mb-8">
+          <p className="text-base sm:text-lg text-[#475569] leading-relaxed mb-6">
             {post.excerpt}
           </p>
 
           {/* Author Card */}
-          <div className="flex items-center justify-between border-y border-white/10 py-4">
-            <div className="flex items-center space-x-3.5">
-              <div className="relative w-12 h-12 rounded-full overflow-hidden border border-cyan-400/40 shadow-lg">
+          <div className="flex items-center justify-between border-t border-b border-[#E2E8F0] py-3 text-xs">
+            <div className="flex items-center space-x-3">
+              <div className="relative w-9 h-9 rounded-full overflow-hidden border border-[#E2E8F0] bg-[#F1F5F9]">
                 <Image
                   src={post.author.avatar}
                   alt={post.author.name}
                   fill
+                  sizes="40px"
                   className="object-cover"
                 />
               </div>
               <div>
-                <div className="font-bold text-white text-sm sm:text-base">
+                <div className="font-semibold text-[#0F172A]">
                   {post.author.name}
                 </div>
-                <div className="text-xs text-slate-400">{post.author.role}</div>
+                <div className="text-[11px] text-[#64748B]">{post.author.role}</div>
               </div>
             </div>
 
-            <div className="text-xs text-slate-400 hidden sm:flex items-center space-x-1.5">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-              <span>Peer-reviewed for architectural rigor</span>
+            <div className="text-[11px] text-[#64748B] font-mono">
+              Engineering Note
             </div>
           </div>
         </header>
 
-        {/* Article Cover Image */}
-        <div className="max-w-5xl mx-auto relative aspect-[16/9] rounded-3xl overflow-hidden border border-white/10 shadow-2xl my-8 bg-slate-950">
+        {/* Cover Image */}
+        <div className="max-w-4xl mx-auto relative aspect-[16/9] rounded-[8px] overflow-hidden border border-[#E2E8F0] shadow-sm my-8 bg-[#F1F5F9]">
           <Image
             src={post.coverImage}
             alt={post.title}
             fill
             priority
-            sizes="100vw"
+            sizes="(max-width: 1024px) 100vw, 1000px"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
         </div>
 
-        {/* Article Layout with Sticky Table of Contents Sidebar */}
-        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 my-12">
-          {/* Table of Contents Sticky Sidebar */}
+        {/* Article Layout with Sidebar */}
+        <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 my-10">
+          {/* Sidebar */}
           <aside className="lg:col-span-4 order-2 lg:order-1">
-            <div className="sticky top-28 space-y-6">
-              <div className="bg-slate-900/80 border border-white/10 rounded-2xl p-6 backdrop-blur-md">
-                <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-cyan-400 mb-4">
-                  <Bookmark className="w-4 h-4" />
-                  <span>Table of Contents</span>
+            <div className="sticky top-28 space-y-5">
+              <div className="bg-white border border-[#E2E8F0] rounded-[8px] p-5 shadow-sm">
+                <div className="flex items-center space-x-1.5 text-xs font-mono uppercase tracking-wider text-[#0F172A] font-semibold mb-3">
+                  <Bookmark className="w-3.5 h-3.5 text-[#2563EB]" />
+                  <span>Sections</span>
                 </div>
-                <nav className="space-y-2 text-xs">
+                <nav className="space-y-1.5 text-xs">
                   {post.toc.map((item) => (
                     <a
                       key={item.id}
                       href={`#${item.id}`}
-                      className="block text-slate-300 hover:text-cyan-300 transition-colors py-1 hover:translate-x-1 transform duration-150"
+                      className="block text-[#64748B] hover:text-[#2563EB] transition-colors py-0.5"
                     >
                       {item.title}
                     </a>
@@ -203,130 +202,133 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </nav>
               </div>
 
-              {/* Related Pillar Service Callout */}
               {matchedService && (
-                <div className="bg-gradient-to-br from-cyan-950/50 to-slate-900 border border-cyan-500/30 rounded-2xl p-6">
-                  <div className="text-[11px] font-mono uppercase text-cyan-400 font-bold mb-2">
-                    Core Capability Pillar
-                  </div>
-                  <h4 className="font-bold text-white text-sm mb-2">
+                <div className="bg-white border border-[#E2E8F0] rounded-[8px] p-5 shadow-sm">
+                  <span className="text-[10px] font-mono uppercase text-[#64748B] block mb-1">
+                    Related Service
+                  </span>
+                  <h4 className="font-serif text-sm font-medium text-[#0F172A] mb-1">
                     {matchedService.title}
                   </h4>
-                  <p className="text-xs text-slate-400 leading-relaxed mb-4">
+                  <p className="text-xs text-[#475569] leading-relaxed mb-3">
                     {matchedService.tagline}
                   </p>
                   <Link
                     href={`/services/${matchedService.slug}`}
-                    className="inline-flex items-center text-xs font-bold text-cyan-400 hover:text-cyan-300"
+                    className="inline-flex items-center text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] hover:underline"
                   >
-                    <span>View Service Roadmap</span>
-                    <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                    <span>{matchedService.shortTitle} details</span>
+                    <ArrowRight className="w-3 h-3 ml-1" />
                   </Link>
                 </div>
               )}
             </div>
           </aside>
 
-          {/* Article Main Markdown Content */}
-          <article className="lg:col-span-8 order-1 lg:order-2 space-y-6 text-slate-300 leading-relaxed">
-            <div className="prose prose-invert max-w-none prose-headings:text-white prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-p:my-4 prose-p:text-slate-300 prose-p:leading-relaxed prose-li:my-1">
-              {post.content.split("\n\n").map((paragraph, index) => {
-                if (paragraph.startsWith("## ")) {
-                  const headingText = paragraph.replace("## ", "").trim();
-                  const matchingToc = post.toc.find(
-                    (t) => t.title.toLowerCase().includes(headingText.toLowerCase().slice(0, 10))
-                  );
-                  const id = matchingToc ? matchingToc.id : undefined;
-
-                  return (
-                    <h2 key={index} id={id} className="text-2xl font-black text-white mt-10 mb-4 scroll-mt-28">
-                      {headingText}
-                    </h2>
-                  );
-                }
-
-                if (paragraph.startsWith("- ")) {
-                  const listItems = paragraph.split("\n").map((li) => li.replace("- ", ""));
-                  return (
-                    <ul key={index} className="space-y-2 my-4 list-disc list-inside text-slate-300 text-sm">
-                      {listItems.map((li, lIdx) => (
-                        <li key={lIdx}>{li}</li>
-                      ))}
-                    </ul>
-                  );
-                }
+          {/* Article Content */}
+          <article className="lg:col-span-8 order-1 lg:order-2 space-y-5 text-[#334155] leading-relaxed text-sm sm:text-base font-sans">
+            {post.content.split("\n\n").map((paragraph, index) => {
+              if (paragraph.startsWith("## ")) {
+                const headingText = paragraph.replace("## ", "").trim();
+                const matchingToc = post.toc.find(
+                  (t) => t.title.toLowerCase().includes(headingText.toLowerCase().slice(0, 10))
+                );
+                const id = matchingToc ? matchingToc.id : undefined;
 
                 return (
-                  <p key={index} className="text-sm sm:text-base text-slate-300 leading-relaxed">
-                    {paragraph}
-                  </p>
+                  <h2
+                    key={index}
+                    id={id}
+                    className="font-serif text-2xl font-normal text-[#0F172A] pt-6 pb-1 border-b border-[#E2E8F0] scroll-mt-28"
+                  >
+                    {headingText}
+                  </h2>
                 );
-              })}
-            </div>
+              }
 
-            {/* Author Footer Bio */}
-            <div className="bg-slate-900/60 border border-white/10 rounded-2xl p-6 sm:p-8 mt-12 flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6 text-center sm:text-left">
-              <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-cyan-400 shrink-0 shadow-lg">
-                <Image
-                  src={post.author.avatar}
-                  alt={post.author.name}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div>
-                <div className="font-extrabold text-white text-base">
-                  Written by {post.author.name}
-                </div>
-                <div className="text-xs text-cyan-400 font-mono mb-2">
-                  {post.author.role}
-                </div>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  Principal architect specializing in enterprise Next.js App Router platforms, programmatic SEO cluster architecture, and high-frequency Core Web Vitals telemetry.
+              if (paragraph.startsWith("```")) {
+                const lines = paragraph.split("\n");
+                const codeBody = lines.slice(1, -1).join("\n");
+                return (
+                  <pre
+                    key={index}
+                    className="bg-[#0F172A] text-[#F8FAFC] p-4 rounded-[6px] font-mono text-xs overflow-x-auto border border-[#1E293B] my-4"
+                  >
+                    <code>{codeBody}</code>
+                  </pre>
+                );
+              }
+
+              if (paragraph.startsWith("- ")) {
+                const items = paragraph.split("\n- ").map((item) => item.replace(/^- /, ""));
+                return (
+                  <ul key={index} className="space-y-1.5 my-3 pl-2 text-xs sm:text-sm text-[#475569]">
+                    {items.map((it, iIdx) => (
+                      <li key={iIdx} className="flex items-start space-x-2">
+                        <span className="text-[#2563EB] mt-1 font-bold">•</span>
+                        <span>{it}</span>
+                      </li>
+                    ))}
+                  </ul>
+                );
+              }
+
+              if (paragraph.startsWith("1. ") || paragraph.startsWith("2. ")) {
+                const items = paragraph.split("\n").filter((l) => l.trim().length > 0);
+                return (
+                  <ol key={index} className="space-y-1.5 my-3 pl-2 text-xs sm:text-sm text-[#475569]">
+                    {items.map((it, iIdx) => (
+                      <li key={iIdx} className="flex items-start space-x-2">
+                        <span className="font-mono text-[#2563EB] font-bold text-xs">{iIdx + 1}.</span>
+                        <span>{it.replace(/^\d+\.\s*/, "")}</span>
+                      </li>
+                    ))}
+                  </ol>
+                );
+              }
+
+              return (
+                <p key={index} className="text-[#334155] text-xs sm:text-sm leading-relaxed">
+                  {paragraph}
                 </p>
-              </div>
-            </div>
+              );
+            })}
           </article>
         </div>
 
-        {/* Related Posts */}
-        <section className="my-20 border-t border-white/10 pt-16">
-          <div className="flex items-center justify-between mb-8">
-            <h3 className="text-2xl font-bold text-white">
-              Continue Reading
+        {/* Related Articles */}
+        {relatedPosts.length > 0 && (
+          <section className="my-16 border-t border-[#E2E8F0] pt-14 max-w-4xl mx-auto">
+            <h3 className="font-serif text-xl text-[#0F172A] mb-6">
+              More Engineering Notes
             </h3>
-            <Link
-              href="/blog"
-              className="text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center"
-            >
-              <span>Explore All Articles</span>
-              <ArrowRight className="w-3.5 h-3.5 ml-1" />
-            </Link>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {relatedPosts.map((rPost) => (
-              <Link
-                key={rPost.slug}
-                href={`/blog/${rPost.slug}`}
-                className="bg-slate-900/60 border border-white/10 rounded-2xl p-6 hover:border-cyan-500/30 transition-all group"
-              >
-                <div className="text-[11px] font-mono text-cyan-400 uppercase mb-2">
-                  {rPost.category} · {rPost.readingTime}
-                </div>
-                <h4 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors mb-2">
-                  {rPost.title}
-                </h4>
-                <p className="text-xs text-slate-400 line-clamp-2">{rPost.excerpt}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {relatedPosts.map((rPost) => (
+                <Link
+                  key={rPost.slug}
+                  href={`/blog/${rPost.slug}`}
+                  className="bg-white border border-[#E2E8F0] rounded-[8px] p-5 hover:border-[#2563EB] hover:shadow-md transition-all"
+                >
+                  <div className="text-[11px] font-mono text-[#64748B] uppercase mb-1">
+                    {rPost.category} · {rPost.readingTime}
+                  </div>
+                  <h4 className="font-serif text-base font-medium text-[#0F172A] mb-1">
+                    {rPost.title}
+                  </h4>
+                  <p className="text-xs text-[#475569] line-clamp-2">{rPost.excerpt}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Closing CTA */}
         <CtaSection
-          title="Looking to Implement This in Your Stack?"
-          description="Schedule a technical scope review with our author. We'll audit your repository and outline an execution plan."
+          title="Have a project in mind? Send us the details and we’ll reply within a day."
+          description="We build websites, Shopify stores and apps for small and mid-size businesses. Based in Kolkata, working with clients worldwide."
+          primaryCtaText="Tell us about your project"
+          primaryCtaHref="/contact"
         />
       </div>
     </div>

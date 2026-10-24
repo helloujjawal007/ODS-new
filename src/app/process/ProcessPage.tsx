@@ -1,13 +1,11 @@
 import { Metadata } from "next";
 import { 
-  CheckCircle2, 
-  Sparkles, 
+  Check, 
   Search, 
   Layers, 
   Code2, 
   ShieldCheck, 
-  Rocket, 
-  Clock 
+  Rocket 
 } from "lucide-react";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import CtaSection from "@/components/sections/CtaSection";
@@ -16,7 +14,7 @@ import { getBreadcrumbJsonLd } from "@/lib/seo-config";
 
 export const metadata: Metadata = {
   title: "Our Engineering Process",
-  description: "Learn how Online Digital Solution executes projects with predictable sprint cycles: Discovery & Architecture, UI/UX Design Systems, Next.js Engineering, QA Core Web Vitals Tuning, and Post-Launch Scale.",
+  description: "How we build and ship software: Discovery & Scoping, UI/UX Design, Development Sprints, QA & Speed Optimization, and Launch Support.",
   alternates: {
     canonical: "/process"
   }
@@ -26,150 +24,139 @@ export default function ProcessPage() {
   const steps = [
     {
       number: "01",
-      title: "Discovery, Keyword Intelligence & Technical Architecture",
+      title: "Discovery, Requirements & Architecture",
       duration: "Week 1",
       icon: Search,
-      desc: "We don't write a single line of code until business requirements, user journeys, and technical feasibility are strictly locked.",
+      desc: "We align on scope, deliverables, and technical architecture before writing code. This eliminates scope creep and ensures realistic timelines.",
       deliverables: [
-        "Product Requirement Document (PRD)",
-        "Commercial keyword & competitor gap mapping",
+        "Statement of work & technical specification",
         "System architecture & schema data models",
-        "Security, authentication & API integrations roadmap"
+        "Third-party API and integration requirements",
+        "Fixed project timeline and delivery milestones"
       ]
     },
     {
       number: "02",
-      title: "High-Fidelity UI/UX & Interactive Design System",
+      title: "UI/UX & Component Design",
       duration: "Weeks 1 – 2",
       icon: Layers,
-      desc: "Creating pixel-perfect, accessible design systems in Figma with scalable auto-layout components, tokens, and dark/light modes.",
+      desc: "Designing responsive, accessible interfaces in Figma with modular component tokens for desktop, tablet, and mobile viewports.",
       deliverables: [
-        "Complete responsive screens (Desktop, Tablet & Mobile)",
-        "Clickable interactive prototypes for stakeholder testing",
-        "Design token library synchronized with Tailwind CSS",
-        "WCAG 2.2 AA accessibility contrast verification"
+        "Responsive wireframes and high-fidelity screens",
+        "Interactive prototypes for review and feedback",
+        "Design tokens for typography, spacing, and colors",
+        "WCAG contrast and accessibility validation"
       ]
     },
     {
       number: "03",
-      title: "Sprint-Based Next.js & Full-Stack Engineering",
-      duration: "Weeks 2 – 4",
+      title: "Sprint-Based Engineering",
+      duration: "Weeks 2 – 5",
       icon: Code2,
       desc: "Component-driven development following clean architecture principles, strict TypeScript typing, and edge runtime optimization.",
       deliverables: [
-        "Modular Next.js 16 App Router frontend",
+        "Modular Next.js App Router or Shopify OS 2.0 codebase",
         "Headless CMS (Sanity / Contentful) integration",
-        "Microservice middleware & webhook pipelines",
-        "Automated CI/CD with preview deployments"
+        "API routes, database queries, and webhook handlers",
+        "Continuous deployment previews on GitHub"
       ]
     },
     {
       number: "04",
-      title: "Core Web Vitals & Security Hardening",
+      title: "Core Web Vitals Tuning & QA",
       duration: "Week 5",
       icon: ShieldCheck,
-      desc: "Ruthless performance tuning and technical SEO validation to guarantee green vitals and zero crawl friction.",
+      desc: "Rigorous performance auditing and technical validation across mobile devices to ensure fast load times and clean indexation.",
       deliverables: [
-        "Lighthouse 95+ score validation across all devices",
-        "Sub-1-second LCP & zero CLS layout shifts",
-        "Comprehensive JSON-LD structured data injection",
-        "Security headers (CSP, HSTS) & rate limiting"
+        "Core Web Vitals optimization (LCP, CLS, INP)",
+        "Structured data (JSON-LD) schema validation",
+        "Cross-browser and mobile device verification",
+        "Security headers (HSTS, CSP, X-Frame-Options)"
       ]
     },
     {
       number: "05",
-      title: "Zero-Downtime Launch & Continuous Organic Scale",
+      title: "Zero-Downtime Launch & Support",
       duration: "Ongoing",
       icon: Rocket,
-      desc: "Production cutover, automated DNS validation, Google Search Console indexing, and real-time telemetry monitoring.",
+      desc: "Production cutover, automated DNS validation, search console verification, and complimentary 30-day post-launch warranty support.",
       deliverables: [
-        "Zero-downtime DNS deployment & SSL provisioning",
-        "Google Search Console & Bing Webmaster submission",
-        "Real-user monitoring (CrUX) and error telemetry",
-        "30–60 days dedicated warranty and post-launch tuning"
+        "DNS migration and SSL certificate provisioning",
+        "Google Search Console sitemap submission",
+        "Full source code and credential transfer",
+        "30 days complimentary warranty bug support"
       ]
     }
   ];
 
-  const breadcrumbs = [{ label: "Process & Methodology" }];
+  const breadcrumbs = [{ label: "Process" }];
   const breadcrumbSchema = getBreadcrumbJsonLd([
     { name: "Process", url: "/process" }
   ]);
 
   return (
-    <div className="py-8">
+    <div className="py-8 bg-white text-[#0F172A] font-sans selection:bg-[#2563EB] selection:text-white">
       <JsonLd id="schema-breadcrumb-process" data={breadcrumbSchema} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Breadcrumbs items={breadcrumbs} />
 
         {/* Hero */}
-        <div className="text-center max-w-3xl mx-auto my-12">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-800/40 text-cyan-300 text-xs font-semibold uppercase tracking-wider mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Proven Methodology</span>
-          </div>
-          <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight">
-            How We Build: From <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400">
-              Concept to Market Dominance.
-            </span>
+        <div className="max-w-3xl my-10">
+          <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold block mb-2">
+            Engineering Process
+          </span>
+          <h1 className="text-3xl sm:text-5xl font-serif font-normal text-[#0F172A] tracking-tight leading-[1.15]">
+            How we work: from scoping to deployment.
           </h1>
-          <p className="text-slate-300 text-base sm:text-lg mt-4 leading-relaxed">
-            Predictable sprints, transparent communication, and zero technical surprises. Here is the exact 5-stage blueprint powering our enterprise engagements.
+          <p className="text-[#475569] text-sm sm:text-base mt-3 leading-relaxed max-w-xl">
+            Predictable sprints, direct engineer communication, and zero technical surprises. Here is how we take projects from concept to production.
           </p>
         </div>
 
-        {/* Timeline Steps */}
-        <div className="max-w-4xl mx-auto my-20 space-y-12 relative">
-          {/* Vertical line connector */}
-          <div className="hidden sm:block absolute left-8 top-10 bottom-10 w-0.5 bg-gradient-to-b from-cyan-500 via-indigo-500 to-purple-500 opacity-30" />
-
+        {/* Steps Stack */}
+        <div className="space-y-6 my-14">
           {steps.map((step) => {
             const Icon = step.icon;
             return (
               <div
                 key={step.number}
-                className="relative flex flex-col sm:flex-row items-start sm:space-x-8 group"
+                className="bg-white border border-[#E2E8F0] rounded-[8px] p-6 sm:p-8 shadow-sm hover:border-[#2563EB] transition-all"
               >
-                {/* Step badge icon */}
-                <div className="w-16 h-16 rounded-2xl bg-slate-900 border border-cyan-500/40 text-cyan-400 flex items-center justify-center font-black text-xl shadow-xl shadow-cyan-500/10 group-hover:border-cyan-400 group-hover:scale-105 transition-all shrink-0 z-10 mb-4 sm:mb-0">
-                  <Icon className="w-7 h-7" />
-                </div>
-
-                {/* Content Box */}
-                <div className="flex-1 bg-slate-900/70 border border-white/10 rounded-3xl p-6 sm:p-8 backdrop-blur-md group-hover:border-cyan-500/30 transition-all">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-white/10 mb-4 gap-2">
-                    <div>
-                      <span className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold">
-                        Stage {step.number}
+                <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
+                  <div className="md:w-5/12">
+                    <div className="flex items-center space-x-3 mb-3">
+                      <span className="font-mono text-xl font-bold text-[#2563EB]">
+                        {step.number}
                       </span>
-                      <h2 className="text-xl sm:text-2xl font-bold text-white mt-1">
-                        {step.title}
-                      </h2>
+                      <span className="text-xs font-mono uppercase tracking-wider text-[#1D4ED8] bg-[#EFF6FF] border border-[#BFDBFE] px-2.5 py-0.5 rounded-[4px] font-medium">
+                        {step.duration}
+                      </span>
                     </div>
-                    <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-slate-950 border border-white/10 text-xs font-semibold text-slate-300 shrink-0 self-start sm:self-center">
-                      <Clock className="w-3.5 h-3.5 text-cyan-400" />
-                      <span>{step.duration}</span>
-                    </div>
+
+                    <h2 className="font-serif text-xl sm:text-2xl font-medium text-[#0F172A] mb-2 leading-snug">
+                      {step.title}
+                    </h2>
+
+                    <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
+                      {step.desc}
+                    </p>
                   </div>
 
-                  <p className="text-slate-300 text-sm leading-relaxed mb-6">
-                    {step.desc}
-                  </p>
-
-                  <div>
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
-                      Tangible Deliverables:
-                    </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-200">
-                      {step.deliverables.map((del, idx) => (
-                        <div key={idx} className="flex items-start space-x-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                          <span>{del}</span>
-                        </div>
-                      ))}
+                  <div className="md:w-6/12 bg-[#F8FAFC] border border-[#E2E8F0] rounded-[6px] p-5">
+                    <div className="flex items-center space-x-2 text-xs font-mono uppercase text-[#0F172A] font-semibold mb-3">
+                      <Icon className="w-4 h-4 text-[#2563EB]" />
+                      <span>Key Deliverables</span>
                     </div>
+
+                    <ul className="space-y-2 text-xs text-[#475569]">
+                      {step.deliverables.map((item, idx) => (
+                        <li key={idx} className="flex items-start space-x-2">
+                          <Check className="w-3.5 h-3.5 text-[#2563EB] shrink-0 mt-0.5" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -179,8 +166,10 @@ export default function ProcessPage() {
 
         {/* Closing CTA */}
         <CtaSection
-          title="Ready to Put This Process to Work?"
-          description="Let's kick off Stage 1 with a free technical discovery call. We'll map your system architecture and establish sprint milestones."
+          title="Have a project in mind? Send us the details and we’ll reply within a day."
+          description="We build websites, Shopify stores and apps for small and mid-size businesses. Based in Kolkata, working with clients worldwide."
+          primaryCtaText="Tell us about your project"
+          primaryCtaHref="/contact"
         />
       </div>
     </div>
