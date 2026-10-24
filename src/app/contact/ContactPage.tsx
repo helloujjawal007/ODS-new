@@ -18,8 +18,8 @@ import AchievementsAndCaseStudies from "@/components/sections/AchievementsAndCas
 import { SITE_CONFIG, getBreadcrumbJsonLd } from "@/lib/seo-config";
 
 export const metadata: Metadata = {
-  title: "Contact Us & Project Inquiry | Transparent Pricing",
-  description: "Send us the details of your project. We review every inquiry and reply within one business day with transparent milestone pricing.",
+  title: "Hire Senior Software Engineers & Cloud Consultants | Contact Us",
+  description: "Send us the details of your project. We review every inquiry and reply within one business day with transparent milestone pricing and architectural assessment.",
   alternates: {
     canonical: "/contact/"
   }
@@ -39,18 +39,36 @@ export default function ContactPage() {
         <Breadcrumbs items={breadcrumbs} />
 
         {/* Header */}
-        <div className="max-w-3xl my-10">
-          <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold block mb-2">
-            Get In Touch
-          </span>
+        <div className="max-w-4xl my-10">
+          <div className="flex items-center space-x-2 mb-2">
+            <span className="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse" />
+            <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold block">
+              Inquiry &amp; Estimates · Direct Senior Architect Access
+            </span>
+          </div>
 
-          <h1 className="text-3xl sm:text-5xl font-serif font-normal text-[#0F172A] tracking-tight leading-[1.15]">
-            Tell us about your project.
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-normal text-[#0F172A] tracking-tight leading-[1.15]">
+            Hire Senior Software Engineers &amp; Cloud Consultants
           </h1>
 
-          <p className="text-[#475569] text-sm sm:text-base mt-3 leading-relaxed max-w-xl">
-            Fill out the brief questionnaire below or reach out directly via WhatsApp or email. A senior engineer on our team will review and reply within one business day with an architectural assessment and milestone-based proposal.
+          <p className="text-[#475569] text-base sm:text-lg mt-3 leading-relaxed max-w-2xl">
+            Fill out the brief questionnaire below or reach out directly via WhatsApp or email. A senior engineer on our team will review your requirements and reply within one business day with an architectural assessment and milestone-based proposal.
           </p>
+
+          <div className="flex flex-wrap items-center gap-2 pt-4">
+            <span className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-[4px] bg-[#F8FAFC] border border-[#CBD5E1] text-[11px] font-mono text-[#334155]">
+              <Clock className="w-3.5 h-3.5 text-[#2563EB]" />
+              <span>1-Day Guaranteed Reply SLA</span>
+            </span>
+            <span className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-[4px] bg-[#F8FAFC] border border-[#CBD5E1] text-[11px] font-mono text-[#334155]">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#2563EB]" />
+              <span>Strict Mutual NDA Protection</span>
+            </span>
+            <span className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-[4px] bg-[#F8FAFC] border border-[#CBD5E1] text-[11px] font-mono text-[#334155]">
+              <FileCheck className="w-3.5 h-3.5 text-[#2563EB]" />
+              <span>Fixed Milestone Proposals</span>
+            </span>
+          </div>
         </div>
 
         {/* Split Grid: Left Form, Right Contact Cards */}

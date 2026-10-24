@@ -1,11 +1,14 @@
 import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { 
   ShieldCheck, 
   Target, 
   Zap, 
   Compass, 
-  Code2 
+  Code2,
+  ArrowRight,
+  Lock
 } from "lucide-react";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import CtaSection from "@/components/sections/CtaSection";
@@ -13,8 +16,8 @@ import JsonLd from "@/components/seo/JsonLd";
 import { getBreadcrumbJsonLd } from "@/lib/seo-config";
 
 export const metadata: Metadata = {
-  title: "About Our Team & Engineering Philosophy",
-  description: "Meet the engineers behind Cloud Consultancy. Building cloud architecture, websites, Shopify stores and apps for clients worldwide.",
+  title: "Boutique Software Engineering & Cloud Consulting Firm",
+  description: "Partner directly with senior software engineers. Cloud architecture, Next.js web platforms, and custom software consulting with 100% code ownership.",
   alternates: {
     canonical: "/about/"
   }
@@ -86,36 +89,106 @@ export default function AboutPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Breadcrumbs items={breadcrumbs} />
 
-        {/* Hero Section */}
-        <section className="my-10 max-w-4xl">
-          <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold block mb-2">
-            About Cloud Consultancy
-          </span>
+        {/* 1. HERO SECTION (Screenshot Blueprint Standard) */}
+        <section className="my-10 lg:my-14 border-b border-[#E2E8F0] pb-14">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-7 space-y-5">
+              <div className="flex items-center space-x-2">
+                <span className="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse" />
+                <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold block">
+                  Engineering Studio · Senior Craftsmanship
+                </span>
+              </div>
 
-          <h1 className="text-3xl sm:text-5xl font-serif font-normal text-[#0F172A] tracking-tight leading-[1.15]">
-            Engineering cloud architecture, web systems and apps with care and transparency.
-          </h1>
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-normal text-[#0F172A] tracking-tight leading-[1.15]">
+                Boutique Software Engineering & Cloud Consulting Firm
+              </h1>
 
-          <p className="text-[#475569] text-base sm:text-lg mt-4 leading-relaxed max-w-2xl">
-            Founded by senior software engineers, <strong>Cloud Consultancy</strong> was created to give growing businesses direct access to senior technical craft without excessive agency overhead. We work remotely with founders and teams around the globe.
-          </p>
-        </section>
+              <p className="text-[#475569] text-base sm:text-lg leading-relaxed max-w-2xl">
+                Founded by senior software engineers, <strong>Cloud Consultancy</strong> connects growing companies and enterprises directly with senior technical architects. Zero agency bloat, zero middleman account executives, and 100% intellectual property ownership from sprint one.
+              </p>
 
-        {/* Studio Image */}
-        <div className="relative aspect-[16/9] sm:aspect-[21/9] rounded-[8px] overflow-hidden border border-[#E2E8F0] shadow-sm my-10 bg-[#F1F5F9]">
-          <Image
-            src="/images/about_team_studio.jpg"
-            alt="Cloud Consultancy engineering team collaborating"
-            fill
-            priority
-            sizes="(max-width: 1024px) 100vw, 1100px"
-            className="object-cover"
-          />
-          <div className="absolute bottom-4 left-4 right-4 sm:right-auto bg-white/95 backdrop-blur-xs border border-[#E2E8F0] p-3 rounded-[6px] text-xs text-[#475569] shadow-sm">
-            <span className="font-semibold text-[#0F172A] block">Cloud Consultancy Studio</span>
-            <span>Registered Office: Kolkata, India · Remote collaboration worldwide</span>
+              {/* Trust Badges */}
+              <div className="flex flex-wrap items-center gap-2 pt-1">
+                <span className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-[4px] bg-[#F8FAFC] border border-[#CBD5E1] text-[11px] font-mono text-[#334155]">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#2563EB]" />
+                  <span>Direct Senior Engineer Access</span>
+                </span>
+                <span className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-[4px] bg-[#F8FAFC] border border-[#CBD5E1] text-[11px] font-mono text-[#334155]">
+                  <Target className="w-3.5 h-3.5 text-[#2563EB]" />
+                  <span>Fixed Scope & Milestones</span>
+                </span>
+                <span className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-[4px] bg-[#F8FAFC] border border-[#CBD5E1] text-[11px] font-mono text-[#334155]">
+                  <Lock className="w-3.5 h-3.5 text-[#2563EB]" />
+                  <span>100% Code & Asset Ownership</span>
+                </span>
+              </div>
+
+              {/* Metrics Row */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 py-2">
+                <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-[6px] p-3 shadow-2xs">
+                  <div className="text-xl sm:text-2xl font-mono font-bold text-[#0F172A]">100%</div>
+                  <div className="text-[11px] text-[#64748B] mt-0.5 line-clamp-2">Senior Craftsmanship (Zero Junior Silos)</div>
+                </div>
+                <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-[6px] p-3 shadow-2xs">
+                  <div className="text-xl sm:text-2xl font-mono font-bold text-[#0F172A]">&lt; 15m</div>
+                  <div className="text-[11px] text-[#64748B] mt-0.5 line-clamp-2">Direct Slack & Phone Response SLA</div>
+                </div>
+                <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-[6px] p-3 shadow-2xs">
+                  <div className="text-xl sm:text-2xl font-mono font-bold text-[#0F172A]">20+</div>
+                  <div className="text-[11px] text-[#64748B] mt-0.5 line-clamp-2">Production Deployments Shipped</div>
+                </div>
+                <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-[6px] p-3 shadow-2xs">
+                  <div className="text-xl sm:text-2xl font-mono font-bold text-[#0F172A]">0</div>
+                  <div className="text-[11px] text-[#64748B] mt-0.5 line-clamp-2">Middleman Account Exec Markup</div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
+                <Link
+                  href="/contact/"
+                  className="w-full sm:w-auto px-6 py-3 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium text-xs flex items-center justify-center space-x-1.5 transition-all shadow-sm"
+                >
+                  <span>Meet our senior engineers</span>
+                  <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                </Link>
+
+                <Link
+                  href="/process/"
+                  className="w-full sm:w-auto px-5 py-3 rounded-[6px] bg-white hover:bg-[#F8FAFC] text-[#0F172A] font-medium text-xs border border-[#CBD5E1] hover:border-[#94A3B8] transition-colors text-center"
+                >
+                  Explore engineering process
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Hero Image Card */}
+            <div className="lg:col-span-5">
+              <div className="bg-white p-2.5 rounded-[8px] border border-[#E2E8F0] shadow-sm">
+                <div className="relative aspect-[16/10] rounded-[6px] overflow-hidden bg-[#F1F5F9]">
+                  <Image
+                    src="/images/about_team_studio.jpg"
+                    alt="Cloud Consultancy engineering studio team collaborating"
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 500px"
+                    className="object-cover"
+                  />
+                  <div className="absolute top-2.5 left-2.5 bg-[#0F172A]/80 backdrop-blur-xs px-2 py-0.5 rounded-[3px] text-[10px] font-mono text-white tracking-wide border border-white/20">
+                    Studio Engineering Lab
+                  </div>
+                </div>
+                <div className="mt-2.5 pt-2 border-t border-[#F1F5F9] flex items-center justify-between text-[11px] font-mono text-[#64748B] px-1">
+                  <span>HEADQUARTERS &amp; LAB</span>
+                  <span className="text-[#2563EB] font-semibold bg-[#EFF6FF] px-2 py-0.5 rounded-[4px] border border-[#BFDBFE]">
+                    Kolkata HQ · Global Delivery
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        </section>
 
         {/* Core Principles */}
         <section className="my-16 border-b border-[#E2E8F0] pb-16">

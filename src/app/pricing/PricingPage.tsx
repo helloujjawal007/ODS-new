@@ -1,6 +1,7 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { Check, ArrowRight } from "lucide-react";
+import { Check, ArrowRight, ShieldCheck, Wrench, Lock } from "lucide-react";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import ServicePricingExplorer from "@/components/pricing/ServicePricingExplorer";
 import ContactForm from "@/components/forms/ContactForm";
@@ -11,8 +12,8 @@ import JsonLd from "@/components/seo/JsonLd";
 import { getBreadcrumbJsonLd, getFaqJsonLd } from "@/lib/seo-config";
 
 export const metadata: Metadata = {
-  title: "Pricing & Project Cost Estimator",
-  description: "Transparent pricing frameworks for websites, Shopify stores, and mobile apps. Fixed sprints or dedicated engineering squads.",
+  title: "Transparent Software Development Pricing & Estimator",
+  description: "Transparent pricing frameworks for websites, Shopify stores, and mobile apps. Fixed sprints or dedicated engineering squads with zero hidden fees.",
   alternates: {
     canonical: "/pricing/"
   }
@@ -58,28 +59,35 @@ export default function PricingPage() {
     },
     {
       name: "Technical SEO & Maintenance Retainer",
-      tagline: "For ongoing Core Web Vitals, schema, and API maintenance",
-      price: "$2,000",
+      tagline: "For high-traffic platforms that cannot afford downtime",
+      price: "$1,800",
       period: "per month",
-      badge: "Ongoing Support",
+      badge: "Uptime & Growth",
       featured: false,
       features: [
-        "Ongoing crawl health monitoring & speed optimization",
-        "Bi-directional CRM & API integration maintenance",
-        "Google Search Console & Core Web Vitals tracking",
-        "Schema.org rich snippet expansions",
-        "Priority bug fixing SLA",
-        "Monthly strategy and review call"
+        "Continuous Core Web Vitals monitoring and performance tuning",
+        "Search Console indexation audits and schema additions",
+        "Weekly dependency and security patch management",
+        "Sub-15 minute P1 emergency response SLA",
+        "Monthly executive SEO reporting and organic traffic insights",
+        "Dedicated staging server validation"
       ],
-      ctaText: "Secure maintenance retainer",
-      ctaHref: "/contact/?tier=growth_retainer"
+      ctaText: "Start maintenance retainer",
+      ctaHref: "/contact/?tier=seo_maintenance"
     }
+  ];
+
+  const pricingMetrics = [
+    { value: "From $3,500", label: "Fixed-Price Project Sprints" },
+    { value: "$6,000/mo", label: "Dedicated Engineering Squads" },
+    { value: "0", label: "Hidden Fees or Surprise Invoices" },
+    { value: "30 Days", label: "Post-Launch Warranty Included" }
   ];
 
   const pricingFaqs = [
     {
-      question: "Are your project quotes fixed or billed by the hour?",
-      answer: "We primarily work on guaranteed fixed-price statements of work. Deliverables, timelines, and acceptance criteria are explicitly documented upfront so you never experience budget creep."
+      question: "Are your project estimates fixed or hourly?",
+      answer: "We primarily work on fixed-scope, fixed-price milestones. Before we write code, we deliver a detailed Statement of Work with exact deliverables, timeline, and pricing. You only pay for what was agreed upon."
     },
     {
       question: "What is your standard payment structure?",
@@ -109,18 +117,101 @@ export default function PricingPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Breadcrumbs items={breadcrumbs} />
 
-        {/* Hero */}
-        <div className="max-w-3xl my-10">
-          <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold block mb-2">
-            Pricing & Architecture Estimator
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-serif font-normal text-[#0F172A] tracking-tight leading-[1.15]">
-            Transparent pricing. Predictable delivery.
-          </h1>
-          <p className="text-[#475569] text-sm sm:text-base mt-3 leading-relaxed max-w-xl">
-            No ambiguous hourly billings or surprise invoices. Explore service-specific pricing below, select an engagement framework, or calculate your custom project scope.
-          </p>
-        </div>
+        {/* ================= HERO BANNER SECTION (MATCHING EXACT SCREENSHOT STRUCTURE) ================= */}
+        <section className="my-10 lg:my-14 border-b border-[#E2E8F0] pb-14">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            {/* Left Content Column */}
+            <div className="lg:col-span-7 space-y-5">
+              <div className="flex items-center space-x-2">
+                <span className="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse" />
+                <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold block">
+                  Investment Framework · Predictable Delivery
+                </span>
+              </div>
+
+              {/* High SV / Low KD SEO Title */}
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-normal text-[#0F172A] tracking-tight leading-[1.15]">
+                Transparent Software Development Pricing &amp; Estimator
+              </h1>
+
+              {/* High-Intent Keyword-Rich Description */}
+              <p className="text-[#475569] text-base sm:text-lg leading-relaxed max-w-2xl">
+                No ambiguous hourly billing or surprise invoices. Explore service-specific pricing below, select an engagement framework, or calculate your custom project scope with our interactive estimator.
+              </p>
+
+              {/* Trust Badges */}
+              <div className="flex flex-wrap items-center gap-2 pt-1">
+                <span className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-[4px] bg-[#F8FAFC] border border-[#CBD5E1] text-[11px] font-mono text-[#334155]">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#2563EB]" />
+                  <span>Fixed-Price Statement of Work</span>
+                </span>
+                <span className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-[4px] bg-[#F8FAFC] border border-[#CBD5E1] text-[11px] font-mono text-[#334155]">
+                  <Wrench className="w-3.5 h-3.5 text-[#2563EB]" />
+                  <span>No Hidden Hourly Markups</span>
+                </span>
+                <span className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-[4px] bg-[#F8FAFC] border border-[#CBD5E1] text-[11px] font-mono text-[#334155]">
+                  <Lock className="w-3.5 h-3.5 text-[#2563EB]" />
+                  <span>100% Source Code Transfer</span>
+                </span>
+              </div>
+
+              {/* Metrics Row (4 distinct boxes) */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 py-2">
+                {pricingMetrics.map((m, idx) => (
+                  <div key={idx} className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-[6px] p-3 shadow-2xs">
+                    <div className="text-xl sm:text-2xl font-mono font-bold text-[#0F172A]">{m.value}</div>
+                    <div className="text-[11px] text-[#64748B] mt-0.5 line-clamp-2">{m.label}</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
+                <a
+                  href="#estimator"
+                  className="w-full sm:w-auto px-6 py-3 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium text-xs flex items-center justify-center space-x-1.5 transition-all shadow-sm"
+                >
+                  <span>Calculate custom estimate</span>
+                  <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                </a>
+
+                <Link
+                  href="/contact/"
+                  className="w-full sm:w-auto px-5 py-3 rounded-[6px] bg-white hover:bg-[#F8FAFC] text-[#0F172A] font-medium text-xs border border-[#CBD5E1] hover:border-[#94A3B8] transition-colors text-center"
+                >
+                  Inquire about custom project
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Hero Image Card (Exact Structure from Screenshot) */}
+            <div className="lg:col-span-5">
+              <div className="bg-white p-2.5 rounded-[8px] border border-[#E2E8F0] shadow-sm">
+                <div className="relative aspect-[16/10] rounded-[6px] overflow-hidden bg-[#F1F5F9]">
+                  <Image
+                    src="/images/ods_flagship_hero_banner.jpg"
+                    alt="Cloud Consultancy software architecture, scope planning and pricing framework"
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 480px"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-3 flex items-center justify-between text-xs text-[#64748B]">
+                  <div>
+                    <span className="text-[10px] uppercase font-mono block">Pricing Model</span>
+                    <span className="font-mono font-semibold text-[#0F172A]">
+                      Transparent Milestones
+                    </span>
+                  </div>
+                  <span className="text-[11px] font-mono text-[#1D4ED8] bg-[#EFF6FF] border border-[#BFDBFE] px-2 py-0.5 rounded-[3px] font-medium">
+                    Fixed Price Guarantee
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* 1. Service-Specific Pricing Explorer (Pre-selected from homepage clicks) */}
         <div className="my-14">
@@ -141,82 +232,81 @@ export default function PricingPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
             {packages.map((pkg, idx) => (
               <div
                 key={idx}
-                className={`rounded-[8px] p-6 sm:p-7 flex flex-col justify-between transition-all ${
+                className={`bg-white rounded-[8px] p-6 sm:p-8 flex flex-col justify-between transition-all ${
                   pkg.featured
-                    ? "bg-white border-2 border-[#2563EB] shadow-md relative"
-                    : "bg-white border border-[#E2E8F0] shadow-sm hover:border-[#CBD5E1]"
+                    ? "border-2 border-[#2563EB] shadow-md relative"
+                    : "border border-[#E2E8F0] shadow-xs"
                 }`}
               >
+                {pkg.featured && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#2563EB] text-white text-[10px] font-mono uppercase font-semibold px-2.5 py-0.5 rounded-full tracking-wider">
+                    {pkg.badge}
+                  </div>
+                )}
+
                 <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-[4px] bg-[#EFF6FF] text-[#1D4ED8] border border-[#BFDBFE] font-medium">
-                      {pkg.badge}
-                    </span>
+                  <div className="text-xs font-mono uppercase tracking-wider text-[#64748B] mb-1">
+                    {pkg.name}
                   </div>
-
-                  <h3 className="text-xl font-serif font-medium text-[#0F172A] mb-1">{pkg.name}</h3>
-                  <p className="text-xs text-[#475569] leading-relaxed mb-5">{pkg.tagline}</p>
-
-                  <div className="mb-6 pb-5 border-b border-[#E2E8F0]">
-                    <div className="text-3xl sm:text-4xl font-serif text-[#0F172A]">{pkg.price}</div>
-                    <div className="text-xs font-mono text-[#64748B] mt-1">{pkg.period}</div>
+                  <div className="text-3xl font-serif font-normal text-[#0F172A] mb-1">
+                    {pkg.price}
                   </div>
+                  <div className="text-xs text-[#64748B] font-mono mb-4">{pkg.period}</div>
+                  <p className="text-xs text-[#475569] leading-relaxed mb-6 border-b border-[#E2E8F0] pb-4">
+                    {pkg.tagline}
+                  </p>
 
-                  <div className="space-y-2.5 mb-8 text-xs text-[#475569]">
+                  <ul className="space-y-2.5 mb-8">
                     {pkg.features.map((feat, fIdx) => (
-                      <div key={fIdx} className="flex items-start space-x-2">
-                        <Check className="w-3.5 h-3.5 text-[#2563EB] shrink-0 mt-0.5" />
+                      <li key={fIdx} className="flex items-start text-xs text-[#334155]">
+                        <Check className="w-3.5 h-3.5 text-[#2563EB] shrink-0 mr-2 mt-0.5" />
                         <span>{feat}</span>
-                      </div>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
 
                 <Link
                   href={pkg.ctaHref}
-                  className={`w-full py-2.5 rounded-[6px] font-medium text-xs text-center flex items-center justify-center space-x-1.5 transition-all ${
+                  className={`w-full py-2.5 rounded-[6px] text-xs font-semibold flex items-center justify-center space-x-1.5 transition-colors ${
                     pkg.featured
-                      ? "bg-[#2563EB] hover:bg-[#1D4ED8] text-white shadow-sm"
-                      : "bg-white hover:bg-[#F8FAFC] text-[#0F172A] border border-[#CBD5E1]"
+                      ? "bg-[#2563EB] hover:bg-[#1D4ED8] text-white"
+                      : "bg-[#EFF6FF] hover:bg-[#DBEAFE] text-[#1D4ED8] border border-[#BFDBFE]"
                   }`}
                 >
                   <span>{pkg.ctaText}</span>
-                  <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Proven Achievements & Real-World Case Studies */}
-        <AchievementsAndCaseStudies
-          badge="Delivery Proof & Return on Investment"
-          title="Engineering Achievements & Client Case Studies"
-          subtitle="Review measurable business impact, sub-second speed benchmarks, and production ROI from our fixed-sprint and retainer engagements."
-          pageContext="pricing"
-          maxCaseStudies={3}
-        />
+        {/* 3. Verified Achievements & Case Studies */}
+        <AchievementsAndCaseStudies />
 
-        {/* 3. Interactive Estimator Tool (Custom Multi-Service Scope) */}
-        <div id="custom-estimator" className="my-20 scroll-mt-24">
+        {/* 4. Interactive Scope & Cost Estimator */}
+        <div id="estimator" className="my-20 scroll-mt-20">
           <ContactForm
-            title="Project Cost Estimator & Inquiry Configuration"
-            subtitle="Calculate realistic investment benchmarks, specify your architecture in each step, and submit your project brief directly to our engineering team."
+            title="Custom Architecture & Budget Estimator"
+            subtitle="Configure your specific platform stack, design requirements, and timeline to calculate realistic budget estimates and submit an inquiry."
           />
         </div>
 
-        {/* Pricing FAQs */}
-        <FaqAccordion
-          faqs={pricingFaqs}
-          title="Pricing & Billing Clarifications"
-          subtitle="Everything you need to know about milestones, contracts, warranties, and code ownership."
-        />
+        {/* 5. Pricing FAQs */}
+        <div className="my-14">
+          <FaqAccordion 
+            faqs={pricingFaqs} 
+            title="Frequently Asked Questions About Pricing"
+            subtitle="Transparent scope definition, fixed milestone payments, and zero surprise invoices."
+          />
+        </div>
 
-        {/* Closing CTA */}
+        {/* 6. Closing CTA */}
         <CtaSection
           title="Have a project in mind? Send us the details and we’ll reply within a day."
           description="We engineer scalable cloud architecture, custom web platforms, and Salesforce CRM systems for growing companies and global enterprises."
