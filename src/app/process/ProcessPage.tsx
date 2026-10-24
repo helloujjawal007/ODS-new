@@ -185,7 +185,7 @@ export default function ProcessPage() {
               <div className="bg-white p-2.5 rounded-[8px] border border-[#E2E8F0] shadow-sm">
                 <div className="relative aspect-[16/10] rounded-[6px] overflow-hidden bg-[#F1F5F9]">
                   <Image
-                    src="/images/ods_team_office.jpg"
+                    src="/images/cloud_team_office.jpg"
                     alt="Cloud Consultancy agile software engineering sprint and delivery review"
                     fill
                     priority

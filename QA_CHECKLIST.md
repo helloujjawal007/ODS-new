@@ -1,6 +1,6 @@
 # Website QA Checklist & Audit Report
 
-**Project:** Cloud Consultancy (`https://onlinedigitalsolution.com`)  
+**Project:** Cloud Consultancy (`https://cloudconsultancy.in`)  
 **URL / Environment:** Local Staging (`http://localhost:3000`) & Production Target  
 **Tester:** Antigravity Senior QA & Engineering Suite  
 **Date:** 2026-10-12  
@@ -54,7 +54,7 @@
 
 - [x] No spelling or grammar errors
 - [x] No placeholder text (Zero `lorem ipsum`, "TODO", or test mocks present)
-- [x] Contact details (phone: `+91 91425 90800`, email: `team.onlinedigitalsolution@gmail.com`, location: Kolkata, India · 100% Online Global Engineering) are verified and consistent
+- [x] Contact details (phone: `+91 91425 90800`, email: `sales@cloudconsultancy.in`, location: Kolkata, India · 100% Online Global Engineering) are verified and consistent
 - [x] Dates, prices, and legal text are current (2026 copyright year and all rates rounded to clean multiples of $500)
 - [x] Brand name, tone, and terminology are consistent ("Cloud Consultancy")
 - [x] Privacy Policy, Terms, and Cookie Policy pages exist and are linked (`/privacy`, `/terms`, `/privacy#cookies`)
@@ -247,7 +247,7 @@ For each:
 | 13 | Services / SEO | 10 service cards shared identical link text ("View Architecture & Pricing") | Inspect service card anchor text | 🟠 High | Fixed | Antigravity AI |
 | 14 | Marquee / A11y | Logo marquee duplicated items in DOM without `aria-hidden="true"` | Inspect marquee duplicate track | 🟡 Medium | Fixed | Antigravity AI |
 | 15 | Footer / A11y | Social links used raw URLs with missing accessible names | Run accessibility name audit on social icons | 🟡 Medium | Fixed | Antigravity AI |
-| 16 | SEO / Metadata | Canonical/OG URL hardcoded to onlinedigitalsolution.com on staging/previews | Check preview domain canonical headers | 🟠 High | Fixed | Antigravity AI |
+| 16 | SEO / Metadata | Canonical/OG URL hardcoded to staging domain on previews | Check preview domain canonical headers | 🟠 High | Fixed | Antigravity AI |
 | 17 | Performance | Image requests lacked mobile `sizes` causing 3840w asset downloads | Mobile network payload inspection | 🟠 High | Fixed | Antigravity AI |
 | 18 | SEO | Meta description was over 160 chars and obsolete `keywords` tag was present | Inspect `<head>` metadata | 🟢 Low | Fixed | Antigravity AI |
 | 19 | Trust / Content | Fictional client logos and unprovable claims ("100/100", "+310% conversion") | Content & credibility review | 🟠 High | Fixed | Antigravity AI |

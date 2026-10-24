@@ -1,16 +1,14 @@
 "use client";
 
 import { useState, useMemo, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import {
   Check,
   ArrowRight,
   ArrowLeft,
   Send,
-  MessageSquare,
   ShieldCheck,
   Clock,
-  Mail,
   Loader2,
   AlertCircle
 } from "lucide-react";
@@ -76,6 +74,7 @@ function InnerContactForm({
   title?: string;
   subtitle?: string;
 }) {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const paramService = searchParams.get("service") || "";
   const paramTier = searchParams.get("tier") || "";
@@ -199,10 +198,11 @@ function InnerContactForm({
 
       const data = await res.json();
       if (!res.ok || !data.success) {
-        throw new Error(data.error || "Unable to send inquiry to team.onlinedigitalsolution@gmail.com.");
+        throw new Error(data.error || "Unable to send inquiry. Please reach out to sales@cloudconsultancy.in directly.");
       }
 
       setIsSubmitted(true);
+      router.push("/thank-you/");
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Unable to transmit brief. You can still email us directly.";
       setSubmitError(msg);
@@ -210,17 +210,6 @@ function InnerContactForm({
       setIsSubmitting(false);
     }
   };
-
-  // Pre-formatted WhatsApp text
-  const whatsappHref = useMemo(() => {
-    const text = `Hello Cloud Consultancy, I submitted a project inquiry:
-• Service: ${formData.service}
-• Scale: ${selectedTierObj.label}
-• Estimate: $${minEstimate.toLocaleString()} - $${maxEstimate.toLocaleString()}
-• Timeline: ${formData.timeline}
-• Name: ${formData.name || "Client"} (${formData.company || "Company"})`;
-    return `https://wa.me/919142590800?text=${encodeURIComponent(text)}`;
-  }, [formData, selectedTierObj, minEstimate, maxEstimate]);
 
   // Pre-formatted direct mailto fallback
   const emailBriefHref = useMemo(() => {
@@ -247,7 +236,7 @@ Budget & Launch Deadlines:
 ${formData.customBudgetNotes || "N/A"}
 
 Please confirm receipt and send back next steps.`;
-    return `mailto:team.onlinedigitalsolution@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    return `mailto:sales@cloudconsultancy.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }, [formData, selectedTierObj, minEstimate, maxEstimate, estimatedWeeks]);
 
   if (isSubmitted) {
@@ -260,87 +249,11 @@ Please confirm receipt and send back next steps.`;
           Cloud Consultancy Engineering
         </div>
         <h3 className="text-2xl sm:text-3xl font-serif font-normal text-[#0F172A]">
-          Inquiry & Scope Successfully Received
+          Thank you, we will get back to you in 24 hours.
         </h3>
-        <p className="text-[#475569] text-xs sm:text-sm mt-2 max-w-lg mx-auto leading-relaxed">
-          Thank you, <strong className="text-[#0F172A]">{formData.name}</strong>. Your project brief has been delivered to <span className="font-mono text-[#2563EB] font-semibold">team.onlinedigitalsolution@gmail.com</span>. A senior software engineer will review your specifications and reply within one business day.
+        <p className="text-[#475569] text-xs sm:text-sm mt-3 max-w-lg mx-auto leading-relaxed">
+          Your project brief has been received. Redirecting to confirmation page...
         </p>
-
-        {/* Project Scope & Pricing Summary Card */}
-        <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-[8px] p-6 mt-6 max-w-lg mx-auto text-left text-xs space-y-3 text-[#475569]">
-          <div className="flex justify-between items-center pb-2 border-b border-[#E2E8F0]">
-            <span className="font-mono text-[#64748B] uppercase">Calculated Estimate:</span>
-            <span className="text-[#0F172A] font-bold font-serif text-sm">
-              ${minEstimate.toLocaleString()} – ${maxEstimate.toLocaleString()}
-            </span>
-          </div>
-          <div className="flex justify-between">
-            <span>Primary Service:</span>
-            <span className="text-[#0F172A] font-medium">{formData.service}</span>
-          </div>
-          {formData.customServiceNotes && (
-            <div className="flex justify-between">
-              <span>Custom Tech Specs:</span>
-              <span className="text-[#0F172A] font-medium">{formData.customServiceNotes}</span>
-            </div>
-          )}
-          <div className="flex justify-between">
-            <span>Complexity Tier:</span>
-            <span className="text-[#0F172A] font-medium">{selectedTierObj.label}</span>
-          </div>
-          <div className="flex justify-between">
-            <span>Target Timeline:</span>
-            <span className="text-[#0F172A] font-medium">
-              {formData.timeline} ({estimatedWeeks}–{estimatedWeeks + 2} Weeks)
-            </span>
-          </div>
-          {formData.customBudgetNotes && (
-            <div className="flex justify-between">
-              <span>Budget / Launch Deadline:</span>
-              <span className="text-[#0F172A] font-medium">{formData.customBudgetNotes}</span>
-            </div>
-          )}
-          <div className="flex justify-between">
-            <span>Engagement Model:</span>
-            <span className="text-[#0F172A] font-medium">{formData.engagementModel}</span>
-          </div>
-          <div className="flex justify-between">
-            <span>Notification Inbox:</span>
-            <span className="text-[#2563EB] font-mono text-[11px]">team.onlinedigitalsolution@gmail.com</span>
-          </div>
-          <div className="pt-2 border-t border-[#E2E8F0] flex items-center justify-between text-[11px] text-[#64748B]">
-            <span>100% Client Code Ownership</span>
-            <span>30-Day Post-Launch Warranty</span>
-          </div>
-        </div>
-
-        <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3">
-          <a
-            href={whatsappHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-5 py-3 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium text-xs flex items-center justify-center space-x-2 transition-colors shadow-sm"
-          >
-            <MessageSquare className="w-3.5 h-3.5" />
-            <span>Connect on WhatsApp (+91 91425 90800)</span>
-          </a>
-          <a
-            href={emailBriefHref}
-            className="px-5 py-3 rounded-[6px] bg-[#0F172A] hover:bg-[#1E293B] text-white font-medium text-xs flex items-center justify-center space-x-2 transition-colors shadow-sm"
-          >
-            <Mail className="w-3.5 h-3.5 text-[#60A5FA]" />
-            <span>Send Copy via Your Mail App</span>
-          </a>
-          <button
-            onClick={() => {
-              setIsSubmitted(false);
-              setStep(1);
-            }}
-            className="px-5 py-3 rounded-[6px] bg-white hover:bg-[#F8FAFC] border border-[#CBD5E1] text-[#0F172A] text-xs font-medium transition-colors"
-          >
-            Submit Another Inquiry
-          </button>
-        </div>
       </div>
     );
   }
@@ -794,7 +707,7 @@ Please confirm receipt and send back next steps.`;
               <p className="mt-1 text-[11px] text-[#B91C1C]">
                 You can also email your brief directly to{" "}
                 <a href={emailBriefHref} className="underline font-semibold hover:text-[#7F1D1D]">
-                  team.onlinedigitalsolution@gmail.com
+                  sales@cloudconsultancy.in
                 </a>{" "}
                 or reach us on WhatsApp.
               </p>
@@ -838,7 +751,7 @@ Please confirm receipt and send back next steps.`;
               {isSubmitting ? (
                 <>
                   <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                  <span>Transmitting to team.onlinedigitalsolution@gmail.com...</span>
+                  <span>Transmitting your project brief...</span>
                 </>
               ) : (
                 <>

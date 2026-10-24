@@ -189,7 +189,7 @@ export default function PricingPage() {
               <div className="bg-white p-2.5 rounded-[8px] border border-[#E2E8F0] shadow-sm">
                 <div className="relative aspect-[16/10] rounded-[6px] overflow-hidden bg-[#F1F5F9]">
                   <Image
-                    src="/images/ods_flagship_hero_banner.jpg"
+                    src="/images/cloud_flagship_hero_banner.jpg"
                     alt="Cloud Consultancy software architecture, scope planning and pricing framework"
                     fill
                     priority

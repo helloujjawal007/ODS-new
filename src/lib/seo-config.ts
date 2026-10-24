@@ -2,7 +2,7 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL || 
   (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : null) || 
   (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) || 
-  "https://onlinedigitalsolution.com";
+  "https://cloudconsultancy.in";
 
 export const SITE_CONFIG = {
   name: "Cloud Consultancy",
@@ -14,7 +14,7 @@ export const SITE_CONFIG = {
   targetMarkets: "Worldwide / Global",
   deliveryMode: "Global remote engineering and cloud consultancy",
   contact: {
-    email: "team.onlinedigitalsolution@gmail.com",
+    email: "sales@cloudconsultancy.in",
     phone: "+91 9142590800",
     phoneDisplay: "+91 91425 90800",
     whatsapp: "919142590800",
@@ -25,9 +25,9 @@ export const SITE_CONFIG = {
     country: "India"
   },
   social: {
-    twitter: "https://twitter.com/onlinedigitalsol",
-    linkedin: "https://linkedin.com/company/onlinedigitalsolution",
-    github: "https://github.com/onlinedigitalsolution"
+    twitter: "https://twitter.com/cloudconsultin",
+    linkedin: "https://linkedin.com/company/cloudconsultancy",
+    github: "https://github.com/cloudconsultancy"
   }
 };
 

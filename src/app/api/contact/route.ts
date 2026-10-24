@@ -81,7 +81,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       success: true,
-      message: `Your inquiry has been successfully transmitted to ${NOTIFICATION_EMAIL}.`,
+      message: "Your inquiry has been successfully transmitted to our engineering team.",
       delivered: result.delivered,
       recipient: NOTIFICATION_EMAIL
     });

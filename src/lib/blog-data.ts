@@ -280,8 +280,8 @@ When a merchant uninstalls your app, Shopify automatically removes the extension
 To prevent styling collisions with merchant CSS resets, we encapsulate frontend UI inside native HTML5 **Web Components (Custom Elements)**:
 
 \`\`\`javascript
-// assets/ods-product-upsell.js
-class OdsProductUpsell extends HTMLElement {
+// assets/cloud-product-upsell.js
+class CloudProductUpsell extends HTMLElement {
   connectedCallback() {
     const productId = this.getAttribute('data-product-id');
     this.render();
@@ -289,14 +289,14 @@ class OdsProductUpsell extends HTMLElement {
 
   render() {
     this.innerHTML = \`
-      <div class="ods-upsell-pill">
-        <span class="ods-indicator">Fast Delivery</span>
-        <button class="ods-add-btn">Add Bundle (Save 15%)</button>
+      <div class="cloud-upsell-pill">
+        <span class="cloud-indicator">Fast Delivery</span>
+        <button class="cloud-add-btn">Add Bundle (Save 15%)</button>
       </div>
     \`;
   }
 }
-customElements.define('ods-product-upsell', OdsProductUpsell);
+customElements.define('cloud-product-upsell', CloudProductUpsell);
 \`\`\`
 
 ## Asset Bundling & App Embed Optimization
@@ -449,8 +449,8 @@ Manifest V3 replaces the synchronous \`chrome.webRequest\` API with \`declarativ
   {
     "id": 1,
     "priority": 1,
-    "action": { "type": "modifyHeaders", "requestHeaders": [{ "header": "X-ODS-Client", "operation": "set", "value": "v2.1" }] },
-    "condition": { "urlFilter": "api.onlinedigitalsolution.com/*", "resourceTypes": ["xmlhttprequest"] }
+    "action": { "type": "modifyHeaders", "requestHeaders": [{ "header": "X-Cloud-Client", "operation": "set", "value": "v2.1" }] },
+    "condition": { "urlFilter": "api.cloudconsultancy.in/*", "resourceTypes": ["xmlhttprequest"] }
   }
 ]
 \`\`\`

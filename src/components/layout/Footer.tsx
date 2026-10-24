@@ -79,7 +79,7 @@ export default function Footer() {
                     <span>Subscription Confirmed</span>
                   </div>
                   <p className="text-[#94A3B8] text-[11px] leading-relaxed pl-6">
-                    Registered to <strong className="text-white">team.onlinedigitalsolution@gmail.com</strong>. You will receive our next engineering note directly in your inbox.
+                    Registered to <strong className="text-white">{newsletterEmail || "your inbox"}</strong>. You will receive our next engineering note directly in your inbox.
                   </p>
                 </div>
               ) : (
@@ -121,7 +121,7 @@ export default function Footer() {
                   {errorMsg && (
                     <div className="mt-2 text-[11px] text-[#F87171] flex items-center space-x-1">
                       <AlertCircle className="w-3 h-3 shrink-0" />
-                      <span>{errorMsg} &mdash; or email directly to team.onlinedigitalsolution@gmail.com</span>
+                      <span>{errorMsg} &mdash; or email directly to {SITE_CONFIG.contact.email}</span>
                     </div>
                   )}
                 </div>

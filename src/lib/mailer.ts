@@ -1,7 +1,21 @@
 import nodemailer from "nodemailer";
 
-export const NOTIFICATION_EMAIL =
-  process.env.NOTIFICATION_EMAIL || "team.onlinedigitalsolution@gmail.com";
+export const DEFAULT_RECIPIENTS = [
+  "sales@cloudconsultancy.in",
+  "admin@cloudconsultancy.in",
+  "vikash@cloudconsultancy.in"
+];
+
+export const RECIPIENT_EMAILS = Array.from(
+  new Set([
+    ...DEFAULT_RECIPIENTS,
+    ...(process.env.NOTIFICATION_EMAIL
+      ? process.env.NOTIFICATION_EMAIL.split(",").map((e) => e.trim()).filter(Boolean)
+      : [])
+  ])
+);
+
+export const NOTIFICATION_EMAIL = RECIPIENT_EMAILS.join(", ");
 
 export interface ContactInquiryPayload {
   name: string;
@@ -61,7 +75,7 @@ function getTransporter() {
 }
 
 /**
- * Sends a project inquiry email to team.onlinedigitalsolution@gmail.com
+ * Sends a project inquiry email to sales@cloudconsultancy.in, admin@cloudconsultancy.in, and vikash@cloudconsultancy.in
  */
 export async function sendContactInquiryEmail(payload: ContactInquiryPayload) {
   const submittedTime = payload.submittedAt || new Date().toISOString();
@@ -259,7 +273,7 @@ ${payload.customCommunicationNotes ? `Communication: ${payload.customCommunicati
   try {
     const info = await transporter.sendMail({
       from: fromAddress,
-      to: NOTIFICATION_EMAIL,
+      to: RECIPIENT_EMAILS,
       replyTo: `${payload.name} <${payload.email}>`,
       subject,
       html,
@@ -285,7 +299,7 @@ ${payload.customCommunicationNotes ? `Communication: ${payload.customCommunicati
 }
 
 /**
- * Sends a newsletter subscription notification to team.onlinedigitalsolution@gmail.com
+ * Sends a newsletter subscription notification to the team
  */
 export async function sendNewsletterNotification(payload: NewsletterPayload) {
   const submittedTime = payload.submittedAt || new Date().toISOString();
@@ -372,7 +386,7 @@ Source: ${payload.source || "Website Footer (Engineering Notes)"}
   try {
     const info = await transporter.sendMail({
       from: fromAddress,
-      to: NOTIFICATION_EMAIL,
+      to: RECIPIENT_EMAILS,
       replyTo: payload.email,
       subject,
       html,
@@ -391,7 +405,7 @@ Source: ${payload.source || "Website Footer (Engineering Notes)"}
           <div style="font-family: sans-serif; color: #0F172A; max-width: 600px; margin: auto; padding: 24px; border: 1px solid #E2E8F0; border-radius: 8px;">
             <h2 style="color: #2563EB;">Welcome to Cloud Consultancy Engineering Notes</h2>
             <p>Thank you for subscribing! You will receive our occasional deep-dives into Next.js architecture, Core Web Vitals optimization, and enterprise CRM engineering.</p>
-            <p>If you have a project brief or need immediate cloud architecture consulting, feel free to reply to this email or visit <a href="https://onlinedigitalsolution.com/contact/">our contact portal</a>.</p>
+            <p>If you have a project brief or need immediate cloud architecture consulting, feel free to reply to this email or visit <a href="https://cloudconsultancy.in/contact/">our contact portal</a>.</p>
             <hr style="border: none; border-top: 1px solid #E2E8F0; margin: 20px 0;" />
             <p style="font-size: 12px; color: #64748B;">Cloud Consultancy Team &bull; <a href="mailto:${NOTIFICATION_EMAIL}">${NOTIFICATION_EMAIL}</a></p>
           </div>

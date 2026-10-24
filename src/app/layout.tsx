@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     title: "Cloud Consultancy | Cloud Architecture, Web & App Engineering",
     description: SITE_CONFIG.description,
     images: ["/images/twitter_preview_banner.jpg"],
-    creator: "@onlinedigitalsol"
+    creator: "@cloudconsultin"
   },
   icons: {
     icon: "/brand/cloud-consultancy-icon.png",
