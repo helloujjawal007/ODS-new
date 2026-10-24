@@ -94,7 +94,7 @@ export default function HeroHeadingRotator() {
         aria-live="polite"
         aria-atomic="true"
       >
-        <HeadingTag className="text-3xl sm:text-5xl lg:text-6xl font-serif font-normal text-[#0F172A] tracking-tight leading-[1.14]">
+        <HeadingTag className="hero-slide-heading text-3xl sm:text-5xl lg:text-6xl font-serif font-normal text-[#0F172A] tracking-tight leading-[1.14]">
           <span className="text-[#0F172A]">{current.question} </span>
           <span className="text-[#2563EB] font-medium">{current.statement}</span>
         </HeadingTag>

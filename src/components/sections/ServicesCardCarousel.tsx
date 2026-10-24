@@ -170,7 +170,7 @@ export default function ServicesCardCarousel({ services }: ServicesCardCarouselP
               return (
                 <div
                   key={s.slug}
-                  className="w-[310px] sm:w-[350px] md:w-[370px] shrink-0 snap-start bg-white border border-[#E2E8F0] rounded-[8px] overflow-hidden flex flex-col justify-between shadow-sm hover:border-[#2563EB] hover:shadow-md transition-all group"
+                  className="service-carousel-card w-[310px] sm:w-[350px] md:w-[370px] shrink-0 snap-start bg-white border border-[#E2E8F0] rounded-[8px] overflow-hidden flex flex-col justify-between shadow-sm hover:border-[#2563EB] hover:shadow-md transition-all group"
                 >
                   {/* Visual Top Preview */}
                   <div>

@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     telephone: false
   },
   alternates: {
-    canonical: "/"
+    canonical: "./"
   },
   openGraph: {
     type: "website",
@@ -117,9 +117,6 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={`${newsreader.variable} ${publicSans.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
-      <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-      </head>
       <body
         suppressHydrationWarning
         className="min-h-full flex flex-col bg-white text-[#0F172A] selection:bg-[#2563EB] selection:text-white"

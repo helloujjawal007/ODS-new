@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Terms of Service & Engagement",
   description: `Read the Terms of Service for ${SITE_CONFIG.name}. Full IP ownership, transparent sprint deliverables, and mutual non-disclosure.`,
   alternates: {
-    canonical: "/terms"
+    canonical: "/terms/"
   }
 };
 

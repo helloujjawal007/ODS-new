@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Privacy & Cookie Policy",
   description: `How ${SITE_CONFIG.name} collects, protects, and handles your data in accordance with global privacy principles.`,
   alternates: {
-    canonical: "/privacy"
+    canonical: "/privacy/"
   }
 };
 
