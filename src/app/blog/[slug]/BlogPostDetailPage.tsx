@@ -196,7 +196,26 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </nav>
               </div>
 
-              {matchedService && (
+              {post.pillar === "salesforce" ? (
+                <div className="bg-white border border-[#E2E8F0] rounded-[8px] p-5 shadow-sm">
+                  <span className="text-[10px] font-mono uppercase text-[#64748B] block mb-1">
+                    Specialized Practice
+                  </span>
+                  <h4 className="font-serif text-sm font-medium text-[#0F172A] mb-1">
+                    Salesforce Engineering & Architecture
+                  </h4>
+                  <p className="text-xs text-[#475569] leading-relaxed mb-3">
+                    Certified Apex, LWC, multi-cloud API sync, and zero-governor-limit enterprise CRM infrastructure.
+                  </p>
+                  <Link
+                    href="/salesforce/"
+                    className="inline-flex items-center text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] hover:underline"
+                  >
+                    <span>Salesforce Practice details</span>
+                    <ArrowRight className="w-3 h-3 ml-1" />
+                  </Link>
+                </div>
+              ) : matchedService ? (
                 <div className="bg-white border border-[#E2E8F0] rounded-[8px] p-5 shadow-sm">
                   <span className="text-[10px] font-mono uppercase text-[#64748B] block mb-1">
                     Related Service
@@ -208,14 +227,14 @@ export default async function BlogPostPage({ params }: PageProps) {
                     {matchedService.tagline}
                   </p>
                   <Link
-                    href={`/services/${matchedService.slug}`}
+                    href={`/services/${matchedService.slug}/`}
                     className="inline-flex items-center text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] hover:underline"
                   >
                     <span>{matchedService.shortTitle} details</span>
                     <ArrowRight className="w-3 h-3 ml-1" />
                   </Link>
                 </div>
-              )}
+              ) : null}
             </div>
           </aside>
 

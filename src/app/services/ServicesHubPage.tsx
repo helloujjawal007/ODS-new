@@ -10,7 +10,7 @@ import { getBreadcrumbJsonLd } from "@/lib/seo-config";
 
 export const metadata: Metadata = {
   title: "Services & Capabilities",
-  description: "Web development, Shopify & BigCommerce stores, technical SEO, mobile apps, and Salesforce integration. Clear scopes and fixed milestones.",
+  description: "Web development, Shopify & BigCommerce stores, technical SEO, mobile apps, and UI/UX engineering. Clear scopes and fixed milestones.",
   alternates: {
     canonical: "/services/"
   }
@@ -38,8 +38,32 @@ export default function ServicesHubPage() {
             Engineering capabilities for growing businesses.
           </h1>
           <p className="text-[#475569] text-sm sm:text-base mt-3 leading-relaxed max-w-xl">
-            From modern Next.js websites and custom Shopify stores to mobile apps and enterprise Salesforce integrations. Handled directly by senior engineers.
+            From modern Next.js websites and custom Shopify stores to native mobile apps and high-performance frontend engineering. Handled directly by senior engineers.
           </p>
+        </div>
+
+        {/* Dedicated Salesforce Practice Callout Banner */}
+        <div className="bg-gradient-to-r from-[#00A1E0]/10 via-[#EFF6FF] to-white border border-[#BAE6FD] rounded-[8px] p-5 sm:p-6 mb-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="flex items-start space-x-3.5">
+            <div className="w-10 h-10 rounded-[6px] bg-[#00A1E0] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs">
+              SFDC
+            </div>
+            <div>
+              <div className="flex items-center space-x-2">
+                <span className="text-xs font-mono uppercase tracking-wider text-[#0284C7] font-semibold">Specialized Practice</span>
+                <span className="text-[10px] bg-white border border-[#BAE6FD] text-[#0369A1] px-2 py-0.5 rounded-[4px] font-mono">100% Certified</span>
+              </div>
+              <h3 className="font-serif text-lg font-medium text-[#0F172A] mt-0.5">Looking for Salesforce Consulting & Custom LWC Architecture?</h3>
+              <p className="text-xs text-[#475569] mt-1">Our comprehensive Salesforce practice now lives on a dedicated hub with cloud breakdowns, code audits, and transparent pricing.</p>
+            </div>
+          </div>
+          <Link
+            href="/salesforce/"
+            className="px-4 py-2.5 rounded-[6px] bg-[#00A1E0] hover:bg-[#0081B4] text-white font-medium text-xs flex items-center space-x-1.5 shrink-0 shadow-2xs"
+          >
+            <span>Visit Salesforce Hub</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
 
         {/* Cards Grid */}

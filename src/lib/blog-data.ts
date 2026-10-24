@@ -202,7 +202,7 @@ If your team is starting fresh and prioritizes custom bespoke animations, brande
     readingTime: "8 min read",
     featured: false,
     coverImage: "/images/blog_salesforce_lwc.jpg",
-    pillar: "salesforce-development-support",
+    pillar: "salesforce",
     toc: [
       { id: "the-governor-limit-trap", title: "The Governor Limit Trap in High-Traffic Portals" },
       { id: "resilient-queue-architecture", title: "Resilient Queue & Webhook Architecture" },
@@ -566,7 +566,7 @@ When architecting for PPR:
     readingTime: "9 min read",
     featured: false,
     coverImage: "/images/blog_crm_sync.jpg",
-    pillar: "crm-integration",
+    pillar: "salesforce",
     toc: [
       { id: "the-cost-of-delayed-leads", title: "The Real Revenue Cost of Delayed Lead Follow-Up" },
       { id: "why-direct-crm-calls-fail", title: "Why Direct Synchronous CRM API Calls Fail Under Surge" },

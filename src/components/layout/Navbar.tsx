@@ -11,8 +11,6 @@ import {
   Code2,
   TrendingUp,
   Smartphone,
-  Workflow,
-  Database,
   Palette,
   ShoppingBag,
   Puzzle,
@@ -42,6 +40,7 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
+    { label: "Salesforce", href: "/salesforce/" },
     { label: "Work", href: "/portfolio/" },
     { label: "Process", href: "/process/" },
     { label: "Blog", href: "/blog/" },
@@ -84,18 +83,6 @@ export default function Navbar() {
       desc: "Flutter & React Native single-codebase builds",
       href: "/services/cross-platform-app-development/",
       icon: Code2
-    },
-    {
-      title: "CRM & Salesforce Sync",
-      desc: "Resilient bi-directional API pipelines",
-      href: "/services/crm-integration/",
-      icon: Database
-    },
-    {
-      title: "Salesforce Support",
-      desc: "Lightning Web Components, Apex, and Flow automation",
-      href: "/services/salesforce-support/",
-      icon: Workflow
     },
     {
       title: "UI/UX & Design Systems",
@@ -204,6 +191,20 @@ export default function Navbar() {
                         </Link>
                       );
                     })}
+
+                    {/* Dedicated Salesforce Hub Callout */}
+                    <div className="col-span-2 mt-2 pt-2.5 border-t border-[#E2E8F0] flex items-center justify-between bg-[#F8FAFC] px-3 py-2 rounded-[6px]">
+                      <div className="flex items-center space-x-2">
+                        <span className="w-2 h-2 rounded-full bg-[#00A1E0]" />
+                        <span className="text-xs font-medium text-[#0F172A]">Looking for Enterprise Salesforce Architecture?</span>
+                      </div>
+                      <Link
+                        href="/salesforce/"
+                        className="text-xs text-[#00A1E0] hover:text-[#0081B4] hover:underline font-semibold flex items-center"
+                      >
+                        Visit Salesforce Hub <ArrowRight className="w-3 h-3 ml-1" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               )}

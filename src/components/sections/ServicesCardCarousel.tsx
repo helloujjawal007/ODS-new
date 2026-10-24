@@ -13,8 +13,6 @@ import {
   ShoppingBag, 
   TrendingUp, 
   Smartphone, 
-  Database, 
-  Workflow, 
   Palette, 
   Puzzle,
   LucideIcon
@@ -28,8 +26,6 @@ const SERVICE_ICONS: Record<string, LucideIcon> = {
   "ios-app-development": Smartphone,
   "android-app-development": Smartphone,
   "cross-platform-app-development": Smartphone,
-  "crm-integration": Database,
-  "salesforce-support": Workflow,
   "ui-ux-design": Palette,
   "plugins-extensions-development": Puzzle
 };
@@ -46,7 +42,6 @@ export default function ServicesCardCarousel({ services }: ServicesCardCarouselP
     "All",
     "Engineering",
     "E-Commerce",
-    "Enterprise CRM",
     "Mobile",
     "SEO & Growth"
   ];
@@ -55,7 +50,6 @@ export default function ServicesCardCarousel({ services }: ServicesCardCarouselP
     if (selectedCategory === "All") return true;
     if (selectedCategory === "Engineering") return s.category === "Engineering" && !s.slug.includes("app");
     if (selectedCategory === "E-Commerce") return s.category === "E-Commerce";
-    if (selectedCategory === "Enterprise CRM") return s.category === "CRM & Enterprise";
     if (selectedCategory === "Mobile") return s.slug.includes("app");
     if (selectedCategory === "SEO & Growth") return s.category === "SEO & Performance" || s.slug === "seo";
     return true;

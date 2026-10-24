@@ -11,8 +11,6 @@ import {
   ShoppingBag, 
   TrendingUp, 
   Smartphone, 
-  Database, 
-  Workflow, 
   Palette, 
   Puzzle,
   LucideIcon
@@ -26,8 +24,6 @@ const SERVICE_ICONS: Record<string, LucideIcon> = {
   "ios-app-development": Smartphone,
   "android-app-development": Smartphone,
   "cross-platform-app-development": Smartphone,
-  "crm-integration": Database,
-  "salesforce-support": Workflow,
   "ui-ux-design": Palette,
   "plugins-extensions-development": Puzzle
 };

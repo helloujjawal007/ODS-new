@@ -47,6 +47,30 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: "/services/crm-integration",
+        destination: "/salesforce/",
+        permanent: true,
+      },
+      {
+        source: "/services/salesforce-support",
+        destination: "/salesforce/",
+        permanent: true,
+      },
+      {
+        source: "/services/salesforce-development-support",
+        destination: "/salesforce/",
+        permanent: true,
+      },
+      {
+        source: "/services/crm-management-integration",
+        destination: "/salesforce/",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
