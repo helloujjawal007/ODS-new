@@ -31,12 +31,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `${project.title} | Case Study`,
     description: project.summary,
     alternates: {
-      canonical: `/portfolio/${project.slug}`
+      canonical: `/portfolio/${project.slug}/`
     },
     openGraph: {
       title: `${project.title} — ${project.client}`,
       description: project.summary,
-      url: `${SITE_CONFIG.url}/portfolio/${project.slug}`,
+      url: `${SITE_CONFIG.url}/portfolio/${project.slug}/`,
       images: [{ url: project.image }]
     }
   };
@@ -51,13 +51,13 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
   }
 
   const breadcrumbItems = [
-    { label: "Portfolio", href: "/portfolio" },
+    { label: "Portfolio", href: "/portfolio/" },
     { label: project.client }
   ];
 
   const breadcrumbSchema = getBreadcrumbJsonLd([
-    { name: "Portfolio", url: "/portfolio" },
-    { name: project.client, url: `/portfolio/${project.slug}` }
+    { name: "Portfolio", url: "/portfolio/" },
+    { name: project.client, url: `/portfolio/${project.slug}/` }
   ]);
 
   return (
@@ -201,9 +201,9 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
         {/* Closing CTA */}
         <CtaSection
           title="Have a project in mind? Send us the details and we’ll reply within a day."
-          description="We build websites, Shopify stores and apps for small and mid-size businesses. Based in Kolkata, working with clients worldwide."
+          description="We engineer scalable cloud architecture, custom web platforms, and Salesforce CRM systems for growing companies and global enterprises."
           primaryCtaText="Tell us about your project"
-          primaryCtaHref="/contact"
+          primaryCtaHref="/contact/"
         />
       </div>
     </div>

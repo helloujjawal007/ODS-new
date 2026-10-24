@@ -10,19 +10,19 @@ export const metadata: Metadata = {
   title: "Selected Work & Case Studies",
   description: "Explore representative client work and measurable outcomes across Next.js platforms, custom Shopify stores, and native mobile apps.",
   alternates: {
-    canonical: "/portfolio"
+    canonical: "/portfolio/"
   },
   openGraph: {
     title: "Selected Work & Case Studies",
     description: "Explore representative client work and measurable outcomes across Next.js platforms, custom Shopify stores, and native mobile apps.",
-    url: `${SITE_CONFIG.url}/portfolio`
+    url: `${SITE_CONFIG.url}/portfolio/`
   }
 };
 
 export default function PortfolioPage() {
   const breadcrumbs = [{ label: "Selected Work" }];
   const breadcrumbSchema = getBreadcrumbJsonLd([
-    { name: "Work", url: "/portfolio" }
+    { name: "Work", url: "/portfolio/" }
   ]);
 
   return (
@@ -51,9 +51,9 @@ export default function PortfolioPage() {
         {/* Closing CTA */}
         <CtaSection
           title="Have a project in mind? Send us the details and we’ll reply within a day."
-          description="We build websites, Shopify stores and apps for small and mid-size businesses. Based in Kolkata, working with clients worldwide."
+          description="We engineer scalable cloud architecture, custom web platforms, and Salesforce CRM systems for growing companies and global enterprises."
           primaryCtaText="Tell us about your project"
-          primaryCtaHref="/contact"
+          primaryCtaHref="/contact/"
         />
       </div>
     </div>

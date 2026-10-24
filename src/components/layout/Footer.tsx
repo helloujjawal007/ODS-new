@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { SERVICES } from "@/lib/services-data";
 import { SITE_CONFIG } from "@/lib/seo-config";
+import CloudLogo from "@/components/brand/CloudLogo";
 
 export default function Footer() {
   const [newsletterEmail, setNewsletterEmail] = useState("");
@@ -82,16 +83,14 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12 text-xs">
           {/* Brand Info */}
           <div className="col-span-2 md:col-span-4 lg:col-span-2 pr-4">
-            <Link href="/" className="flex items-center space-x-2.5 mb-3">
-              <div className="w-7 h-7 rounded-[4px] bg-[#2563EB] text-white flex items-center justify-center font-mono text-xs font-bold shadow-xs">
-                CC
-              </div>
-              <span className="font-serif text-base font-medium text-white">
+            <Link href="/" className="flex items-center space-x-2.5 mb-3 group">
+              <CloudLogo className="w-8 h-auto" size={32} />
+              <span className="font-serif text-base font-medium text-white group-hover:text-[#60A5FA] transition-colors">
                 Cloud Consultancy
               </span>
             </Link>
             <p className="text-[#94A3B8] text-xs max-w-sm leading-relaxed mb-4">
-              We build cloud systems, websites, Shopify stores and apps for small and mid-size businesses. Based in Kolkata, working with clients worldwide.
+              We engineer scalable cloud platforms, full-stack web applications, and Salesforce CRM integrations for growing businesses and global enterprises.
             </p>
 
             {/* Social links with explicit accessible names */}
@@ -144,7 +143,7 @@ export default function Footer() {
               {SERVICES.map((s) => (
                 <li key={s.slug}>
                   <Link
-                    href={`/services/${s.slug}`}
+                    href={`/services/${s.slug}/`}
                     className="text-[#94A3B8] hover:text-white transition-colors"
                   >
                     {s.shortTitle}
@@ -161,37 +160,37 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/services" className="text-[#94A3B8] hover:text-white transition-colors">
+                <Link href="/services/" className="text-[#94A3B8] hover:text-white transition-colors">
                   Services Directory
                 </Link>
               </li>
               <li>
-                <Link href="/portfolio" className="text-[#94A3B8] hover:text-white transition-colors">
+                <Link href="/portfolio/" className="text-[#94A3B8] hover:text-white transition-colors">
                   Selected Work
                 </Link>
               </li>
               <li>
-                <Link href="/process" className="text-[#94A3B8] hover:text-white transition-colors">
+                <Link href="/process/" className="text-[#94A3B8] hover:text-white transition-colors">
                   How We Work
                 </Link>
               </li>
               <li>
-                <Link href="/pricing" className="text-[#94A3B8] hover:text-white transition-colors">
+                <Link href="/pricing/" className="text-[#94A3B8] hover:text-white transition-colors">
                   Pricing & Estimator
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-[#94A3B8] hover:text-white transition-colors">
+                <Link href="/blog/" className="text-[#94A3B8] hover:text-white transition-colors">
                   Engineering Notes
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-[#94A3B8] hover:text-white transition-colors">
+                <Link href="/about/" className="text-[#94A3B8] hover:text-white transition-colors">
                   About Our Team
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-[#94A3B8] hover:text-white transition-colors">
+                <Link href="/contact/" className="text-[#94A3B8] hover:text-white transition-colors">
                   Contact
                 </Link>
               </li>
@@ -230,7 +229,7 @@ export default function Footer() {
               </div>
               <div className="pt-2">
                 <Link
-                  href="/contact"
+                  href="/contact/"
                   className="text-xs text-[#2563EB] hover:text-[#60A5FA] font-medium inline-flex items-center space-x-1"
                 >
                   <span>Tell us about your project</span>
@@ -247,13 +246,13 @@ export default function Footer() {
             &copy; 2026 {SITE_CONFIG.legalName}. All rights reserved.
           </div>
           <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-            <Link href="/privacy" className="hover:text-white transition-colors">
+            <Link href="/privacy/" className="hover:text-white transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="hover:text-white transition-colors">
+            <Link href="/terms/" className="hover:text-white transition-colors">
               Terms of Service
             </Link>
-            <Link href="/privacy#cookies" className="hover:text-white transition-colors">
+            <Link href="/privacy/#cookies" className="hover:text-white transition-colors">
               Cookie Policy
             </Link>
             <Link href="/sitemap.xml" className="hover:text-white transition-colors">

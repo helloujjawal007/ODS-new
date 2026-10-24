@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import CloudLogo from "@/components/brand/CloudLogo";
 import {
   Menu,
   X,
@@ -41,72 +42,71 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { label: "Work", href: "/portfolio" },
-    { label: "Process", href: "/process" },
-    { label: "Pricing", href: "/pricing" },
-    { label: "Blog", href: "/blog" },
-    { label: "About", href: "/about" }
+    { label: "Work", href: "/portfolio/" },
+    { label: "Process", href: "/process/" },
+    { label: "Blog", href: "/blog/" },
+    { label: "About", href: "/about/" }
   ];
 
   const servicesMenu = [
     {
       title: "Website Development",
       desc: "Fast Next.js websites and headless CMS architectures",
-      href: "/services/website-development",
+      href: "/services/website-development/",
       icon: Code2
     },
     {
       title: "Shopify & BigCommerce",
       desc: "Custom storefronts, OS 2.0 themes and multi-storefronts",
-      href: "/services/shopify-bigcommerce-development",
+      href: "/services/shopify-bigcommerce-development/",
       icon: ShoppingBag
     },
     {
       title: "Technical SEO & Speed",
       desc: "Topical clusters, Core Web Vitals, and structured data",
-      href: "/services/seo",
+      href: "/services/seo/",
       icon: TrendingUp
     },
     {
       title: "iOS App Development",
       desc: "Native Swift 6 & SwiftUI apps",
-      href: "/services/ios-app-development",
+      href: "/services/ios-app-development/",
       icon: Smartphone
     },
     {
       title: "Android App Development",
       desc: "Native Kotlin & Jetpack Compose apps",
-      href: "/services/android-app-development",
+      href: "/services/android-app-development/",
       icon: Smartphone
     },
     {
       title: "Cross-Platform Apps",
       desc: "Flutter & React Native single-codebase builds",
-      href: "/services/cross-platform-app-development",
+      href: "/services/cross-platform-app-development/",
       icon: Code2
     },
     {
       title: "CRM & Salesforce Sync",
       desc: "Resilient bi-directional API pipelines",
-      href: "/services/crm-integration",
+      href: "/services/crm-integration/",
       icon: Database
     },
     {
       title: "Salesforce Support",
       desc: "Lightning Web Components, Apex, and Flow automation",
-      href: "/services/salesforce-support",
+      href: "/services/salesforce-support/",
       icon: Workflow
     },
     {
       title: "UI/UX & Design Systems",
       desc: "Figma component tokens and user testing",
-      href: "/services/ui-ux-design",
+      href: "/services/ui-ux-design/",
       icon: Palette
     },
     {
       title: "Plugins & Extensions",
       desc: "Custom Chrome extensions and Shopify apps",
-      href: "/services/plugins-extensions-development",
+      href: "/services/plugins-extensions-development/",
       icon: Puzzle
     }
   ];
@@ -121,17 +121,15 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo with official brand icon */}
           <Link href="/" className="flex items-center space-x-3 group">
-            <div className="w-8 h-8 rounded-[6px] bg-[#2563EB] text-white flex items-center justify-center font-mono text-xs font-bold tracking-wider shadow-xs">
-              CC
-            </div>
+            <CloudLogo className="w-9 h-auto" size={36} priority />
             <div className="flex flex-col">
-              <span className="font-serif text-lg font-medium text-[#0F172A] leading-tight">
+              <span className="font-serif text-lg font-medium text-[#0F172A] leading-tight group-hover:text-[#2563EB] transition-colors">
                 Cloud Consultancy
               </span>
               <span className="hidden sm:block text-[11px] text-[#64748B] font-sans tracking-normal">
-                Kolkata · Worldwide engineering
+                Worldwide Engineering & Cloud Architecture
               </span>
             </div>
           </Link>
@@ -151,7 +149,7 @@ export default function Navbar() {
               }}
             >
               <Link
-                href="/services"
+                href="/services/"
                 aria-expanded={servicesOpen}
                 aria-haspopup="true"
                 className={`flex items-center space-x-1 px-3 py-2 rounded-[6px] font-medium transition-colors ${
@@ -177,7 +175,7 @@ export default function Navbar() {
                         Services & Disciplines
                       </span>
                       <Link
-                        href="/services"
+                        href="/services/"
                         className="text-xs text-[#2563EB] hover:underline flex items-center font-medium"
                       >
                         All services overview <ArrowRight className="w-3 h-3 ml-1" />
@@ -232,7 +230,7 @@ export default function Navbar() {
           {/* Right Header CTA - Single Clear Button */}
           <div className="hidden lg:flex items-center space-x-3">
             <Link
-              href="/contact"
+              href="/contact/"
               className="bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-semibold px-4 py-2.5 rounded-[6px] transition-all inline-flex items-center space-x-1.5 shadow-sm hover:shadow-md"
             >
               <span>Tell us about your project</span>
@@ -292,7 +290,7 @@ export default function Navbar() {
 
             <div className="pt-3">
               <Link
-                href="/contact"
+                href="/contact/"
                 className="w-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-semibold py-3 px-4 rounded-[6px] flex items-center justify-center space-x-2 transition-colors shadow-sm"
               >
                 <span>Tell us about your project</span>

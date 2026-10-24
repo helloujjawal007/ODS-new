@@ -14,9 +14,9 @@ import { getBreadcrumbJsonLd } from "@/lib/seo-config";
 
 export const metadata: Metadata = {
   title: "About Our Team & Engineering Philosophy",
-  description: "Meet the engineers behind Cloud Consultancy. Based in Kolkata, building cloud architecture, websites, Shopify stores and apps for clients worldwide.",
+  description: "Meet the engineers behind Cloud Consultancy. Building cloud architecture, websites, Shopify stores and apps for clients worldwide.",
   alternates: {
-    canonical: "/about"
+    canonical: "/about/"
   }
 };
 
@@ -68,7 +68,7 @@ export default function AboutPage() {
   ];
 
   const milestones = [
-    { year: "2021", title: "Kolkata Studio Founded", desc: "Started as a dedicated web and technical SEO engineering team." },
+    { year: "2021", title: "Engineering Studio Founded", desc: "Started as a dedicated web and technical SEO engineering team." },
     { year: "2023", title: "Shopify & Mobile Expansion", desc: "Added custom Shopify OS 2.0 and cross-platform mobile app practices." },
     { year: "2024", title: "Global Client Base", desc: "Partnered with founders across the US, UK, Europe, and Asia-Pacific." },
     { year: "2026", title: "Next.js Edge & App Standards", desc: "Pioneering Next.js 16 App Router edge-native deployments and schema automation." }
@@ -76,7 +76,7 @@ export default function AboutPage() {
 
   const breadcrumbs = [{ label: "About" }];
   const breadcrumbSchema = getBreadcrumbJsonLd([
-    { name: "About", url: "/about" }
+    { name: "About", url: "/about/" }
   ]);
 
   return (
@@ -97,7 +97,7 @@ export default function AboutPage() {
           </h1>
 
           <p className="text-[#475569] text-base sm:text-lg mt-4 leading-relaxed max-w-2xl">
-            Founded in Kolkata by software engineers, <strong>Cloud Consultancy</strong> was created to give growing businesses direct access to senior technical craft without excessive agency overhead. We work remotely with founders and teams around the globe.
+            Founded by senior software engineers, <strong>Cloud Consultancy</strong> was created to give growing businesses direct access to senior technical craft without excessive agency overhead. We work remotely with founders and teams around the globe.
           </p>
         </section>
 
@@ -105,7 +105,7 @@ export default function AboutPage() {
         <div className="relative aspect-[16/9] sm:aspect-[21/9] rounded-[8px] overflow-hidden border border-[#E2E8F0] shadow-sm my-10 bg-[#F1F5F9]">
           <Image
             src="/images/about_team_studio.jpg"
-            alt="Cloud Consultancy engineering team working in Kolkata"
+            alt="Cloud Consultancy engineering team collaborating"
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 1100px"
@@ -113,7 +113,7 @@ export default function AboutPage() {
           />
           <div className="absolute bottom-4 left-4 right-4 sm:right-auto bg-white/95 backdrop-blur-xs border border-[#E2E8F0] p-3 rounded-[6px] text-xs text-[#475569] shadow-sm">
             <span className="font-semibold text-[#0F172A] block">Cloud Consultancy Studio</span>
-            <span>Kolkata, India · Remote collaboration worldwide</span>
+            <span>Registered Office: Kolkata, India · Remote collaboration worldwide</span>
           </div>
         </div>
 
@@ -212,9 +212,9 @@ export default function AboutPage() {
         {/* Closing CTA */}
         <CtaSection
           title="Have a project in mind? Send us the details and we’ll reply within a day."
-          description="We build websites, Shopify stores and apps for small and mid-size businesses. Based in Kolkata, working with clients worldwide."
+          description="We engineer scalable cloud architecture, custom web platforms, and Salesforce CRM systems for growing companies and global enterprises."
           primaryCtaText="Tell us about your project"
-          primaryCtaHref="/contact"
+          primaryCtaHref="/contact/"
         />
       </div>
     </div>

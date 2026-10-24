@@ -111,7 +111,7 @@ export default function BlogFilterList({ posts }: BlogFilterListProps) {
               <div className="pt-4 border-t border-[#E2E8F0] flex items-center justify-between">
                 <span className="text-[11px] font-mono text-[#64748B]">{featuredPost.publishedAt}</span>
                 <Link
-                  href={`/blog/${featuredPost.slug}`}
+                  href={`/blog/${featuredPost.slug}/`}
                   className="text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] hover:underline inline-flex items-center space-x-1"
                 >
                   <span>Read article</span>
@@ -162,7 +162,7 @@ export default function BlogFilterList({ posts }: BlogFilterListProps) {
 
               <div className="pt-4 border-t border-[#E2E8F0]">
                 <Link
-                  href={`/blog/${post.slug}`}
+                  href={`/blog/${post.slug}/`}
                   className="text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] hover:underline inline-flex items-center space-x-1"
                 >
                   <span>Read full breakdown</span>

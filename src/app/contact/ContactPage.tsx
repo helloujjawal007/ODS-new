@@ -20,14 +20,14 @@ export const metadata: Metadata = {
   title: "Contact Us & Project Inquiry | Transparent Pricing",
   description: "Send us the details of your project. We review every inquiry and reply within one business day with transparent milestone pricing.",
   alternates: {
-    canonical: "/contact"
+    canonical: "/contact/"
   }
 };
 
 export default function ContactPage() {
   const breadcrumbs = [{ label: "Contact" }];
   const breadcrumbSchema = getBreadcrumbJsonLd([
-    { name: "Contact", url: "/contact" }
+    { name: "Contact", url: "/contact/" }
   ]);
 
   return (
@@ -111,7 +111,7 @@ export default function ContactPage() {
                 <span>Office Location</span>
               </div>
               <h4 className="font-serif text-base font-medium text-[#0F172A] mb-1">
-                Kolkata Engineering Studio
+                Registered Engineering Studio
               </h4>
               <p className="text-xs text-[#475569] leading-relaxed mb-3">
                 {SITE_CONFIG.contact.address} <br />

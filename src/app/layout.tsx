@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
     images: [
       {
-        url: "/images/hero_digital_tech.jpg",
+        url: "/images/hero_web_engineering.jpg",
         width: 1200,
         height: 630,
         alt: `${SITE_CONFIG.name} — Cloud Architecture, Web & App Engineering`
@@ -72,8 +72,13 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Cloud Consultancy | Cloud Architecture, Web & App Engineering",
     description: SITE_CONFIG.description,
-    images: ["/images/hero_digital_tech.jpg"],
+    images: ["/images/hero_web_engineering.jpg"],
     creator: "@onlinedigitalsol"
+  },
+  icons: {
+    icon: "/brand/cloud-consultancy-icon.png",
+    shortcut: "/brand/cloud-consultancy-icon.png",
+    apple: "/brand/cloud-consultancy-icon.png"
   },
   robots: {
     index: true,

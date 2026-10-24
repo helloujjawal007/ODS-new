@@ -8,11 +8,11 @@ export const SITE_CONFIG = {
   name: "Cloud Consultancy",
   legalName: "Cloud Consultancy",
   url: siteUrl,
-  description: "We build cloud systems, websites, Shopify stores, and apps for growing businesses. Based in Kolkata, working with clients worldwide.",
+  description: "We engineer scalable cloud platforms, full-stack websites, and Salesforce CRM integrations for growing businesses and global enterprises.",
   author: "Cloud Consultancy",
   foundingDate: "2021",
   targetMarkets: "Worldwide / Global",
-  deliveryMode: "Remote digital engineering team based in Kolkata",
+  deliveryMode: "Global remote engineering and cloud consultancy",
   contact: {
     email: "team.onlinedigitalsolution@gmail.com",
     phone: "+91 9142590800",

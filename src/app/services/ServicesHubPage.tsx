@@ -12,14 +12,14 @@ export const metadata: Metadata = {
   title: "Services & Capabilities",
   description: "Web development, Shopify & BigCommerce stores, technical SEO, mobile apps, and Salesforce integration. Clear scopes and fixed milestones.",
   alternates: {
-    canonical: "/services"
+    canonical: "/services/"
   }
 };
 
 export default function ServicesHubPage() {
   const breadcrumbItems = [{ label: "Services" }];
   const breadcrumbSchema = getBreadcrumbJsonLd([
-    { name: "Services", url: "/services" }
+    { name: "Services", url: "/services/" }
   ]);
 
   return (
@@ -91,7 +91,7 @@ export default function ServicesHubPage() {
                     </span>
                   </div>
                   <Link
-                    href={`/services/${service.slug}`}
+                    href={`/services/${service.slug}/`}
                     className="text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] inline-flex items-center space-x-1"
                     aria-label={`${service.shortTitle} pricing & details`}
                   >
@@ -107,9 +107,9 @@ export default function ServicesHubPage() {
         {/* Closing CTA */}
         <CtaSection
           title="Have a project in mind? Send us the details and we’ll reply within a day."
-          description="We build websites, Shopify stores and apps for small and mid-size businesses. Based in Kolkata, working with clients worldwide."
+          description="We engineer scalable cloud architecture, custom web platforms, and Salesforce CRM systems for growing companies and global enterprises."
           primaryCtaText="Tell us about your project"
-          primaryCtaHref="/contact"
+          primaryCtaHref="/contact/"
         />
       </div>
     </div>

@@ -110,7 +110,7 @@ export default function HomePage() {
               </p>
             </div>
             <Link
-              href="/portfolio"
+              href="/portfolio/"
               className="mt-4 md:mt-0 text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] hover:underline inline-flex items-center space-x-1"
             >
               <span>View all projects</span>
@@ -160,7 +160,7 @@ export default function HomePage() {
                     </div>
 
                     <Link
-                      href={`/portfolio/${item.slug}`}
+                      href={`/portfolio/${item.slug}/`}
                       className="text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] hover:underline inline-flex items-center space-x-1"
                     >
                       <span>Read project details</span>
@@ -184,9 +184,9 @@ export default function HomePage() {
       {/* 6. CLOSING CTA BANNER */}
       <CtaSection
         title="Have a project in mind? Send us the details and we’ll reply within a day."
-        description="We build cloud platforms, websites, Shopify stores and apps for growing businesses. Based in Kolkata, working with clients worldwide."
+        description="We engineer scalable cloud architecture, custom web platforms, and Salesforce CRM systems for growing companies and global enterprises."
         primaryCtaText="Tell us about your project"
-        primaryCtaHref="/contact"
+        primaryCtaHref="/contact/"
       />
     </div>
   );

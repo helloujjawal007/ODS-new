@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Our Engineering Process",
   description: "How we build and ship software: Discovery & Scoping, UI/UX Design, Development Sprints, QA & Speed Optimization, and Launch Support.",
   alternates: {
-    canonical: "/process"
+    canonical: "/process/"
   }
 };
 
@@ -167,9 +167,9 @@ export default function ProcessPage() {
         {/* Closing CTA */}
         <CtaSection
           title="Have a project in mind? Send us the details and we’ll reply within a day."
-          description="We build websites, Shopify stores and apps for small and mid-size businesses. Based in Kolkata, working with clients worldwide."
+          description="We engineer scalable cloud architecture, custom web platforms, and Salesforce CRM systems for growing companies and global enterprises."
           primaryCtaText="Tell us about your project"
-          primaryCtaHref="/contact"
+          primaryCtaHref="/contact/"
         />
       </div>
     </div>

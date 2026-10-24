@@ -212,7 +212,7 @@ function ServicePricingExplorerInner() {
             {/* Action Buttons */}
             <div className="space-y-2.5 pt-4 border-t border-[#E2E8F0]">
               <Link
-                href={`/contact?service=${encodeURIComponent(activeService.title)}`}
+                href={`/contact/?service=${encodeURIComponent(activeService.title)}`}
                 className="w-full py-3 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold text-xs flex items-center justify-center space-x-2 transition-all shadow-sm"
               >
                 <span>Request Free Quote for {activeService.shortTitle}</span>

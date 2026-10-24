@@ -10,19 +10,19 @@ export const metadata: Metadata = {
   title: "Engineering Notes & Insights",
   description: "Notes on Next.js performance, Shopify Liquid engineering, and Core Web Vitals optimization.",
   alternates: {
-    canonical: "/blog"
+    canonical: "/blog/"
   },
   openGraph: {
     title: "Engineering Notes & Insights",
     description: "Notes on Next.js performance, Shopify Liquid engineering, and Core Web Vitals optimization.",
-    url: `${SITE_CONFIG.url}/blog`
+    url: `${SITE_CONFIG.url}/blog/`
   }
 };
 
 export default function BlogHomePage() {
   const breadcrumbs = [{ label: "Engineering Notes" }];
   const breadcrumbSchema = getBreadcrumbJsonLd([
-    { name: "Blog", url: "/blog" }
+    { name: "Blog", url: "/blog/" }
   ]);
 
   return (
@@ -51,9 +51,9 @@ export default function BlogHomePage() {
         {/* Closing CTA */}
         <CtaSection
           title="Have a project in mind? Send us the details and we’ll reply within a day."
-          description="We build websites, Shopify stores and apps for small and mid-size businesses. Based in Kolkata, working with clients worldwide."
+          description="We engineer scalable cloud architecture, custom web platforms, and Salesforce CRM systems for growing companies and global enterprises."
           primaryCtaText="Tell us about your project"
-          primaryCtaHref="/contact"
+          primaryCtaHref="/contact/"
         />
       </div>
     </div>

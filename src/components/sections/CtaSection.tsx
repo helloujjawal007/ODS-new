@@ -11,9 +11,9 @@ interface CtaSectionProps {
 
 export default function CtaSection({
   title = "Have a project in mind? Send us the details and we’ll reply within a day.",
-  description = "We build websites, Shopify stores and mobile apps for small and mid-size businesses. Based in Kolkata, working directly with clients worldwide.",
+  description = "We engineer scalable cloud architecture, custom web platforms, and Salesforce CRM systems for growing companies and global enterprises.",
   primaryCtaText = "Tell us about your project",
-  primaryCtaHref = "/contact",
+  primaryCtaHref = "/contact/",
   badgeText = "Availability: New projects starting this month"
 }: CtaSectionProps) {
   return (
@@ -42,7 +42,7 @@ export default function CtaSection({
             </Link>
 
             <Link
-              href="/pricing"
+              href="/pricing/"
               className="w-full sm:w-auto px-6 py-3.5 rounded-[6px] bg-white hover:bg-[#F8FAFC] text-[#0F172A] font-medium text-sm border border-[#CBD5E1] hover:border-[#94A3B8] transition-all"
             >
               See pricing & estimator

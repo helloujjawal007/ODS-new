@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
+import CloudLogo from "@/components/brand/CloudLogo";
 
 export interface HeroSlide {
   id: number;
@@ -26,8 +27,8 @@ export const HERO_SLIDES: HeroSlide[] = [
     statement: "Full-Stack Development That Scales",
     description:
       "We architect and engineer high-performance web platforms and cloud-native applications built to scale effortlessly. Pay only for what your project requires with 100% ownership of code, designs, and cloud infrastructure from day one.",
-    image: "/images/hero_digital_tech.jpg",
-    imageAlt: "Cloud Consultancy senior engineers reviewing web platform architecture",
+    image: "/images/hero_web_engineering.jpg",
+    imageAlt: "Cloud Consultancy senior software engineers reviewing web architecture",
     captionTitle: "Cloud architecture & web platforms",
     captionSubtitle: "Next.js 16, React 19, TypeScript & Node.js",
     badge: "Full-Stack Web"
@@ -39,7 +40,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     statement: "Salesforce Engineering That Works",
     description:
       "Custom Salesforce implementations, CRM architecture, seamless third-party API integrations, and workflow automation. Designed to streamline your sales operations with zero vendor lock-in and transparent milestone delivery.",
-    image: "/images/service_crm_salesforce.jpg",
+    image: "/images/hero_crm_salesforce.jpg",
     imageAlt: "Cloud Consultancy Salesforce CRM integration and automation dashboard",
     captionTitle: "Salesforce CRM engineering & integration",
     captionSubtitle: "Apex, Lightning Web Components & Data Cloud",
@@ -52,8 +53,8 @@ export const HERO_SLIDES: HeroSlide[] = [
     statement: "Custom Software and CRM for Both",
     description:
       "Flexible technical partnership for venture-backed startups and established enterprises alike. Hire senior engineers across hourly, contract, or dedicated monthly retainers tailored to your exact roadmap.",
-    image: "/images/ods_workspace_hero.jpg",
-    imageAlt: "Cloud Consultancy engineering studio collaborating with startup founders",
+    image: "/images/hero_agile_partnership.jpg",
+    imageAlt: "Cloud Consultancy engineering team collaborating with startup founders",
     captionTitle: "Agile engineering for scale-ups & enterprise",
     captionSubtitle: "Hourly, Sprints & Dedicated Engineering Squads",
     badge: "Flexible Engagement"
@@ -143,10 +144,10 @@ export default function HeroBanner() {
               </p>
             </div>
 
-            {/* Action Buttons: "Get a Free Quote" navigates to /pricing, "Talk to Us" to /contact */}
+            {/* Action Buttons: "Get a Free Quote" navigates to /pricing/, "Talk to Us" to /contact/ */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
               <Link
-                href="/pricing"
+                href="/pricing/"
                 className="px-6 py-3.5 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold text-sm inline-flex items-center justify-center space-x-2 transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5"
               >
                 <span>Get a Free Quote</span>
@@ -154,7 +155,7 @@ export default function HeroBanner() {
               </Link>
 
               <Link
-                href="/contact"
+                href="/contact/"
                 className="px-6 py-3.5 rounded-[6px] bg-white hover:bg-[#F8FAFC] text-[#0F172A] font-medium text-sm border border-[#CBD5E1] hover:border-[#94A3B8] inline-flex items-center justify-center transition-all"
               >
                 Talk to Us
@@ -217,6 +218,11 @@ export default function HeroBanner() {
                     sizes="(max-width: 1024px) 100vw, 480px"
                     className="object-cover"
                   />
+                  {/* Official Company Logo Badge on Image */}
+                  <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md border border-[#E2E8F0]/80 px-2.5 py-1 rounded-[6px] flex items-center space-x-2 shadow-xs">
+                    <CloudLogo className="w-5 h-auto" size={20} />
+                    <span className="text-[11px] font-medium text-[#0F172A] tracking-tight">Cloud Consultancy</span>
+                  </div>
                 </div>
               </div>
               <div
@@ -224,9 +230,12 @@ export default function HeroBanner() {
                   isFading ? "opacity-0" : "opacity-100"
                 }`}
               >
-                <div>
-                  <span className="font-semibold text-[#0F172A] block">{current.captionTitle}</span>
-                  <span className="text-[11px] text-[#64748B]">{current.captionSubtitle}</span>
+                <div className="flex items-center space-x-2.5">
+                  <CloudLogo className="w-6 h-auto shrink-0" size={24} />
+                  <div>
+                    <span className="font-semibold text-[#0F172A] block">{current.captionTitle}</span>
+                    <span className="text-[11px] text-[#64748B]">{current.captionSubtitle}</span>
+                  </div>
                 </div>
                 <span className="font-mono text-[11px] text-[#1D4ED8] bg-[#EFF6FF] border border-[#BFDBFE] px-2 py-0.5 rounded-[3px] font-medium">
                   {current.badge}

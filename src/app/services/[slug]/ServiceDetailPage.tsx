@@ -39,12 +39,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: service.metaTitle,
     description: service.metaDescription,
     alternates: {
-      canonical: `/services/${service.slug}`
+      canonical: `/services/${service.slug}/`
     },
     openGraph: {
       title: service.metaTitle,
       description: service.metaDescription,
-      url: `${SITE_CONFIG.url}/services/${service.slug}`,
+      url: `${SITE_CONFIG.url}/services/${service.slug}/`,
       images: [
         {
           url: service.heroImage,
@@ -66,7 +66,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
   }
 
   const breadcrumbItems = [
-    { label: "Services", href: "/services" },
+    { label: "Services", href: "/services/" },
     { label: service.shortTitle }
   ];
 
@@ -302,7 +302,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 </h2>
               </div>
               <Link
-                href="/blog"
+                href="/blog/"
                 className="text-xs font-semibold text-[#2563EB] hover:underline flex items-center"
               >
                 <span>All Articles</span>
@@ -314,7 +314,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               {relatedPosts.map((post) => (
                 <Link
                   key={post.slug}
-                  href={`/blog/${post.slug}`}
+                  href={`/blog/${post.slug}/`}
                   className="bg-white border border-[#E2E8F0] rounded-[8px] p-5 hover:border-[#2563EB] hover:shadow-md transition-all"
                 >
                   <div className="text-[11px] font-mono text-[#64748B] uppercase mb-1">
@@ -334,7 +334,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <CtaSection
           title={`Have a ${service.shortTitle} project in mind?`}
           description="Send us the details and we'll reply within a day with an architectural review and fixed-cost proposal."
-          primaryCtaHref={`/contact?service=${encodeURIComponent(service.title)}`}
+          primaryCtaHref={`/contact/?service=${encodeURIComponent(service.title)}`}
         />
       </div>
     </div>

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Check, ArrowRight } from "lucide-react";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import ServicePricingExplorer from "@/components/pricing/ServicePricingExplorer";
-import ProjectEstimator from "@/components/calculator/ProjectEstimator";
+import ContactForm from "@/components/forms/ContactForm";
 import FaqAccordion from "@/components/sections/FaqAccordion";
 import CtaSection from "@/components/sections/CtaSection";
 import JsonLd from "@/components/seo/JsonLd";
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "Pricing & Project Cost Estimator",
   description: "Transparent pricing frameworks for websites, Shopify stores, and mobile apps. Fixed sprints or dedicated engineering squads.",
   alternates: {
-    canonical: "/pricing"
+    canonical: "/pricing/"
   }
 };
 
@@ -35,7 +35,7 @@ export default function PricingPage() {
         "30 days post-launch warranty and bug fixes"
       ],
       ctaText: "Start a fixed sprint",
-      ctaHref: "/contact?tier=fixed_sprint"
+      ctaHref: "/contact/?tier=fixed_sprint"
     },
     {
       name: "Dedicated Engineering Squad",
@@ -53,7 +53,7 @@ export default function PricingPage() {
         "Scale up or cancel anytime with two weeks notice"
       ],
       ctaText: "Retain engineering squad",
-      ctaHref: "/contact?tier=dedicated_squad"
+      ctaHref: "/contact/?tier=dedicated_squad"
     },
     {
       name: "Technical SEO & Maintenance Retainer",
@@ -71,7 +71,7 @@ export default function PricingPage() {
         "Monthly strategy and review call"
       ],
       ctaText: "Secure maintenance retainer",
-      ctaHref: "/contact?tier=growth_retainer"
+      ctaHref: "/contact/?tier=growth_retainer"
     }
   ];
 
@@ -96,7 +96,7 @@ export default function PricingPage() {
 
   const breadcrumbs = [{ label: "Pricing & Estimator" }];
   const breadcrumbSchema = getBreadcrumbJsonLd([
-    { name: "Pricing", url: "/pricing" }
+    { name: "Pricing", url: "/pricing/" }
   ]);
 
   return (
@@ -191,7 +191,10 @@ export default function PricingPage() {
 
         {/* 3. Interactive Estimator Tool (Custom Multi-Service Scope) */}
         <div id="custom-estimator" className="my-20 scroll-mt-24">
-          <ProjectEstimator />
+          <ContactForm
+            title="Project Cost Estimator & Inquiry Configuration"
+            subtitle="Calculate realistic investment benchmarks, specify your architecture in each step, and submit your project brief directly to our engineering team."
+          />
         </div>
 
         {/* Pricing FAQs */}
@@ -204,9 +207,9 @@ export default function PricingPage() {
         {/* Closing CTA */}
         <CtaSection
           title="Have a project in mind? Send us the details and we’ll reply within a day."
-          description="We build websites, Shopify stores and apps for small and mid-size businesses. Based in Kolkata, working with clients worldwide."
+          description="We engineer scalable cloud architecture, custom web platforms, and Salesforce CRM systems for growing companies and global enterprises."
           primaryCtaText="Tell us about your project"
-          primaryCtaHref="/contact"
+          primaryCtaHref="/contact/"
         />
       </div>
     </div>

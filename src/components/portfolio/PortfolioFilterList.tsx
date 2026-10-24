@@ -106,7 +106,7 @@ export default function PortfolioFilterList({ projects }: PortfolioFilterListPro
               </div>
 
               <Link
-                href={`/portfolio/${project.slug}`}
+                href={`/portfolio/${project.slug}/`}
                 className="w-full py-2.5 rounded-[6px] bg-[#F8FAFC] hover:bg-[#EFF6FF] text-[#0F172A] hover:text-[#2563EB] text-xs font-semibold border border-[#CBD5E1] hover:border-[#BFDBFE] flex items-center justify-center space-x-1.5 transition-all text-center"
               >
                 <span>Read case study</span>
