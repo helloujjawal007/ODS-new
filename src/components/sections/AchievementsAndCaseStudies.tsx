@@ -23,9 +23,9 @@ interface AchievementsAndCaseStudiesProps {
 const ACHIEVEMENTS = [
   {
     icon: Trophy,
-    stat: "120+",
+    stat: "20+",
     label: "Production Deployments",
-    desc: "Shipped enterprise web portals, mobile apps, and Salesforce systems across US, UK, and global markets."
+    desc: "Shipped custom web portals, mobile apps, and Salesforce systems for growing businesses and startup teams."
   },
   {
     icon: Zap,
@@ -35,9 +35,9 @@ const ACHIEVEMENTS = [
   },
   {
     icon: TrendingUp,
-    stat: "$45M+",
-    label: "Client Revenue Processed",
-    desc: "Transactional e-commerce storefronts, SaaS subscriptions, and enterprise workflow processing."
+    stat: "$1M+",
+    label: "Client Revenue Supported",
+    desc: "Transactional e-commerce storefronts, SaaS subscriptions, and digital workflow processing."
   },
   {
     icon: ShieldCheck,

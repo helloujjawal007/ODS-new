@@ -79,7 +79,7 @@ export default function AboutMaintenanceSummary() {
     { value: "99.98%", label: "Monitored Production Uptime" },
     { value: "< 15 Min", label: "Critical Incident Response SLA" },
     { value: "100%", label: "Code & Asset Ownership" },
-    { value: "40+", label: "Maintained Live Deployments" }
+    { value: "20+", label: "Maintained Live Deployments" }
   ];
 
   return (
