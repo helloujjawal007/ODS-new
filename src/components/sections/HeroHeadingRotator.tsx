@@ -14,19 +14,19 @@ const HEADINGS: HeadingItem[] = [
     id: 0,
     tag: "h1",
     question: "Need a Web Platform?",
-    statement: "Full-Stack Development That Scales."
+    statement: "Full-Stack Development That Scales"
   },
   {
     id: 1,
     tag: "h2",
     question: "Need a Better CRM?",
-    statement: "Salesforce Engineering That Works."
+    statement: "Salesforce Engineering That Works"
   },
   {
     id: 2,
     tag: "h2",
     question: "Startup or Established Business?",
-    statement: "Custom Software and CRM for Both."
+    statement: "Custom Software and CRM for Both"
   }
 ];
 
@@ -87,11 +87,10 @@ export default function HeroHeadingRotator() {
     >
       {/* Dynamic Animated Heading */}
       <div
-        className={`transition-all duration-300 ease-out transform ${
-          isFading
-            ? "opacity-0 -translate-y-1.5"
-            : "opacity-100 translate-y-0"
-        }`}
+        className={`transition-all duration-300 ease-out transform ${isFading
+          ? "opacity-0 -translate-y-1.5"
+          : "opacity-100 translate-y-0"
+          }`}
         aria-live="polite"
         aria-atomic="true"
       >
@@ -113,25 +112,16 @@ export default function HeroHeadingRotator() {
               key={item.id}
               type="button"
               onClick={() => goToSlide(idx)}
-              className={`h-1.5 rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] ${
-                isActive
-                  ? "w-8 bg-[#2563EB]"
-                  : "w-2.5 bg-[#CBD5E1] hover:bg-[#94A3B8]"
-              }`}
+              className={`h-1.5 rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] ${isActive
+                ? "w-8 bg-[#2563EB]"
+                : "w-2.5 bg-[#CBD5E1] hover:bg-[#94A3B8]"
+                }`}
               aria-label={`Jump to headline ${idx + 1}: ${item.question} ${item.statement}`}
               aria-current={isActive ? "true" : undefined}
             />
           );
         })}
 
-        <div className="flex items-center space-x-1.5 pl-1.5 text-[10px] font-mono text-[#64748B] uppercase tracking-wider">
-          <span>0{currentIndex + 1} / 0{HEADINGS.length}</span>
-          {isPaused && (
-            <span className="px-1.5 py-0.2 bg-[#EFF6FF] text-[#1D4ED8] rounded-[2px] text-[9px] font-medium">
-              Paused
-            </span>
-          )}
-        </div>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Check, ArrowRight } from "lucide-react";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import ServicePricingExplorer from "@/components/pricing/ServicePricingExplorer";
 import ProjectEstimator from "@/components/calculator/ProjectEstimator";
 import FaqAccordion from "@/components/sections/FaqAccordion";
 import CtaSection from "@/components/sections/CtaSection";
@@ -108,30 +109,33 @@ export default function PricingPage() {
         {/* Hero */}
         <div className="max-w-3xl my-10">
           <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold block mb-2">
-            Pricing & Estimator
+            Pricing & Architecture Estimator
           </span>
           <h1 className="text-3xl sm:text-5xl font-serif font-normal text-[#0F172A] tracking-tight leading-[1.15]">
             Transparent pricing. Predictable delivery.
           </h1>
           <p className="text-[#475569] text-sm sm:text-base mt-3 leading-relaxed max-w-xl">
-            No ambiguous hourly billings or surprise invoices. Choose a structured sprint model or calculate your exact scope in our real-time estimator below.
+            No ambiguous hourly billings or surprise invoices. Explore service-specific pricing below, select an engagement framework, or calculate your custom project scope.
           </p>
         </div>
 
-        {/* 1. Interactive Estimator Tool */}
+        {/* 1. Service-Specific Pricing Explorer (Pre-selected from homepage clicks) */}
         <div className="my-14">
-          <ProjectEstimator />
+          <ServicePricingExplorer />
         </div>
 
         {/* 2. Standard Packages */}
         <div className="my-20">
-          <div className="mb-10">
+          <div className="mb-10 text-center max-w-2xl mx-auto">
             <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold block mb-1">
               Engagement Models
             </span>
             <h2 className="text-2xl sm:text-3xl font-serif font-normal text-[#0F172A]">
               Standard Engagement Frameworks
             </h2>
+            <p className="text-[#475569] text-xs sm:text-sm mt-2">
+              Structured partnership tiers designed for clarity, agility, and continuous velocity.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -183,6 +187,11 @@ export default function PricingPage() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* 3. Interactive Estimator Tool (Custom Multi-Service Scope) */}
+        <div id="custom-estimator" className="my-20 scroll-mt-24">
+          <ProjectEstimator />
         </div>
 
         {/* Pricing FAQs */}
