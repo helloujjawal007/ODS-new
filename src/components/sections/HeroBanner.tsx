@@ -4,7 +4,6 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
-import CloudLogo from "@/components/brand/CloudLogo";
 
 export interface HeroSlide {
   id: number;
@@ -218,11 +217,6 @@ export default function HeroBanner() {
                     sizes="(max-width: 1024px) 100vw, 480px"
                     className="object-cover"
                   />
-                  {/* Official Company Logo Badge on Image */}
-                  <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md border border-[#E2E8F0]/80 px-2.5 py-1 rounded-[6px] flex items-center space-x-2 shadow-xs">
-                    <CloudLogo className="w-5 h-auto" size={20} />
-                    <span className="text-[11px] font-medium text-[#0F172A] tracking-tight">Cloud Consultancy</span>
-                  </div>
                 </div>
               </div>
               <div
@@ -231,7 +225,7 @@ export default function HeroBanner() {
                 }`}
               >
                 <div className="flex items-center space-x-2.5">
-                  <CloudLogo className="w-6 h-auto shrink-0" size={24} />
+                  <span className="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse shrink-0" />
                   <div>
                     <span className="font-semibold text-[#0F172A] block">{current.captionTitle}</span>
                     <span className="text-[11px] text-[#64748B]">{current.captionSubtitle}</span>

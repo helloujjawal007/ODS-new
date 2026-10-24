@@ -9,7 +9,6 @@ import ServicesCardCarousel from "@/components/sections/ServicesCardCarousel";
 import AboutMaintenanceSummary from "@/components/sections/AboutMaintenanceSummary";
 import CtaSection from "@/components/sections/CtaSection";
 import { SITE_CONFIG } from "@/lib/seo-config";
-import CloudLogo from "@/components/brand/CloudLogo";
 
 export const metadata: Metadata = {
   title: {
@@ -138,10 +137,6 @@ export default function HomePage() {
                   />
                   <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-xs border border-[#E2E8F0] px-2.5 py-0.5 rounded-[4px] text-[10px] font-mono uppercase font-medium text-[#0F172A] shadow-2xs">
                     {item.industry}
-                  </div>
-                  <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-xs border border-[#E2E8F0] px-2 py-0.5 rounded-[4px] flex items-center space-x-1.5 shadow-2xs">
-                    <CloudLogo className="w-3 h-auto" size={12} />
-                    <span className="text-[9px] font-semibold text-[#0F172A]">Cloud Consultancy</span>
                   </div>
                 </div>
 

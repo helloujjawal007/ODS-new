@@ -11,7 +11,6 @@ import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import CtaSection from "@/components/sections/CtaSection";
 import JsonLd from "@/components/seo/JsonLd";
 import { getBreadcrumbJsonLd } from "@/lib/seo-config";
-import CloudLogo from "@/components/brand/CloudLogo";
 
 export const metadata: Metadata = {
   title: "About Our Team & Engineering Philosophy",
@@ -112,12 +111,9 @@ export default function AboutPage() {
             sizes="(max-width: 1024px) 100vw, 1100px"
             className="object-cover"
           />
-          <div className="absolute bottom-4 left-4 right-4 sm:right-auto bg-white/95 backdrop-blur-xs border border-[#E2E8F0] p-3 rounded-[6px] text-xs text-[#475569] shadow-sm flex items-start space-x-2.5">
-            <CloudLogo className="w-5 h-auto mt-0.5 shrink-0" size={18} />
-            <div>
-              <span className="font-semibold text-[#0F172A] block">Cloud Consultancy Studio</span>
-              <span>Registered Office: Kolkata, India · Remote collaboration worldwide</span>
-            </div>
+          <div className="absolute bottom-4 left-4 right-4 sm:right-auto bg-white/95 backdrop-blur-xs border border-[#E2E8F0] p-3 rounded-[6px] text-xs text-[#475569] shadow-sm">
+            <span className="font-semibold text-[#0F172A] block">Cloud Consultancy Studio</span>
+            <span>Registered Office: Kolkata, India · Remote collaboration worldwide</span>
           </div>
         </div>
 

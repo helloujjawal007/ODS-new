@@ -9,7 +9,6 @@ import {
   Lock, 
   Cpu
 } from "lucide-react";
-import CloudLogo from "@/components/brand/CloudLogo";
 
 export default function AboutMaintenanceSummary() {
   const maintenanceFeatures = [
@@ -88,12 +87,9 @@ export default function AboutMaintenanceSummary() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-12">
-          <div className="flex items-center space-x-2 mb-2">
-            <CloudLogo className="w-4 h-auto" size={16} />
-            <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold">
-              Who We Are & How We Support You
-            </span>
-          </div>
+          <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold block mb-2">
+            Who We Are & How We Support You
+          </span>
           <h2 className="text-3xl sm:text-4xl font-serif font-normal text-[#0F172A] tracking-tight leading-[1.2]">
             Senior Craftsmanship, Complete Ownership & Proactive Maintenance
           </h2>

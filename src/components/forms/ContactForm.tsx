@@ -14,7 +14,6 @@ import {
   Loader2,
   AlertCircle
 } from "lucide-react";
-import CloudLogo from "@/components/brand/CloudLogo";
 
 interface ServiceOption {
   id: string;
@@ -257,9 +256,8 @@ Please confirm receipt and send back next steps.`;
         <div className="w-14 h-14 rounded-full bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center mx-auto mb-4 border border-[#BFDBFE]">
           <Check className="w-7 h-7 stroke-[2.5]" />
         </div>
-        <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-[#2563EB] mb-2 font-semibold">
-          <CloudLogo className="w-4 h-auto" size={16} />
-          <span>Cloud Consultancy Engineering</span>
+        <div className="inline-block text-xs font-mono uppercase tracking-wider text-[#2563EB] mb-2 font-semibold">
+          Cloud Consultancy Engineering
         </div>
         <h3 className="text-2xl sm:text-3xl font-serif font-normal text-[#0F172A]">
           Inquiry & Scope Successfully Received
@@ -351,9 +349,8 @@ Please confirm receipt and send back next steps.`;
     <div className="bg-white border border-[#E2E8F0] rounded-[10px] p-6 sm:p-10 shadow-sm relative font-sans">
       {/* Top Header */}
       <div className="mb-6 pb-6 border-b border-[#E2E8F0]">
-        <div className="flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold mb-1">
-          <CloudLogo className="w-4 h-auto" size={16} />
-          <span>Interactive Proposal Framework</span>
+        <div className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold mb-1">
+          Interactive Proposal Framework
         </div>
         <h3 className="text-xl sm:text-2xl font-serif font-medium text-[#0F172A]">{title}</h3>
         <p className="text-xs sm:text-sm text-[#475569] mt-1">{subtitle}</p>

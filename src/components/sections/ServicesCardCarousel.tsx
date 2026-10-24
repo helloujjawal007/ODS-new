@@ -20,7 +20,6 @@ import {
   LucideIcon
 } from "lucide-react";
 import { ServiceItem } from "@/lib/services-data";
-import CloudLogo from "@/components/brand/CloudLogo";
 
 const SERVICE_ICONS: Record<string, LucideIcon> = {
   "website-development": Code2,
@@ -183,11 +182,6 @@ export default function ServicesCardCarousel({ services }: ServicesCardCarouselP
                         sizes="(max-width: 768px) 310px, 370px"
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      {/* Official Company Logo Badge on Every Image */}
-                      <div className="absolute top-2.5 left-2.5 z-10 bg-white/95 backdrop-blur-md border border-[#E2E8F0] px-2 py-0.5 rounded-[4px] flex items-center space-x-1.5 shadow-2xs">
-                        <CloudLogo className="w-3.5 h-auto" size={14} />
-                        <span className="text-[10px] font-medium text-[#0F172A] tracking-tight">Cloud Consultancy</span>
-                      </div>
 
                       <div className="absolute top-2.5 right-2.5 z-10 bg-[#0F172A]/85 backdrop-blur-xs text-white px-2 py-0.5 rounded-[4px] text-[10px] font-mono uppercase font-medium">
                         {s.category}

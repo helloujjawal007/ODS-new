@@ -8,7 +8,6 @@ import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import CtaSection from "@/components/sections/CtaSection";
 import JsonLd from "@/components/seo/JsonLd";
 import { getBreadcrumbJsonLd, SITE_CONFIG } from "@/lib/seo-config";
-import CloudLogo from "@/components/brand/CloudLogo";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -99,11 +98,6 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
             sizes="(max-width: 1024px) 100vw, 1100px"
             className="object-cover"
           />
-          {/* Brand Logo Badge */}
-          <div className="absolute top-4 left-4 z-10 bg-white/95 backdrop-blur-md border border-[#E2E8F0] px-3 py-1 rounded-[4px] flex items-center space-x-2 shadow-2xs">
-            <CloudLogo className="w-3.5 h-auto" size={14} />
-            <span className="text-[11px] font-semibold text-[#0F172A] tracking-tight">Cloud Consultancy</span>
-          </div>
         </div>
 
         {/* Impact Metrics Row */}

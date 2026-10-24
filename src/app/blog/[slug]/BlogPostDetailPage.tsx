@@ -13,7 +13,6 @@ import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import CtaSection from "@/components/sections/CtaSection";
 import JsonLd from "@/components/seo/JsonLd";
 import { getBreadcrumbJsonLd, SITE_CONFIG } from "@/lib/seo-config";
-import CloudLogo from "@/components/brand/CloudLogo";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -145,14 +144,8 @@ export default async function BlogPostPage({ params }: PageProps) {
           {/* Author Card */}
           <div className="flex items-center justify-between border-t border-b border-[#E2E8F0] py-3 text-xs">
             <div className="flex items-center space-x-3">
-              <div className="relative w-9 h-9 rounded-full overflow-hidden border border-[#E2E8F0] bg-[#F1F5F9]">
-                <Image
-                  src={post.author.avatar}
-                  alt={post.author.name}
-                  fill
-                  sizes="40px"
-                  className="object-cover"
-                />
+              <div className="w-9 h-9 rounded-full border border-[#BFDBFE] bg-[#EFF6FF] text-[#1D4ED8] flex items-center justify-center font-mono font-semibold text-xs shrink-0">
+                {post.author.name.split(" ").map((n) => n[0]).join("")}
               </div>
               <div>
                 <div className="font-semibold text-[#0F172A]">
@@ -178,11 +171,6 @@ export default async function BlogPostPage({ params }: PageProps) {
             sizes="(max-width: 1024px) 100vw, 1000px"
             className="object-cover"
           />
-          {/* Brand Logo Badge */}
-          <div className="absolute top-4 left-4 z-10 bg-white/95 backdrop-blur-md border border-[#E2E8F0] px-3 py-1 rounded-[4px] flex items-center space-x-2 shadow-2xs">
-            <CloudLogo className="w-3.5 h-auto" size={14} />
-            <span className="text-[11px] font-semibold text-[#0F172A] tracking-tight">Cloud Consultancy Research</span>
-          </div>
         </div>
 
         {/* Article Layout with Sidebar */}

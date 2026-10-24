@@ -31,7 +31,7 @@ export const PORTFOLIO_PROJECTS: CaseStudy[] = [
       { value: "99.9%", label: "Production Uptime" }
     ],
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Sanity CMS"],
-    image: "/images/service_web_dev.jpg",
+    image: "/images/project_finvantage.jpg",
     featured: true
   },
   {
@@ -50,7 +50,7 @@ export const PORTFOLIO_PROJECTS: CaseStudy[] = [
       { value: "0.00", label: "Cumulative Layout Shift (CLS)" }
     ],
     tags: ["Technical SEO", "Topic Clusters", "JSON-LD Schema", "Next.js"],
-    image: "/images/service_seo.jpg",
+    image: "/images/project_cloudsphere.jpg",
     featured: true
   },
   {
@@ -69,7 +69,7 @@ export const PORTFOLIO_PROJECTS: CaseStudy[] = [
       { value: "4.8★", label: "Average App Store Rating" }
     ],
     tags: ["Swift 6", "SwiftUI", "HealthKit", "WebRTC"],
-    image: "/images/service_ios_app.jpg",
+    image: "/images/project_auramed.jpg",
     featured: true
   },
   {
@@ -88,7 +88,7 @@ export const PORTFOLIO_PROJECTS: CaseStudy[] = [
       { value: "60 FPS", label: "Smooth Map Navigation" }
     ],
     tags: ["Flutter", "Dart", "Bluetooth BLE", "Mapbox"],
-    image: "/images/service_cross_platform.jpg",
+    image: "/images/project_urbanrider.jpg",
     featured: false
   },
   {
@@ -107,7 +107,7 @@ export const PORTFOLIO_PROJECTS: CaseStudy[] = [
       { value: "0 Errors", label: "Governor Limit Breaches" }
     ],
     tags: ["Salesforce LWC", "Apex Async", "Salesforce Flow", "REST APIs"],
-    image: "/images/service_salesforce_support.jpg",
+    image: "/images/project_innotech.jpg",
     featured: true
   },
   {
@@ -126,7 +126,7 @@ export const PORTFOLIO_PROJECTS: CaseStudy[] = [
       { value: "100%", label: "WCAG Contrast Compliance" }
     ],
     tags: ["Figma", "Design Systems", "UI/UX", "Tailwind CSS"],
-    image: "/images/service_ui_ux.jpg",
+    image: "/images/project_zenith.jpg",
     featured: false
   },
   {
@@ -145,7 +145,7 @@ export const PORTFOLIO_PROJECTS: CaseStudy[] = [
       { value: "0 Sync Lag", label: "Real-Time Inventory Sync" }
     ],
     tags: ["Shopify Plus", "Liquid OS 2.0", "Klaviyo", "Next.js"],
-    image: "/images/service_shopify_bigcommerce.jpg",
+    image: "/images/project_aeterna.jpg",
     featured: true
   }
 ];

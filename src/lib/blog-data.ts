@@ -6,7 +6,7 @@ export interface BlogPost {
   author: {
     name: string;
     role: string;
-    avatar: string;
+    avatar?: string;
   };
   publishedAt: string;
   readingTime: string;
@@ -26,12 +26,11 @@ export const BLOG_POSTS: BlogPost[] = [
     author: {
       name: "Marcus Vance",
       role: "VP of Engineering & Solutions Architect",
-      avatar: "/images/cto_portrait.jpg"
     },
     publishedAt: "October 8, 2026",
     readingTime: "7 min read",
     featured: true,
-    coverImage: "/images/service_web_dev.jpg",
+    coverImage: "/images/blog_nextjs_wordpress.jpg",
     pillar: "website-development",
     toc: [
       { id: "the-core-dilemma", title: "The Core Dilemma: Monolith vs Modern Edge" },
@@ -91,12 +90,11 @@ Choose **WordPress** only if:
     author: {
       name: "Evelyn Reed",
       role: "Head of Organic Growth & SEO Architect",
-      avatar: "/images/founder_portrait.jpg"
     },
     publishedAt: "October 5, 2026",
     readingTime: "9 min read",
     featured: true,
-    coverImage: "/images/service_seo.jpg",
+    coverImage: "/images/blog_technical_seo.jpg",
     pillar: "seo",
     toc: [
       { id: "crawl-budget-optimization", title: "1. Crawl Budget & Indexation Health" },
@@ -152,12 +150,11 @@ Set up Google Search Console Core Web Vitals monitoring and resolve any URL flag
     author: {
       name: "Marcus Vance",
       role: "VP of Engineering & Solutions Architect",
-      avatar: "/images/cto_portrait.jpg"
     },
     publishedAt: "September 29, 2026",
     readingTime: "6 min read",
     featured: false,
-    coverImage: "/images/service_cross_platform.jpg",
+    coverImage: "/images/blog_flutter_react_native.jpg",
     pillar: "cross-platform-app-development",
     toc: [
       { id: "architectural-differences", title: "Architectural Differences: Canvas vs Native Views" },
@@ -200,12 +197,11 @@ If your team is starting fresh and prioritizes custom bespoke animations, brande
     author: {
       name: "Evelyn Reed",
       role: "Head of Organic Growth & SEO Architect",
-      avatar: "/images/founder_portrait.jpg"
     },
     publishedAt: "September 22, 2026",
     readingTime: "8 min read",
     featured: false,
-    coverImage: "/images/service_salesforce_support.jpg",
+    coverImage: "/images/blog_salesforce_lwc.jpg",
     pillar: "salesforce-development-support",
     toc: [
       { id: "the-governor-limit-trap", title: "The Governor Limit Trap in High-Traffic Portals" },
@@ -249,12 +245,11 @@ Every integration must include proactive telemetry. When webhook payloads fail d
     author: {
       name: "Marcus Vance",
       role: "VP of Engineering & Solutions Architect",
-      avatar: "/images/cto_portrait.jpg"
     },
     publishedAt: "October 10, 2026",
     readingTime: "8 min read",
     featured: false,
-    coverImage: "/images/service_shopify_bigcommerce.jpg",
+    coverImage: "/images/blog_shopify_headless.jpg",
     pillar: "shopify-bigcommerce-development",
     toc: [
       { id: "the-death-of-script-tags", title: "The Deprecation of Legacy ScriptTags" },
@@ -326,12 +321,11 @@ Before passing Shopify App Review, your extension must verify:
     author: {
       name: "Evelyn Reed",
       role: "Founder & Chief Executive Officer",
-      avatar: "/images/founder_portrait.jpg"
     },
     publishedAt: "October 11, 2026",
     readingTime: "9 min read",
     featured: false,
-    coverImage: "/images/service_shopify_bigcommerce.jpg",
+    coverImage: "/images/blog_core_web_vitals.jpg",
     pillar: "shopify-bigcommerce-development",
     toc: [
       { id: "why-multi-storefront-matters", title: "Why Multi-Storefront (MSF) Is Replacing Separate Stores" },
@@ -405,12 +399,11 @@ Migrating to a unified BigCommerce Multi-Storefront architecture typically yield
     author: {
       name: "Marcus Vance",
       role: "VP of Engineering & Solutions Architect",
-      avatar: "/images/cto_portrait.jpg"
     },
     publishedAt: "October 11, 2026",
     readingTime: "10 min read",
     featured: false,
-    coverImage: "/images/service_plugins_extensions.jpg",
+    coverImage: "/images/blog_browser_extension.jpg",
     pillar: "plugins-extensions-development",
     toc: [
       { id: "the-manifest-v3-imperative", title: "Why Manifest V3 Is Mandatory in 2026" },
@@ -487,12 +480,11 @@ To achieve immediate store review approval:
     author: {
       name: "Evelyn Reed",
       role: "Founder & Chief Executive Officer",
-      avatar: "/images/founder_portrait.jpg"
     },
     publishedAt: "October 12, 2026",
     readingTime: "8 min read",
     featured: false,
-    coverImage: "/images/hero_web_engineering.jpg",
+    coverImage: "/images/blog_cloud_infrastructure.jpg",
     pillar: "website-development",
     toc: [
       { id: "the-tradeoff-static-vs-dynamic", title: "The Historic Tradeoff: Fast Static vs Fresh Dynamic" },
@@ -569,12 +561,11 @@ When architecting for PPR:
     author: {
       name: "Marcus Vance",
       role: "VP of Engineering & Solutions Architect",
-      avatar: "/images/cto_portrait.jpg"
     },
     publishedAt: "October 12, 2026",
     readingTime: "9 min read",
     featured: false,
-    coverImage: "/images/service_crm_salesforce.jpg",
+    coverImage: "/images/blog_crm_sync.jpg",
     pillar: "crm-integration",
     toc: [
       { id: "the-cost-of-delayed-leads", title: "The Real Revenue Cost of Delayed Lead Follow-Up" },

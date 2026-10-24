@@ -12,7 +12,6 @@ import {
   Server
 } from "lucide-react";
 import { PORTFOLIO_PROJECTS, CaseStudy } from "@/lib/portfolio-data";
-import CloudLogo from "@/components/brand/CloudLogo";
 
 interface AchievementsAndCaseStudiesProps {
   title?: string;
@@ -144,11 +143,6 @@ export default function AchievementsAndCaseStudies({
                 {/* Category Pill */}
                 <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-xs border border-[#E2E8F0] px-2.5 py-0.5 rounded-[4px] text-[10px] font-mono uppercase font-semibold text-[#0F172A] shadow-2xs">
                   {study.industry}
-                </div>
-                {/* Brand Watermark */}
-                <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-xs border border-[#E2E8F0] px-2 py-0.5 rounded-[4px] flex items-center space-x-1.5 shadow-2xs">
-                  <CloudLogo className="w-3 h-auto" size={12} />
-                  <span className="text-[9px] font-semibold text-[#0F172A]">Cloud Consultancy</span>
                 </div>
               </div>
 
