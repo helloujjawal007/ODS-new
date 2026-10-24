@@ -93,7 +93,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       "name": SITE_CONFIG.name,
       "logo": {
         "@type": "ImageObject",
-        "url": `${SITE_CONFIG.url}/images/hero_web_engineering.jpg`
+        "url": `${SITE_CONFIG.url}/brand/cloud-consultancy-icon.png`
       }
     },
     "mainEntityOfPage": {
