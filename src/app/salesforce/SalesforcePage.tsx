@@ -14,7 +14,8 @@ import {
   CheckCircle2, 
   Layers, 
   GitBranch, 
-  Network
+  Network,
+  Terminal
 } from "lucide-react";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import CtaSection from "@/components/sections/CtaSection";
@@ -30,10 +31,94 @@ import {
   SALESFORCE_FAQS
 } from "@/lib/salesforce-data";
 
+// Interactive Architecture Topology Stations for the Unique Salesforce Hero Deck
+const HERO_TOPOLOGY_STATIONS = [
+  {
+    id: "sales-cloud",
+    name: "Sales Cloud & CPQ Engine",
+    badge: "Pipeline & Revenue Ops",
+    protocol: "Composite REST API v62.0",
+    status: "Operational · Real-Time",
+    latency: "< 180ms",
+    cpuUsage: "14% of Governor Cap",
+    flowSteps: [
+      "Inbound Web Lead Routing",
+      "Territory AI Capacity Matching",
+      "Dynamic CPQ Multi-Tier Quoting",
+      "DocuSign Contract Sync"
+    ],
+    codePreview: `// Sample Enterprise CPQ Opportunity Handler
+trigger OpportunityTrigger on Opportunity (after update) {
+    fflib_SObjectDomain.triggerHandler(Opportunities.class);
+}`
+  },
+  {
+    id: "service-cloud",
+    name: "Service Cloud & CTI",
+    badge: "Omni-Channel Care",
+    protocol: "Service Cloud Voice / WebSocket",
+    status: "Active · SLA Monitored",
+    latency: "< 120ms",
+    cpuUsage: "18% of Governor Cap",
+    flowSteps: [
+      "Omni-Channel Queue Balancing",
+      "Telephony Screen Pop Matching",
+      "Milestone SLA Countdown Timer",
+      "Agentforce AI Case Summary"
+    ],
+    codePreview: `// Case SLA Milestone Escalation Engine
+public with sharing class CaseMilestoneService {
+    public static void enforceSLA(List<Case> scope) {
+        MilestoneTracker.calculateEscalation(scope);
+    }
+}`
+  },
+  {
+    id: "platform",
+    name: "Apex, Flows & LWC",
+    badge: "Core Platform Engineering",
+    protocol: "Single-Trigger & Shadow DOM",
+    status: "0 Governor Violations",
+    latency: "< 45ms Local",
+    cpuUsage: "9% of Governor Cap",
+    flowSteps: [
+      "One-Trigger-Per-Object Dispatcher",
+      "Before-Save Flow Optimizations",
+      "Reactive LWC & LDS Client Cache",
+      "Queueable Async Event Workers"
+    ],
+    codePreview: `// Reactive LWC Wire Adapter with Lightning Data Service
+import { LightningElement, wire } from 'lwc';
+import getOrgTelemetry from '@salesforce/apex/OrgHealth.getTelemetry';`
+  },
+  {
+    id: "mulesoft",
+    name: "MuleSoft & Enterprise Sync",
+    badge: "API-Led iPaaS",
+    protocol: "Anypoint Platform / CDC",
+    status: "Synchronized with ERP",
+    latency: "< 340ms P99",
+    cpuUsage: "Resilient Queue Buffered",
+    flowSteps: [
+      "System & Experience API Layers",
+      "SAP S/4HANA Order Allocation",
+      "NetSuite Financial Ledger Sync",
+      "Kafka Event-Driven CDC Stream"
+    ],
+    codePreview: `// MuleSoft Event-Driven Integration Flow
+flow name="sync-sales-orders-to-sap" {
+    salesforce:subscribe-channel channel="/event/OrderEvent__e"
+    sap:execute-bapi bapiName="BAPI_SALESORDER_CREATEFROMDAT2"
+}`
+  }
+];
+
 export default function SalesforcePage() {
+  const [activeStationId, setActiveStationId] = useState<string>("sales-cloud");
   const [activeCloudId, setActiveCloudId] = useState<string>("sales-cloud");
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
+  const activeStation = HERO_TOPOLOGY_STATIONS.find((s) => s.id === activeStationId) || HERO_TOPOLOGY_STATIONS[0];
   const selectedCloud = SALESFORCE_CLOUDS.find((c) => c.id === activeCloudId) || SALESFORCE_CLOUDS[0];
 
   const breadcrumbs = [
@@ -91,7 +176,7 @@ export default function SalesforcePage() {
   };
 
   return (
-    <div className="py-8 bg-white text-[#0F172A] font-sans selection:bg-[#00A1E0] selection:text-white">
+    <div className="py-6 sm:py-8 bg-white text-[#0F172A] font-sans selection:bg-[#00A1E0] selection:text-white">
       <JsonLd id="schema-breadcrumb-salesforce" data={breadcrumbSchema} />
       <JsonLd id="schema-service-salesforce" data={salesforceServiceSchema} />
       <JsonLd id="schema-faq-salesforce" data={faqSchema} />
@@ -99,118 +184,229 @@ export default function SalesforcePage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Breadcrumbs items={breadcrumbs} />
 
-        {/* ================= 1. REFINED HERO SECTION ================= */}
-        <section className="my-8 lg:my-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-            {/* Left Content Column */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#E0F2FE] border border-[#BAE6FD] text-xs font-mono font-medium text-[#0284C7]">
+        {/* ================= 1. UNIQUE SALESFORCE COMMAND DECK HERO (COMPLETELY BESPOKE LAYOUT) ================= */}
+        <section className="my-6 lg:my-10">
+          {/* Outer Command Header Frame with Salesforce Technical Grid Accent */}
+          <div className="rounded-[16px] border border-[#CBD5E1] bg-gradient-to-b from-[#F0F9FF] via-[#F8FAFC] to-white p-6 sm:p-10 lg:p-12 shadow-sm relative overflow-hidden">
+            {/* Ambient Background Grid Pattern */}
+            <div 
+              aria-hidden="true"
+              className="absolute inset-0 opacity-40 pointer-events-none bg-[radial-gradient(#0284C7_1px,transparent_1px)] [background-size:24px_24px]"
+            />
+
+            {/* Centered Master Architecture Header */}
+            <div className="max-w-4xl mx-auto text-center relative z-10 space-y-5">
+              <div className="inline-flex flex-wrap items-center justify-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#BAE6FD] text-xs font-mono font-medium text-[#0284C7] shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-[#00A1E0] animate-pulse" />
-                <span>Certified Salesforce Multi-Cloud Practice</span>
+                <span className="font-semibold">Official Salesforce Multi-Cloud Architecture Practice</span>
+                <span className="text-[#94A3B8]">|</span>
+                <span className="text-[#475569]">API v62.0 Ready</span>
+                <span className="text-[#94A3B8]">|</span>
+                <span className="text-[#16A34A] font-semibold">0 Governor Limit Breaches</span>
               </div>
 
-              <h1 className="hero-slide-heading text-3xl sm:text-5xl lg:text-6xl font-serif font-normal text-[#0F172A] tracking-tight leading-[1.12]">
-                Salesforce Multi-Cloud Consulting, Architecture & Integration.
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-normal text-[#0F172A] tracking-tight leading-[1.12] max-w-3xl mx-auto">
+                Salesforce Multi-Cloud Consulting, Architecture &amp; MuleSoft Sync.
               </h1>
 
-              <p className="text-base sm:text-lg text-[#475569] leading-relaxed max-w-2xl font-normal">
-                We engineer scalable Salesforce ecosystems for growing startups and global enterprises. From Sales Cloud pipeline velocity &amp; Service Cloud omni-channel automation to bulkified Apex triggers, modern Flow orchestration, reactive Lightning Web Components (LWC), and enterprise MuleSoft API integrations.
+              <p className="text-base sm:text-lg text-[#475569] leading-relaxed max-w-2xl mx-auto font-normal">
+                Certified Technical Architects engineering high-performance Salesforce ecosystems for high-growth businesses. From Sales Cloud pipeline velocity and Service Cloud omni-channel care to bulkified Apex triggers, modern Flow orchestration, and mission-critical MuleSoft enterprise integrations.
               </p>
 
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
+              {/* Action Buttons Centered */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
                 <Link
                   href="/contact/?service=salesforce"
-                  className="px-6 py-3.5 rounded-[6px] bg-[#00A1E0] hover:bg-[#0081B4] text-white font-semibold text-sm inline-flex items-center justify-center space-x-2 transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                  className="w-full sm:w-auto px-7 py-3.5 rounded-[6px] bg-[#00A1E0] hover:bg-[#0081B4] text-white font-semibold text-sm inline-flex items-center justify-center space-x-2 transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5"
                 >
-                  <span>Request an Architectural Org Review</span>
+                  <span>Request an Org Architecture Review</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
 
                 <a
                   href="#clouds"
-                  className="px-6 py-3.5 rounded-[6px] bg-white hover:bg-[#F8FAFC] text-[#0F172A] font-medium text-sm border border-[#CBD5E1] hover:border-[#94A3B8] inline-flex items-center justify-center transition-all"
+                  className="w-full sm:w-auto px-7 py-3.5 rounded-[6px] bg-white hover:bg-[#F8FAFC] text-[#0F172A] font-medium text-sm border border-[#CBD5E1] hover:border-[#94A3B8] inline-flex items-center justify-center transition-all shadow-2xs"
                 >
-                  Explore Multi-Cloud Solutions
+                  Explore Multi-Cloud Blueprint
                 </a>
               </div>
 
-              {/* Grounded Trust Signals */}
-              <div className="pt-6 border-t border-[#E2E8F0] grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs text-[#475569]">
-                <div className="flex items-center space-x-2">
-                  <Check className="w-4 h-4 text-[#00A1E0] shrink-0" />
-                  <span>100% Certified Architects</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Check className="w-4 h-4 text-[#00A1E0] shrink-0" />
-                  <span>0 Governor Breaches</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Check className="w-4 h-4 text-[#00A1E0] shrink-0" />
-                  <span>MuleSoft &amp; ERP Ready</span>
-                </div>
+              {/* Top Trust Guarantees */}
+              <div className="pt-2 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-[#64748B] font-mono">
+                <span className="flex items-center space-x-1.5">
+                  <Check className="w-3.5 h-3.5 text-[#00A1E0]" />
+                  <span>100% Client Code &amp; IP Ownership</span>
+                </span>
+                <span className="flex items-center space-x-1.5">
+                  <Check className="w-3.5 h-3.5 text-[#00A1E0]" />
+                  <span>Sub-15m P1 Emergency SLA</span>
+                </span>
+                <span className="flex items-center space-x-1.5">
+                  <Check className="w-3.5 h-3.5 text-[#00A1E0]" />
+                  <span>Enterprise SFDX &amp; CI/CD Pipelines</span>
+                </span>
               </div>
             </div>
 
-            {/* Right Visual Column (Interactive Multi-Cloud Architecture Console) */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative rounded-[12px] overflow-hidden border border-[#CBD5E1] shadow-lg bg-[#0F172A] text-white">
-                {/* Console Top Bar */}
-                <div className="bg-[#1E293B] px-4 py-2.5 border-b border-[#334155] flex items-center justify-between">
+            {/* ================= HERO CENTERPIECE: INTERACTIVE MULTI-CLOUD TOPOLOGY CONSOLE ================= */}
+            <div className="mt-10 sm:mt-12 max-w-5xl mx-auto relative z-10">
+              {/* Station Switcher Navigation Bar */}
+              <div className="flex items-center justify-between overflow-x-auto pb-2 mb-3 gap-2 scrollbar-thin">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-[#64748B] font-semibold shrink-0 hidden sm:inline-block">
+                  Live Topology Station:
+                </span>
+                <div className="flex items-center space-x-2 overflow-x-auto">
+                  {HERO_TOPOLOGY_STATIONS.map((station) => (
+                    <button
+                      key={station.id}
+                      type="button"
+                      onClick={() => setActiveStationId(station.id)}
+                      className={`px-3 py-1.5 rounded-[6px] text-xs font-mono transition-all flex items-center space-x-2 border whitespace-nowrap ${
+                        activeStationId === station.id
+                          ? "bg-[#0F172A] text-white border-[#0F172A] shadow-xs font-semibold"
+                          : "bg-white text-[#475569] border-[#CBD5E1] hover:border-[#94A3B8] hover:text-[#0F172A]"
+                      }`}
+                    >
+                      <span className={`w-2 h-2 rounded-full ${
+                        activeStationId === station.id ? "bg-[#38BDF8] animate-pulse" : "bg-[#94A3B8]"
+                      }`} />
+                      <span>{station.name}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Console Dashboard Container */}
+              <div className="rounded-[12px] overflow-hidden border border-[#1E293B] bg-[#0F172A] text-[#F8FAFC] shadow-xl">
+                {/* Simulated Terminal Header */}
+                <div className="bg-[#1E293B] px-4 py-3 border-b border-[#334155] flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center space-x-2">
                     <span className="w-3 h-3 rounded-full bg-[#EF4444]" />
                     <span className="w-3 h-3 rounded-full bg-[#F59E0B]" />
                     <span className="w-3 h-3 rounded-full bg-[#10B981]" />
-                    <span className="text-[11px] font-mono text-[#94A3B8] ml-2">salesforce-core-org.prod</span>
-                  </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-[4px] bg-[#0284C7]/20 border border-[#38BDF8]/30 text-[#38BDF8]">
-                    API v62.0 Active
-                  </span>
-                </div>
-
-                {/* Production Screenshot Showcase */}
-                <div className="relative aspect-[16/10] bg-[#0F172A] group">
-                  <Image
-                    src="/images/service_salesforce_support.jpg"
-                    alt="Salesforce CRM multi-cloud custom architecture, Flow automation, and Lightning Web Components dashboard"
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 520px"
-                    className="object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent opacity-90" />
-                  
-                  {/* Floating Live Telemetry Badge */}
-                  <div className="absolute top-3 left-3 bg-[#0F172A]/90 backdrop-blur-md border border-[#334155] px-3 py-1.5 rounded-[6px] shadow-sm flex items-center space-x-2">
-                    <span className="w-2 h-2 rounded-full bg-[#10B981] animate-ping" />
-                    <span className="text-[11px] font-mono font-medium text-[#F8FAFC]">Live Health: 100% Compliant</span>
+                    <span className="text-xs font-mono text-[#94A3B8] ml-2">
+                      org.salesforce.cloud :: <span className="text-[#38BDF8]">{activeStation.id}</span>
+                    </span>
                   </div>
 
-                  {/* Cloud Indicator Pills */}
-                  <div className="absolute bottom-3 left-3 right-3 flex flex-wrap gap-1.5">
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-[4px] bg-[#0284C7] text-white font-medium">Sales Cloud</span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-[4px] bg-[#0D9488] text-white font-medium">Service Cloud</span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-[4px] bg-[#6366F1] text-white font-medium">Apex &amp; Flows</span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-[4px] bg-[#D97706] text-white font-medium">MuleSoft ESB</span>
+                  <div className="flex items-center space-x-3 text-xs font-mono">
+                    <span className="text-[#10B981] flex items-center space-x-1">
+                      <span className="w-2 h-2 rounded-full bg-[#10B981] animate-ping" />
+                      <span>{activeStation.status}</span>
+                    </span>
+                    <span className="text-[#64748B]">|</span>
+                    <span className="text-[#38BDF8]">{activeStation.protocol}</span>
                   </div>
                 </div>
 
-                {/* Console Metrics Strip */}
-                <div className="p-4 bg-[#1E293B]/80 border-t border-[#334155] grid grid-cols-3 gap-2 text-center">
-                  <div className="border-r border-[#334155] pr-2">
-                    <div className="text-[10px] font-mono text-[#94A3B8]">Apex Test Suite</div>
-                    <div className="text-sm font-mono font-bold text-[#10B981] mt-0.5">99.9% Pass</div>
+                {/* Console Main Body Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 p-5 sm:p-7 items-center">
+                  {/* Left Column: Dataflow Blueprint & Telemetry */}
+                  <div className="lg:col-span-7 space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-[#38BDF8] block">
+                          {activeStation.badge}
+                        </span>
+                        <h2 className="font-serif text-xl sm:text-2xl text-white font-medium mt-0.5">
+                          {activeStation.name}
+                        </h2>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-[10px] font-mono text-[#94A3B8] block">Sync Latency</span>
+                        <span className="text-sm font-mono font-bold text-[#10B981]">{activeStation.latency}</span>
+                      </div>
+                    </div>
+
+                    {/* Step-by-Step Data Pipeline Flow */}
+                    <div className="space-y-2 bg-[#1E293B]/70 p-3.5 rounded-[8px] border border-[#334155]">
+                      <span className="text-[10px] font-mono text-[#94A3B8] uppercase tracking-wider block mb-1">
+                        Active Architectural Pipeline:
+                      </span>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                        {activeStation.flowSteps.map((step, idx) => (
+                          <div key={idx} className="flex items-center space-x-2 text-[#E2E8F0]">
+                            <span className="w-4 h-4 rounded-full bg-[#0284C7]/30 border border-[#38BDF8]/40 text-[#38BDF8] text-[10px] font-mono flex items-center justify-center shrink-0">
+                              {idx + 1}
+                            </span>
+                            <span className="truncate">{step}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Code Architecture Preview */}
+                    <div className="bg-[#090D16] p-3 rounded-[6px] border border-[#1E293B] font-mono text-[11px] text-[#93C5FD] overflow-x-auto">
+                      <div className="flex items-center justify-between text-[10px] text-[#64748B] border-b border-[#1E293B] pb-1.5 mb-2">
+                        <span className="flex items-center space-x-1.5">
+                          <Terminal className="w-3 h-3 text-[#38BDF8]" />
+                          <span>Enterprise Pattern Implementation</span>
+                        </span>
+                        <span className="text-[#10B981]">{activeStation.cpuUsage}</span>
+                      </div>
+                      <pre>
+                        <code>{activeStation.codePreview}</code>
+                      </pre>
+                    </div>
                   </div>
-                  <div className="border-r border-[#334155] pr-2">
-                    <div className="text-[10px] font-mono text-[#94A3B8]">Governor Breaches</div>
-                    <div className="text-sm font-mono font-bold text-[#38BDF8] mt-0.5">0 Total</div>
-                  </div>
-                  <div>
-                    <div className="text-[10px] font-mono text-[#94A3B8]">Sync Latency</div>
-                    <div className="text-sm font-mono font-bold text-[#F8FAFC] mt-0.5">&lt; 340ms</div>
+
+                  {/* Right Column: Framed Production Screenshot with Ambient HUD */}
+                  <div className="lg:col-span-5 relative">
+                    <div className="relative aspect-[4/3] rounded-[8px] overflow-hidden border border-[#334155] shadow-md bg-[#0F172A] group">
+                      <Image
+                        src="/images/service_salesforce_support.jpg"
+                        alt="Salesforce CRM Multi-Cloud Architecture and custom LWC components console"
+                        fill
+                        priority
+                        sizes="(max-width: 1024px) 100vw, 420px"
+                        className="object-cover opacity-85 group-hover:opacity-100 transition-opacity duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent opacity-80" />
+
+                      {/* Floating HUD Pill on Screenshot */}
+                      <div className="absolute top-3 left-3 bg-[#0F172A]/90 backdrop-blur-md border border-[#334155] px-2.5 py-1 rounded-[4px] text-[10px] font-mono text-[#F8FAFC] flex items-center space-x-1.5">
+                        <span className="w-2 h-2 rounded-full bg-[#10B981]" />
+                        <span>Org Health: 100%</span>
+                      </div>
+
+                      {/* Bottom Live Metrics Bar on Screenshot */}
+                      <div className="absolute bottom-3 left-3 right-3 bg-[#0F172A]/95 backdrop-blur-md border border-[#334155] p-2 rounded-[6px] flex items-center justify-between text-[10px] font-mono">
+                        <div>
+                          <span className="text-[#94A3B8] block">Test Suite</span>
+                          <span className="font-bold text-[#10B981]">99.9% Pass</span>
+                        </div>
+                        <div className="h-6 w-px bg-[#334155]" />
+                        <div>
+                          <span className="text-[#94A3B8] block">Governor</span>
+                          <span className="font-bold text-[#38BDF8]">0 Breaches</span>
+                        </div>
+                        <div className="h-6 w-px bg-[#334155]" />
+                        <div>
+                          <span className="text-[#94A3B8] block">DevOps</span>
+                          <span className="font-bold text-white">SFDX / Git</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+            </div>
+
+            {/* ================= INTEGRATED 6-ITEM TELEMETRY STRIP AT BASE OF HERO ================= */}
+            <div className="mt-10 pt-8 border-t border-[#CBD5E1] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 relative z-10">
+              {SALESFORCE_METRICS.map((metric, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white border border-[#BAE6FD] rounded-[8px] p-3.5 flex flex-col justify-between hover:border-[#00A1E0] transition-all shadow-2xs group"
+                >
+                  <div className="text-xl sm:text-2xl font-serif font-medium text-[#0F172A] tracking-tight group-hover:text-[#00A1E0] transition-colors">
+                    {metric.value}
+                  </div>
+                  <div className="text-[11px] font-semibold text-[#475569] mt-1 leading-snug">
+                    {metric.label}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -237,28 +433,7 @@ export default function SalesforcePage() {
           </div>
         </section>
 
-        {/* ================= 3. VERIFIED TELEMETRY GRID ================= */}
-        <section className="my-14 pt-8 border-t border-[#E2E8F0]">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-            {SALESFORCE_METRICS.map((metric, idx) => (
-              <div
-                key={idx}
-                className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-[8px] p-4 flex flex-col justify-between hover:border-[#00A1E0] hover:bg-white transition-all shadow-2xs group"
-              >
-                <div>
-                  <div className="text-xl sm:text-2xl font-serif font-medium text-[#0F172A] tracking-tight group-hover:text-[#00A1E0] transition-colors">
-                    {metric.value}
-                  </div>
-                  <div className="text-xs font-semibold text-[#0F172A] mt-1 leading-snug">
-                    {metric.label}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ================= 4. MULTI-CLOUD SOLUTIONS SPOTLIGHT (SALES CLOUD & SERVICE CLOUD) ================= */}
+        {/* ================= 3. MULTI-CLOUD SOLUTIONS SPOTLIGHT (SALES CLOUD & SERVICE CLOUD) ================= */}
         <section id="clouds" className="my-20 scroll-mt-24">
           <div className="max-w-3xl mb-8">
             <span className="text-xs font-mono uppercase tracking-wider text-[#0284C7] font-semibold block mb-2">
@@ -277,6 +452,7 @@ export default function SalesforcePage() {
             {SALESFORCE_CLOUDS.map((cloud) => (
               <button
                 key={cloud.id}
+                type="button"
                 onClick={() => setActiveCloudId(cloud.id)}
                 className={`px-4 py-2.5 rounded-[6px] text-xs font-medium whitespace-nowrap transition-all border ${
                   activeCloudId === cloud.id
@@ -366,7 +542,7 @@ export default function SalesforcePage() {
           </div>
         </section>
 
-        {/* ================= 5. DEEP DIVE: APEX, FLOWS, TRIGGERS & LWC ================= */}
+        {/* ================= 4. DEEP DIVE: APEX, FLOWS, TRIGGERS & LWC ================= */}
         <section className="my-20">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-mono uppercase tracking-wider text-[#0284C7] font-semibold block mb-2">
@@ -429,7 +605,7 @@ export default function SalesforcePage() {
           </div>
         </section>
 
-        {/* ================= 6. DEEP DIVE: MULESOFT & ENTERPRISE INTEGRATIONS ================= */}
+        {/* ================= 5. DEEP DIVE: MULESOFT & ENTERPRISE INTEGRATIONS ================= */}
         <section className="my-20 bg-[#F8FAFC] border border-[#CBD5E1] rounded-[12px] p-6 sm:p-10 shadow-2xs">
           <div className="max-w-3xl mb-10">
             <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white border border-[#CBD5E1] text-xs font-mono font-medium text-[#0F172A] mb-3">
@@ -498,7 +674,7 @@ export default function SalesforcePage() {
           </div>
         </section>
 
-        {/* ================= 7. FEATURED CASE STUDY SHOWCASE ================= */}
+        {/* ================= 6. FEATURED CASE STUDY SHOWCASE ================= */}
         <section className="my-20 bg-white border border-[#E2E8F0] rounded-[12px] p-6 sm:p-10 shadow-sm">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8 space-y-4">
@@ -555,7 +731,7 @@ export default function SalesforcePage() {
           </div>
         </section>
 
-        {/* ================= 8. TRANSPARENT ENGAGEMENT & PRICING MODELS ================= */}
+        {/* ================= 7. TRANSPARENT ENGAGEMENT & PRICING MODELS ================= */}
         <section className="my-20">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-mono uppercase tracking-wider text-[#0284C7] font-semibold block mb-2">
@@ -641,7 +817,7 @@ export default function SalesforcePage() {
           </div>
         </section>
 
-        {/* ================= 9. TECHNICAL FREQUENTLY ASKED QUESTIONS ================= */}
+        {/* ================= 8. TECHNICAL FREQUENTLY ASKED QUESTIONS ================= */}
         <section className="my-20">
           <div className="max-w-3xl mb-10">
             <span className="text-xs font-mono uppercase tracking-wider text-[#0284C7] font-semibold block mb-2">
@@ -689,7 +865,7 @@ export default function SalesforcePage() {
           </div>
         </section>
 
-        {/* ================= 10. CLOSING CTA BANNER ================= */}
+        {/* ================= 9. CLOSING CTA BANNER ================= */}
         <CtaSection
           badgeText="Salesforce Practice: Dedicated Sprints Available"
           title="Ready to transform your Salesforce org with certified architects?"
