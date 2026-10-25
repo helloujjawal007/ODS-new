@@ -35,6 +35,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: post.title,
     description: post.excerpt,
+    authors: [{ name: post.author?.name || "Anjali" }],
     alternates: {
       canonical: `/blog/${post.slug}/`
     },
