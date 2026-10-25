@@ -7,7 +7,6 @@ import { ArrowRight, Check } from "lucide-react";
 
 export interface HeroSlide {
   id: number;
-  tag: "h1" | "h2";
   question: string;
   statement: string;
   description: string;
@@ -21,7 +20,6 @@ export interface HeroSlide {
 export const HERO_SLIDES: HeroSlide[] = [
   {
     id: 0,
-    tag: "h1",
     question: "Need a Web Platform?",
     statement: "Full-Stack Development That Scales",
     description:
@@ -34,7 +32,6 @@ export const HERO_SLIDES: HeroSlide[] = [
   },
   {
     id: 1,
-    tag: "h2",
     question: "Need a Better CRM?",
     statement: "Salesforce Engineering That Works",
     description:
@@ -47,7 +44,6 @@ export const HERO_SLIDES: HeroSlide[] = [
   },
   {
     id: 2,
-    tag: "h2",
     question: "Startup or Established Business?",
     statement: "Custom Software and CRM for Both",
     description:
@@ -104,7 +100,6 @@ export default function HeroBanner() {
   }, [isPaused, goToNextSlide, clearTimers]);
 
   const current = HERO_SLIDES[currentIndex];
-  const HeadingTag = current.tag;
 
   return (
     <section
@@ -126,10 +121,10 @@ export default function HeroBanner() {
               aria-live="polite"
               aria-atomic="true"
             >
-              <HeadingTag className="hero-slide-heading text-3xl sm:text-5xl lg:text-6xl font-serif font-normal text-[#0F172A] tracking-tight leading-[1.14]">
+              <h1 className="hero-slide-heading text-3xl sm:text-5xl lg:text-6xl font-serif font-normal text-[#0F172A] tracking-tight leading-[1.14]">
                 <span className="text-[#0F172A]">{current.question} </span>
                 <span className="text-[#2563EB] font-medium">{current.statement}</span>
-              </HeadingTag>
+              </h1>
             </div>
 
             {/* Dynamic Animated Paragraph */}
