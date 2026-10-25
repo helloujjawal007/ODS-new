@@ -24,7 +24,12 @@ export default function BlogFilterList({ posts }: BlogFilterListProps) {
     "Enterprise CRM"
   ];
 
-  const filteredPosts = posts.filter((post) => {
+  // Strictly enforce descending order by publication date
+  const sortedPosts = [...posts].sort(
+    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  );
+
+  const filteredPosts = sortedPosts.filter((post) => {
     const matchesCategory =
       selectedCategory === "All" || post.category === selectedCategory;
     const matchesSearch =
@@ -34,7 +39,7 @@ export default function BlogFilterList({ posts }: BlogFilterListProps) {
   });
 
   const isDefaultView = selectedCategory === "All" && !searchTerm;
-  const featuredPost = posts.find((p) => p.featured) || posts[0];
+  const featuredPost = sortedPosts.find((p) => p.featured) || sortedPosts[0];
   const gridPosts = isDefaultView
     ? filteredPosts.filter((p) => p.slug !== featuredPost.slug)
     : filteredPosts;

@@ -242,15 +242,20 @@ async function runQA() {
   // 1F. BLOG POSTS & PORTFOLIO CASE STUDIES
   // ==========================================================
   const blogSlugs = [
+    "hardening-content-security-policy-removing-x-powered-by",
+    "resolving-308-redirect-loops-canonical-desync-nextjs",
+    "crlf-header-injection-double-submit-race-conditions",
+    "salesforce-api-governor-limits-component-drift-case-study",
+    "nextjs-16-hydration-mismatch-turbopack-eval-postmortem",
+    "nextjs-16-partial-prerendering-performance-benchmark",
+    "automating-inbound-lead-qualification-webhooks-crm",
+    "bigcommerce-multi-storefront-b2b-dtc-architecture",
+    "chrome-extension-manifest-v3-migration-guide",
+    "shopify-theme-app-extensions-performance-guide",
     "nextjs-vs-wordpress-2026-business-guide",
     "technical-seo-checklist-for-high-growth-startups",
     "flutter-vs-react-native-enterprise-comparison",
-    "salesforce-crm-integration-best-practices",
-    "shopify-theme-app-extensions-performance-guide",
-    "bigcommerce-multi-storefront-b2b-dtc-architecture",
-    "chrome-extension-manifest-v3-migration-guide",
-    "nextjs-16-partial-prerendering-performance-benchmark",
-    "automating-inbound-lead-qualification-webhooks-crm"
+    "salesforce-crm-integration-best-practices"
   ];
 
   for (const slug of blogSlugs) {

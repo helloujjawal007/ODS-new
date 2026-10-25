@@ -78,7 +78,7 @@ export default function BlogHomePage() {
               {/* Metrics Row */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 py-2">
                 <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-[6px] p-3 shadow-2xs">
-                  <div className="text-xl sm:text-2xl font-mono font-bold text-[#0F172A]">9</div>
+                  <div className="text-xl sm:text-2xl font-mono font-bold text-[#0F172A]">14</div>
                   <div className="text-[11px] text-[#64748B] mt-0.5 line-clamp-2">In-Depth Technical Field Guides</div>
                 </div>
                 <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-[6px] p-3 shadow-2xs">
