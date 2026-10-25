@@ -102,6 +102,8 @@ export default function BlogFilterList({ posts }: BlogFilterListProps) {
                 <div className="flex items-center space-x-2 text-xs text-[#64748B] font-mono mb-2">
                   <span className="text-[#2563EB] font-semibold">{featuredPost.category}</span>
                   <span>·</span>
+                  <span className="text-[#0F172A] font-semibold">By {featuredPost.author?.name || "Anjali"}</span>
+                  <span>·</span>
                   <span className="flex items-center">
                     <Clock className="w-3 h-3 mr-1" />
                     {featuredPost.readingTime}
@@ -155,6 +157,8 @@ export default function BlogFilterList({ posts }: BlogFilterListProps) {
             <div className="p-6 flex-1 flex flex-col justify-between">
               <div>
                 <div className="flex items-center space-x-2 text-[11px] font-mono text-[#64748B] mb-2">
+                  <span className="text-[#0F172A] font-medium">By {post.author?.name || "Anjali"}</span>
+                  <span>·</span>
                   <span>{post.publishedAt}</span>
                   <span>·</span>
                   <span>{post.readingTime}</span>

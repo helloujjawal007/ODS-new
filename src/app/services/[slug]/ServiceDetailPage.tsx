@@ -523,20 +523,51 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {relatedPosts.map((post) => (
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}/`}
-                  className="bg-white border border-[#E2E8F0] rounded-[8px] p-5 hover:border-[#2563EB] hover:shadow-md transition-all"
+                  className="group bg-white border border-[#E2E8F0] rounded-[8px] overflow-hidden flex flex-col justify-between shadow-xs hover:border-[#2563EB] hover:shadow-md transition-all"
                 >
-                  <div className="text-[11px] font-mono text-[#64748B] uppercase mb-1">
-                    {post.category} · {post.readingTime}
+                  <div>
+                    <div className="relative aspect-[16/10] bg-[#F1F5F9] overflow-hidden">
+                      <Image
+                        src={post.coverImage}
+                        alt={post.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 550px"
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur-xs border border-[#E2E8F0] px-2 py-0.5 rounded-[4px] text-[10px] font-mono uppercase font-semibold text-[#0F172A] shadow-2xs">
+                        {post.category}
+                      </div>
+                    </div>
+
+                    <div className="p-5">
+                      <div className="flex items-center space-x-2 text-[11px] font-mono text-[#64748B] mb-2">
+                        <span className="text-[#0F172A] font-medium">By {post.author?.name || "Anjali"}</span>
+                        <span>·</span>
+                        <span>{post.readingTime}</span>
+                      </div>
+
+                      <h3 className="font-serif text-lg font-medium text-[#0F172A] mb-2 leading-snug group-hover:text-[#2563EB] transition-colors line-clamp-2">
+                        {post.title}
+                      </h3>
+
+                      <p className="text-xs text-[#475569] leading-relaxed line-clamp-2">
+                        {post.excerpt}
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="font-serif text-base font-medium text-[#0F172A] mb-1">
-                    {post.title}
-                  </h3>
-                  <p className="text-xs text-[#475569] line-clamp-2">{post.excerpt}</p>
+
+                  <div className="px-5 pb-4 pt-2 border-t border-[#F1F5F9] flex items-center justify-between text-[11px]">
+                    <span className="font-mono text-[#64748B]">{post.publishedAt}</span>
+                    <span className="font-semibold text-[#2563EB] group-hover:underline inline-flex items-center">
+                      <span>Read guide</span>
+                      <ArrowRight className="w-3 h-3 ml-1" />
+                    </span>
+                  </div>
                 </Link>
               ))}
             </div>

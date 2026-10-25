@@ -7,7 +7,7 @@ import {
   ArrowRight, 
   Bookmark 
 } from "lucide-react";
-import { BLOG_POSTS, getBlogPostBySlug } from "@/lib/blog-data";
+import { BLOG_POSTS, getBlogPostBySlug, getRelatedPosts } from "@/lib/blog-data";
 import { SERVICES } from "@/lib/services-data";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import CtaSection from "@/components/sections/CtaSection";
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: post.title,
       description: post.excerpt,
       publishedTime: post.publishedAt,
-      authors: [SITE_CONFIG.name],
+      authors: [post.author?.name || "Anjali"],
       images: [
         {
           url: post.coverImage,
@@ -84,9 +84,14 @@ export default async function BlogPostPage({ params }: PageProps) {
     "datePublished": post.publishedAt,
     "dateModified": post.publishedAt,
     "author": {
-      "@type": "Organization",
-      "name": SITE_CONFIG.name,
-      "url": SITE_CONFIG.url
+      "@type": "Person",
+      "name": post.author?.name || "Anjali",
+      "jobTitle": post.author?.role || "Lead Software & Cloud Solutions Architect",
+      "worksFor": {
+        "@type": "Organization",
+        "name": SITE_CONFIG.name,
+        "url": SITE_CONFIG.url
+      }
     },
     "publisher": {
       "@type": "Organization",
@@ -104,11 +109,11 @@ export default async function BlogPostPage({ params }: PageProps) {
   };
 
   const breadcrumbJsonLd = getBreadcrumbJsonLd([
-    { name: "Blog", url: "/blog" },
-    { name: post.title, url: `/blog/${post.slug}` }
+    { name: "Blog", url: "/blog/" },
+    { name: post.title, url: `/blog/${post.slug}/` }
   ]);
 
-  const relatedPosts = BLOG_POSTS.filter((p) => p.slug !== post.slug).slice(0, 2);
+  const relatedPosts = getRelatedPosts(post, 3);
   const matchedService = SERVICES.find((s) => s.slug === post.pillar);
 
   return (
@@ -143,17 +148,23 @@ export default async function BlogPostPage({ params }: PageProps) {
           </p>
 
           {/* Editorial Meta Bar */}
-          <div className="flex items-center justify-between border-t border-b border-[#E2E8F0] py-3 text-xs">
-            <div className="flex items-center space-x-2 text-[#475569]">
-              <span className="font-semibold text-[#0F172A]">Cloud Consultancy Engineering</span>
-              <span>·</span>
+          <div className="flex flex-wrap items-center justify-between gap-3 border-t border-b border-[#E2E8F0] py-3.5 text-xs">
+            <div className="flex items-center space-x-2.5 text-[#475569]">
+              <div className="w-7 h-7 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-xs shadow-2xs">
+                A
+              </div>
+              <div>
+                <span className="font-semibold text-[#0F172A]">By {post.author?.name || "Anjali"}</span>
+                <span className="text-[#64748B] text-[11px] ml-1.5 hidden sm:inline">· {post.author?.role || "Lead Solutions Architect"}</span>
+              </div>
+              <span className="text-[#94A3B8]">·</span>
               <span className="font-mono text-[#64748B]">{post.publishedAt}</span>
-              <span>·</span>
+              <span className="text-[#94A3B8]">·</span>
               <span className="font-mono text-[#64748B]">{post.readingTime}</span>
             </div>
 
-            <div className="text-[11px] text-[#64748B] font-mono">
-              Engineering Note
+            <div className="text-[11px] text-[#2563EB] font-mono font-medium bg-[#EFF6FF] px-2 py-0.5 rounded-[4px] border border-[#BFDBFE]">
+              Architecture Note
             </div>
           </div>
         </header>
@@ -339,27 +350,90 @@ export default async function BlogPostPage({ params }: PageProps) {
           </article>
         </div>
 
-        {/* Related Articles */}
-        {relatedPosts.length > 0 && (
-          <section className="my-16 border-t border-[#E2E8F0] pt-14 max-w-4xl mx-auto">
-            <h3 className="font-serif text-xl text-[#0F172A] mb-6">
-              More Engineering Notes
-            </h3>
+        {/* Author Bio Box - E-E-A-T Excellence */}
+        <div className="max-w-3xl mx-auto my-12 p-5 sm:p-6 bg-[#F8FAFC] border border-[#E2E8F0] rounded-[8px] flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <div className="w-12 h-12 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-lg shadow-sm shrink-0">
+            A
+          </div>
+          <div className="flex-1">
+            <div className="flex items-center space-x-2">
+              <h4 className="font-semibold text-sm text-[#0F172A]">Written by {post.author?.name || "Anjali"}</h4>
+              <span className="text-[10px] font-mono bg-[#EFF6FF] text-[#2563EB] px-2 py-0.5 rounded-[4px] border border-[#BFDBFE]">
+                {post.author?.role || "Lead Solutions Architect"}
+              </span>
+            </div>
+            <p className="text-xs text-[#475569] mt-1.5 leading-relaxed">
+              Anjali is a Lead Solutions Architect at Cloud Consultancy specializing in modern Next.js 16 App Router architectures, Core Web Vitals optimization, and enterprise Salesforce CRM integrations.
+            </p>
+          </div>
+        </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {/* Related Articles - Card Style with Distinct Images */}
+        {relatedPosts.length > 0 && (
+          <section className="my-16 border-t border-[#E2E8F0] pt-14 max-w-5xl mx-auto">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-2">
+              <div>
+                <div className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold mb-1">
+                  Contextual Field Notes
+                </div>
+                <h3 className="font-serif text-2xl font-medium text-[#0F172A]">
+                  Related {post.category} &amp; Architecture Notes
+                </h3>
+              </div>
+              <Link
+                href="/blog/"
+                className="text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] hover:underline inline-flex items-center space-x-1"
+              >
+                <span>View all engineering notes</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {relatedPosts.map((rPost) => (
                 <Link
                   key={rPost.slug}
-                  href={`/blog/${rPost.slug}`}
-                  className="bg-white border border-[#E2E8F0] rounded-[8px] p-5 hover:border-[#2563EB] hover:shadow-md transition-all"
+                  href={`/blog/${rPost.slug}/`}
+                  className="group bg-white border border-[#E2E8F0] rounded-[8px] overflow-hidden flex flex-col justify-between shadow-xs hover:border-[#2563EB] hover:shadow-md transition-all"
                 >
-                  <div className="text-[11px] font-mono text-[#64748B] uppercase mb-1">
-                    {rPost.category} · {rPost.readingTime}
+                  <div>
+                    <div className="relative aspect-[16/10] bg-[#F1F5F9] overflow-hidden">
+                      <Image
+                        src={rPost.coverImage}
+                        alt={rPost.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 360px"
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur-xs border border-[#E2E8F0] px-2 py-0.5 rounded-[4px] text-[10px] font-mono uppercase font-semibold text-[#0F172A] shadow-2xs">
+                        {rPost.category}
+                      </div>
+                    </div>
+
+                    <div className="p-4 sm:p-5">
+                      <div className="flex items-center space-x-2 text-[11px] font-mono text-[#64748B] mb-2">
+                        <span className="text-[#0F172A] font-medium">By {rPost.author?.name || "Anjali"}</span>
+                        <span>·</span>
+                        <span>{rPost.readingTime}</span>
+                      </div>
+
+                      <h4 className="font-serif text-base font-medium text-[#0F172A] mb-2 leading-snug group-hover:text-[#2563EB] transition-colors line-clamp-2">
+                        {rPost.title}
+                      </h4>
+
+                      <p className="text-xs text-[#475569] leading-relaxed line-clamp-2">
+                        {rPost.excerpt}
+                      </p>
+                    </div>
                   </div>
-                  <h4 className="font-serif text-base font-medium text-[#0F172A] mb-1">
-                    {rPost.title}
-                  </h4>
-                  <p className="text-xs text-[#475569] line-clamp-2">{rPost.excerpt}</p>
+
+                  <div className="px-4 sm:px-5 pb-4 pt-2 border-t border-[#F1F5F9] flex items-center justify-between text-[11px]">
+                    <span className="font-mono text-[#64748B]">{rPost.publishedAt}</span>
+                    <span className="font-semibold text-[#2563EB] group-hover:underline inline-flex items-center">
+                      <span>Read note</span>
+                      <ArrowRight className="w-3 h-3 ml-1" />
+                    </span>
+                  </div>
                 </Link>
               ))}
             </div>
