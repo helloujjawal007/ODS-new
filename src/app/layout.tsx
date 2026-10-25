@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Cloud Consultancy | Cloud Architecture, Web & App Engineering",
     description: SITE_CONFIG.description,
-    images: ["/images/twitter_preview_banner.jpg"],
+    images: ["/images/og_preview_banner.jpg"],
     creator: "@cloudconsultin"
   },
   icons: {
