@@ -2,8 +2,10 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 import { PORTFOLIO_PROJECTS } from "@/lib/portfolio-data";
+import { SERVICES } from "@/lib/services-data";
+import { BLOG_POSTS } from "@/lib/blog-data";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import CtaSection from "@/components/sections/CtaSection";
 import JsonLd from "@/components/seo/JsonLd";
@@ -59,6 +61,23 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
     { name: "Portfolio", url: "/portfolio/" },
     { name: project.client, url: `/portfolio/${project.slug}/` }
   ]);
+
+  const isSalesforce = project.slug === "innotech-salesforce-lwc";
+  const matchedService = SERVICES.find((s) => {
+    if (project.slug === "finvantage-portal") return s.slug === "website-development";
+    if (project.slug === "cloudsphere-seo-overhaul") return s.slug === "seo";
+    if (project.slug === "auramed-ios-telehealth") return s.slug === "ios-app-development";
+    if (project.slug === "urbanrider-cross-platform") return s.slug === "cross-platform-app-development";
+    if (project.slug === "zenith-product-design-system") return s.slug === "ui-ux-design";
+    if (project.slug === "aeterna-luxury-ecommerce") return s.slug === "shopify-bigcommerce-development";
+    return s.title.toLowerCase().includes(project.category.toLowerCase().slice(0, 5));
+  });
+
+  const relatedBlogPosts = BLOG_POSTS.filter((b) => {
+    if (isSalesforce) return b.pillar === "salesforce";
+    if (matchedService) return b.pillar === matchedService.slug || b.category.toLowerCase().includes(project.category.toLowerCase());
+    return false;
+  }).slice(0, 2);
 
   return (
     <div className="py-8 bg-white text-[#0F172A] font-sans selection:bg-[#2563EB] selection:text-white">
@@ -178,18 +197,83 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                 </div>
               </div>
 
-              <div className="pt-6 mt-6 border-t border-[#E2E8F0]">
+              <div className="pt-6 mt-6 border-t border-[#E2E8F0] space-y-3">
                 <Link
-                  href="/contact"
+                  href="/contact/"
                   className="w-full py-2.5 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium text-xs flex items-center justify-center space-x-1.5 transition-all shadow-sm"
                 >
                   <span>Discuss a similar project</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <Link
+                  href="/pricing/"
+                  className="w-full py-2.5 rounded-[6px] bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] font-medium text-xs flex items-center justify-center space-x-1.5 transition-colors"
+                >
+                  <span>View Project Pricing</span>
                 </Link>
               </div>
             </div>
 
+            {/* Related Service Practice Box */}
+            {isSalesforce ? (
+              <div className="bg-white border border-[#E2E8F0] rounded-[8px] p-5 shadow-sm">
+                <span className="text-[10px] font-mono uppercase text-[#64748B] block mb-1">
+                  Dedicated Practice
+                </span>
+                <h4 className="font-serif text-sm font-medium text-[#0F172A] mb-1">
+                  Salesforce Architecture &amp; LWC
+                </h4>
+                <p className="text-xs text-[#475569] leading-relaxed mb-3">
+                  Multi-cloud Salesforce integrations, custom Lightning Web Components, and 0-governor-limit data pipelines.
+                </p>
+                <Link
+                  href="/salesforce/"
+                  className="inline-flex items-center text-xs font-semibold text-[#2563EB] hover:underline"
+                >
+                  <span>Explore Salesforce Hub</span>
+                  <ArrowRight className="w-3 h-3 ml-1" />
+                </Link>
+              </div>
+            ) : matchedService ? (
+              <div className="bg-white border border-[#E2E8F0] rounded-[8px] p-5 shadow-sm">
+                <span className="text-[10px] font-mono uppercase text-[#64748B] block mb-1">
+                  Related Service
+                </span>
+                <h4 className="font-serif text-sm font-medium text-[#0F172A] mb-1">
+                  {matchedService.title}
+                </h4>
+                <p className="text-xs text-[#475569] leading-relaxed mb-3 line-clamp-2">
+                  {matchedService.tagline}
+                </p>
+                <Link
+                  href={`/services/${matchedService.slug}/`}
+                  className="inline-flex items-center text-xs font-semibold text-[#2563EB] hover:underline"
+                >
+                  <span>View {matchedService.shortTitle} details</span>
+                  <ArrowRight className="w-3 h-3 ml-1" />
+                </Link>
+              </div>
+            ) : null}
+
+            {/* Delivery Methodology Link */}
+            <div className="bg-[#F8FAFC] border border-[#CBD5E1] rounded-[8px] p-5 shadow-2xs">
+              <span className="text-[10px] font-mono uppercase text-[#2563EB] font-semibold block mb-1">
+                Sprint Delivery Process
+              </span>
+              <p className="text-xs text-[#475569] leading-relaxed mb-3">
+                Learn how we take projects from architectural scoping to production with zero scope creep and a 30-day warranty.
+              </p>
+              <Link
+                href="/process/"
+                className="text-xs font-semibold text-[#2563EB] hover:underline inline-flex items-center space-x-1"
+              >
+                <span>Read about our 5-stage process</span>
+                <ArrowRight className="w-3 h-3" />
+              </Link>
+            </div>
+
             <Link
-              href="/portfolio"
+              href="/portfolio/"
               className="inline-flex items-center space-x-1.5 text-xs text-[#64748B] hover:text-[#2563EB] transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
@@ -197,6 +281,81 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
             </Link>
           </div>
         </div>
+
+        {/* Related Architecture & Engineering Field Notes */}
+        {relatedBlogPosts.length > 0 && (
+          <section className="my-16 border-t border-[#E2E8F0] pt-14 max-w-5xl mx-auto">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-2">
+              <div>
+                <div className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold mb-1">
+                  Technical Architecture Context
+                </div>
+                <h3 className="font-serif text-2xl font-medium text-[#0F172A]">
+                  Related Engineering Guides &amp; Postmortems
+                </h3>
+              </div>
+              <Link
+                href="/blog/"
+                className="text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] hover:underline inline-flex items-center space-x-1"
+              >
+                <span>View all engineering notes</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {relatedBlogPosts.map((rPost) => (
+                <Link
+                  key={rPost.slug}
+                  href={`/blog/${rPost.slug}/`}
+                  className="group bg-white border border-[#E2E8F0] rounded-[8px] overflow-hidden flex flex-col justify-between shadow-xs hover:border-[#2563EB] hover:shadow-md transition-all"
+                >
+                  <div>
+                    <div className="relative aspect-[16/10] bg-[#F1F5F9] overflow-hidden">
+                      <Image
+                        src={rPost.coverImage}
+                        alt={rPost.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 500px"
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur-xs border border-[#E2E8F0] px-2 py-0.5 rounded-[4px] text-[10px] font-mono uppercase font-semibold text-[#0F172A] shadow-2xs">
+                        {rPost.category}
+                      </div>
+                    </div>
+
+                    <div className="p-5">
+                      <div className="flex items-center space-x-2 text-[11px] font-mono text-[#64748B] mb-2">
+                        <span className="text-[#0F172A] font-medium">By {rPost.author?.name || "Anjali"}</span>
+                        <span>·</span>
+                        <span className="flex items-center">
+                          <Clock className="w-3 h-3 mr-1 text-[#64748B]" />
+                          {rPost.readingTime}
+                        </span>
+                      </div>
+
+                      <h4 className="font-serif text-base font-medium text-[#0F172A] mb-2 leading-snug group-hover:text-[#2563EB] transition-colors line-clamp-2">
+                        {rPost.title}
+                      </h4>
+
+                      <p className="text-xs text-[#475569] leading-relaxed line-clamp-2">
+                        {rPost.excerpt}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="px-5 pb-4 pt-2 border-t border-[#F1F5F9] flex items-center justify-between text-[11px]">
+                    <span className="font-mono text-[#64748B]">{rPost.publishedAt}</span>
+                    <span className="font-semibold text-[#2563EB] group-hover:underline inline-flex items-center">
+                      <span>Read guide</span>
+                      <ArrowRight className="w-3 h-3 ml-1" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Closing CTA */}
         <CtaSection

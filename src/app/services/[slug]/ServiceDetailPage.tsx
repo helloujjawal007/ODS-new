@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { SERVICES, getServiceBySlug } from "@/lib/services-data";
 import { BLOG_POSTS } from "@/lib/blog-data";
+import { PORTFOLIO_PROJECTS } from "@/lib/portfolio-data";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import FaqAccordion from "@/components/sections/FaqAccordion";
 import CtaSection from "@/components/sections/CtaSection";
@@ -94,6 +95,17 @@ export default async function ServiceDetailPage({ params }: PageProps) {
   const relatedPosts = BLOG_POSTS.filter(
     (p) => p.pillar === service.slug || p.category.toLowerCase().includes(service.category.toLowerCase())
   ).slice(0, 2);
+
+  const matchedProject = PORTFOLIO_PROJECTS.find((p) => {
+    if (service.slug === "website-development") return p.slug === "finvantage-portal";
+    if (service.slug === "shopify-bigcommerce-development") return p.slug === "aeterna-luxury-ecommerce";
+    if (service.slug === "seo") return p.slug === "cloudsphere-seo-overhaul";
+    if (service.slug === "ios-app-development") return p.slug === "auramed-ios-telehealth";
+    if (service.slug === "android-app-development" || service.slug === "cross-platform-app-development") return p.slug === "urbanrider-cross-platform";
+    if (service.slug === "ui-ux-design") return p.slug === "zenith-product-design-system";
+    if (service.slug === "plugins-extensions-development") return p.slug === "finvantage-portal";
+    return p.category.toLowerCase().includes(service.category.toLowerCase().slice(0, 5));
+  });
 
   return (
     <div className="py-8 bg-white text-[#0F172A] font-sans selection:bg-[#2563EB] selection:text-white">
@@ -493,7 +505,106 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               </div>
             ))}
           </div>
+
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-[#F8FAFC] border border-[#CBD5E1] rounded-[6px] text-xs">
+            <span className="text-[#475569]">
+              Every {service.shortTitle} project is executed in milestone-driven 2-week sprints with 100% code ownership.
+            </span>
+            <Link
+              href="/process/"
+              className="text-[#2563EB] hover:text-[#1D4ED8] font-semibold inline-flex items-center space-x-1 shrink-0 hover:underline"
+            >
+              <span>Explore our 5-stage sprint methodology</span>
+              <ArrowRight className="w-3.5 h-3.5 ml-1" />
+            </Link>
+          </div>
         </section>
+
+        {/* 7B. FEATURED PRODUCTION CASE STUDY (Direct Internal Linking to Portfolio) */}
+        {matchedProject && (
+          <section className="my-16 border-b border-[#E2E8F0] pb-16">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-2">
+              <div>
+                <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold block mb-1">
+                  Case Study
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-serif font-normal text-[#0F172A]">
+                  Featured Production Outcome
+                </h2>
+              </div>
+              <Link
+                href="/portfolio/"
+                className="text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] hover:underline inline-flex items-center space-x-1"
+              >
+                <span>All case studies</span>
+                <ArrowRight className="w-3.5 h-3.5 ml-1" />
+              </Link>
+            </div>
+
+            <div className="bg-white border border-[#E2E8F0] rounded-[8px] overflow-hidden shadow-sm grid grid-cols-1 lg:grid-cols-12 hover:border-[#2563EB] transition-all">
+              <div className="lg:col-span-5 relative aspect-[16/10] lg:aspect-auto min-h-[240px] bg-[#F1F5F9]">
+                <Image
+                  src={matchedProject.image}
+                  alt={matchedProject.title}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 450px"
+                  className="object-cover"
+                />
+                <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-xs border border-[#E2E8F0] px-2.5 py-0.5 rounded-[4px] text-[10px] font-mono uppercase font-medium text-[#0F172A] shadow-2xs">
+                  {matchedProject.industry}
+                </div>
+              </div>
+
+              <div className="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center space-x-2 text-xs font-mono text-[#64748B] mb-2">
+                    <span className="text-[#2563EB] font-semibold">Client: {matchedProject.client}</span>
+                    <span>·</span>
+                    <span>{matchedProject.category}</span>
+                  </div>
+
+                  <h3 className="font-serif text-xl sm:text-2xl font-normal text-[#0F172A] mb-3 leading-snug">
+                    {matchedProject.title}
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-[#475569] leading-relaxed mb-6">
+                    {matchedProject.summary}
+                  </p>
+
+                  <div className="grid grid-cols-3 gap-3 py-3 border-t border-b border-[#F1F5F9] mb-6">
+                    {matchedProject.impactMetrics.map((metric, mIdx) => (
+                      <div key={mIdx}>
+                        <div className="text-lg sm:text-xl font-serif text-[#0F172A]">{metric.value}</div>
+                        <div className="text-[10px] font-mono text-[#64748B]">{metric.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
+                  <div className="flex flex-wrap gap-1">
+                    {matchedProject.tags.slice(0, 3).map((tag, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="px-2 py-0.5 rounded-[4px] bg-[#F1F5F9] text-[#475569] text-[10px] font-mono"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <Link
+                    href={`/portfolio/${matchedProject.slug}/`}
+                    className="text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] hover:underline inline-flex items-center space-x-1"
+                  >
+                    <span>Read full case study</span>
+                    <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* 8. COMPREHENSIVE FAQ ACCORDION (7 Questions + Dynamic Schema) */}
         <FaqAccordion

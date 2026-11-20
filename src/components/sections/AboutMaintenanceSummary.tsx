@@ -165,6 +165,7 @@ export default function AboutMaintenanceSummary() {
               <div className="pt-2 flex flex-wrap gap-3">
                 <Link
                   href="/contact/?service=Website%20Maintenance%20%26%20Support"
+                  rel="nofollow"
                   className="px-4 py-2 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium text-xs flex items-center space-x-1.5 shadow-2xs transition-all"
                 >
                   <span>Request a Site Audit & Maintenance Quote</span>

@@ -138,6 +138,31 @@ export default function PortfolioPage() {
           </div>
         </section>
 
+        {/* Quick Discipline Directory Nav */}
+        <div className="flex flex-wrap items-center justify-between gap-3 p-4 bg-[#F8FAFC] border border-[#E2E8F0] rounded-[8px] mb-8 text-xs">
+          <div className="flex items-center space-x-2 text-[#475569]">
+            <span className="font-semibold text-[#0F172A]">Cross-Service Navigation:</span>
+            <span>Looking for specific architecture disciplines?</span>
+          </div>
+          <div className="flex flex-wrap items-center gap-3 font-medium">
+            <Link href="/services/" className="text-[#2563EB] hover:underline">
+              Services Directory →
+            </Link>
+            <span className="text-[#CBD5E1]">·</span>
+            <Link href="/salesforce/" className="text-[#00A1E0] hover:underline">
+              Salesforce Practice →
+            </Link>
+            <span className="text-[#CBD5E1]">·</span>
+            <Link href="/process/" className="text-[#2563EB] hover:underline">
+              Sprint Process →
+            </Link>
+            <span className="text-[#CBD5E1]">·</span>
+            <Link href="/blog/" className="text-[#2563EB] hover:underline">
+              Engineering Notes →
+            </Link>
+          </div>
+        </div>
+
         {/* Interactive Filter Component */}
         <PortfolioFilterList projects={PORTFOLIO_PROJECTS} />
 

@@ -1,9 +1,10 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Clock } from "lucide-react";
 import { SERVICES } from "@/lib/services-data";
 import { PORTFOLIO_PROJECTS } from "@/lib/portfolio-data";
+import { BLOG_POSTS } from "@/lib/blog-data";
 import HeroBanner from "@/components/sections/HeroBanner";
 import ServicesCardCarousel from "@/components/sections/ServicesCardCarousel";
 import AboutMaintenanceSummary from "@/components/sections/AboutMaintenanceSummary";
@@ -21,6 +22,10 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
+  const latestPosts = [...BLOG_POSTS]
+    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+    .slice(0, 3);
+
   const techStack = [
     { name: "Next.js 16", desc: "App Router & SSR" },
     { name: "Shopify Plus", desc: "Liquid & Headless" },
@@ -172,6 +177,84 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. LATEST ARCHITECTURE FIELD NOTES (Direct Internal Linking to Blog Posts) */}
+      <section className="py-20 border-b border-[#E2E8F0] bg-[#F8FAFC]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <div>
+              <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold block mb-2">
+                Engineering Notes
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-serif font-normal text-[#0F172A] tracking-tight">
+                Architectural Insights &amp; Performance Field Notes
+              </h2>
+              <p className="text-[#475569] text-sm mt-2 max-w-xl">
+                Real-world postmortems, Next.js 16 benchmarks, Shopify headless architectures, and enterprise Salesforce integration guides.
+              </p>
+            </div>
+            <Link
+              href="/blog/"
+              className="mt-4 md:mt-0 text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] hover:underline inline-flex items-center space-x-1"
+            >
+              <span>View all engineering notes</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {latestPosts.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}/`}
+                className="group bg-white border border-[#E2E8F0] rounded-[8px] overflow-hidden flex flex-col justify-between shadow-xs hover:border-[#2563EB] hover:shadow-md transition-all"
+              >
+                <div>
+                  <div className="relative aspect-[16/10] bg-[#F1F5F9] overflow-hidden">
+                    <Image
+                      src={post.coverImage}
+                      alt={post.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 380px"
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur-xs border border-[#E2E8F0] px-2 py-0.5 rounded-[4px] text-[10px] font-mono uppercase font-semibold text-[#0F172A] shadow-2xs">
+                      {post.category}
+                    </div>
+                  </div>
+
+                  <div className="p-5">
+                    <div className="flex items-center space-x-2 text-[11px] font-mono text-[#64748B] mb-2">
+                      <span className="text-[#0F172A] font-medium">By {post.author?.name || "Anjali"}</span>
+                      <span>·</span>
+                      <span className="flex items-center">
+                        <Clock className="w-3 h-3 mr-1 text-[#64748B]" />
+                        {post.readingTime}
+                      </span>
+                    </div>
+
+                    <h3 className="font-serif text-base font-medium text-[#0F172A] mb-2 leading-snug group-hover:text-[#2563EB] transition-colors line-clamp-2">
+                      {post.title}
+                    </h3>
+
+                    <p className="text-xs text-[#475569] leading-relaxed line-clamp-2">
+                      {post.excerpt}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="px-5 pb-4 pt-2 border-t border-[#F1F5F9] flex items-center justify-between text-[11px]">
+                  <span className="font-mono text-[#64748B]">{post.publishedAt}</span>
+                  <span className="font-semibold text-[#2563EB] group-hover:underline inline-flex items-center">
+                    <span>Read guide</span>
+                    <ArrowRight className="w-3 h-3 ml-1" />
+                  </span>
+                </div>
+              </Link>
             ))}
           </div>
         </div>

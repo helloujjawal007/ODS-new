@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { BLOG_POSTS, getBlogPostBySlug, getRelatedPosts } from "@/lib/blog-data";
 import { SERVICES } from "@/lib/services-data";
+import { PORTFOLIO_PROJECTS } from "@/lib/portfolio-data";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import CtaSection from "@/components/sections/CtaSection";
 import JsonLd from "@/components/seo/JsonLd";
@@ -32,8 +33,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: "Article Not Found" };
   }
 
+  const metaTitle = post.metaTitle || post.title;
+  const ogImageUrl = post.coverImage.startsWith("http")
+    ? post.coverImage
+    : `${SITE_CONFIG.url}${post.coverImage}`;
+
   return {
-    title: post.title,
+    title: metaTitle,
     description: post.excerpt,
     authors: [{ name: post.author?.name || "Anjali" }],
     alternates: {
@@ -41,13 +47,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     openGraph: {
       type: "article",
-      title: post.title,
+      title: metaTitle,
       description: post.excerpt,
-      publishedTime: post.publishedAt,
+      url: `${SITE_CONFIG.url}/blog/${post.slug}/`,
+      siteName: SITE_CONFIG.name,
+      locale: "en_US",
+      publishedTime: new Date(post.publishedAt).toISOString(),
       authors: [post.author?.name || "Anjali"],
       images: [
         {
-          url: post.coverImage,
+          url: ogImageUrl,
           width: 1200,
           height: 630,
           alt: post.title
@@ -56,11 +65,68 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: "summary_large_image",
-      title: post.title,
+      title: metaTitle,
       description: post.excerpt,
-      images: [post.coverImage]
+      images: [ogImageUrl]
     }
   };
+}
+
+function renderFormattedText(text: string): React.ReactNode {
+  const parts = text.split(/(\[.*?\]\(.*?\)|\*\*.*?\*\*|`.*?`)/g);
+
+  return parts.map((part, i) => {
+    if (!part) return null;
+
+    const linkMatch = part.match(/^\[(.*?)\]\((.*?)\)$/);
+    if (linkMatch) {
+      const [, label, href] = linkMatch;
+      const isInternal = href.startsWith("/");
+      if (isInternal) {
+        return (
+          <Link
+            key={i}
+            href={href}
+            className="text-[#2563EB] hover:text-[#1D4ED8] underline font-medium decoration-[#93C5FD] underline-offset-2 transition-colors"
+          >
+            {label}
+          </Link>
+        );
+      }
+      return (
+        <a
+          key={i}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#2563EB] hover:text-[#1D4ED8] underline font-medium decoration-[#93C5FD] underline-offset-2 transition-colors"
+        >
+          {label}
+        </a>
+      );
+    }
+
+    if (part.startsWith("**") && part.endsWith("**") && part.length >= 4) {
+      return (
+        <strong key={i} className="font-semibold text-[#0F172A]">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+
+    if (part.startsWith("`") && part.endsWith("`") && part.length >= 2) {
+      return (
+        <code
+          key={i}
+          className="font-mono text-xs bg-[#F1F5F9] text-[#0F172A] px-1.5 py-0.5 rounded-[3px] border border-[#E2E8F0]"
+        >
+          {part.slice(1, -1)}
+        </code>
+      );
+    }
+
+    return part;
+  });
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
@@ -82,8 +148,8 @@ export default async function BlogPostPage({ params }: PageProps) {
     "headline": post.title,
     "description": post.excerpt,
     "image": `${SITE_CONFIG.url}${post.coverImage}`,
-    "datePublished": post.publishedAt,
-    "dateModified": post.publishedAt,
+    "datePublished": new Date(post.publishedAt).toISOString(),
+    "dateModified": new Date(post.publishedAt).toISOString(),
     "author": {
       "@type": "Person",
       "name": post.author?.name || "Anjali",
@@ -116,9 +182,19 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   const relatedPosts = getRelatedPosts(post, 3);
   const matchedService = SERVICES.find((s) => s.slug === post.pillar);
+  const matchedProject = PORTFOLIO_PROJECTS.find((p) => {
+    if (post.pillar === "salesforce") return p.slug === "innotech-salesforce-lwc";
+    if (post.pillar === "shopify-bigcommerce-development") return p.slug === "aeterna-luxury-ecommerce";
+    if (post.pillar === "website-development") return p.slug === "finvantage-portal";
+    if (post.pillar === "seo") return p.slug === "cloudsphere-seo-overhaul";
+    if (post.pillar === "ios-app-development") return p.slug === "auramed-ios-telehealth";
+    if (post.pillar === "cross-platform-app-development" || post.pillar === "android-app-development") return p.slug === "urbanrider-cross-platform";
+    if (post.pillar === "ui-ux-design") return p.slug === "zenith-product-design-system";
+    return p.category.toLowerCase().includes(post.category.toLowerCase().slice(0, 5));
+  });
 
   return (
-    <div className="py-8 bg-white text-[#0F172A] font-sans selection:bg-[#2563EB] selection:text-white">
+    <article className="py-8 bg-white text-[#0F172A] font-sans selection:bg-[#2563EB] selection:text-white" itemScope itemType="https://schema.org/BlogPosting">
       <JsonLd id={`schema-article-${post.slug}`} data={articleJsonLd} />
       <JsonLd id={`schema-breadcrumb-${post.slug}`} data={breadcrumbJsonLd} />
 
@@ -140,7 +216,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             <span>{post.publishedAt}</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-serif font-normal text-[#0F172A] tracking-tight leading-[1.18] mb-4">
+          <h1 id="article-h1" itemProp="headline" className="text-3xl sm:text-5xl font-serif font-normal text-[#0F172A] tracking-tight leading-[1.18] mb-4">
             {post.title}
           </h1>
 
@@ -244,11 +320,55 @@ export default async function BlogPostPage({ params }: PageProps) {
                   </Link>
                 </div>
               ) : null}
+
+              {matchedProject && (
+                <div className="bg-white border border-[#E2E8F0] rounded-[8px] p-5 shadow-sm">
+                  <span className="text-[10px] font-mono uppercase text-[#64748B] block mb-1">
+                    Production Case Study
+                  </span>
+                  <h4 className="font-serif text-sm font-medium text-[#0F172A] mb-1">
+                    {matchedProject.title}
+                  </h4>
+                  <p className="text-xs text-[#475569] leading-relaxed mb-3 line-clamp-2">
+                    {matchedProject.summary}
+                  </p>
+                  <Link
+                    href={`/portfolio/${matchedProject.slug}/`}
+                    className="inline-flex items-center text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] hover:underline"
+                  >
+                    <span>Read {matchedProject.client} case study</span>
+                    <ArrowRight className="w-3 h-3 ml-1" />
+                  </Link>
+                </div>
+              )}
+
+              <div className="bg-[#F8FAFC] border border-[#CBD5E1] rounded-[8px] p-5 shadow-2xs">
+                <span className="text-[10px] font-mono uppercase text-[#2563EB] font-semibold block mb-1">
+                  Architecture Planning
+                </span>
+                <p className="text-xs text-[#475569] leading-relaxed mb-3">
+                  Fixed milestone budgets, sprint schedules, and dedicated senior engineering squads.
+                </p>
+                <div className="space-y-1.5 text-xs font-medium">
+                  <Link
+                    href="/pricing/"
+                    className="flex items-center text-[#2563EB] hover:underline"
+                  >
+                    <span>→ Pricing &amp; SOW Estimator</span>
+                  </Link>
+                  <Link
+                    href="/process/"
+                    className="flex items-center text-[#2563EB] hover:underline"
+                  >
+                    <span>→ 5-Stage Engineering Process</span>
+                  </Link>
+                </div>
+              </div>
             </div>
           </aside>
 
           {/* Article Content */}
-          <article className="lg:col-span-8 order-1 lg:order-2 space-y-5 text-[#334155] leading-relaxed text-sm sm:text-base font-sans">
+          <div className="lg:col-span-8 order-1 lg:order-2 space-y-5 text-[#334155] leading-relaxed text-sm sm:text-base font-sans" itemProp="articleBody">
             {post.content.split("\n\n").map((paragraph, index) => {
               const trimmed = paragraph.trim();
 
@@ -321,7 +441,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     {items.map((it, iIdx) => (
                       <li key={iIdx} className="flex items-start space-x-2">
                         <span className="text-[#2563EB] mt-1 font-bold">•</span>
-                        <span>{it}</span>
+                        <span>{renderFormattedText(it)}</span>
                       </li>
                     ))}
                   </ul>
@@ -335,7 +455,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     {items.map((it, iIdx) => (
                       <li key={iIdx} className="flex items-start space-x-2">
                         <span className="font-mono text-[#2563EB] font-bold text-xs">{iIdx + 1}.</span>
-                        <span>{it.replace(/^\d+\.\s*/, "")}</span>
+                        <span>{renderFormattedText(it.replace(/^\d+\.\s*/, ""))}</span>
                       </li>
                     ))}
                   </ol>
@@ -344,11 +464,47 @@ export default async function BlogPostPage({ params }: PageProps) {
 
               return (
                 <p key={index} className="text-[#334155] text-xs sm:text-sm leading-relaxed">
-                  {paragraph}
+                  {renderFormattedText(paragraph)}
                 </p>
               );
             })}
-          </article>
+
+            {/* Contextual In-Article Callout Box */}
+            <div className="my-10 p-5 sm:p-6 bg-[#F8FAFC] border border-[#CBD5E1] rounded-[8px] shadow-2xs">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-[#2563EB] font-semibold block mb-1.5">
+                Senior Engineering Practice
+              </span>
+              <h3 className="font-serif text-lg font-medium text-[#0F172A] mb-1.5">
+                Need architectural guidance on {post.category}?
+              </h3>
+              <p className="text-xs sm:text-sm text-[#475569] leading-relaxed mb-4">
+                We partner with founders and engineering leaders to design, build, and optimize scalable web platforms, custom e-commerce engines, and Salesforce CRM ecosystems with 100% intellectual property ownership.
+              </p>
+              <div className="flex flex-wrap items-center gap-2.5">
+                <Link
+                  href={post.pillar === "salesforce" ? "/salesforce/" : (matchedService ? `/services/${matchedService.slug}/` : "/services/")}
+                  className="px-3.5 py-2 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium text-xs inline-flex items-center space-x-1 shadow-2xs"
+                >
+                  <span>Explore {matchedService?.shortTitle || (post.pillar === "salesforce" ? "Salesforce Practice" : "Services")}</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                {matchedProject && (
+                  <Link
+                    href={`/portfolio/${matchedProject.slug}/`}
+                    className="px-3.5 py-2 rounded-[6px] bg-white hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] font-medium text-xs inline-flex items-center space-x-1"
+                  >
+                    <span>View {matchedProject.client} Case Study</span>
+                  </Link>
+                )}
+                <Link
+                  href="/pricing/"
+                  className="px-3.5 py-2 rounded-[6px] bg-white hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] font-medium text-xs inline-flex items-center space-x-1"
+                >
+                  <span>View Pricing &amp; SOWs</span>
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Author Bio Box - E-E-A-T Excellence */}
@@ -449,6 +605,6 @@ export default async function BlogPostPage({ params }: PageProps) {
           primaryCtaHref="/contact/"
         />
       </div>
-    </div>
+    </article>
   );
 }

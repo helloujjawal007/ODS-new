@@ -159,6 +159,7 @@ export default function SalesforcePage() {
               <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
                 <Link
                   href="/contact/?service=salesforce"
+                  rel="nofollow"
                   className="w-full sm:w-auto px-6 py-3 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium text-xs flex items-center justify-center space-x-1.5 transition-all shadow-sm"
                 >
                   <span>Inquire about this discipline</span>
@@ -385,6 +386,7 @@ export default function SalesforcePage() {
                   <span className="font-mono text-[#64748B] text-[11px]">Strict Unit Testing &gt;= 90%</span>
                   <Link
                     href="/contact/?service=salesforce"
+                    rel="nofollow"
                     className="font-semibold text-[#2563EB] hover:underline inline-flex items-center"
                   >
                     Discuss Architecture <ArrowRight className="w-3 h-3 ml-1" />
@@ -457,6 +459,7 @@ export default function SalesforcePage() {
             </div>
             <Link
               href="/contact/?service=salesforce"
+              rel="nofollow"
               className="text-xs font-semibold text-[#2563EB] hover:underline shrink-0"
             >
               Inquire about your stack &rarr;
@@ -652,6 +655,188 @@ export default function SalesforcePage() {
                 </div>
               );
             })}
+          </div>
+        </section>
+
+        {/* ================= 8B. SALESFORCE CASE STUDY & ARCHITECTURE NOTES ================= */}
+        <section className="my-20 border-t border-[#E2E8F0] pt-16">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10">
+            <div>
+              <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-semibold block mb-2">
+                Production Evidence &amp; Architecture Notes
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-serif font-normal text-[#0F172A] tracking-tight">
+                Salesforce Case Studies &amp; Engineering Field Guides
+              </h2>
+              <p className="text-[#475569] text-xs sm:text-sm mt-2 max-w-2xl leading-relaxed">
+                Explore real client architectures, zero-governor-limit code patterns, and deep-dive technical benchmarks authored by certified Salesforce architects.
+              </p>
+            </div>
+            <div className="mt-4 md:mt-0 flex items-center space-x-4 text-xs font-semibold">
+              <Link
+                href="/portfolio/"
+                className="text-[#2563EB] hover:underline inline-flex items-center space-x-1"
+              >
+                <span>All case studies</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+              <Link
+                href="/blog/"
+                className="text-[#2563EB] hover:underline inline-flex items-center space-x-1"
+              >
+                <span>All engineering notes</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Featured Case Study Hero Card */}
+          <div className="bg-white border border-[#E2E8F0] rounded-[8px] overflow-hidden shadow-sm grid grid-cols-1 lg:grid-cols-12 mb-10 hover:border-[#2563EB] transition-all">
+            <div className="lg:col-span-5 relative aspect-[16/10] lg:aspect-auto min-h-[260px] bg-[#F1F5F9]">
+              <Image
+                src="/images/project_innotech.jpg"
+                alt="Innotech Global Salesforce LWC & MuleSoft Enterprise Case Study"
+                fill
+                sizes="(max-width: 1024px) 100vw, 500px"
+                className="object-cover"
+              />
+              <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-xs border border-[#E2E8F0] px-2.5 py-0.5 rounded-[4px] text-[10px] font-mono uppercase font-medium text-[#0F172A] shadow-2xs">
+                Enterprise CRM Case Study
+              </div>
+            </div>
+
+            <div className="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center space-x-2 text-xs font-mono text-[#64748B] mb-2">
+                  <span className="text-[#00A1E0] font-bold">Client: Innotech Global</span>
+                  <span>·</span>
+                  <span>Sales Cloud + Service Cloud + MuleSoft</span>
+                </div>
+
+                <h3 className="font-serif text-xl sm:text-2xl font-normal text-[#0F172A] mb-3 leading-snug">
+                  Zero-Governor-Limit Architecture &amp; Custom Lightning Web Component Suite
+                </h3>
+
+                <p className="text-xs sm:text-sm text-[#475569] leading-relaxed mb-6">
+                  Re-architected an overloaded enterprise Salesforce instance by replacing brittle Process Builders with bulkified Apex triggers, custom LWC configurators, and bi-directional ERP event streaming.
+                </p>
+
+                <div className="grid grid-cols-3 gap-3 py-3 border-t border-b border-[#F1F5F9] mb-6">
+                  <div>
+                    <div className="text-xl font-serif text-[#0F172A]">0</div>
+                    <div className="text-[10px] font-mono text-[#64748B]">Governor Limit Exceptions</div>
+                  </div>
+                  <div>
+                    <div className="text-xl font-serif text-[#0F172A]">65%</div>
+                    <div className="text-[10px] font-mono text-[#64748B]">Faster Deal Velocity</div>
+                  </div>
+                  <div>
+                    <div className="text-xl font-serif text-[#0F172A]">18ms</div>
+                    <div className="text-[10px] font-mono text-[#64748B]">LWC Component Render</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between pt-2">
+                <span className="text-xs text-[#64748B] font-mono">100% Certified Technical Delivery</span>
+                <Link
+                  href="/portfolio/innotech-salesforce-lwc/"
+                  className="text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] hover:underline inline-flex items-center space-x-1"
+                >
+                  <span>Read Innotech case study</span>
+                  <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Salesforce Engineering Notes Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Link
+              href="/blog/salesforce-platform-events-change-data-capture-kafka/"
+              className="group bg-white border border-[#E2E8F0] rounded-[8px] p-5 shadow-xs hover:border-[#2563EB] hover:shadow-md transition-all flex flex-col justify-between"
+            >
+              <div>
+                <span className="px-2 py-0.5 rounded-[4px] bg-[#EFF6FF] text-[#1D4ED8] border border-[#BFDBFE] font-mono text-[10px] uppercase font-medium block w-fit mb-3">
+                  Event-Driven Architecture
+                </span>
+                <h4 className="font-serif text-base font-medium text-[#0F172A] mb-2 leading-snug group-hover:text-[#2563EB] transition-colors">
+                  Event-Driven Salesforce: Zero-Lag CDC &amp; Platform Events with Kafka
+                </h4>
+                <p className="text-xs text-[#475569] leading-relaxed line-clamp-3">
+                  Decoupling high-throughput enterprise systems from Salesforce governor limits using Change Data Capture and Kafka pub/sub consumers with zero message loss.
+                </p>
+              </div>
+              <div className="pt-4 mt-4 border-t border-[#F1F5F9] flex items-center justify-between text-[11px] font-semibold text-[#2563EB]">
+                <span>Read engineering note</span>
+                <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+              </div>
+            </Link>
+
+            <Link
+              href="/blog/salesforce-api-governor-limits-component-drift-case-study/"
+              className="group bg-white border border-[#E2E8F0] rounded-[8px] p-5 shadow-xs hover:border-[#2563EB] hover:shadow-md transition-all flex flex-col justify-between"
+            >
+              <div>
+                <span className="px-2 py-0.5 rounded-[4px] bg-[#EFF6FF] text-[#1D4ED8] border border-[#BFDBFE] font-mono text-[10px] uppercase font-medium block w-fit mb-3">
+                  Audit &amp; Remediation
+                </span>
+                <h4 className="font-serif text-base font-medium text-[#0F172A] mb-2 leading-snug group-hover:text-[#2563EB] transition-colors">
+                  Zero Governor Limits: Apex CPU Timeouts &amp; Component Drift Postmortem
+                </h4>
+                <p className="text-xs text-[#475569] leading-relaxed line-clamp-3">
+                  How we rescued an enterprise Salesforce org throwing SOQL 101 exceptions and UI component drift with bulkified trigger frameworks and composite APIs.
+                </p>
+              </div>
+              <div className="pt-4 mt-4 border-t border-[#F1F5F9] flex items-center justify-between text-[11px] font-semibold text-[#2563EB]">
+                <span>Read engineering note</span>
+                <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+              </div>
+            </Link>
+
+            <Link
+              href="/blog/salesforce-crm-integration-best-practices/"
+              className="group bg-white border border-[#E2E8F0] rounded-[8px] p-5 shadow-xs hover:border-[#2563EB] hover:shadow-md transition-all flex flex-col justify-between"
+            >
+              <div>
+                <span className="px-2 py-0.5 rounded-[4px] bg-[#EFF6FF] text-[#1D4ED8] border border-[#BFDBFE] font-mono text-[10px] uppercase font-medium block w-fit mb-3">
+                  Integration Blueprint
+                </span>
+                <h4 className="font-serif text-base font-medium text-[#0F172A] mb-2 leading-snug group-hover:text-[#2563EB] transition-colors">
+                  Salesforce CRM Integration: Resilient Webhooks &amp; Queue Intermediaries
+                </h4>
+                <p className="text-xs text-[#475569] leading-relaxed line-clamp-3">
+                  High-traffic lead intake architecture using SQS/Redis queues, Composite APIs, SOQL deduplication, and automated telemetry alerts.
+                </p>
+              </div>
+              <div className="pt-4 mt-4 border-t border-[#F1F5F9] flex items-center justify-between text-[11px] font-semibold text-[#2563EB]">
+                <span>Read engineering note</span>
+                <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+              </div>
+            </Link>
+          </div>
+
+          {/* Process & Methodology Banner */}
+          <div className="mt-10 p-5 bg-[#F8FAFC] border border-[#CBD5E1] rounded-[8px] flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="text-xs text-[#475569]">
+              <span className="font-semibold text-[#0F172A] block text-sm mb-0.5">Looking for our sprint delivery process or fixed milestone budgets?</span>
+              <span>We provide predictable 2-week sprint milestones with bi-weekly demos and 100% IP code ownership.</span>
+            </div>
+            <div className="flex items-center space-x-3 shrink-0">
+              <Link
+                href="/process/"
+                className="px-4 py-2 rounded-[6px] bg-white hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] font-medium text-xs flex items-center space-x-1"
+              >
+                <span>Engineering Process</span>
+              </Link>
+              <Link
+                href="/pricing/"
+                className="px-4 py-2 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium text-xs flex items-center space-x-1 shadow-2xs"
+              >
+                <span>Pricing &amp; SOWs</span>
+                <ArrowRight className="w-3 h-3" />
+              </Link>
+            </div>
           </div>
         </section>
 

@@ -101,12 +101,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": SITE_CONFIG.name,
-    "url": SITE_CONFIG.url,
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": `${SITE_CONFIG.url}/blog?q={search_term_string}`,
-      "query-input": "required name=search_term_string"
-    }
+    "url": SITE_CONFIG.url
   };
 
   return (
@@ -116,6 +111,9 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={`${newsreader.variable} ${publicSans.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
+      <head>
+        <meta charSet="utf-8" />
+      </head>
       <body
         suppressHydrationWarning
         className="min-h-full flex flex-col bg-white text-[#0F172A] selection:bg-[#2563EB] selection:text-white"

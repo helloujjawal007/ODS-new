@@ -131,7 +131,7 @@ export default function TermsPage() {
             </div>
             <div className="pt-2">
               <Link
-                href="/contact"
+                href="/contact/"
                 className="text-xs text-[#2563EB] hover:underline inline-flex items-center space-x-1 font-semibold"
               >
                 <span>Contact Engineering Team</span>

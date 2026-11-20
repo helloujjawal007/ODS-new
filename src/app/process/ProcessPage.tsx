@@ -32,6 +32,8 @@ export default function ProcessPage() {
       duration: "Week 1",
       icon: Search,
       desc: "We align on scope, deliverables, and technical architecture before writing code. This eliminates scope creep and ensures realistic timelines.",
+      linkText: "Explore fixed-milestone pricing & scope calculator",
+      linkHref: "/pricing/",
       deliverables: [
         "Statement of work & technical specification",
         "System architecture & schema data models",
@@ -45,6 +47,8 @@ export default function ProcessPage() {
       duration: "Weeks 1 – 2",
       icon: Layers,
       desc: "Designing responsive, accessible interfaces in Figma with modular component tokens for desktop, tablet, and mobile viewports.",
+      linkText: "View our UI/UX design service & Zenith design system",
+      linkHref: "/services/ui-ux-design/",
       deliverables: [
         "Responsive wireframes and high-fidelity screens",
         "Interactive prototypes for review and feedback",
@@ -58,6 +62,8 @@ export default function ProcessPage() {
       duration: "Weeks 2 – 5",
       icon: Code2,
       desc: "Component-driven development following clean architecture principles, strict TypeScript typing, and edge runtime optimization.",
+      linkText: "See Next.js web platforms & case studies",
+      linkHref: "/portfolio/",
       deliverables: [
         "Modular Next.js App Router or Shopify OS 2.0 codebase",
         "Headless CMS (Sanity / Contentful) integration",
@@ -71,6 +77,8 @@ export default function ProcessPage() {
       duration: "Week 5",
       icon: ShieldCheck,
       desc: "Rigorous performance auditing and technical validation across mobile devices to ensure fast load times and clean indexation.",
+      linkText: "Read our Technical SEO Checklist guide",
+      linkHref: "/blog/technical-seo-checklist-for-high-growth-startups/",
       deliverables: [
         "Core Web Vitals optimization (LCP, CLS, INP)",
         "Structured data (JSON-LD) schema validation",
@@ -84,6 +92,8 @@ export default function ProcessPage() {
       duration: "Ongoing",
       icon: Rocket,
       desc: "Production cutover, automated DNS validation, Google Search Console indexing, 30-day zero-defect warranty, and transition to ongoing maintenance retainers.",
+      linkText: "Inquire about ongoing maintenance & 24/7 SLAs",
+      linkHref: "/contact/?service=Website%20Maintenance%20%26%20Support",
       deliverables: [
         "Zero-downtime DNS migration and SSL certificate provisioning",
         "Google Search Console sitemap indexing & verification",
@@ -233,9 +243,19 @@ export default function ProcessPage() {
                       {step.title}
                     </h2>
 
-                    <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[#475569] leading-relaxed mb-4">
                       {step.desc}
                     </p>
+
+                    {step.linkHref && step.linkText && (
+                      <Link
+                        href={step.linkHref}
+                        className="inline-flex items-center text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] hover:underline"
+                      >
+                        <span>{step.linkText}</span>
+                        <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                      </Link>
+                    )}
                   </div>
 
                   <div className="md:w-6/12 bg-[#F8FAFC] border border-[#E2E8F0] rounded-[6px] p-5">

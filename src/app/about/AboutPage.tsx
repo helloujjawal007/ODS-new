@@ -50,21 +50,25 @@ export default function AboutPage() {
   const disciplines = [
     {
       role: "Solutions & Web Architecture",
+      href: "/services/website-development/",
       focus: "Next.js 16, App Router, React 19, Headless CMS & Cloudflare Edge",
       desc: "Responsible for core structural performance, server-side caching, and robust API endpoints."
     },
     {
       role: "Shopify & E-Commerce Engineering",
+      href: "/services/shopify-bigcommerce-development/",
       focus: "Shopify Plus, Liquid OS 2.0, BigCommerce MSF, Klaviyo & Checkout Extensions",
       desc: "Building custom themes, seamless cart drawers, and reliable ERP inventory synchronizations."
     },
     {
       role: "Mobile Applications",
+      href: "/services/cross-platform-app-development/",
       focus: "Swift 6 / SwiftUI for iOS, Kotlin for Android, and Flutter Cross-Platform",
       desc: "Engineering responsive mobile interfaces with offline sync and native device hardware integrations."
     },
     {
       role: "Technical SEO & Schema Architecture",
+      href: "/services/seo/",
       focus: "Topic cluster modeling, JSON-LD structured data, Core Web Vitals remediation",
       desc: "Ensuring every deployed page is crawlable, fast, and primed for organic search rankings."
     }
@@ -238,18 +242,29 @@ export default function AboutPage() {
             {disciplines.map((item, idx) => (
               <div
                 key={idx}
-                className="bg-white border border-[#E2E8F0] rounded-[8px] p-6 shadow-xs"
+                className="bg-white border border-[#E2E8F0] rounded-[8px] p-6 shadow-xs flex flex-col justify-between hover:border-[#2563EB] transition-all"
               >
-                <div className="flex items-center space-x-2 text-xs font-mono uppercase text-[#2563EB] font-semibold mb-1.5">
-                  <Code2 className="w-3.5 h-3.5" />
-                  <span>{item.role}</span>
+                <div>
+                  <div className="flex items-center space-x-2 text-xs font-mono uppercase text-[#2563EB] font-semibold mb-1.5">
+                    <Code2 className="w-3.5 h-3.5" />
+                    <span>{item.role}</span>
+                  </div>
+                  <div className="text-xs font-mono text-[#0F172A] font-semibold mb-2">
+                    {item.focus}
+                  </div>
+                  <p className="text-xs text-[#475569] leading-relaxed">
+                    {item.desc}
+                  </p>
                 </div>
-                <div className="text-xs font-mono text-[#0F172A] font-semibold mb-2">
-                  {item.focus}
+                <div className="pt-4 mt-4 border-t border-[#F1F5F9]">
+                  <Link
+                    href={item.href}
+                    className="inline-flex items-center text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] hover:underline"
+                  >
+                    <span>View {item.role} service capabilities</span>
+                    <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                  </Link>
                 </div>
-                <p className="text-xs text-[#475569] leading-relaxed">
-                  {item.desc}
-                </p>
               </div>
             ))}
           </div>
@@ -288,6 +303,21 @@ export default function AboutPage() {
                 <p className="text-xs text-[#475569] mt-2 leading-relaxed">
                   12+ years specializing in scalable cloud platforms, Next.js App Router architectures, and enterprise Salesforce CRM integrations.
                 </p>
+                <div className="mt-3 flex flex-wrap gap-2 text-[11px]">
+                  <Link
+                    href="/salesforce/"
+                    className="text-[#2563EB] hover:underline font-semibold"
+                  >
+                    Salesforce Practice →
+                  </Link>
+                  <span className="text-[#CBD5E1]">·</span>
+                  <Link
+                    href="/services/website-development/"
+                    className="text-[#2563EB] hover:underline font-semibold"
+                  >
+                    Web Platforms →
+                  </Link>
+                </div>
               </div>
             </div>
 
@@ -309,6 +339,21 @@ export default function AboutPage() {
                 <p className="text-xs text-[#475569] mt-2 leading-relaxed">
                   Former principal architect overseeing zero-downtime microservices migrations, Google Core Web Vitals SLAs, and multi-region edge caching.
                 </p>
+                <div className="mt-3 flex flex-wrap gap-2 text-[11px]">
+                  <Link
+                    href="/services/seo/"
+                    className="text-[#2563EB] hover:underline font-semibold"
+                  >
+                    Technical SEO &amp; Speed →
+                  </Link>
+                  <span className="text-[#CBD5E1]">·</span>
+                  <Link
+                    href="/blog/"
+                    className="text-[#2563EB] hover:underline font-semibold"
+                  >
+                    Engineering Notes →
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

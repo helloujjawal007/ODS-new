@@ -156,6 +156,27 @@ export default function ServicesHubPage() {
           </Link>
         </div>
 
+        {/* Hub Cross-Navigation Pill Bar */}
+        <div className="flex flex-wrap items-center justify-between gap-3 p-4 bg-[#F8FAFC] border border-[#E2E8F0] rounded-[8px] mb-10 text-xs">
+          <div className="flex items-center space-x-2 text-[#475569]">
+            <span className="font-semibold text-[#0F172A]">Related Directories:</span>
+            <span>Explore our shipped work and technical benchmarks</span>
+          </div>
+          <div className="flex flex-wrap items-center gap-3 font-medium">
+            <Link href="/portfolio/" className="text-[#2563EB] hover:underline">
+              Selected Work (7 Case Studies) →
+            </Link>
+            <span className="text-[#CBD5E1]">·</span>
+            <Link href="/process/" className="text-[#2563EB] hover:underline">
+              5-Stage Sprint Process →
+            </Link>
+            <span className="text-[#CBD5E1]">·</span>
+            <Link href="/blog/" className="text-[#2563EB] hover:underline">
+              Engineering Field Notes →
+            </Link>
+          </div>
+        </div>
+
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-14">
           {SERVICES.map((service) => (
@@ -235,6 +256,7 @@ export default function ServicesHubPage() {
             </div>
             <Link
               href="/contact/?service=Website%20Maintenance%20%26%20Support"
+              rel="nofollow"
               className="px-5 py-2.5 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium text-xs flex items-center space-x-1.5 shrink-0 shadow-2xs"
             >
               <span>Inquire About Maintenance</span>

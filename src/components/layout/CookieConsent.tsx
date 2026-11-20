@@ -64,7 +64,7 @@ export default function CookieConsent() {
             </div>
             <p className="text-xs text-[#475569] mt-1.5 leading-relaxed">
               We use strictly necessary cookies to ensure security and optimal site speed. We do not sell your personal data. Read our{" "}
-              <Link href="/privacy" className="text-[#2563EB] hover:underline font-medium">
+              <Link href="/privacy/" className="text-[#2563EB] hover:underline font-medium">
                 Privacy Policy
               </Link>.
             </p>

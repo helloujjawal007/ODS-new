@@ -31,7 +31,7 @@ export default function NotFound() {
           </Link>
 
           <Link
-            href="/services"
+            href="/services/"
             className="flex items-center justify-center space-x-2 p-2.5 rounded-[6px] bg-[#F8FAFC] border border-[#E2E8F0] text-[#0F172A] hover:text-[#2563EB] hover:border-[#BFDBFE] transition-colors"
           >
             <Layers className="w-3.5 h-3.5" />
@@ -39,7 +39,7 @@ export default function NotFound() {
           </Link>
 
           <Link
-            href="/pricing"
+            href="/pricing/"
             className="flex items-center justify-center space-x-2 p-2.5 rounded-[6px] bg-[#F8FAFC] border border-[#E2E8F0] text-[#0F172A] hover:text-[#2563EB] hover:border-[#BFDBFE] transition-colors"
           >
             <Compass className="w-3.5 h-3.5" />
@@ -47,7 +47,7 @@ export default function NotFound() {
           </Link>
 
           <Link
-            href="/blog"
+            href="/blog/"
             className="flex items-center justify-center space-x-2 p-2.5 rounded-[6px] bg-[#F8FAFC] border border-[#E2E8F0] text-[#0F172A] hover:text-[#2563EB] hover:border-[#BFDBFE] transition-colors"
           >
             <ArrowRight className="w-3.5 h-3.5" />
@@ -56,7 +56,7 @@ export default function NotFound() {
         </div>
 
         <Link
-          href="/contact"
+          href="/contact/"
           className="inline-flex items-center space-x-1.5 text-xs text-[#2563EB] hover:underline font-semibold"
         >
           <span>Need help finding something? Send us a message</span>
