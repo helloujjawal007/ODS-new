@@ -42,10 +42,10 @@ export default function CtaSection({
             </Link>
 
             <Link
-              href="/pricing/"
+              href="/process/"
               className="w-full sm:w-auto px-6 py-3.5 rounded-[6px] bg-white hover:bg-[#F8FAFC] text-[#0F172A] font-medium text-sm border border-[#CBD5E1] hover:border-[#94A3B8] transition-all"
             >
-              See pricing & estimator
+              Our engineering process
             </Link>
           </div>
 

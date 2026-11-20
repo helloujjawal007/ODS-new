@@ -32,8 +32,8 @@ export default function ProcessPage() {
       duration: "Week 1",
       icon: Search,
       desc: "We align on scope, deliverables, and technical architecture before writing code. This eliminates scope creep and ensures realistic timelines.",
-      linkText: "Explore fixed-milestone pricing & scope calculator",
-      linkHref: "/pricing/",
+      linkText: "Request discovery sprint & technical scope",
+      linkHref: "/contact/",
       deliverables: [
         "Statement of work & technical specification",
         "System architecture & schema data models",
@@ -182,10 +182,10 @@ export default function ProcessPage() {
                 </Link>
 
                 <Link
-                  href="/pricing/"
+                  href="/portfolio/"
                   className="w-full sm:w-auto px-5 py-3 rounded-[6px] bg-white hover:bg-[#F8FAFC] text-[#0F172A] font-medium text-xs border border-[#CBD5E1] hover:border-[#94A3B8] transition-colors text-center"
                 >
-                  View pricing &amp; estimator
+                  View selected work
                 </Link>
               </div>
             </div>

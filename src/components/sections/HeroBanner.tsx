@@ -141,18 +141,18 @@ export default function HeroBanner() {
             {/* Action Buttons: "Get a Free Quote" navigates to /pricing/, "Talk to Us" to /contact/ */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
               <Link
-                href="/pricing/"
+                href="/contact/"
                 className="px-6 py-3.5 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold text-sm inline-flex items-center justify-center space-x-2 transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5"
               >
-                <span>Get a Free Quote</span>
+                <span>Tell Us About Your Project</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
 
               <Link
-                href="/contact/"
+                href="/portfolio/"
                 className="px-6 py-3.5 rounded-[6px] bg-white hover:bg-[#F8FAFC] text-[#0F172A] font-medium text-sm border border-[#CBD5E1] hover:border-[#94A3B8] inline-flex items-center justify-center transition-all"
               >
-                Talk to Us
+                View Selected Work
               </Link>
             </div>
 

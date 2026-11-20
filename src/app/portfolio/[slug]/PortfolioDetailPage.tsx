@@ -206,10 +206,10 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
                 <Link
-                  href="/pricing/"
+                  href="/process/"
                   className="w-full py-2.5 rounded-[6px] bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] font-medium text-xs flex items-center justify-center space-x-1.5 transition-colors"
                 >
-                  <span>View Project Pricing</span>
+                  <span>5-Stage Engineering Process</span>
                 </Link>
               </div>
             </div>

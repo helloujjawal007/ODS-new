@@ -167,10 +167,10 @@ export default function SalesforcePage() {
                 </Link>
 
                 <Link
-                  href="/pricing/"
+                  href="/process/"
                   className="w-full sm:w-auto px-5 py-3 rounded-[6px] bg-white hover:bg-[#F8FAFC] text-[#0F172A] font-medium text-xs border border-[#CBD5E1] hover:border-[#94A3B8] transition-colors text-center"
                 >
-                  View pricing &amp; estimator
+                  Our engineering process
                 </Link>
               </div>
             </div>
@@ -830,10 +830,10 @@ export default function SalesforcePage() {
                 <span>Engineering Process</span>
               </Link>
               <Link
-                href="/pricing/"
+                href="/contact/"
                 className="px-4 py-2 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium text-xs flex items-center space-x-1 shadow-2xs"
               >
-                <span>Pricing &amp; SOWs</span>
+                <span>Tell Us About Your Project</span>
                 <ArrowRight className="w-3 h-3" />
               </Link>
             </div>

@@ -39,11 +39,11 @@ export default function NotFound() {
           </Link>
 
           <Link
-            href="/pricing/"
+            href="/portfolio/"
             className="flex items-center justify-center space-x-2 p-2.5 rounded-[6px] bg-[#F8FAFC] border border-[#E2E8F0] text-[#0F172A] hover:text-[#2563EB] hover:border-[#BFDBFE] transition-colors"
           >
             <Compass className="w-3.5 h-3.5" />
-            <span>Cost Estimator</span>
+            <span>Selected Work</span>
           </Link>
 
           <Link

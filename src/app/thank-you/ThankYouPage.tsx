@@ -34,7 +34,7 @@ const THANK_YOU_FAQS = [
   },
   {
     question: "What if our project is urgent or experiencing an active production outage?",
-    answer: "For urgent launch deadlines, critical software defects, or immediate cloud architecture emergencies, reach out directly to our engineering leadership via WhatsApp at +91 91425 90800 or email sales@cloudconsultancy.in for expedited same-day dispatch."
+    answer: "For urgent launch deadlines, critical software defects, or immediate cloud architecture emergencies, reach out directly to our engineering leadership via WhatsApp at +91 91425 90800 or email cloudconsultancy.ad@gmail.com for expedited same-day dispatch."
   }
 ];
 

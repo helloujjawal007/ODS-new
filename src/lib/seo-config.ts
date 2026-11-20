@@ -14,7 +14,7 @@ export const SITE_CONFIG = {
   targetMarkets: "Worldwide / Global",
   deliveryMode: "Global remote engineering and cloud consultancy",
   contact: {
-    email: "sales@cloudconsultancy.in",
+    email: "cloudconsultancy.ad@gmail.com",
     phone: "+91 9142590800",
     phoneDisplay: "+91 91425 90800",
     whatsapp: "919142590800",

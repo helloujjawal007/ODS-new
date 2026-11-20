@@ -69,6 +69,11 @@ export async function POST(request: Request) {
     const service = sanitizeInput(body.service || "Custom Development", 150);
     const phone = body.phone ? sanitizeInput(body.phone, 50) : undefined;
     const company = body.company ? sanitizeInput(body.company, 120) : undefined;
+    const budget = body.budget ? sanitizeInput(body.budget, 100) : undefined;
+    const techStack = Array.isArray(body.techStack)
+      ? body.techStack.map((t: unknown) => sanitizeInput(String(t), 100)).filter(Boolean)
+      : undefined;
+    const customTechStack = body.customTechStack ? sanitizeInput(body.customTechStack, 1000) : undefined;
     const customServiceNotes = body.customServiceNotes ? sanitizeInput(body.customServiceNotes, 1000) : undefined;
     const customBudgetNotes = body.customBudgetNotes ? sanitizeInput(body.customBudgetNotes, 1000) : undefined;
     const platform = body.platform ? sanitizeInput(body.platform, 150) : undefined;
@@ -99,13 +104,16 @@ export async function POST(request: Request) {
       phone,
       company,
       service,
+      budget,
+      customBudgetNotes,
+      techStack,
+      customTechStack,
       customServiceNotes,
       tier: body.tier || "growth",
       tierLabel: body.tierLabel || body.tier,
       addons: body.addons || [],
       addonNames: body.addonNames || [],
       timeline: body.timeline || "Within 1 Month",
-      customBudgetNotes,
       platform,
       url,
       details,

@@ -15,7 +15,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/salesforce/",
     "/portfolio/",
     "/process/",
-    "/pricing/",
     "/blog/",
     "/about/",
     "/contact/",

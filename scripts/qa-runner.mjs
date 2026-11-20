@@ -70,8 +70,7 @@ async function runQA() {
     { path: "/process/", name: "Engineering Process" },
     { path: "/blog/", name: "Blog Hub" },
     { path: "/about/", name: "About Us" },
-    { path: "/pricing/", name: "Pricing & Estimator" },
-    { path: "/contact/", name: "Contact & Estimator" },
+    { path: "/contact/", name: "Contact & Scoping" },
     { path: "/thank-you/", name: "Dedicated Thank You Page" },
     { path: "/privacy/", name: "Privacy Policy" },
     { path: "/terms/", name: "Terms of Service" }
@@ -101,6 +100,18 @@ async function runQA() {
   } catch (e) {
     fail("Navigation", "Work Redirect", e.message);
   }
+
+  try {
+    const pricingRedirect = await fetch(`${BASE_URL}/pricing/`, { redirect: "manual" });
+    if (pricingRedirect.status === 308 || pricingRedirect.status === 307 || pricingRedirect.status === 301) {
+      pass("Navigation", "Pricing Redirect (/pricing/ -> /contact/)", `HTTP ${pricingRedirect.status} redirecting to ${pricingRedirect.headers.get("location")}`);
+    } else {
+      fail("Navigation", "Pricing Redirect (/pricing/ -> /contact/)", `Status ${pricingRedirect.status}`);
+    }
+  } catch (e) {
+    fail("Navigation", "Pricing Redirect", e.message);
+  }
+
   const serviceSlugs = [
     "website-development",
     "shopify-bigcommerce-development",
@@ -114,14 +125,14 @@ async function runQA() {
 
   for (const slug of serviceSlugs) {
     try {
-      const res = await fetchGet(`/pricing/?service=${slug}`);
+      const res = await fetchGet(`/contact/?service=${slug}`);
       if (res.status === 200) {
-        pass("Service Links", `Pricing with ?service=${slug}`, `HTTP 200 OK`);
+        pass("Service Links", `Contact with ?service=${slug}`, `HTTP 200 OK`);
       } else {
-        fail("Service Links", `Pricing with ?service=${slug}`, `HTTP ${res.status}`);
+        fail("Service Links", `Contact with ?service=${slug}`, `HTTP ${res.status}`);
       }
     } catch (e) {
-      fail("Service Links", `Pricing with ?service=${slug}`, e.message);
+      fail("Service Links", `Contact with ?service=${slug}`, e.message);
     }
   }
 
@@ -190,12 +201,13 @@ async function runQA() {
     email: `qa.test.${Date.now()}@cloudconsultancy.in`,
     company: 'Test Corp"><img src=x onerror=alert(1)>',
     service: "High-Performance Website (Next.js)",
-    tier: "growth",
+    budget: "$10,000 – $25,000",
+    techStack: ["Next.js / React", "Tailwind CSS"],
     timeline: "Within 1 Month",
     details: "Automated penetration test brief with <b>HTML</b> and symbols: & ' \" < >."
   };
   const validRes = await fetchPost("/api/contact/", xssPayload, { "x-forwarded-for": "192.168.1.100" });
-  if (validRes.status === 200 && validRes.data.success && validRes.data.recipient.includes("sales@cloudconsultancy.in")) {
+  if (validRes.status === 200 && validRes.data.success && validRes.data.recipient.includes("cloudconsultancy.ad@gmail.com")) {
     pass("Contact Form", "Valid submit with special chars & XSS payloads", `Processed safely; recipients: ${validRes.data.recipient}`);
   } else {
     fail("Contact Form", "Valid submit with special chars", `Status ${validRes.status}: ${JSON.stringify(validRes.data)}`);
@@ -310,7 +322,7 @@ async function runQA() {
   // ==========================================================
   const homeRes = await fetchGet("/");
   const hasPhone = homeRes.text.includes("tel:+919142590800") || homeRes.text.includes("+91 91425 90800");
-  const hasMailto = homeRes.text.includes("mailto:sales@cloudconsultancy.in");
+  const hasMailto = homeRes.text.includes("mailto:cloudconsultancy.ad@gmail.com") || homeRes.text.includes("mailto:sales@cloudconsultancy.in");
   const hasNoOpener = homeRes.text.includes('rel="noopener noreferrer"');
   const hasGitHub = homeRes.text.includes("https://github.com/cloudconsultancy");
   const hasLinkedIn = homeRes.text.includes("https://linkedin.com/company/cloudconsultancy");
@@ -319,7 +331,7 @@ async function runQA() {
   if (hasPhone) pass("Contact Details", "Phone link (+91 91425 90800)", "Present and properly linked");
   else fail("Contact Details", "Phone link", "Phone not found");
 
-  if (hasMailto) pass("Contact Details", "Mailto link (sales@cloudconsultancy.in)", "Present and properly linked");
+  if (hasMailto) pass("Contact Details", "Mailto link (cloudconsultancy.ad@gmail.com)", "Present and properly linked");
   else fail("Contact Details", "Mailto link", "Email mailto not found");
 
   if (hasGitHub && hasLinkedIn && hasTwitter && hasNoOpener) {

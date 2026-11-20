@@ -74,16 +74,16 @@ export default function ServicesCardCarousel({ services }: ServicesCardCarouselP
               Services &amp; Technical Solutions
             </h2>
             <p className="text-[#475569] text-sm mt-2 max-w-xl leading-relaxed">
-              Every project is architected and shipped by senior software engineers. Fixed scopes, measurable milestones, and transparent pricing.
+              Every project is architected and shipped by senior software engineers. Fixed scopes, measurable milestones, and transparent proposals.
             </p>
           </div>
 
           <div className="flex items-center space-x-3">
             <Link
-              href="/pricing/"
+              href="/contact/"
               className="text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] hover:underline inline-flex items-center space-x-1 mr-2"
             >
-              <span>Explore all pricing models</span>
+              <span>Tell us about your project</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 

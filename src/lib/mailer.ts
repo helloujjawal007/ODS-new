@@ -2,9 +2,7 @@ import nodemailer from "nodemailer";
 import { escapeHtml } from "./security";
 
 export const DEFAULT_RECIPIENTS = [
-  "sales@cloudconsultancy.in",
-  "admin@cloudconsultancy.in",
-  "vikash@cloudconsultancy.in"
+  "cloudconsultancy.ad@gmail.com"
 ];
 
 export const RECIPIENT_EMAILS = Array.from(
@@ -24,24 +22,28 @@ export interface ContactInquiryPayload {
   phone?: string;
   company?: string;
   service: string;
+  budget?: string;
+  customBudgetNotes?: string;
+  techStack?: string[];
+  customTechStack?: string;
+  timeline?: string;
+  url?: string;
+  details?: string;
+  engagementModel?: string;
+  customCommunicationNotes?: string;
   customServiceNotes?: string;
-  tier: string;
+  customComplianceNotes?: string;
+  submittedAt?: string;
+  userAgent?: string;
+  // Legacy compatibility fields
+  tier?: string;
   tierLabel?: string;
   addons?: string[];
   addonNames?: string[];
-  timeline: string;
-  customBudgetNotes?: string;
   platform?: string;
-  url?: string;
-  details?: string;
-  customComplianceNotes?: string;
-  engagementModel?: string;
-  customCommunicationNotes?: string;
   minEstimate?: number;
   maxEstimate?: number;
   estimatedWeeks?: number;
-  submittedAt?: string;
-  userAgent?: string;
 }
 
 export interface NewsletterPayload {
@@ -76,7 +78,7 @@ function getTransporter() {
 }
 
 /**
- * Sends a project inquiry email to sales@cloudconsultancy.in, admin@cloudconsultancy.in, and vikash@cloudconsultancy.in
+ * Sends a project inquiry email to cloudconsultancy.ad@gmail.com
  */
 export async function sendContactInquiryEmail(payload: ContactInquiryPayload) {
   const submittedTime = payload.submittedAt || new Date().toISOString();
@@ -84,29 +86,21 @@ export async function sendContactInquiryEmail(payload: ContactInquiryPayload) {
     process.env.SMTP_FROM ||
     `"Cloud Consultancy Portal" <${process.env.SMTP_USER || NOTIFICATION_EMAIL}>`;
 
-  const minFormatted = payload.minEstimate
-    ? `$${payload.minEstimate.toLocaleString()}`
-    : "Custom";
-  const maxFormatted = payload.maxEstimate
-    ? `$${payload.maxEstimate.toLocaleString()}`
-    : "Custom";
-  const estimateString =
-    payload.minEstimate && payload.maxEstimate
-      ? `${minFormatted} – ${maxFormatted}`
-      : "Custom scoping required";
-
   const safeName = escapeHtml(payload.name);
   const safeEmail = escapeHtml(payload.email);
   const safePhone = escapeHtml(payload.phone || "Not specified");
   const safeCompany = escapeHtml(payload.company || "Individual / Not specified");
   const safeService = escapeHtml(payload.service);
-  const safeTier = escapeHtml(payload.tierLabel || payload.tier);
-  const safeTimeline = escapeHtml(payload.timeline);
+  const safeBudget = escapeHtml(payload.budget || payload.customBudgetNotes || "Flexible / To be scoped");
+  const techStackList = payload.techStack && payload.techStack.length > 0
+    ? payload.techStack.map((t) => escapeHtml(t)).join(", ")
+    : "Not specified";
+  const safeCustomTech = escapeHtml(payload.customTechStack || payload.customServiceNotes || "");
+  const safeTimeline = escapeHtml(payload.timeline || "Flexible");
   const safeModel = escapeHtml(payload.engagementModel || "Fixed Project Sprint");
   const safePlatform = escapeHtml(payload.platform || "Not specified");
   const safeUrl = escapeHtml(payload.url || "");
   const safeDetails = escapeHtml(payload.details || "");
-  const safeCustomService = escapeHtml(payload.customServiceNotes || "");
   const safeCustomBudget = escapeHtml(payload.customBudgetNotes || "");
   const safeCustomCompliance = escapeHtml(payload.customComplianceNotes || "");
   const safeCustomComm = escapeHtml(payload.customCommunicationNotes || "");
@@ -133,8 +127,8 @@ export async function sendContactInquiryEmail(payload: ContactInquiryPayload) {
     .grid td.label { font-weight: 600; color: #475569; width: 35%; background: #F8FAFC; }
     .grid td.value { color: #0F172A; }
     .badge { display: inline-block; background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
-    .highlight-box { background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 6px; padding: 16px; margin: 16px 0; }
-    .highlight-box .amount { font-size: 22px; font-weight: 700; color: #15803D; margin-top: 4px; }
+    .highlight-box { background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 6px; padding: 16px; margin: 16px 0; }
+    .highlight-box .amount { font-size: 20px; font-weight: 700; color: #1E3A8A; margin-top: 4px; }
     .notes-box { background: #F8FAFC; border-left: 3px solid #2563EB; padding: 12px 16px; font-size: 13px; color: #334155; margin-top: 6px; white-space: pre-wrap; }
     .footer { background: #F8FAFC; border-top: 1px solid #E2E8F0; padding: 16px 32px; font-size: 12px; color: #64748B; text-align: center; }
   </style>
@@ -148,9 +142,9 @@ export async function sendContactInquiryEmail(payload: ContactInquiryPayload) {
     
     <div class="content">
       <div class="highlight-box">
-        <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #166534; letter-spacing: 0.05em;">Calculated Project Estimate</div>
-        <div class="amount">${estimateString}</div>
-        <div style="font-size: 12px; color: #4B5563; margin-top: 2px;">Estimated Turnaround: ${payload.estimatedWeeks || 4}–${(payload.estimatedWeeks || 4) + 2} Weeks | Tier: ${payload.tierLabel || payload.tier}</div>
+        <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: #1D4ED8; letter-spacing: 0.05em;">Client Stated Budget</div>
+        <div class="amount">${safeBudget}</div>
+        <div style="font-size: 12px; color: #475569; margin-top: 4px;"><strong>Target Timeline:</strong> ${safeTimeline} | <strong>Tech Stack:</strong> ${techStackList}</div>
       </div>
 
       <div class="section-title">Client Contact Information</div>
@@ -180,9 +174,14 @@ export async function sendContactInquiryEmail(payload: ContactInquiryPayload) {
           <td class="value"><span class="badge">${safeService}</span></td>
         </tr>
         <tr>
-          <td class="label">Complexity Tier</td>
-          <td class="value">${safeTier}</td>
+          <td class="label">Budget Scope</td>
+          <td class="value"><strong>${safeBudget}</strong></td>
         </tr>
+        <tr>
+          <td class="label">Selected Tech Stack</td>
+          <td class="value">${techStackList}</td>
+        </tr>
+        ${safeCustomTech ? `<tr><td class="label">Custom Tech Notes</td><td class="value">${safeCustomTech}</td></tr>` : ""}
         <tr>
           <td class="label">Target Timeline</td>
           <td class="value">${safeTimeline}</td>
@@ -191,12 +190,8 @@ export async function sendContactInquiryEmail(payload: ContactInquiryPayload) {
           <td class="label">Engagement Model</td>
           <td class="value">${safeModel}</td>
         </tr>
-        <tr>
-          <td class="label">Target Platform</td>
-          <td class="value">${safePlatform}</td>
-        </tr>
+        ${safePlatform !== "Not specified" ? `<tr><td class="label">Target Platform</td><td class="value">${safePlatform}</td></tr>` : ""}
         ${safeUrl ? `<tr><td class="label">Current URL</td><td class="value"><a href="${safeUrl}" target="_blank">${safeUrl}</a></td></tr>` : ""}
-        ${payload.addonNames && payload.addonNames.length > 0 ? `<tr><td class="label">Selected Add-ons</td><td class="value">${payload.addonNames.map(a => escapeHtml(a)).join(", ")}</td></tr>` : ""}
       </table>
 
       ${safeDetails ? `
@@ -204,13 +199,8 @@ export async function sendContactInquiryEmail(payload: ContactInquiryPayload) {
       <div class="notes-box">${safeDetails}</div>
       ` : ""}
 
-      ${safeCustomService ? `
-      <div class="section-title">Custom Technical Specs / Stacks</div>
-      <div class="notes-box">${safeCustomService}</div>
-      ` : ""}
-
       ${safeCustomBudget ? `
-      <div class="section-title">Budget / Launch Deadlines</div>
+      <div class="section-title">Budget / Milestone Deadlines</div>
       <div class="notes-box">${safeCustomBudget}</div>
       ` : ""}
 
@@ -220,14 +210,14 @@ export async function sendContactInquiryEmail(payload: ContactInquiryPayload) {
       ` : ""}
 
       ${safeCustomComm ? `
-      <div class="section-title">Communication & NDA Preferences</div>
+      <div class="section-title">Communication & Working Preferences</div>
       <div class="notes-box">${safeCustomComm}</div>
       ` : ""}
     </div>
 
     <div class="footer">
-      This inquiry was received by the Cloud Consultancy website estimator.<br/>
-      Reply directly to this email to reply to <strong>${safeName} (${safeEmail})</strong>.
+      This inquiry was received by the Cloud Consultancy project portal.<br/>
+      Reply directly to this email to respond to <strong>${safeName} (${safeEmail})</strong>.
     </div>
   </div>
 </body>
@@ -246,27 +236,23 @@ CLIENT CONTACT:
 - Phone: ${payload.phone || "Not specified"}
 - Company: ${payload.company || "Individual"}
 
-ESTIMATE & TIMELINE:
-- Calculated Budget: ${estimateString}
-- Estimated Timeline: ${payload.timeline} (${payload.estimatedWeeks || 4} Weeks)
+PROJECT SCOPE & BUDGET:
+- Primary Service: ${payload.service}
+- Stated Budget: ${payload.budget || payload.customBudgetNotes || "Flexible / To be scoped"}
+- Tech Stack: ${techStackList}${safeCustomTech ? ` (${safeCustomTech})` : ""}
+- Target Timeline: ${safeTimeline}
 - Engagement Model: ${payload.engagementModel || "Fixed Project Sprint"}
-
-TECHNICAL SCOPE:
-- Service: ${payload.service}
-- Tier: ${payload.tierLabel || payload.tier}
-- Platform: ${payload.platform || "Not specified"}
 - Current URL: ${payload.url || "N/A"}
-- Addons: ${payload.addonNames ? payload.addonNames.join(", ") : "None"}
 
 PROJECT DETAILS:
 ${payload.details || "N/A"}
 
 CUSTOM SPECIFICATIONS:
-${payload.customServiceNotes ? `Tech Specs: ${payload.customServiceNotes}` : ""}
 ${payload.customBudgetNotes ? `Budget Notes: ${payload.customBudgetNotes}` : ""}
+${payload.customTechStack ? `Tech Specs: ${payload.customTechStack}` : ""}
 ${payload.customComplianceNotes ? `Compliance: ${payload.customComplianceNotes}` : ""}
 ${payload.customCommunicationNotes ? `Communication: ${payload.customCommunicationNotes}` : ""}
-`;
+`.trim();
 
   const transporter = getTransporter();
 
@@ -277,7 +263,7 @@ ${payload.customCommunicationNotes ? `Communication: ${payload.customCommunicati
     );
     console.log(`[MAILER] SUBJECT: ${subject}`);
     console.log(`[MAILER] SENDER: ${payload.name} <${payload.email}>`);
-    console.log(`[MAILER] ESTIMATE: ${estimateString}`);
+    console.log(`[MAILER] BUDGET: ${safeBudget}`);
     return {
       success: true,
       delivered: false,

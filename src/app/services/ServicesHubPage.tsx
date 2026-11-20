@@ -95,10 +95,10 @@ export default function ServicesHubPage() {
                 </Link>
 
                 <Link
-                  href="/pricing/"
+                  href="/process/"
                   className="w-full sm:w-auto px-5 py-3 rounded-[6px] bg-white hover:bg-[#F8FAFC] text-[#0F172A] font-medium text-xs border border-[#CBD5E1] hover:border-[#94A3B8] transition-colors text-center"
                 >
-                  View pricing &amp; estimator
+                  Our engineering process
                 </Link>
               </div>
             </div>

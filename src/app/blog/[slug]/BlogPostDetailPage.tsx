@@ -351,10 +351,10 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </p>
                 <div className="space-y-1.5 text-xs font-medium">
                   <Link
-                    href="/pricing/"
+                    href="/contact/"
                     className="flex items-center text-[#2563EB] hover:underline"
                   >
-                    <span>→ Pricing &amp; SOW Estimator</span>
+                    <span>→ Request Project Proposal</span>
                   </Link>
                   <Link
                     href="/process/"
@@ -497,10 +497,10 @@ export default async function BlogPostPage({ params }: PageProps) {
                   </Link>
                 )}
                 <Link
-                  href="/pricing/"
+                  href="/contact/"
                   className="px-3.5 py-2 rounded-[6px] bg-white hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] font-medium text-xs inline-flex items-center space-x-1"
                 >
-                  <span>View Pricing &amp; SOWs</span>
+                  <span>Request Technical Proposal</span>
                 </Link>
               </div>
             </div>
