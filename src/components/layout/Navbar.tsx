@@ -41,6 +41,7 @@ export default function Navbar() {
 
   const navLinks = [
     { label: "Salesforce", href: "/salesforce/" },
+    { label: "Locations", href: "/locations/" },
     { label: "Work", href: "/portfolio/" },
     { label: "Process", href: "/process/" },
     { label: "Blog", href: "/blog/" },

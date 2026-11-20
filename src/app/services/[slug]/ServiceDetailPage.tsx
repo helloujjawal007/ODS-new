@@ -165,7 +165,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
                 <Link
-                  href={`/contact/?service=${encodeURIComponent(service.title)}`}
+                  href="/contact/"
                   className="w-full sm:w-auto px-6 py-3 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium text-xs flex items-center justify-center space-x-1.5 transition-all shadow-sm"
                 >
                   <span>Inquire about this discipline</span>
@@ -383,7 +383,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 <span>We provide predictable monthly engineering blocks with zero vendor lock-in.</span>
               </div>
               <Link
-                href={`/contact/?service=${encodeURIComponent(service.title + " Maintenance")}`}
+                href="/contact/"
                 className="w-full sm:w-auto px-4 py-2 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium text-xs flex items-center justify-center space-x-1.5 shrink-0 shadow-2xs"
               >
                 <span>Request Maintenance Details</span>

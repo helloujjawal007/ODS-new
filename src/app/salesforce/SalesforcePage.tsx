@@ -158,8 +158,7 @@ export default function SalesforcePage() {
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
                 <Link
-                  href="/contact/?service=salesforce"
-                  rel="nofollow"
+                  href="/contact/"
                   className="w-full sm:w-auto px-6 py-3 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium text-xs flex items-center justify-center space-x-1.5 transition-all shadow-sm"
                 >
                   <span>Inquire about this discipline</span>
@@ -321,7 +320,7 @@ export default function SalesforcePage() {
                     Ready to modernize {selectedCloud.name}? Our certified architects review your org schema and requirements within 24 hours.
                   </div>
                   <Link
-                    href={`/contact/?service=salesforce&cloud=${encodeURIComponent(selectedCloud.name)}`}
+                    href="/contact/"
                     className="w-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-semibold py-3 px-4 rounded-[6px] flex items-center justify-center space-x-2 transition-colors shadow-2xs"
                   >
                     <span>Consult on {selectedCloud.name}</span>
@@ -385,8 +384,7 @@ export default function SalesforcePage() {
                 <div className="mt-6 pt-4 border-t border-[#E2E8F0] flex items-center justify-between text-xs">
                   <span className="font-mono text-[#64748B] text-[11px]">Strict Unit Testing &gt;= 90%</span>
                   <Link
-                    href="/contact/?service=salesforce"
-                    rel="nofollow"
+                    href="/contact/"
                     className="font-semibold text-[#2563EB] hover:underline inline-flex items-center"
                   >
                     Discuss Architecture <ArrowRight className="w-3 h-3 ml-1" />
@@ -458,8 +456,7 @@ export default function SalesforcePage() {
               </div>
             </div>
             <Link
-              href="/contact/?service=salesforce"
-              rel="nofollow"
+              href="/contact/"
               className="text-xs font-semibold text-[#2563EB] hover:underline shrink-0"
             >
               Inquire about your stack &rarr;
@@ -594,7 +591,7 @@ export default function SalesforcePage() {
                   </div>
 
                   <Link
-                    href={`/contact/?service=salesforce&tier=${encodeURIComponent(tier.name)}`}
+                    href="/contact/"
                     className={`w-full py-2.5 px-4 rounded-[6px] text-xs font-semibold flex items-center justify-center space-x-1.5 transition-colors ${
                       tier.highlighted
                         ? "bg-[#2563EB] hover:bg-[#1D4ED8] text-white shadow-xs"

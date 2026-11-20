@@ -228,7 +228,7 @@ export default function ServicesHubPage() {
                   <Link
                     href={`/services/${service.slug}/`}
                     className="text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] inline-flex items-center space-x-1"
-                    aria-label={`${service.shortTitle} pricing & details`}
+                    aria-label={`${service.shortTitle} engineering scope & details`}
                   >
                     <span>{service.shortTitle} details</span>
                     <ArrowRight className="w-3.5 h-3.5 ml-0.5" />
@@ -255,8 +255,7 @@ export default function ServicesHubPage() {
               </p>
             </div>
             <Link
-              href="/contact/?service=Website%20Maintenance%20%26%20Support"
-              rel="nofollow"
+              href="/contact/"
               className="px-5 py-2.5 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium text-xs flex items-center space-x-1.5 shrink-0 shadow-2xs"
             >
               <span>Inquire About Maintenance</span>

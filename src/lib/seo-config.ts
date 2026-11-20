@@ -120,3 +120,44 @@ export function getBreadcrumbJsonLd(items: { name: string; url: string }[]) {
     }))
   };
 }
+
+export function getLocationJsonLd(loc: {
+  slug: string;
+  name: string;
+  metaDescription: string;
+  wikiUrl: string;
+  keyServices: { title: string; description: string }[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": `Cloud Consultancy — ${loc.name}`,
+    "url": `${SITE_CONFIG.url}/locations/${loc.slug}/`,
+    "description": loc.metaDescription,
+    "telephone": SITE_CONFIG.contact.phone,
+    "email": SITE_CONFIG.contact.email,
+    "priceRange": "$$$$",
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": loc.name,
+      "sameAs": loc.wikiUrl
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": SITE_CONFIG.name,
+      "url": SITE_CONFIG.url
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": `Software Engineering Services in ${loc.name}`,
+      "itemListElement": loc.keyServices.map((svc) => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": svc.title,
+          "description": svc.description
+        }
+      }))
+    }
+  };
+}

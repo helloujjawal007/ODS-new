@@ -258,7 +258,7 @@ export default function AuditToolModal() {
               Want us to optimize your Core Web Vitals score?
             </span>
             <Link
-              href="/contact?service=seo"
+              href="/contact/"
               className="text-xs text-[#2563EB] hover:text-[#1D4ED8] font-semibold inline-flex items-center space-x-1"
             >
               <span>Request speed optimization</span>

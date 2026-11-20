@@ -211,8 +211,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/contact/?service=Website%20Maintenance%20%26%20Support"
-                  rel="nofollow"
+                  href="/contact/"
                   className="text-[#60A5FA] hover:text-white transition-colors flex items-center space-x-1 font-medium"
                 >
                   <span>Site Maintenance & SLAs</span>
@@ -230,6 +229,11 @@ export default function Footer() {
               <li>
                 <Link href="/salesforce/" className="text-white hover:text-[#60A5FA] transition-colors font-medium">
                   Salesforce
+                </Link>
+              </li>
+              <li>
+                <Link href="/locations/" className="text-white hover:text-[#60A5FA] transition-colors font-medium">
+                  USA Locations
                 </Link>
               </li>
               <li>
@@ -328,8 +332,8 @@ export default function Footer() {
             <Link href="/privacy/#cookies" className="hover:text-white transition-colors">
               Cookie Policy
             </Link>
-            <Link href="/sitemap.xml" className="hover:text-white transition-colors">
-              XML Sitemap
+            <Link href="/locations/" className="hover:text-white transition-colors">
+              USA Locations
             </Link>
           </div>
         </div>

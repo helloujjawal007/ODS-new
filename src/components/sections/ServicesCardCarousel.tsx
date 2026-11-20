@@ -194,14 +194,14 @@ export default function ServicesCardCarousel({ services }: ServicesCardCarouselP
                   </div>
                 </div>
 
-                {/* Card Footer (NO PRICING - Navigates directly to /pricing/?service=slug) */}
+                {/* Card Footer - Navigates directly to dedicated service discipline */}
                 <div className="p-5 pt-0">
                   <Link
-                    href={`/pricing/?service=${s.slug}`}
+                    href={`/services/${s.slug}/`}
                     className="w-full py-2.5 px-4 rounded-[6px] bg-[#F8FAFC] hover:bg-[#EFF6FF] border border-[#CBD5E1] hover:border-[#BFDBFE] text-[#0F172A] hover:text-[#2563EB] text-xs font-semibold flex items-center justify-between transition-all group-hover:bg-[#EFF6FF] group-hover:border-[#BFDBFE] group-hover:text-[#2563EB]"
-                    aria-label={`View pricing and architecture for ${s.title}`}
+                    aria-label={`View architecture and details for ${s.title}`}
                   >
-                    <span>View Pricing &amp; Scope</span>
+                    <span>Explore Architecture &amp; Scope</span>
                     <ArrowRight className="w-3.5 h-3.5 ml-1 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>

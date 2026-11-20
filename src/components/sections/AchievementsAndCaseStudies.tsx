@@ -16,7 +16,7 @@ interface AchievementsAndCaseStudiesProps {
   title?: string;
   subtitle?: string;
   badge?: string;
-  pageContext?: "contact" | "pricing";
+  pageContext?: "contact";
   maxCaseStudies?: number;
 }
 
@@ -196,19 +196,10 @@ export default function AchievementsAndCaseStudies({
                 <ArrowRight className="w-3 h-3 ml-0.5" />
               </Link>
 
-              {pageContext === "pricing" ? (
-                <Link
-                  href="#custom-estimator"
-                  className="text-[11px] font-mono text-[#64748B] hover:text-[#0F172A] underline"
-                >
-                  Estimate Similar
-                </Link>
-              ) : (
-                <span className="text-[11px] text-[#16A34A] font-medium flex items-center space-x-1">
-                  <CheckCircle2 className="w-3 h-3 text-[#16A34A]" />
-                  <span>Production Live</span>
-                </span>
-              )}
+              <span className="text-[11px] text-[#16A34A] font-medium flex items-center space-x-1">
+                <CheckCircle2 className="w-3 h-3 text-[#16A34A]" />
+                <span>Production Live</span>
+              </span>
             </div>
           </article>
         ))}
