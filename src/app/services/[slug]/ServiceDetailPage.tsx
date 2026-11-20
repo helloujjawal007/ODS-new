@@ -689,7 +689,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <CtaSection
           title={`Have a ${service.shortTitle} project or need maintenance?`}
           description="Send us the details and we'll reply within a day with an architectural review, fixed-cost proposal, or maintenance retainer plan."
-          primaryCtaHref={`/contact/?service=${encodeURIComponent(service.title)}`}
+          primaryCtaHref="/contact/"
         />
       </div>
     </div>

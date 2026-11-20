@@ -26,11 +26,11 @@ function warn(category, testName, message) {
   console.warn(`[WARN] [${category}] ${testName}: ${message}`);
 }
 
-async function fetchGet(path) {
+async function fetchGet(path, options = {}) {
   const url = `${BASE_URL}${path}`;
-  const res = await fetch(url, { headers: { "User-Agent": "QA-Test-Agent/1.0" } });
+  const res = await fetch(url, { headers: { "User-Agent": "QA-Test-Agent/1.0" }, ...options });
   const text = await res.text();
-  return { status: res.status, headers: res.headers, text };
+  return { status: res.status, headers: res.headers, text, url: res.url };
 }
 
 async function fetchPost(path, body, headers = {}) {
@@ -151,29 +151,37 @@ async function runQA() {
 
   for (const slug of serviceSlugs) {
     try {
-      const res = await fetchGet(`/contact/?service=${slug}`);
+      const res = await fetchGet(`/services/${slug}/`);
       if (res.status === 200) {
-        pass("Service Links", `Contact with ?service=${slug}`, `HTTP 200 OK`);
+        pass("Service Links", `Service /services/${slug}/`, `HTTP 200 OK`);
       } else {
-        fail("Service Links", `Contact with ?service=${slug}`, `HTTP ${res.status}`);
+        fail("Service Links", `Service /services/${slug}/`, `HTTP ${res.status}`);
       }
     } catch (e) {
-      fail("Service Links", `Contact with ?service=${slug}`, e.message);
+      fail("Service Links", `Service /services/${slug}/`, e.message);
     }
   }
 
   // ==========================================================
-  // 1C. CONTACT ?service= PREFILL
+  // 1C. CONTACT QUERY ELIMINATION & 301 REDIRECT TO CANONICAL
   // ==========================================================
   try {
-    const contactRes = await fetchGet("/contact/?service=Website%20Maintenance%20%26%20Support");
-    if (contactRes.status === 200 && (contactRes.text.includes("Contact") || contactRes.text.includes("service"))) {
-      pass("Contact Prefill", "?service=Website%20Maintenance%20%26%20Support", "Contact form page rendered HTTP 200 with service param");
+    const contactRes = await fetchGet("/contact/");
+    if (contactRes.status === 200) {
+      pass("Contact Page", "Canonical /contact/", "Contact form page rendered HTTP 200 OK");
     } else {
-      fail("Contact Prefill", "?service=Website%20Maintenance%20%26%20Support", "Contact page did not return HTTP 200");
+      fail("Contact Page", "Canonical /contact/", `HTTP ${contactRes.status}`);
+    }
+
+    // Verify ?service= is 301 redirected to /contact/
+    const queryRedirectRes = await fetchGet("/contact/?service=ui-ux-design", { redirect: "manual" });
+    if (queryRedirectRes.status === 301 || queryRedirectRes.status === 308) {
+      pass("Query Suppression", "?service=ui-ux-design 301 redirect", `Cleanly 301/308 redirected to ${queryRedirectRes.headers.get("location")}`);
+    } else {
+      fail("Query Suppression", "?service=ui-ux-design 301 redirect", `Expected 301/308, got HTTP ${queryRedirectRes.status}`);
     }
   } catch (e) {
-    fail("Contact Prefill", "?service= prefill test", e.message);
+    fail("Contact Prefill", "Query suppression test", e.message);
   }
 
   // ==========================================================

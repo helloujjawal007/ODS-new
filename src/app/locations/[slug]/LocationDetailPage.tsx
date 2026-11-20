@@ -3,7 +3,6 @@ import Link from "next/link";
 import { LocationData, LOCATIONS } from "@/lib/locations-data";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import JsonLd from "@/components/seo/JsonLd";
-import ContactForm from "@/components/forms/ContactForm";
 import {
   getBreadcrumbJsonLd,
   getFaqJsonLd,
@@ -520,7 +519,7 @@ export default function LocationDetailPage({ location }: LocationDetailPageProps
 
         {/* ================= 9. DEDICATED CLOSING CTA SECTION TO CONTACT PAGE ================= */}
         <section className="my-16 bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A] rounded-[16px] p-8 sm:p-14 text-white shadow-xl relative overflow-hidden border border-[#334155]">
-          <div className="max-w-3xl space-y-4 relative z-10">
+          <div className="max-w-4xl space-y-6 relative z-10">
             <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#2563EB]/20 border border-[#3B82F6] text-xs font-mono text-[#93C5FD]">
               <Flame className="w-3.5 h-3.5 text-[#60A5FA]" />
               <span>{location.name} Direct Engineering Engagement</span>
@@ -530,11 +529,43 @@ export default function LocationDetailPage({ location }: LocationDetailPageProps
               Ready to Modernize Your {location.name} Software Infrastructure?
             </h2>
 
-            <p className="text-xs sm:text-sm text-[#CBD5E1] leading-relaxed">
-              Whether you are architecting a new Next.js 16 platform from scratch, modernizing a legacy Salesforce instance, or seeking a dedicated engineering squad with guaranteed {location.timezone} overlap, we review every inquiry within 24 hours with transparent milestone scoping.
+            <p className="text-xs sm:text-sm text-[#CBD5E1] leading-relaxed max-w-2xl">
+              Whether you are architecting a new Next.js 16 platform from scratch, modernizing a legacy Salesforce instance, or seeking a dedicated engineering squad with guaranteed {location.timezone} overlap, our senior solutions architects review every inquiry within 24 hours with transparent milestone scoping and fixed-cost delivery agreements.
             </p>
 
-            <div className="pt-3 flex flex-wrap items-center gap-4">
+            {/* CRO Trust Pillars */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2 text-xs text-[#E2E8F0] font-sans">
+              <div className="p-3 rounded-[8px] bg-white/5 border border-white/10 flex items-start space-x-2">
+                <Check className="w-4 h-4 text-[#38BDF8] shrink-0 mt-0.5" />
+                <div>
+                  <strong className="block text-white font-medium">1-Day Reply SLA</strong>
+                  <span className="text-[11px] text-[#94A3B8]">Direct senior architect review</span>
+                </div>
+              </div>
+              <div className="p-3 rounded-[8px] bg-white/5 border border-white/10 flex items-start space-x-2">
+                <ShieldCheck className="w-4 h-4 text-[#38BDF8] shrink-0 mt-0.5" />
+                <div>
+                  <strong className="block text-white font-medium">Strict Mutual NDA</strong>
+                  <span className="text-[11px] text-[#94A3B8]">100% IP confidentiality</span>
+                </div>
+              </div>
+              <div className="p-3 rounded-[8px] bg-white/5 border border-white/10 flex items-start space-x-2">
+                <CheckCircle2 className="w-4 h-4 text-[#38BDF8] shrink-0 mt-0.5" />
+                <div>
+                  <strong className="block text-white font-medium">Full Code Ownership</strong>
+                  <span className="text-[11px] text-[#94A3B8]">Zero vendor lock-in</span>
+                </div>
+              </div>
+              <div className="p-3 rounded-[8px] bg-white/5 border border-white/10 flex items-start space-x-2">
+                <Clock className="w-4 h-4 text-[#38BDF8] shrink-0 mt-0.5" />
+                <div>
+                  <strong className="block text-white font-medium">Fixed Sprint Billing</strong>
+                  <span className="text-[11px] text-[#94A3B8]">Predictable milestones</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-2 flex flex-wrap items-center gap-4">
               <Link
                 href="/contact/"
                 className="px-8 py-3.5 rounded-[6px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-semibold flex items-center space-x-2 transition-all shadow-md group"
@@ -542,33 +573,14 @@ export default function LocationDetailPage({ location }: LocationDetailPageProps
                 <span>Go to Contact Page &amp; Request SOW</span>
                 <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
               </Link>
-              <a
-                href="#scope-project"
-                className="px-6 py-3.5 rounded-[6px] bg-[#334155] hover:bg-[#475569] text-white text-xs font-semibold transition-colors"
+              <Link
+                href="/services/"
+                className="px-6 py-3.5 rounded-[6px] bg-[#334155] hover:bg-[#475569] text-white text-xs font-semibold transition-colors flex items-center space-x-2"
               >
-                Fill Form Below
-              </a>
+                <span>Explore All Engineering Practices</span>
+                <ArrowRight className="w-3.5 h-3.5 ml-1" />
+              </Link>
             </div>
-          </div>
-        </section>
-
-        {/* ================= 10. EMBEDDED PROJECT SCOPING FORM ================= */}
-        <section id="scope-project" className="my-16 border-t border-[#E2E8F0] pt-12">
-          <div className="max-w-3xl mb-8">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#EFF6FF] border border-[#BFDBFE] text-xs font-mono text-[#1D4ED8] mb-2">
-              <Code2 className="w-3.5 h-3.5" />
-              <span>Project Scoping &amp; SOW Inquiry</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-serif font-normal text-[#0F172A]">
-              Start Your {location.name} Engineering Initiative
-            </h2>
-            <p className="text-xs sm:text-sm text-[#475569] mt-2 leading-relaxed">
-              Share your project scope, preferred tech stack, and budget bracket below. Our lead software architect will assess your requirements and reply within one business day.
-            </p>
-          </div>
-
-          <div className="bg-white border border-[#CBD5E1] rounded-[12px] p-6 sm:p-10 shadow-2xs">
-            <ContactForm />
           </div>
         </section>
 

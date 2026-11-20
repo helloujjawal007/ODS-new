@@ -843,7 +843,7 @@ export default function SalesforcePage() {
           title="Ready to transform your Salesforce org with certified architects?"
           description="Schedule a technical consultation with our lead architects. We’ll review your org health, diagnose governor limit risks, and provide an actionable architectural roadmap across Sales Cloud, Service Cloud, and MuleSoft integrations."
           primaryCtaText="Speak with a Salesforce Architect"
-          primaryCtaHref="/contact/?service=salesforce"
+          primaryCtaHref="/contact/"
         />
       </div>
     </div>

@@ -93,7 +93,7 @@ export default function ProcessPage() {
       icon: Rocket,
       desc: "Production cutover, automated DNS validation, Google Search Console indexing, 30-day zero-defect warranty, and transition to ongoing maintenance retainers.",
       linkText: "Inquire about ongoing maintenance & 24/7 SLAs",
-      linkHref: "/contact/?service=Website%20Maintenance%20%26%20Support",
+      linkHref: "/contact/",
       deliverables: [
         "Zero-downtime DNS migration and SSL certificate provisioning",
         "Google Search Console sitemap indexing & verification",
