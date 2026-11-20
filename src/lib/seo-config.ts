@@ -126,7 +126,8 @@ export function getLocationJsonLd(loc: {
   name: string;
   metaDescription: string;
   wikiUrl: string;
-  keyServices: { title: string; description: string }[];
+  disciplines: { title: string; desc: string }[];
+  images?: { hero: string };
 }) {
   return {
     "@context": "https://schema.org",
@@ -134,6 +135,7 @@ export function getLocationJsonLd(loc: {
     "name": `Cloud Consultancy — ${loc.name}`,
     "url": `${SITE_CONFIG.url}/locations/${loc.slug}/`,
     "description": loc.metaDescription,
+    "image": loc.images?.hero ? `${SITE_CONFIG.url}${loc.images.hero}` : `${SITE_CONFIG.url}/brand/cloud-consultancy-icon.png`,
     "telephone": SITE_CONFIG.contact.phone,
     "email": SITE_CONFIG.contact.email,
     "priceRange": "$$$$",
@@ -150,12 +152,12 @@ export function getLocationJsonLd(loc: {
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": `Software Engineering Services in ${loc.name}`,
-      "itemListElement": loc.keyServices.map((svc) => ({
+      "itemListElement": loc.disciplines.map((svc) => ({
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
           "name": svc.title,
-          "description": svc.description
+          "description": svc.desc
         }
       }))
     }

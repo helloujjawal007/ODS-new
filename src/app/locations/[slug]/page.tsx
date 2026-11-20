@@ -38,12 +38,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: pageUrl,
       siteName: SITE_CONFIG.name,
       locale: "en_US",
-      type: "website"
+      type: "website",
+      images: [
+        {
+          url: location.images.hero,
+          width: 1200,
+          height: 675,
+          alt: `Custom Software Engineering & Cloud Platform Command Center in ${location.name}`
+        }
+      ]
     },
     twitter: {
       card: "summary_large_image",
       title: location.metaTitle,
-      description: location.metaDescription
+      description: location.metaDescription,
+      images: [location.images.hero]
     }
   };
 }
